@@ -911,6 +911,10 @@ Name: Close, dtype: float64
 <p>미국 연방준비은행에서 관리하는 Federal Reserve Economic Data(FRED)는 미국 및 각국의 중요 경제지표 데이터를 살펴볼 때 가장 많이 참조되는 곳 중 하나입니다. fredapi 패키지를 통해 FRED 데이터를 다운로드할 수 있습니다. 먼저 미 국채 10년물 금리를 다운로드하는 예제를 살펴보겠습니다.</p>
 <div class="section" id="api-key">
 <h3>3.3.1 API Key 발급받기<a class="headerlink" href="#api-key" title="Permalink to this headline">¶</a></h3>
+<p>먼저 FRED API에 접속하기 위한 Key를 발급받아야 합니다. 아래 사이트에 접속한 후, [Request or view your API keys] 부분을 선택하여 API Key를 발급받습니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">fred</span><span class="o">.</span><span class="n">stlouisfed</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">api_key</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
 <div class="figure align-default" id="fred-key">
 <img alt="_images/03_fred_key.png" src="_images/03_fred_key.png" />
 <p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">FRED API Key 신청</span><a class="headerlink" href="#fred-key" title="Permalink to this image">¶</a></p>
@@ -923,7 +927,7 @@ Name: Close, dtype: float64
 </div>
 </div>
 </div>
-<p>API Key를 발급 받았다면, keyring 패키지를 통해 API Key를 저장합니다. Henry는 본인의 이름, fred_api_key는 저장할 변수명, Your API Key는 발급받은 API Key에 해당합니다.</p>
+<p>API Key를 발급 받았다면, keyring 패키지를 통해 이를 저장합니다. Henry는 본인의 이름, fred_api_key는 저장할 변수명, Your API Key는 발급받은 API Key에 해당합니다.</p>
 <p>그 후 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">fredapi</span></code> 를 통해 fredapi 패키지를 설치해 주도록 합니다. 해당 패키지의 깃허브 저장소는 다음과 같습니다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mortada</span><span class="o">/</span><span class="n">fredapi</span>
 </pre></div>
@@ -983,7 +987,7 @@ Length: 15423, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="_images/03_api_45_1.png" src="_images/03_api_45_1.png" />
+<img alt="_images/03_api_46_1.png" src="_images/03_api_46_1.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">get_series()</span></code> 함수 내에 미 국채 10년물 금리에 해당하는 티커인 DGS10을 입력해줍니다. FRED에서 제공하는 API를 이용해 데이터가 다운로드됩니다.</p>
