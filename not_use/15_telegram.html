@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15. 텔레그램을 이용한 데이터 전송</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/not_use/15_telegram.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/not_use/15_telegram.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   15.1 챗봇 만들기 및 연결하기
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     15.1.1 텔레그램 챗봇 만들기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     15.1.2 파이썬과 텔레그램 연결하기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     15.1.3 채널에 메세지 전송
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     15.1.4 스케쥴러를 이용한 반복작업
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       15.1.4.1 스케쥴러 예시
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       15.1.4.2 공시내역 보내기
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>15. 텔레그램을 이용한 데이터 전송<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>https://vmpo.tistory.com/85</p></li>
+<li><p>https://jungeunlee95.github.io/python/2019/06/22/Python-%ED%85%94%EB%A0%88%EA%B7%B8%EB%9E%A8-API%EB%A1%9C-%EC%B1%97%EB%B4%87-%EB%A7%8C%EB%93%A4%EA%B8%B0/ 비번관리</p></li>
+</ul>
+<div class="section" id="id2">
+<h2>15.1 챗봇 만들기 및 연결하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>15.1.1 텔레그램 챗봇 만들기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><img alt="텔레그램 시작" src="not_use\image/15_tel_botfather.png" /></p>
+<ul class="simple">
+<li><p>검색창에 [Botfather] 입력</p></li>
+<li><p>가짜 계정이 많으니 최상단의 인증마크가 붙어있는 채팅방 클릭</p></li>
+<li><p>[시작] 버튼 누르기</p></li>
+</ul>
+<p><img alt="챗봇 만들기" src="not_use\image/15_tel_newbot.png" /></p>
+<ul class="simple">
+<li><p>[/newbot]을 입력하면 챗봇의 이름을 입력하라고 나옵니다. [python_quant_bot]을 입력해줍니다.</p></li>
+<li><p>그 다음에는 사용자 명을 입력하라고 나옵니다. 주의할 점은 끝이 “bot”으로 끝나야 한다는 점입니다. 편의를 위해 위와 동일하게 입력해주었습니다. 중복된 사용자 명이 있으면 오류가 뜹니다.</p></li>
+<li><p>정상적으로 생성이 되면, 메시지 중 API 토큰이 출력됩니다. 이를 메모장에 저장해주도록 합니다.</p></li>
+</ul>
+<p><img alt="챗봇 확인하기" src="not_use\image/15_tel_checkbot.png" /></p>
+<ul class="simple">
+<li><p>위에서 만든 챗봇 이름을 검색해보면 제대로 만들어진 것이 확인됩니다</p></li>
+<li><p>[시작] 버튼을 눌러 활성화 시킵니다. 활성화가 되지 않은 챗봇에게는 파이썬에서 메세지를 전송할 수 없습니다.</p></li>
+</ul>
+<p><img alt="ID 확인하기" src="not_use\image/15_tel_chatid.png" /></p>
+<ul class="simple">
+<li><p>파이썬에서 챗봇으로 메시지를 전송하기 위해서는 Chat ID를 확인해야 함</p></li>
+<li><p>get_id_bot 을 검색한 후 [/start] 입력</p></li>
+<li><p>Your Chat ID에 해당하는 값이 나의 Chat ID</p></li>
+<li><p>이 역시 API와 함께 저장</p></li>
+</ul>
+<ul class="simple">
+<li><p>API Token과 Chat ID를 메모장에 입력한 후 저장합니다</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>15.1.2 파이썬과 텔레그램 연결하기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import keyring</span>
+<span class="c1"># tel_api = keyring.get_password(&#39;Henry&#39;, &#39;telegram_api_key&#39;)</span>
+<span class="c1"># chat_id = keyring.get_password(&#39;Henry&#39;, &#39;telegram_chat_id&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">telegram</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">telegram</span><span class="o">.</span><span class="n">Bot</span><span class="p">(</span><span class="n">token</span> <span class="o">=</span> <span class="n">tel_api</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="n">chat_id</span> <span class="o">=</span> <span class="n">chat_id</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;telegram.message.Message at 0x1df6cc55f70&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="ID 확인하기" src="not_use\image/15_tel_send_txt.png" /></p>
+<ul class="simple">
+<li><p>‘Hello World’ 라는 단어가 전송되었습니다.</p></li>
+</ul>
+<p><img alt="예제 이미지" src="not_use\image/15_tel_img.jfif" /></p>
+<ul class="simple">
+<li><p>위 이미지를 보내보도록 하겠습니다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">send_photo</span><span class="p">(</span><span class="n">chat_id</span> <span class="o">=</span> <span class="n">chat_id</span><span class="p">,</span> <span class="n">photo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;image/15_tel_img.jfif&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="ID 확인하기" src="not_use\image/15_tel_send_img.png" /></p>
+<ul class="simple">
+<li><p>이미지도 보내졌습니다.</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>15.1.3 채널에 메세지 전송<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p><img alt="예제 이미지" src="not_use\image/15_tel_chatroom.png" />
+<img alt="" src="not_use\image/15_tel_chatroom2.png" /></p>
+<ul class="simple">
+<li><p>채널을 만들어줍니다.</p></li>
+<li><p>공개와 비공개 중 공개 채널을 선택합니다. 해당 채널의 링크는 [t.me/henryquant] 가 됩니다.</p></li>
+<li><p>참가자추가는 건너뛰기를 선택합니다.</p></li>
+</ul>
+<p><img alt="채널 관리" src="not_use\image/15_tel_manager_1.png" />
+<img alt="" src="not_use\image/15_tel_manager_2.png" />
+<img alt="" src="not_use\image/15_tel_manager_3.png" />
+<img alt="" src="not_use\image/15_tel_manager_4.png" /></p>
+<ul class="simple">
+<li><p>관리자추가를 통해 위에서 만든 챗봇을 추가해줍니다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keyring</span>
+<span class="n">tel_api</span> <span class="o">=</span> <span class="n">keyring</span><span class="o">.</span><span class="n">get_password</span><span class="p">(</span><span class="s1">&#39;Henry&#39;</span><span class="p">,</span> <span class="s1">&#39;telegram_api_key&#39;</span><span class="p">)</span>
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">telegram</span><span class="o">.</span><span class="n">Bot</span><span class="p">(</span><span class="n">token</span> <span class="o">=</span> <span class="n">tel_api</span><span class="p">)</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="n">chat_id</span> <span class="o">=</span> <span class="s1">&#39;@henryquant&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;채팅방으로 텍스트를 보내기!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;telegram.message.Message at 0x1df6cc921f0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>chat_id 뒤에는 url의 뒷부분인 henryquant를 입력해줍니다.</p></li>
+</ul>
+<p><img alt="채팅방으로 텍스트 보내기" src="not_use\image/15_tel_send_to_room.png" /></p>
+<ul class="simple">
+<li><p>채팅방으로 메세지가 성공적으로 보내졌습니다.</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>15.1.4 스케쥴러를 이용한 반복작업<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h4>15.1.4.1 스케쥴러 예시<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>https://www.geeksforgeeks.org/python-schedule-library/</p>
+<ul class="simple">
+<li><p>아래 코드를 test.py로 저장</p></li>
+</ul>
+<ul class="simple">
+<li><p>매 1분마다 현재시간을 출력</p></li>
+<li><p>cmd에서 해당 파일 실행</p></li>
+</ul>
+<p><img alt="스케쥴을 이용한 현재 시간 출력" src="not_use\image/15_tel_schedule.png" /></p>
+<ul class="simple">
+<li><p>1분마다 현재시간이 출력됨을 확인할 수 있음</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h4>15.1.4.2 공시내역 보내기<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>먼저 시가총액 상위 100개 종목을 관심종목으로 지정합니다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">,</span> <span class="s1">&#39;시가총액&#39;</span><span class="p">]]</span>
+
+<span class="n">corp_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/corp_list.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">corp_list</span><span class="p">[</span><span class="s1">&#39;corp_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">corp_list</span><span class="p">[</span><span class="s1">&#39;corp_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">corp_list</span><span class="p">[</span><span class="s1">&#39;stock_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">corp_list</span><span class="p">[</span><span class="s1">&#39;stock_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merge_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">,</span> <span class="n">corp_list</span><span class="p">,</span> <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">],</span> <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;stock_code&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merge_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목코드</th>
+      <th>시가총액</th>
+      <th>corp_code</th>
+      <th>corp_name</th>
+      <th>stock_code</th>
+      <th>modify_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>005930</td>
+      <td>530116690440000</td>
+      <td>00126380</td>
+      <td>삼성전자</td>
+      <td>005930</td>
+      <td>20201209</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>000660</td>
+      <td>100464326370000</td>
+      <td>00164779</td>
+      <td>SK하이닉스</td>
+      <td>000660</td>
+      <td>20201221</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>051910</td>
+      <td>70521750657000</td>
+      <td>00356361</td>
+      <td>LG화학</td>
+      <td>051910</td>
+      <td>20210114</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>207940</td>
+      <td>55380105000000</td>
+      <td>00877059</td>
+      <td>삼성바이오로직스</td>
+      <td>207940</td>
+      <td>20210113</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>005380</td>
+      <td>52562374002000</td>
+      <td>00164742</td>
+      <td>현대자동차</td>
+      <td>005380</td>
+      <td>20210111</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>026960</td>
+      <td>3339950000000</td>
+      <td>00144395</td>
+      <td>동서</td>
+      <td>026960</td>
+      <td>20201201</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>032500</td>
+      <td>3269294494300</td>
+      <td>00226352</td>
+      <td>케이엠더블유</td>
+      <td>032500</td>
+      <td>20201120</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>241560</td>
+      <td>3258097895000</td>
+      <td>01032486</td>
+      <td>두산밥캣</td>
+      <td>241560</td>
+      <td>20210113</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>008770</td>
+      <td>3253669230900</td>
+      <td>00165680</td>
+      <td>호텔신라</td>
+      <td>008770</td>
+      <td>20210114</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>012510</td>
+      <td>3251444976000</td>
+      <td>00172291</td>
+      <td>더존비즈온</td>
+      <td>012510</td>
+      <td>20200227</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merge_list</span><span class="o">.</span><span class="n">종목코드</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/mystock.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mystock</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/mystock.csv&#39;</span><span class="p">)</span>
+<span class="n">mystock</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mystock</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mystock</span> <span class="o">=</span> <span class="n">mystock</span><span class="o">.</span><span class="n">종목코드</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mystock</span><span class="p">[:</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;00005930&#39;,
+ &#39;00000660&#39;,
+ &#39;00051910&#39;,
+ &#39;00207940&#39;,
+ &#39;00005380&#39;,
+ &#39;00035420&#39;,
+ &#39;00006400&#39;,
+ &#39;00068270&#39;,
+ &#39;00035720&#39;,
+ &#39;00012330&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keyring</span>
+<span class="n">dart_api</span> <span class="o">=</span> <span class="n">keyring</span><span class="o">.</span><span class="n">get_password</span><span class="p">(</span><span class="s1">&#39;Henry&#39;</span><span class="p">,</span> <span class="s1">&#39;dart_api_key&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;data/report_list.csv&#39;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./not_use"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

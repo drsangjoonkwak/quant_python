@@ -1,0 +1,1030 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>시계열 모멘텀을 이용한 동적자산배분과, Time Frame Momentum을 이용한 수익률 증대 효과</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/not_use/이현열_과제.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/not_use/이현열_과제.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   시계열 모멘텀을 이용한 동적자산배분과, Time Frame Momentum을 이용한 수익률 증대 효과
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   박사과정 3기 이현열
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-10-5">
+     동적자산배분?: Global 10개 자산 중 모멘텀(수익률) 상위 5개 자산에 투자
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reference-https-investresolve-com-file-pdf-resolve-adaptive-asset-allocation-a-primer-pdf">
+     Reference: https://investresolve.com/file/pdf/ReSolve-Adaptive-Asset-Allocation-A-Primer.pdf
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     그림: 모멘텀에 따른 향후 수익률 비교
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-frame-momentum-12-time-frame-momentum-3-12">
+     Time Frame Momentum?: 기존 시계열 모멘텀의 경우 12개월 수익률 하나의 지표만 사용. 반면 Time Frame Momentum의 경우 과거 3개월부터 12개월까지 모든 기간의 수익률을
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     자산의 종류
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       비중: 최소 분산 포트폴리오
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-package-data-import-from-yahoo-api">
+     Import Package  &amp; Data import from Yahoo API
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-parameter-find-end-of-months">
+     Basic Parameter &amp; Find End of Months
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#end-of-months-function-same-as-ep-in-performanceanalytics-package-in-r">
+       ‘End of Months’ function same as ep() in  PerformanceAnalytics Package in R
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-for-minimum-volatility-using-cvxopt">
+     Function for Minimum Volatility (using CVXOPT)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cvxopt-link-https-courses-csail-mit-edu-6-867-wiki-images-a-a7-qp-cvxopt-pdf">
+     CVXOPT Link:  https://courses.csail.mit.edu/6.867/wiki/images/a/a7/Qp-cvxopt.pdf
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-drawdown-from-portfolio-return">
+   Calculate Drawdown from Portfolio Return
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#portfolio-return-backtest-function-by-return-portfolio-from-r">
+     Portfolio Return Backtest Function (By Return.Portfolio from R)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reference-return-portfolio-r-code-github">
+     Reference (Return.portfolio R code @ github)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apply-return-to-yearly-by-apply-yearly-from-r">
+     Apply Return to Yearly (By apply.yearly from R)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-weight-matrix-using-momentum-12m-time-frame-momentum">
+     Create Weight Matrix using Momentum  (12M &amp; Time Frame Momentum)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculate-portfolio-gross-return-turnover-net-return-using-pre-defined-function">
+     Calculate Portfolio Gross Return, Turnover, Net Return Using Pre Defined Function
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bind-two-portfolio-as-port-final-and-calculate-cumulative-return">
+     Bind Two Portfolio as ‘port_final’ and calculate Cumulative Return
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-returns">
+     Plot Returns
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion-and-interpretations">
+   Discussion and Interpretations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     단순히 12개월 수익률 하나만 보는 것 대비 3개월에서 12개월 수익률 모든 지표를 보는 것이 더 높은 수익률과 비슷한 변동성을 보이며, 따라서 샤프지수가 상승하는 모습을 보임
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mdd-15-5-11-5">
+     또한 MDD가 기존 -15.5%에서 -11.5%로 감소하는 효과도 보임
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="time-frame-momentum">
+<h1>시계열 모멘텀을 이용한 동적자산배분과, Time Frame Momentum을 이용한 수익률 증대 효과<a class="headerlink" href="#time-frame-momentum" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="id1">
+<h1>박사과정 3기 이현열<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="global-10-5">
+<h2>동적자산배분?: Global 10개 자산 중 모멘텀(수익률) 상위 5개 자산에 투자<a class="headerlink" href="#global-10-5" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="reference-https-investresolve-com-file-pdf-resolve-adaptive-asset-allocation-a-primer-pdf">
+<h2>Reference: https://investresolve.com/file/pdf/ReSolve-Adaptive-Asset-Allocation-A-Primer.pdf<a class="headerlink" href="#reference-https-investresolve-com-file-pdf-resolve-adaptive-asset-allocation-a-primer-pdf" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id2">
+<h2><a class="reference external" href="https://drive.google.com/open?id=1LdwvOdZ453f7luxk491nDpikK0nfO4C_">그림: 모멘텀에 따른 향후 수익률 비교 </a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="time-frame-momentum-12-time-frame-momentum-3-12">
+<h2>Time Frame Momentum?: 기존 시계열 모멘텀의 경우 12개월 수익률 하나의 지표만 사용. 반면 Time Frame Momentum의 경우 과거 3개월부터 12개월까지 모든 기간의 수익률을<a class="headerlink" href="#time-frame-momentum-12-time-frame-momentum-3-12" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>자산의 종류<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>자산군</p></th>
+<th class="head"><p>세부 자산</p></th>
+<th class="head"><p>티커</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>주식</p></td>
+<td><p>미국 주식</p></td>
+<td><p>SPY</p></td>
+</tr>
+<tr class="row-odd"><td><p>주식</p></td>
+<td><p>유럽 주식</p></td>
+<td><p>IEV</p></td>
+</tr>
+<tr class="row-even"><td><p>주식</p></td>
+<td><p>일본 주식</p></td>
+<td><p>EWJ</p></td>
+</tr>
+<tr class="row-odd"><td><p>주식</p></td>
+<td><p>이머징 주식</p></td>
+<td><p>EEM</p></td>
+</tr>
+<tr class="row-even"><td><p>채권</p></td>
+<td><p>미 장기채 (30+)</p></td>
+<td><p>TLT</p></td>
+</tr>
+<tr class="row-odd"><td><p>채권</p></td>
+<td><p>미 중기채 (7-10)</p></td>
+<td><p>IEF</p></td>
+</tr>
+<tr class="row-even"><td><p>대체</p></td>
+<td><p>미국 부동산</p></td>
+<td><p>IYR</p></td>
+</tr>
+<tr class="row-odd"><td><p>대체</p></td>
+<td><p>글로벌 부동산</p></td>
+<td><p>RWX</p></td>
+</tr>
+<tr class="row-even"><td><p>대체</p></td>
+<td><p>금</p></td>
+<td><p>GLD</p></td>
+</tr>
+<tr class="row-odd"><td><p># 대체</p></td>
+<td><p>상품</p></td>
+<td><p>DBC</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id4">
+<h3>비중: 최소 분산 포트폴리오<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><em>min</em> <span class="math notranslate nohighlight">\( \sigma_p \)</span><br />
+s.t. <span class="math notranslate nohighlight">\( \sum w_i = 1\)</span> , <span class="math notranslate nohighlight">\( 0.1 ≤ w_i ≤ 0.3 \)</span></p>
+</div>
+</div>
+<div class="section" id="import-package-data-import-from-yahoo-api">
+<h2>Import Package  &amp; Data import from Yahoo API<a class="headerlink" href="#import-package-data-import-from-yahoo-api" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import required package</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
+<span class="kn">from</span> <span class="nn">pandas_datareader</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="n">Day</span><span class="p">,</span> <span class="n">MonthEnd</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rankdata</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">matrix</span>
+<span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">solvers</span>
+
+
+<span class="c1"># Download Raw Data from yahoo #</span>
+
+<span class="n">tickers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;IEV&#39;</span><span class="p">,</span> <span class="s1">&#39;EWJ&#39;</span><span class="p">,</span> <span class="s1">&#39;EEM&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;IEF&#39;</span><span class="p">,</span> <span class="s1">&#39;IYR&#39;</span><span class="p">,</span> <span class="s1">&#39;RWX&#39;</span><span class="p">,</span> <span class="s1">&#39;GLD&#39;</span><span class="p">,</span> <span class="s1">&#39;DBC&#39;</span><span class="p">]</span>
+<span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;2007-12-30&#39;</span>
+
+<span class="n">all_data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">ticker</span> <span class="ow">in</span> <span class="n">tickers</span><span class="p">:</span>
+    <span class="n">all_data</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
+
+    
+<span class="c1"># Bind Adjusted price for all asset and calculate return</span>
+
+<span class="n">prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">tic</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">tic</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">all_data</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;ffill&#39;</span><span class="p">)</span>
+<span class="n">rets</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rets</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">rets</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2007-12-31</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2008-01-02</th>
+      <td>-0.008754</td>
+      <td>-0.002711</td>
+      <td>-0.004515</td>
+      <td>-0.016500</td>
+      <td>0.014403</td>
+      <td>0.007125</td>
+      <td>-0.008371</td>
+      <td>-0.004389</td>
+      <td>0.029105</td>
+      <td>0.027567</td>
+    </tr>
+    <tr>
+      <th>2008-01-03</th>
+      <td>-0.000483</td>
+      <td>0.001754</td>
+      <td>0.003779</td>
+      <td>0.008997</td>
+      <td>-0.001377</td>
+      <td>0.002055</td>
+      <td>-0.032387</td>
+      <td>-0.003704</td>
+      <td>0.008367</td>
+      <td>0.007709</td>
+    </tr>
+    <tr>
+      <th>2008-01-04</th>
+      <td>-0.024506</td>
+      <td>-0.023461</td>
+      <td>-0.025602</td>
+      <td>-0.030037</td>
+      <td>0.000211</td>
+      <td>0.002619</td>
+      <td>-0.031726</td>
+      <td>-0.021951</td>
+      <td>-0.005142</td>
+      <td>-0.005814</td>
+    </tr>
+    <tr>
+      <th>2008-01-07</th>
+      <td>-0.000849</td>
+      <td>0.005020</td>
+      <td>-0.006183</td>
+      <td>0.007327</td>
+      <td>0.004351</td>
+      <td>0.001817</td>
+      <td>0.009338</td>
+      <td>-0.016290</td>
+      <td>-0.004229</td>
+      <td>-0.018160</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot cumulative return</span>
+
+<span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">rets</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f582a0ffa20&gt;
+</pre></div>
+</div>
+<img alt="../_images/이현열_과제_7_1.png" src="../_images/이현열_과제_7_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="basic-parameter-find-end-of-months">
+<h2>Basic Parameter &amp; Find End of Months<a class="headerlink" href="#basic-parameter-find-end-of-months" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="end-of-months-function-same-as-ep-in-performanceanalytics-package-in-r">
+<h3>‘End of Months’ function same as ep() in  PerformanceAnalytics Package in R<a class="headerlink" href="#end-of-months-function-same-as-ep-in-performanceanalytics-package-in-r" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fee</span> <span class="o">=</span> <span class="mf">0.0030</span> <span class="c1"># transaction costs</span>
+<span class="n">lookback</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1"># portfolio construction period</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># number of assets to invest</span>
+
+<span class="c1"># find last day of every month</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">prices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">index</span><span class="o">=</span><span class="n">prices</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">ep</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="function-for-minimum-volatility-using-cvxopt">
+<h2>Function for Minimum Volatility (using CVXOPT)<a class="headerlink" href="#function-for-minimum-volatility-using-cvxopt" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="cvxopt-link-https-courses-csail-mit-edu-6-867-wiki-images-a-a7-qp-cvxopt-pdf">
+<h2>CVXOPT Link:  https://courses.csail.mit.edu/6.867/wiki/images/a/a7/Qp-cvxopt.pdf<a class="headerlink" href="#cvxopt-link-https-courses-csail-mit-edu-6-867-wiki-images-a-a7-qp-cvxopt-pdf" title="Permalink to this headline">¶</a></h2>
+<p><em>min</em> <span class="math notranslate nohighlight">\(\frac 1 2 x^TPx + q^Tx \)</span><br />
+<em>subject to</em> <span class="math notranslate nohighlight">\( Gx  ≤ h, Ax = b\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solvers</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;show_progress&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">MinVol</span><span class="p">(</span><span class="n">covmat</span><span class="p">,</span> <span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">)</span> <span class="p">:</span>
+       
+    <span class="n">P</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">covmat</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># covariance matrix</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">covmat</span><span class="p">)),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># zero matrix</span>
+    
+    <span class="n">lb_diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">covmat</span><span class="p">)))</span> <span class="c1"># upper boundary</span>
+    <span class="n">ub_diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">covmat</span><span class="p">)))</span> <span class="c1"># lower boundary </span>
+    
+    <span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">lb_diag</span><span class="p">,</span> <span class="n">ub_diag</span><span class="p">))</span> <span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># inequality constraint, left side (upper &amp; lower boundary)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="o">-</span><span class="n">lb</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">covmat</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">ub</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">covmat</span><span class="p">)))),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># inequality constraint, right side (upper &amp; lower boundary)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">covmat</span><span class="p">)),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="c1"># equality boundary, left side (sum of weight to 1)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># equality boundary, right side (sum of weight to 1)</span>
+    
+    <span class="n">solution</span> <span class="o">=</span> <span class="n">solvers</span><span class="o">.</span><span class="n">qp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># calculate x</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">solution</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="calculate-drawdown-from-portfolio-return">
+<h1>Calculate Drawdown from Portfolio Return<a class="headerlink" href="#calculate-drawdown-from-portfolio-return" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">drawdown</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">R</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+    <span class="n">R</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">R</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">dd</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">dd</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span> <span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">)):</span>
+            <span class="n">temp_dd</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">dd</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">R</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">temp_dd</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+                <span class="n">dd</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dd</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp_dd</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="portfolio-return-backtest-function-by-return-portfolio-from-r">
+<h2>Portfolio Return Backtest Function (By Return.Portfolio from R)<a class="headerlink" href="#portfolio-return-backtest-function-by-return-portfolio-from-r" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="reference-return-portfolio-r-code-github">
+<h2>Reference (Return.portfolio R code &#64; github)<a class="headerlink" href="#reference-return-portfolio-r-code-github" title="Permalink to this headline">¶</a></h2>
+<p>https://github.com/cran/PerformanceAnalytics/blob/master/R/Return.portfolio.R</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ReturnPortfolio</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+    
+    <span class="c1"># check for data</span>
+    <span class="k">if</span> <span class="n">R</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NA&#39;s detected: filling NA&#39;s with zeros&quot;</span><span class="p">)</span>
+        <span class="n">R</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">R</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of Return and Weight is not same&quot;</span><span class="p">)</span>        <span class="c1">## Check The Column Dimension</span>
+               
+    <span class="k">if</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">weights</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Last date in series occurs before beginning of first rebalancing period&quot;</span><span class="p">)</span>
+           
+    <span class="k">if</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">weights</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">R</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="n">weights</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>   <span class="c1">## Subset the Return object if the first rebalance date is after the first date </span>
+    
+    <span class="n">bop_value</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">R</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+    <span class="n">eop_value</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">R</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+    <span class="n">bop_weights</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">R</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+    <span class="n">eop_weights</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">R</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+    
+    <span class="n">bop_value_total</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">eop_value_total</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+                       
+    <span class="n">end_value</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># The end_value is the end of period total value from the prior period</span>
+    
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span> <span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span> <span class="p">:</span>
+        <span class="n">fm</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">to</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>            
+        <span class="n">returns</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fm</span> <span class="p">:</span> <span class="n">to</span><span class="p">,</span> <span class="p">]</span>
+
+        <span class="n">jj</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span> <span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">returns</span><span class="p">)</span> <span class="p">)</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">jj</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+                <span class="n">bop_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">end_value</span> <span class="o">*</span> <span class="n">weights</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">bop_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">eop_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+            
+            <span class="n">bop_value_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">bop_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+                        
+            <span class="c1"># Compute end of period values</span>
+            <span class="n">eop_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">returns</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:]))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bop_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:])</span>
+            <span class="n">eop_value_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">eop_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            
+            <span class="c1"># Compute portfolio returns</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">eop_value_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">/</span> <span class="n">end_value</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">end_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">eop_value_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+            
+            <span class="c1"># Compute BOP and EOP weights</span>
+            <span class="n">bop_weights</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">bop_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">bop_value_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+            <span class="n">eop_weights</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">eop_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">eop_value_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    
+            <span class="n">jj</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ret&#39;</span> <span class="p">:</span> <span class="n">ret</span><span class="p">,</span> <span class="s1">&#39;bop_weights&#39;</span> <span class="p">:</span> <span class="n">bop_weights</span><span class="p">,</span> <span class="s1">&#39;eop_weights&#39;</span> <span class="p">:</span> <span class="n">eop_weights</span><span class="p">}</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+  
+<span class="k">def</span> <span class="nf">ReturnCumulative</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">R</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">R</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">R</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Return: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="mi">4</span><span class="p">))</span> 
+    <span class="k">return</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="apply-return-to-yearly-by-apply-yearly-from-r">
+<h2>Apply Return to Yearly (By apply.yearly from R)<a class="headerlink" href="#apply-return-to-yearly-by-apply-yearly-from-r" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_yearly</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">index</span><span class="o">=</span><span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">ep</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">ep</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">R</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span> <span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ep</span><span class="p">))</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">sub_ret</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">sub_ret</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span> <span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span> <span class="p">:</span> <span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">temp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">sub_ret</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-weight-matrix-using-momentum-12m-time-frame-momentum">
+<h2>Create Weight Matrix using Momentum  (12M &amp; Time Frame Momentum)<a class="headerlink" href="#create-weight-matrix-using-momentum-12m-time-frame-momentum" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Empty list for weight</span>
+
+<span class="n">wts_12M</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">wts_TFM</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lookback</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ep</span><span class="p">))</span> <span class="p">:</span>
+    
+    <span class="c1"># Normal 12M Momentum</span>
+    <span class="n">cumret</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">12</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">K1</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">cumret</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">num</span>
+    
+    <span class="c1"># Using Time Frame Momentum</span>
+    <span class="n">ret_temp</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">ret_temp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;3M&#39;</span> <span class="p">:</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">3</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s1">&#39;4M&#39;</span> <span class="p">:</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">4</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s1">&#39;5M&#39;</span> <span class="p">:</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">5</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s1">&#39;6M&#39;</span> <span class="p">:</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">6</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s1">&#39;7M&#39;</span> <span class="p">:</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">7</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s1">&#39;8M&#39;</span> <span class="p">:</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">8</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s1">&#39;9M&#39;</span> <span class="p">:</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">9</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s1">&#39;10M&#39;</span> <span class="p">:</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">10</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s1">&#39;11M&#39;</span> <span class="p">:</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">11</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s1">&#39;12M&#39;</span> <span class="p">:</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">/</span> <span class="n">prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">12</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)}</span>
+    <span class="n">rank_TFM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ret_temp</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">K2</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="n">rank_TFM</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;ordinal&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">num</span>    
+
+    
+    <span class="c1"># Calculate Minimum Volatility Matrix (Case 1)</span>
+    <span class="n">subret_selected</span> <span class="o">=</span>  <span class="n">rets</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">12</span><span class="p">]</span> <span class="p">:</span> <span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">K1</span><span class="p">]</span>
+    <span class="n">cov</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">subret_selected</span><span class="p">)</span>
+    
+    <span class="n">wt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">0.00</span><span class="p">,</span> <span class="n">prices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">wt</span><span class="p">[</span><span class="n">K1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">MinVol</span><span class="p">(</span><span class="n">cov</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+    <span class="n">wt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">wt</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">prices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                      <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">prices</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]],</span>
+                      <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">prices</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+    <span class="n">wts_12M</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wt</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate Minimum Volatility Matrix (Case 2)</span>
+    <span class="n">subret_selected</span> <span class="o">=</span>  <span class="n">rets</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">12</span><span class="p">]</span> <span class="p">:</span> <span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">K2</span><span class="p">]</span>
+    <span class="n">cov</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">subret_selected</span><span class="p">)</span>
+    
+    <span class="n">wt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">0.00</span><span class="p">,</span> <span class="n">prices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">wt</span><span class="p">[</span><span class="n">K2</span><span class="p">]</span> <span class="o">=</span> <span class="n">MinVol</span><span class="p">(</span><span class="n">cov</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">wt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">wt</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">prices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                      <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">prices</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">ep</span><span class="p">[</span><span class="n">i</span><span class="p">]]],</span>
+                      <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">prices</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+    <span class="n">wts_TFM</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wt</span><span class="p">)</span>
+
+
+<span class="c1"># Bind each weight matrix</span>
+<span class="n">wts_12M</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">wts_12M</span><span class="p">)</span>    
+<span class="n">wts_TFM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">wts_TFM</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="calculate-portfolio-gross-return-turnover-net-return-using-pre-defined-function">
+<h2>Calculate Portfolio Gross Return, Turnover, Net Return Using Pre Defined Function<a class="headerlink" href="#calculate-portfolio-gross-return-turnover-net-return-using-pre-defined-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="bind-two-portfolio-as-port-final-and-calculate-cumulative-return">
+<h2>Bind Two Portfolio as ‘port_final’ and calculate Cumulative Return<a class="headerlink" href="#bind-two-portfolio-as-port-final-and-calculate-cumulative-return" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_12M</span> <span class="o">=</span> <span class="n">ReturnPortfolio</span><span class="p">(</span><span class="n">rets</span><span class="p">,</span> <span class="n">wts_12M</span><span class="p">)</span>
+<span class="n">result_TFM</span> <span class="o">=</span> <span class="n">ReturnPortfolio</span><span class="p">(</span><span class="n">rets</span><span class="p">,</span> <span class="n">wts_TFM</span><span class="p">)</span>
+
+<span class="c1"># 12M Portfolio</span>
+<span class="n">portfolio_ret_12M</span> <span class="o">=</span> <span class="n">result_12M</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span>
+<span class="n">turnover_12M</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">((</span><span class="n">result_12M</span><span class="p">[</span><span class="s1">&#39;eop_weights&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">result_12M</span><span class="p">[</span><span class="s1">&#39;bop_weights&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">portfolio_ret_12M_net</span> <span class="o">=</span> <span class="n">portfolio_ret_12M</span> <span class="o">-</span> <span class="p">(</span><span class="n">turnover_12M</span> <span class="o">*</span> <span class="n">fee</span><span class="p">)</span>    
+
+<span class="c1"># TFM Portfolio</span>
+<span class="n">portfolio_ret_TFM</span> <span class="o">=</span> <span class="n">result_TFM</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span>
+<span class="n">turnover_TFM</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">((</span><span class="n">result_TFM</span><span class="p">[</span><span class="s1">&#39;eop_weights&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">result_TFM</span><span class="p">[</span><span class="s1">&#39;bop_weights&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">portfolio_ret_TFM_net</span> <span class="o">=</span> <span class="n">portfolio_ret_TFM</span> <span class="o">-</span> <span class="p">(</span><span class="n">turnover_TFM</span> <span class="o">*</span> <span class="n">fee</span><span class="p">)</span>   
+
+<span class="c1"># Binding Two Portfolio</span>
+<span class="n">port_final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">portfolio_ret_12M_net</span><span class="p">,</span> <span class="n">portfolio_ret_TFM_net</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">port_final</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Normal 12M Momentum&#39;</span><span class="p">,</span> <span class="s1">&#39;Time Frame Momentum&#39;</span><span class="p">]</span>
+<span class="n">port_cumret</span> <span class="o">=</span> <span class="n">ReturnCumulative</span><span class="p">(</span><span class="n">port_final</span><span class="p">)</span>
+
+<span class="n">port_dd</span> <span class="o">=</span> <span class="n">drawdown</span><span class="p">(</span><span class="n">port_final</span><span class="p">)</span>
+<span class="n">port_dd</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">port_final</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plot-returns">
+<h2>Plot Returns<a class="headerlink" href="#plot-returns" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port_cumret</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f581c1ca780&gt;
+</pre></div>
+</div>
+<img alt="../_images/이현열_과제_25_1.png" src="../_images/이현열_과제_25_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port_dd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f58148057b8&gt;
+</pre></div>
+</div>
+<img alt="../_images/이현열_과제_26_1.png" src="../_images/이현열_과제_26_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apply_yearly</span><span class="p">(</span><span class="n">port_final</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f17a61da470&gt;
+</pre></div>
+</div>
+<img alt="../_images/이현열_과제_27_1.png" src="../_images/이현열_과제_27_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="discussion-and-interpretations">
+<h1>Discussion and Interpretations<a class="headerlink" href="#discussion-and-interpretations" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">port_stat</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">port_return</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">port_std</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">port_sharpe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">port_return</span> <span class="o">/</span> <span class="n">port_std</span><span class="p">)</span>
+    <span class="n">port_mdd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">drawdown</span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">port_mdd</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">columns</span>
+    
+    <span class="n">port_result</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">port_return</span><span class="p">,</span> <span class="n">port_std</span><span class="p">,</span> <span class="n">port_sharpe</span><span class="p">,</span> <span class="n">port_mdd</span><span class="p">])</span>
+    <span class="n">port_result</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Return&#39;</span><span class="p">,</span> <span class="s1">&#39;Std&#39;</span><span class="p">,</span> <span class="s1">&#39;Sharpe&#39;</span><span class="p">,</span> <span class="s1">&#39;MDD&#39;</span><span class="p">]</span>
+    
+
+    <span class="k">return</span><span class="p">(</span><span class="n">port_result</span><span class="p">)</span>
+  
+
+<span class="n">port_stat</span><span class="p">(</span><span class="n">port_final</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>12M</th>
+      <th>Time Frame Momentum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Return</th>
+      <td>0.062122</td>
+      <td>0.077340</td>
+    </tr>
+    <tr>
+      <th>Std</th>
+      <td>0.108746</td>
+      <td>0.108138</td>
+    </tr>
+    <tr>
+      <th>Sharpe</th>
+      <td>0.571254</td>
+      <td>0.715205</td>
+    </tr>
+    <tr>
+      <th>MDD</th>
+      <td>-0.155366</td>
+      <td>-0.115364</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="id5">
+<h2>단순히 12개월 수익률 하나만 보는 것 대비 3개월에서 12개월 수익률 모든 지표를 보는 것이 더 높은 수익률과 비슷한 변동성을 보이며, 따라서 샤프지수가 상승하는 모습을 보임<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="mdd-15-5-11-5">
+<h2>또한 MDD가 기존 -15.5%에서 -11.5%로 감소하는 효과도 보임<a class="headerlink" href="#mdd-15-5-11-5" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./not_use"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
