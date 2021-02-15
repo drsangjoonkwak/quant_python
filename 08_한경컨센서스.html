@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
+    <title>시장 리포트</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -91,7 +91,6 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. 퀀트 투자의 심장: 데이터와 프로그래밍" href="01_data_programming.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -108,7 +107,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="#">
+<a class="navbar-brand text-wrap" href="index.html">
   
   <img src="_static/logo.png" class="logo" alt="logo">
   
@@ -120,8 +119,8 @@ commentsRunWhenDOMLoaded(addUtterances);
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
   </a>
  </li>
@@ -192,7 +191,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/index.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/08_한경컨센서스.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -217,7 +216,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/index.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/08_한경컨센서스.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -234,20 +233,6 @@ commentsRunWhenDOMLoaded(addUtterances);
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   지은이 소개
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -256,13 +241,134 @@ commentsRunWhenDOMLoaded(addUtterances);
               <div>
                 
   <div class="section" id="id1">
-<h1>파이썬을 이용한 퀀트 투자 포트폴리오 만들기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>본 페이지는 <strong>파이썬을 이용한 퀀트 투자 포트폴리오 만들기의 웹사이트</strong> 입니다. 책이 완성되면 출판 예정입니다.</p>
-<div class="section" id="id2">
-<h2>지은이 소개<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>이현열</p>
-<p>한양대학교에서 경영학을 전공하고, 카이스트 대학원에서 금융공학 석사 학위를 받았다. 졸업 후 증권사에서 주식운용, 자산운용사에서 퀀트 포트폴리오 매니저, 보험사에서 데이터 분석 업무를 거쳐, 현재 핀테크 스타트업에서 퀀트 및 자산배분 리서치 업무를 하고 있다. 평소 꾸준한 SNS와 블로그 활동으로 퀀트 아이디어 및 백테스트 결과 등을 공유하면서 퀀트 투자의 대중화를 위해 노력하고 있다. 한양대학교 재무금융 박사 과정을 수료했으며, 패스트캠퍼스에서 R과 퀀트 투자 강의를 맡고 있다. 지은 책으로는 《스마트베타》(2017), 《R을 이용한 퀀트 투자 포트폴리오 만들기》(2019)가 있다.</p>
-<div class="toctree-wrapper compound">
+<h1>시장 리포트<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://consensus.hankyung.com/apps.analysis/analysis.list?skinType=market&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Chrome/78.0.3904.87 Safari/537.36&#39;</span><span class="p">}</span>      
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">data_html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">from_encoding</span> <span class="o">=</span> <span class="s1">&#39;EUC-KR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_date</span> <span class="o">=</span> <span class="n">data_html</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.first.txt_number&#39;</span><span class="p">)</span>
+<span class="n">data_date</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data_date</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_date</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;,
+ &#39;2021-02-15&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">parse</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;삼성전자&#39;</span>
+<span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;euc-kr&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;%BB%EF%BC%BA%C0%FC%C0%DA&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://consensus.hankyung.com/apps.analysis/analysis.list?&amp;sdate=2018-02-10&amp;edate=2021-02-10&amp;search_value=&amp;search_text=%BB</span><span class="si">%E</span><span class="s1">F%BC%BA%C0</span><span class="si">%F</span><span class="s1">C%C0%DA&amp;order_type=&amp;now_page=1&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Chrome/78.0.3904.87 Safari/537.36&#39;</span><span class="p">}</span>           
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">from_encoding</span> <span class="o">=</span> <span class="s1">&#39;EUC-KR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html_num</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.first.txt_number&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html_num</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;td class=&quot;first txt_number&quot;&gt;2021-02-01&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-29&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-29&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-29&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-29&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-29&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-29&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-29&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-29&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-29&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-29&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-28&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-25&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-22&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-13&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-12&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-12&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-12&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-11&lt;/td&gt;,
+ &lt;td class=&quot;first txt_number&quot;&gt;2021-01-11&lt;/td&gt;]
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -295,7 +401,6 @@ commentsRunWhenDOMLoaded(addUtterances);
     
     <div class='prev-next-bottom'>
         
-    <a class='right-next' id="next-link" href="01_data_programming.html" title="next page">1. 퀀트 투자의 심장: 데이터와 프로그래밍</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt;</title>
+    <title>Jupytertheme</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -146,6 +146,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    5. 금융 데이터 수집하기 (기본)
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_other_data.html">
+   8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기
+  </a>
+ </li>
 </ul>
 
 </nav> <!-- To handle the deprecated key -->
@@ -232,7 +237,17 @@ commentsRunWhenDOMLoaded(addUtterances);
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Jupytertheme
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extension">
+   extension
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -244,71 +259,11 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="jupytertheme">
+<h1>Jupytertheme<a class="headerlink" href="#jupytertheme" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyterthemes</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jupyterthemes in c:\users\henry\anaconda3\lib\site-packages (0.20.0)
-Requirement already satisfied: jupyter-core in c:\users\henry\anaconda3\lib\site-packages (from jupyterthemes) (4.6.3)
-Requirement already satisfied: notebook&gt;=5.6.0 in c:\users\henry\anaconda3\lib\site-packages (from jupyterthemes) (6.1.4)
-Requirement already satisfied: matplotlib&gt;=1.4.3 in c:\users\henry\anaconda3\lib\site-packages (from jupyterthemes) (3.3.2)
-Requirement already satisfied: lesscpy&gt;=0.11.2 in c:\users\henry\anaconda3\lib\site-packages (from jupyterthemes) (0.14.0)
-Requirement already satisfied: ipython&gt;=5.4.1 in c:\users\henry\anaconda3\lib\site-packages (from jupyterthemes) (7.19.0)
-Requirement already satisfied: traitlets in c:\users\henry\anaconda3\lib\site-packages (from jupyter-core-&gt;jupyterthemes) (5.0.5)
-Requirement already satisfied: pywin32&gt;=1.0; sys_platform == &quot;win32&quot; in c:\users\henry\anaconda3\lib\site-packages (from jupyter-core-&gt;jupyterthemes) (227)
-Requirement already satisfied: tornado&gt;=5.0 in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (6.0.4)
-Requirement already satisfied: jinja2 in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (2.11.2)
-Requirement already satisfied: jupyter-client&gt;=5.3.4 in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (6.1.7)
-Requirement already satisfied: Send2Trash in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (1.5.0)
-Requirement already satisfied: prometheus-client in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (0.8.0)
-Requirement already satisfied: nbformat in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (5.0.8)
-Requirement already satisfied: nbconvert in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (6.0.7)
-Requirement already satisfied: ipython-genutils in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (0.2.0)
-Requirement already satisfied: ipykernel in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (5.3.4)
-Requirement already satisfied: terminado&gt;=0.8.3 in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (0.9.1)
-Requirement already satisfied: argon2-cffi in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (20.1.0)
-Requirement already satisfied: pyzmq&gt;=17 in c:\users\henry\anaconda3\lib\site-packages (from notebook&gt;=5.6.0-&gt;jupyterthemes) (19.0.2)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\henry\anaconda3\lib\site-packages (from matplotlib&gt;=1.4.3-&gt;jupyterthemes) (0.10.0)
-Requirement already satisfied: python-dateutil&gt;=2.1 in c:\users\henry\anaconda3\lib\site-packages (from matplotlib&gt;=1.4.3-&gt;jupyterthemes) (2.8.1)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\henry\anaconda3\lib\site-packages (from matplotlib&gt;=1.4.3-&gt;jupyterthemes) (1.3.0)
-Requirement already satisfied: numpy&gt;=1.15 in c:\users\henry\anaconda3\lib\site-packages (from matplotlib&gt;=1.4.3-&gt;jupyterthemes) (1.19.2)
-Requirement already satisfied: certifi&gt;=2020.06.20 in c:\users\henry\anaconda3\lib\site-packages (from matplotlib&gt;=1.4.3-&gt;jupyterthemes) (2020.6.20)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.3 in c:\users\henry\anaconda3\lib\site-packages (from matplotlib&gt;=1.4.3-&gt;jupyterthemes) (2.4.7)
-Requirement already satisfied: pillow&gt;=6.2.0 in c:\users\henry\anaconda3\lib\site-packages (from matplotlib&gt;=1.4.3-&gt;jupyterthemes) (8.0.1)
-Requirement already satisfied: six in c:\users\henry\anaconda3\lib\site-packages (from lesscpy&gt;=0.11.2-&gt;jupyterthemes) (1.15.0)
-Requirement already satisfied: ply in c:\users\henry\anaconda3\lib\site-packages (from lesscpy&gt;=0.11.2-&gt;jupyterthemes) (3.11)
-Requirement already satisfied: setuptools&gt;=18.5 in c:\users\henry\anaconda3\lib\site-packages (from ipython&gt;=5.4.1-&gt;jupyterthemes) (50.3.1.post20201107)
-Requirement already satisfied: pickleshare in c:\users\henry\anaconda3\lib\site-packages (from ipython&gt;=5.4.1-&gt;jupyterthemes) (0.7.5)
-Requirement already satisfied: jedi&gt;=0.10 in c:\users\henry\anaconda3\lib\site-packages (from ipython&gt;=5.4.1-&gt;jupyterthemes) (0.17.1)
-Requirement already satisfied: pygments in c:\users\henry\anaconda3\lib\site-packages (from ipython&gt;=5.4.1-&gt;jupyterthemes) (2.7.2)
-Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in c:\users\henry\anaconda3\lib\site-packages (from ipython&gt;=5.4.1-&gt;jupyterthemes) (3.0.8)
-Requirement already satisfied: backcall in c:\users\henry\anaconda3\lib\site-packages (from ipython&gt;=5.4.1-&gt;jupyterthemes) (0.2.0)
-Requirement already satisfied: decorator in c:\users\henry\anaconda3\lib\site-packages (from ipython&gt;=5.4.1-&gt;jupyterthemes) (4.4.2)
-Requirement already satisfied: colorama; sys_platform == &quot;win32&quot; in c:\users\henry\anaconda3\lib\site-packages (from ipython&gt;=5.4.1-&gt;jupyterthemes) (0.4.4)
-Requirement already satisfied: MarkupSafe&gt;=0.23 in c:\users\henry\anaconda3\lib\site-packages (from jinja2-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (1.1.1)
-Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in c:\users\henry\anaconda3\lib\site-packages (from nbformat-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (3.2.0)
-Requirement already satisfied: jupyterlab-pygments in c:\users\henry\anaconda3\lib\site-packages (from nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (0.1.2)
-Requirement already satisfied: nbclient&lt;0.6.0,&gt;=0.5.0 in c:\users\henry\anaconda3\lib\site-packages (from nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (0.5.1)
-Requirement already satisfied: pandocfilters&gt;=1.4.1 in c:\users\henry\anaconda3\lib\site-packages (from nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (1.4.3)
-Requirement already satisfied: defusedxml in c:\users\henry\anaconda3\lib\site-packages (from nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (0.6.0)
-Requirement already satisfied: testpath in c:\users\henry\anaconda3\lib\site-packages (from nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (0.4.4)
-Requirement already satisfied: bleach in c:\users\henry\anaconda3\lib\site-packages (from nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (3.2.1)
-Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in c:\users\henry\anaconda3\lib\site-packages (from nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (0.8.4)
-Requirement already satisfied: entrypoints&gt;=0.2.2 in c:\users\henry\anaconda3\lib\site-packages (from nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (0.3)
-Requirement already satisfied: pywinpty&gt;=0.5 in c:\users\henry\anaconda3\lib\site-packages (from terminado&gt;=0.8.3-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (0.5.7)
-Requirement already satisfied: cffi&gt;=1.0.0 in c:\users\henry\anaconda3\lib\site-packages (from argon2-cffi-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (1.14.3)
-Requirement already satisfied: parso&lt;0.8.0,&gt;=0.7.0 in c:\users\henry\anaconda3\lib\site-packages (from jedi&gt;=0.10-&gt;ipython&gt;=5.4.1-&gt;jupyterthemes) (0.7.0)
-Requirement already satisfied: wcwidth in c:\users\henry\anaconda3\lib\site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=5.4.1-&gt;jupyterthemes) (0.2.5)
-Requirement already satisfied: attrs&gt;=17.4.0 in c:\users\henry\anaconda3\lib\site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (20.3.0)
-Requirement already satisfied: pyrsistent&gt;=0.14.0 in c:\users\henry\anaconda3\lib\site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (0.17.3)
-Requirement already satisfied: nest-asyncio in c:\users\henry\anaconda3\lib\site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (1.4.2)
-Requirement already satisfied: async-generator in c:\users\henry\anaconda3\lib\site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (1.10)
-Requirement already satisfied: packaging in c:\users\henry\anaconda3\lib\site-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (20.4)
-Requirement already satisfied: webencodings in c:\users\henry\anaconda3\lib\site-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (0.5.1)
-Requirement already satisfied: pycparser in c:\users\henry\anaconda3\lib\site-packages (from cffi&gt;=1.0.0-&gt;argon2-cffi-&gt;notebook&gt;=5.6.0-&gt;jupyterthemes) (2.20)
 </pre></div>
 </div>
 </div>
@@ -324,6 +279,245 @@ Requirement already satisfied: pycparser in c:\users\henry\anaconda3\lib\site-pa
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jt</span> <span class="o">-</span><span class="n">t</span> <span class="n">onedork</span> <span class="o">-</span><span class="n">fs</span> <span class="mi">115</span> <span class="o">-</span><span class="n">nfs</span> <span class="mi">125</span> <span class="o">-</span><span class="n">tfs</span> <span class="mi">115</span> <span class="o">-</span><span class="n">dfs</span> <span class="mi">115</span> <span class="o">-</span><span class="n">ofs</span> <span class="mi">115</span> <span class="o">-</span><span class="n">cursc</span> <span class="n">r</span> <span class="o">-</span><span class="n">cellw</span> <span class="mi">80</span><span class="o">%</span> <span class="o">-</span><span class="n">lineh</span> <span class="mi">115</span> <span class="o">-</span><span class="n">altmd</span>  <span class="o">-</span><span class="n">kl</span> <span class="o">-</span><span class="n">T</span> <span class="o">-</span><span class="n">N</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="extension">
+<h1>extension<a class="headerlink" href="#extension" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyter_contrib_nbextensions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jupyter_contrib_nbextensions
+  Using cached jupyter_contrib_nbextensions-0.5.1-py2.py3-none-any.whl (20.9 MB)
+Requirement already satisfied: ipython-genutils in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter_contrib_nbextensions) (0.2.0)
+Requirement already satisfied: nbconvert&gt;=4.2 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter_contrib_nbextensions) (6.0.7)
+Processing c:\users\doomoolmori\appdata\local\pip\cache\wheels\4d\ba\f4\b8c0941055519ebc0f27e85bfe2bb223f1a59a3b8bfc5c7515\jupyter_latex_envs-1.4.6-py2.py3-none-any.whl
+Requirement already satisfied: lxml in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter_contrib_nbextensions) (4.6.1)
+Requirement already satisfied: notebook&gt;=4.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter_contrib_nbextensions) (6.1.4)
+Collecting jupyter-highlight-selected-word&gt;=0.1.1
+  Using cached jupyter_highlight_selected_word-0.2.0-py2.py3-none-any.whl (11 kB)
+Collecting jupyter-contrib-core&gt;=0.3.3
+  Using cached jupyter_contrib_core-0.3.3-py2.py3-none-any.whl (18 kB)
+Requirement already satisfied: traitlets&gt;=4.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter_contrib_nbextensions) (5.0.5)
+Processing c:\users\doomoolmori\appdata\local\pip\cache\wheels\e3\3a\b3\a709b437602c3807f079f0c35ccba3e1adf9af6f2e6b0ebfea\jupyter_nbextensions_configurator-0.4.1-py2.py3-none-any.whl
+Requirement already satisfied: pyyaml in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter_contrib_nbextensions) (5.3.1)
+Requirement already satisfied: tornado in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter_contrib_nbextensions) (6.0.4)
+Requirement already satisfied: jupyter-core in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter_contrib_nbextensions) (4.6.3)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (0.8.4)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (0.3)
+Requirement already satisfied: defusedxml in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (0.6.0)
+Requirement already satisfied: nbformat&gt;=4.4 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (5.0.8)
+Requirement already satisfied: testpath in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (0.4.4)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (1.4.3)
+Requirement already satisfied: bleach in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (3.2.1)
+Requirement already satisfied: nbclient&lt;0.6.0,&gt;=0.5.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (0.5.1)
+Requirement already satisfied: pygments&gt;=2.4.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (2.7.2)
+Requirement already satisfied: jinja2&gt;=2.4 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (2.11.2)
+Requirement already satisfied: jupyterlab-pygments in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (0.1.2)
+Requirement already satisfied: ipython in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-latex-envs&gt;=1.3.8-&gt;jupyter_contrib_nbextensions) (7.19.0)
+Requirement already satisfied: argon2-cffi in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (20.1.0)
+Requirement already satisfied: prometheus-client in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (0.8.0)
+Requirement already satisfied: ipykernel in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (5.3.4)
+Requirement already satisfied: jupyter-client&gt;=5.3.4 in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (6.1.7)
+Requirement already satisfied: terminado&gt;=0.8.3 in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (0.9.1)
+Requirement already satisfied: Send2Trash in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (1.5.0)
+Requirement already satisfied: pyzmq&gt;=17 in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (19.0.2)
+Requirement already satisfied: setuptools in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-contrib-core&gt;=0.3.3-&gt;jupyter_contrib_nbextensions) (50.3.1.post20201107)
+Requirement already satisfied: pywin32&gt;=1.0; sys_platform == &quot;win32&quot; in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-core-&gt;jupyter_contrib_nbextensions) (227)
+Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbformat&gt;=4.4-&gt;nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (3.2.0)
+Requirement already satisfied: six&gt;=1.9.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from bleach-&gt;nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (1.15.0)
+Requirement already satisfied: webencodings in c:\users\doomoolmori\anaconda3\lib\site-packages (from bleach-&gt;nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (0.5.1)
+Requirement already satisfied: packaging in c:\users\doomoolmori\anaconda3\lib\site-packages (from bleach-&gt;nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (20.4)
+Requirement already satisfied: nest-asyncio in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (1.4.2)
+Requirement already satisfied: async-generator in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (1.10)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jinja2&gt;=2.4-&gt;nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (1.1.1)
+Requirement already satisfied: decorator in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;jupyter-latex-envs&gt;=1.3.8-&gt;jupyter_contrib_nbextensions) (4.4.2)
+Requirement already satisfied: jedi&gt;=0.10 in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;jupyter-latex-envs&gt;=1.3.8-&gt;jupyter_contrib_nbextensions) (0.17.1)
+Requirement already satisfied: colorama; sys_platform == &quot;win32&quot; in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;jupyter-latex-envs&gt;=1.3.8-&gt;jupyter_contrib_nbextensions) (0.4.4)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;jupyter-latex-envs&gt;=1.3.8-&gt;jupyter_contrib_nbextensions) (3.0.8)
+Requirement already satisfied: pickleshare in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;jupyter-latex-envs&gt;=1.3.8-&gt;jupyter_contrib_nbextensions) (0.7.5)
+Requirement already satisfied: backcall in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;jupyter-latex-envs&gt;=1.3.8-&gt;jupyter_contrib_nbextensions) (0.2.0)
+Requirement already satisfied: cffi&gt;=1.0.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from argon2-cffi-&gt;notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (1.14.3)
+Requirement already satisfied: python-dateutil&gt;=2.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-client&gt;=5.3.4-&gt;notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (2.8.1)
+Requirement already satisfied: pywinpty&gt;=0.5 in c:\users\doomoolmori\anaconda3\lib\site-packages (from terminado&gt;=0.8.3-&gt;notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (0.5.7)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.4-&gt;nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (0.17.3)
+Requirement already satisfied: attrs&gt;=17.4.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.4-&gt;nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (20.3.0)
+Requirement already satisfied: pyparsing&gt;=2.0.2 in c:\users\doomoolmori\anaconda3\lib\site-packages (from packaging-&gt;bleach-&gt;nbconvert&gt;=4.2-&gt;jupyter_contrib_nbextensions) (2.4.7)
+Requirement already satisfied: parso&lt;0.8.0,&gt;=0.7.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jedi&gt;=0.10-&gt;ipython-&gt;jupyter-latex-envs&gt;=1.3.8-&gt;jupyter_contrib_nbextensions) (0.7.0)
+Requirement already satisfied: wcwidth in c:\users\doomoolmori\anaconda3\lib\site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython-&gt;jupyter-latex-envs&gt;=1.3.8-&gt;jupyter_contrib_nbextensions) (0.2.5)
+Requirement already satisfied: pycparser in c:\users\doomoolmori\anaconda3\lib\site-packages (from cffi&gt;=1.0.0-&gt;argon2-cffi-&gt;notebook&gt;=4.0-&gt;jupyter_contrib_nbextensions) (2.20)
+Installing collected packages: jupyter-latex-envs, jupyter-highlight-selected-word, jupyter-contrib-core, jupyter-nbextensions-configurator, jupyter-contrib-nbextensions
+Successfully installed jupyter-contrib-core-0.3.3 jupyter-contrib-nbextensions-0.5.1 jupyter-highlight-selected-word-0.2.0 jupyter-latex-envs-1.4.6 jupyter-nbextensions-configurator-0.4.1
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">book</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jupyter-book
+  Using cached jupyter_book-0.10.0-py3-none-any.whl (47 kB)
+Collecting sphinx-book-theme&gt;=0.0.39
+  Using cached sphinx_book_theme-0.0.39-py3-none-any.whl (86 kB)
+Requirement already satisfied: nbformat in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-book) (5.0.8)
+Requirement already satisfied: pyyaml in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-book) (5.3.1)
+Collecting nested-lookup~=0.2.21
+  Using cached nested-lookup-0.2.22.tar.gz (10 kB)
+Requirement already satisfied: click in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-book) (7.1.2)
+Collecting sphinxcontrib-bibtex~=2.1.0
+  Using cached sphinxcontrib_bibtex-2.1.4-py3-none-any.whl (17 kB)
+Collecting sphinx-comments
+  Using cached sphinx_comments-0.0.3-py3-none-any.whl (4.6 kB)
+Collecting sphinx-copybutton
+  Using cached sphinx_copybutton-0.3.1-py3-none-any.whl (10 kB)
+Collecting sphinx-togglebutton
+  Using cached sphinx_togglebutton-0.2.3-py3-none-any.whl (6.1 kB)
+Requirement already satisfied: sphinx&lt;4,&gt;=2 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-book) (3.2.1)
+Collecting myst-nb~=0.11.1
+  Using cached myst_nb-0.11.1-py3-none-any.whl (36 kB)
+Collecting sphinx-thebe&gt;=0.0.6
+  Using cached sphinx_thebe-0.0.8-py3-none-any.whl (7.4 kB)
+Collecting linkify-it-py~=1.0.1
+  Using cached linkify_it_py-1.0.1-py3-none-any.whl (19 kB)
+Requirement already satisfied: setuptools in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-book) (50.3.1.post20201107)
+Requirement already satisfied: docutils&gt;=0.15 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-book) (0.16)
+Collecting nbconvert&lt;6
+  Using cached nbconvert-5.6.1-py2.py3-none-any.whl (455 kB)
+Collecting sphinx-panels~=0.5.2
+  Using cached sphinx_panels-0.5.2-py3-none-any.whl (87 kB)
+Requirement already satisfied: jsonschema in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-book) (3.2.0)
+Collecting jupytext~=1.8.0
+  Using cached jupytext-1.8.2-py3-none-any.whl (284 kB)
+Collecting pydata-sphinx-theme~=0.4.1
+  Using cached pydata_sphinx_theme-0.4.3-py3-none-any.whl (2.1 MB)
+Requirement already satisfied: beautifulsoup4 in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx-book-theme&gt;=0.0.39-&gt;jupyter-book) (4.9.3)
+Requirement already satisfied: ipython-genutils in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbformat-&gt;jupyter-book) (0.2.0)
+Requirement already satisfied: jupyter-core in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbformat-&gt;jupyter-book) (4.6.3)
+Requirement already satisfied: traitlets&gt;=4.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbformat-&gt;jupyter-book) (5.0.5)
+Requirement already satisfied: six in c:\users\doomoolmori\anaconda3\lib\site-packages (from nested-lookup~=0.2.21-&gt;jupyter-book) (1.15.0)
+Collecting pybtex&gt;=0.20
+  Using cached pybtex-0.24.0-py2.py3-none-any.whl (561 kB)
+Collecting pybtex-docutils&gt;=0.2.2
+  Using cached pybtex_docutils-1.0.0-py3-none-any.whl (4.7 kB)
+Requirement already satisfied: wheel in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx-togglebutton-&gt;jupyter-book) (0.35.1)
+Requirement already satisfied: sphinxcontrib-devhelp in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (1.0.2)
+Requirement already satisfied: sphinxcontrib-serializinghtml in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (1.1.4)
+Requirement already satisfied: babel&gt;=1.3 in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (2.8.1)
+Requirement already satisfied: sphinxcontrib-applehelp in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (1.0.2)
+Requirement already satisfied: snowballstemmer&gt;=1.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (2.0.0)
+Requirement already satisfied: packaging in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (20.4)
+Requirement already satisfied: colorama&gt;=0.3.5; sys_platform == &quot;win32&quot; in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (0.4.4)
+Requirement already satisfied: requests&gt;=2.5.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (2.24.0)
+Requirement already satisfied: imagesize in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (1.2.0)
+Requirement already satisfied: Jinja2&gt;=2.3 in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (2.11.2)
+Requirement already satisfied: sphinxcontrib-qthelp in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (1.0.3)
+Requirement already satisfied: Pygments&gt;=2.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (2.7.2)
+Requirement already satisfied: alabaster&lt;0.8,&gt;=0.7 in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (0.7.12)
+Requirement already satisfied: sphinxcontrib-jsmath in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (1.0.1)
+Requirement already satisfied: sphinxcontrib-htmlhelp in c:\users\doomoolmori\anaconda3\lib\site-packages (from sphinx&lt;4,&gt;=2-&gt;jupyter-book) (1.0.3)
+Requirement already satisfied: ipython in c:\users\doomoolmori\anaconda3\lib\site-packages (from myst-nb~=0.11.1-&gt;jupyter-book) (7.19.0)
+Collecting jupyter-cache~=0.4.1
+  Using cached jupyter_cache-0.4.2-py3-none-any.whl (31 kB)
+Collecting myst-parser~=0.13.3
+  Using cached myst_parser-0.13.3-py3-none-any.whl (44 kB)
+Requirement already satisfied: importlib-metadata in c:\users\doomoolmori\anaconda3\lib\site-packages (from myst-nb~=0.11.1-&gt;jupyter-book) (2.0.0)
+Collecting jupyter-sphinx==0.3.1
+  Using cached jupyter_sphinx-0.3.1-py3-none-any.whl (19 kB)
+Requirement already satisfied: ipywidgets&lt;8,&gt;=7.0.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from myst-nb~=0.11.1-&gt;jupyter-book) (7.5.1)
+Collecting uc-micro-py
+  Using cached uc_micro_py-1.0.1-py3-none-any.whl (6.2 kB)
+Requirement already satisfied: defusedxml in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&lt;6-&gt;jupyter-book) (0.6.0)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&lt;6-&gt;jupyter-book) (0.3)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&lt;6-&gt;jupyter-book) (1.4.3)
+Requirement already satisfied: testpath in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&lt;6-&gt;jupyter-book) (0.4.4)
+Requirement already satisfied: bleach in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&lt;6-&gt;jupyter-book) (3.2.1)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbconvert&lt;6-&gt;jupyter-book) (0.8.4)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jsonschema-&gt;jupyter-book) (0.17.3)
+Requirement already satisfied: attrs&gt;=17.4.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jsonschema-&gt;jupyter-book) (20.3.0)
+Collecting markdown-it-py~=0.6.0
+  Using cached markdown_it_py-0.6.2-py3-none-any.whl (81 kB)
+Requirement already satisfied: toml in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupytext~=1.8.0-&gt;jupyter-book) (0.10.1)
+Requirement already satisfied: soupsieve&gt;1.2; python_version &gt;= &quot;3.0&quot; in c:\users\doomoolmori\anaconda3\lib\site-packages (from beautifulsoup4-&gt;sphinx-book-theme&gt;=0.0.39-&gt;jupyter-book) (2.0.1)
+Requirement already satisfied: pywin32&gt;=1.0; sys_platform == &quot;win32&quot; in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-core-&gt;nbformat-&gt;jupyter-book) (227)
+Collecting latexcodec&gt;=1.0.4
+  Using cached latexcodec-2.0.1-py2.py3-none-any.whl (18 kB)
+Requirement already satisfied: pytz&gt;=2015.7 in c:\users\doomoolmori\anaconda3\lib\site-packages (from babel&gt;=1.3-&gt;sphinx&lt;4,&gt;=2-&gt;jupyter-book) (2020.1)
+Requirement already satisfied: pyparsing&gt;=2.0.2 in c:\users\doomoolmori\anaconda3\lib\site-packages (from packaging-&gt;sphinx&lt;4,&gt;=2-&gt;jupyter-book) (2.4.7)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in c:\users\doomoolmori\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;sphinx&lt;4,&gt;=2-&gt;jupyter-book) (3.0.4)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;sphinx&lt;4,&gt;=2-&gt;jupyter-book) (1.25.11)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\doomoolmori\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;sphinx&lt;4,&gt;=2-&gt;jupyter-book) (2020.6.20)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in c:\users\doomoolmori\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;sphinx&lt;4,&gt;=2-&gt;jupyter-book) (2.10)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in c:\users\doomoolmori\anaconda3\lib\site-packages (from Jinja2&gt;=2.3-&gt;sphinx&lt;4,&gt;=2-&gt;jupyter-book) (1.1.1)
+Requirement already satisfied: decorator in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (4.4.2)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (3.0.8)
+Requirement already satisfied: backcall in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (0.2.0)
+Requirement already satisfied: pickleshare in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (0.7.5)
+Requirement already satisfied: jedi&gt;=0.10 in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipython-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (0.17.1)
+Collecting nbdime
+  Using cached nbdime-2.1.0-py2.py3-none-any.whl (5.0 MB)
+Requirement already satisfied: nbclient&lt;0.6,&gt;=0.2 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (0.5.1)
+Requirement already satisfied: sqlalchemy~=1.3.12 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (1.3.20)
+Collecting mdit-py-plugins~=0.2.4
+  Using cached mdit_py_plugins-0.2.5-py3-none-any.whl (39 kB)
+Requirement already satisfied: zipp&gt;=0.5 in c:\users\doomoolmori\anaconda3\lib\site-packages (from importlib-metadata-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (3.4.0)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (5.3.4)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (3.5.1)
+Requirement already satisfied: webencodings in c:\users\doomoolmori\anaconda3\lib\site-packages (from bleach-&gt;nbconvert&lt;6-&gt;jupyter-book) (0.5.1)
+Requirement already satisfied: wcwidth in c:\users\doomoolmori\anaconda3\lib\site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (0.2.5)
+Requirement already satisfied: parso&lt;0.8.0,&gt;=0.7.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jedi&gt;=0.10-&gt;ipython-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (0.7.0)
+Requirement already satisfied: tornado in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (6.0.4)
+Collecting GitPython!=2.1.4,!=2.1.5,!=2.1.6
+  Using cached GitPython-3.1.13-py3-none-any.whl (159 kB)
+Requirement already satisfied: notebook in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (6.1.4)
+Requirement already satisfied: nest-asyncio in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbclient&lt;0.6,&gt;=0.2-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (1.4.2)
+Requirement already satisfied: async-generator in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbclient&lt;0.6,&gt;=0.2-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (1.10)
+Requirement already satisfied: jupyter-client&gt;=6.1.5 in c:\users\doomoolmori\anaconda3\lib\site-packages (from nbclient&lt;0.6,&gt;=0.2-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (6.1.7)
+Collecting gitdb&lt;5,&gt;=4.0.1
+  Using cached gitdb-4.0.5-py3-none-any.whl (63 kB)
+Requirement already satisfied: argon2-cffi in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (20.1.0)
+Requirement already satisfied: terminado&gt;=0.8.3 in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (0.9.1)
+Requirement already satisfied: prometheus-client in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (0.8.0)
+Requirement already satisfied: pyzmq&gt;=17 in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (19.0.2)
+Requirement already satisfied: Send2Trash in c:\users\doomoolmori\anaconda3\lib\site-packages (from notebook-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (1.5.0)
+Requirement already satisfied: python-dateutil&gt;=2.1 in c:\users\doomoolmori\anaconda3\lib\site-packages (from jupyter-client&gt;=6.1.5-&gt;nbclient&lt;0.6,&gt;=0.2-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (2.8.1)
+Collecting smmap&lt;4,&gt;=3.0.1
+  Using cached smmap-3.0.5-py2.py3-none-any.whl (25 kB)
+Requirement already satisfied: cffi&gt;=1.0.0 in c:\users\doomoolmori\anaconda3\lib\site-packages (from argon2-cffi-&gt;notebook-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (1.14.3)
+Requirement already satisfied: pywinpty&gt;=0.5 in c:\users\doomoolmori\anaconda3\lib\site-packages (from terminado&gt;=0.8.3-&gt;notebook-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (0.5.7)
+Requirement already satisfied: pycparser in c:\users\doomoolmori\anaconda3\lib\site-packages (from cffi&gt;=1.0.0-&gt;argon2-cffi-&gt;notebook-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.11.1-&gt;jupyter-book) (2.20)
+Building wheels for collected packages: nested-lookup
+  Building wheel for nested-lookup (setup.py): started
+  Building wheel for nested-lookup (setup.py): finished with status &#39;done&#39;
+  Created wheel for nested-lookup: filename=nested_lookup-0.2.22-py3-none-any.whl size=7688 sha256=89f7d3feeab0c8bae669372c97f3f4a27b7df8bbc32c3603a9e90b668fcf56e4
+  Stored in directory: c:\users\doomoolmori\appdata\local\pip\cache\wheels\df\27\70\9718d662d1b80e9cf0e20e9872dfa65922f477c0526b615ada
+Successfully built nested-lookup
+Installing collected packages: pydata-sphinx-theme, sphinx-book-theme, nested-lookup, latexcodec, pybtex, pybtex-docutils, sphinxcontrib-bibtex, sphinx-comments, sphinx-copybutton, sphinx-togglebutton, smmap, gitdb, GitPython, nbdime, jupyter-cache, markdown-it-py, mdit-py-plugins, myst-parser, nbconvert, jupyter-sphinx, myst-nb, sphinx-thebe, uc-micro-py, linkify-it-py, sphinx-panels, jupytext, jupyter-book
+  Attempting uninstall: nbconvert
+    Found existing installation: nbconvert 6.0.7
+    Uninstalling nbconvert-6.0.7:
+      Successfully uninstalled nbconvert-6.0.7
+Successfully installed GitPython-3.1.13 gitdb-4.0.5 jupyter-book-0.10.0 jupyter-cache-0.4.2 jupyter-sphinx-0.3.1 jupytext-1.8.2 latexcodec-2.0.1 linkify-it-py-1.0.1 markdown-it-py-0.6.2 mdit-py-plugins-0.2.5 myst-nb-0.11.1 myst-parser-0.13.3 nbconvert-5.6.1 nbdime-2.1.0 nested-lookup-0.2.22 pybtex-0.24.0 pybtex-docutils-1.0.0 pydata-sphinx-theme-0.4.3 smmap-3.0.5 sphinx-book-theme-0.0.39 sphinx-comments-0.0.3 sphinx-copybutton-0.3.1 sphinx-panels-0.5.2 sphinx-thebe-0.0.8 sphinx-togglebutton-0.2.3 sphinxcontrib-bibtex-2.1.4 uc-micro-py-1.0.1
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
+
+We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
+
+spyder 4.1.5 requires pyqt5&lt;5.13; python_version &gt;= &quot;3&quot;, which is not installed.
+spyder 4.1.5 requires pyqtwebengine&lt;5.13; python_version &gt;= &quot;3&quot;, which is not installed.
+</pre></div>
+</div>
 </div>
 </div>
 </div>

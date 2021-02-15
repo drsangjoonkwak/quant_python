@@ -148,6 +148,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    5. 금융 데이터 수집하기 (기본)
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_other_data.html">
+   8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기
+  </a>
+ </li>
 </ul>
 
 </nav> <!-- To handle the deprecated key -->
@@ -846,7 +851,13 @@ commentsRunWhenDOMLoaded(addUtterances);
 <h3>3.2.2 국내 종목 주가 다운로드<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용하면 미국뿐 아니라 국내 종목의 주가도 다운로드할 수 있습니다. 국내 종목의 티커는 총 6자리로 구성되어 있으며, 해당 함수에 입력되는 티커는 코스피 상장 종목의 경우 티커.KS, 코스닥 상장 종목의 경우 티커.KQ의 형태로 입력해야 합니다.</p>
 <p>다음은 코스피 상장 종목인 삼성전자 데이터의 다운로드 예시입니다.</p>
-<p>samsung = web.DataReader(‘005930.KS’, ‘yahoo’)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samsung</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;005930.KS&#39;</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samsung</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>

@@ -91,6 +91,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기" href="08_other_data.html" />
     <link rel="prev" title="3. API를 이용한 데이터 수집" href="03_api.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -145,6 +146,11 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_other_data.html">
+   8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기
   </a>
  </li>
 </ul>
@@ -288,7 +294,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li><p>[12025] 업종분류 현황: http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020506</p></li>
 <li><p>[12021] 개별종목: http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020506</p></li>
 </ul>
-<p>해당 데이터들을 크롤링이 아닌 [Excel] 버튼을 클릭해 엑셀 파일로 받을 수도 있습니다. 그러나 매번 엑셀 파일을 다운로드하고 이를 R로 불러오는 작업은 상당히 비효율적이며, 크롤링을 이용한다면 해당 데이터를 직접 불러올 수 있습니다.</p>
+<p>해당 데이터들을 크롤링이 아닌 [Excel] 버튼을 클릭해 엑셀 파일로 받을 수도 있습니다. 그러나 매번 엑셀 파일을 다운로드하고 이를 불러오는 작업은 상당히 비효율적이며, 크롤링을 이용한다면 해당 데이터를 직접 불러올 수 있습니다.</p>
 <div class="section" id="id3">
 <h3>5.1.1 업종분류 현황 크롤링<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>먼저 업종분류 현황에 해당하는 페이지에 접속한 후 개발자 도구 화면을 열고 [다운로드] 버튼을 클릭한 후 [CSV]를 누릅니다. [Network] 탭에는 generate.cmd와 download.cmd 두 가지 항목이 있습니다. 거래소에서 엑셀 데이터를 받는 과정은 다음과 같습니다.</p>
@@ -345,7 +351,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;q5d/BKjLTdYmMPkFGWXDrPrM+gcC0ekSdRfMlU1ZSVsRtSksuLS7Bnxpl86F7dAOkunw9BBwugQaSjGAcH15eaZ8NA5R6MzhK2oIoU32nFwtBgM+EFJCxYg3zco1gIgRZqIo4cIzoURnTI8+MmkJ4m8vFLhSKmM794gFu+ThsO31lY4woqehX8j6OlXFDcfHdV4NbYo4+D2Rwcfj24VnU3Zpq3ik/Dyw3FdyOXhJkBI=&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;q5d/BKjLTdYmMPkFGWXDrNcgJ2tZxTxjc2B0QcmQOFIRtSksuLS7Bnxpl86F7dAOkunw9BBwugQaSjGAcH15eaZ8NA5R6MzhK2oIoU32nFwtBgM+EFJCxYg3zco1gIgRZqIo4cIzoURnTI8+MmkJ4m8vFLhSKmM794gFu+ThsO31lY4woqehX8j6OlXFDcfHdV4NbYo4+D2Rwcfj24VnU3Zpq3ik/Dyw3FdyOXhJkBI=&#39;
 </pre></div>
 </div>
 </div>
@@ -361,7 +367,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">down_url</span> <span class="o">=</span> <span class="s1">&#39;http://data.krx.co.kr/comm/fileDn/download_csv/download.cmd&#39;</span>
 <span class="n">down_sector_KS</span>  <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">down_url</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;code&#39;</span><span class="p">:</span><span class="n">otp</span><span class="p">},</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">sector_KS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">down_sector_KS</span><span class="o">.</span><span class="n">content</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;EUC-KR&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -370,7 +375,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <ol class="simple">
 <li><p>OTP를 제출할 URL을 down_url에 입력합니다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">post()</span></code> 함수를 통해 위에서 부여받은 OTP 코드를 해당 URL에 제출합니다.</p></li>
-<li><p>받은 데이터의 content 부분을 <code class="docutils literal notranslate"><span class="pre">BytesIO()</span></code> 함수를 이용해 바이너리스트림 형태로 만든 후, <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> 함수를 통해 읽어옵니다. 해당 데이터는 EUC-KR 형태로 인코딩 되어 있으므로 이를 선언해줍니다.</p></li>
+<li><p>받은 데이터의 content 부분을 <code class="docutils literal notranslate"><span class="pre">BytesIO()</span></code> 함수를 이용해 바이너리스트림 형태로 만든 후, <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> 함수를 통해 데이터를 읽어옵니다. 해당 데이터는 EUC-KR 형태로 인코딩 되어 있으므로 이를 선언해줍니다.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -921,7 +926,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://finance.naver.com/sise/sise_deposit.nhn&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">data_html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-<span class="n">parse_day</span> <span class="o">=</span> <span class="n">data_html</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;div.subtop_sise_graph2 ul.subtop_chart_note li span.tah&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">parse_day</span> <span class="o">=</span> <span class="n">data_html</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;div.subtop_sise_graph2 &gt; ul.subtop_chart_note &gt; li &gt; span.tah&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 </pre></div>
 </div>
 </div>
@@ -983,7 +988,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://finance.naver.com/sise/sise_deposit.nhn&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">data_html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html5lib&quot;</span><span class="p">)</span>
-<span class="n">parse_day</span> <span class="o">=</span> <span class="n">data_html</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;div.subtop_sise_graph2 ul.subtop_chart_note li span.tah&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">parse_day</span> <span class="o">=</span> <span class="n">data_html</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;div.subtop_sise_graph2 &gt; ul.subtop_chart_note &gt; li &gt; span.tah&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 <span class="n">biz_day</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;[0-9]+&quot;</span><span class="p">,</span> <span class="n">parse_day</span><span class="p">)</span>
 <span class="n">biz_day</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">biz_day</span><span class="p">)</span>
 
@@ -1154,7 +1159,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1279,111 +1284,8 @@ commentsRunWhenDOMLoaded(addUtterances);
       <td>0</td>
       <td>0.00</td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>665</th>
-      <td>002787</td>
-      <td>진흥기업2우B</td>
-      <td>KOSPI</td>
-      <td>건설업</td>
-      <td>12100</td>
-      <td>-250</td>
-      <td>-2.02</td>
-      <td>3567176800</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>500</th>
-      <td>009275</td>
-      <td>신원우</td>
-      <td>KOSPI</td>
-      <td>섬유의복</td>
-      <td>38350</td>
-      <td>-650</td>
-      <td>-1.67</td>
-      <td>3479879000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>204</th>
-      <td>000325</td>
-      <td>노루홀딩스우</td>
-      <td>KOSPI</td>
-      <td>기타금융</td>
-      <td>17550</td>
-      <td>-200</td>
-      <td>-1.13</td>
-      <td>3251137500</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>405</td>
-      <td>2.31</td>
-    </tr>
-    <tr>
-      <th>892</th>
-      <td>000547</td>
-      <td>흥국화재2우B</td>
-      <td>KOSPI</td>
-      <td>보험</td>
-      <td>19950</td>
-      <td>-50</td>
-      <td>-0.25</td>
-      <td>3064320000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>288</th>
-      <td>001529</td>
-      <td>동양3우B</td>
-      <td>KOSPI</td>
-      <td>비금속광물</td>
-      <td>30050</td>
-      <td>250</td>
-      <td>0.84</td>
-      <td>2696146100</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>150</td>
-      <td>0.50</td>
-    </tr>
   </tbody>
 </table>
-<p>2345 rows × 14 columns</p>
 </div></div></div>
 </div>
 <p>데이터를 시가총액 기준으로 내림차순 정렬할 필요도 있습니다. <code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> 함수를 통해 데이터를 정렬해주며, 기준으로 시가총액을 선택합니다. 파이썬은 기본적으로 오름차순으로 정렬을 하므로 ascending = False, 즉 내림차순으로 데이터를 정렬합니다. 결과적으로 시가총액 기준 내림차순으로 해당 데이터가 정렬됩니다.</p>
@@ -1484,6 +1386,7 @@ Name: 종목명, Length: 120, dtype: object
 </div>
 </div>
 </div>
+<p>마지막으로 행 이름을 초기화한 후 정리된 데이터를 csv 파일로 저장합니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1748,6 +1651,7 @@ Name: 종목명, Length: 120, dtype: object
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="03_api.html" title="previous page">3. API를 이용한 데이터 수집</a>
+    <a class='right-next' id="next-link" href="08_other_data.html" title="next page">8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

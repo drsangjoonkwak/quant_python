@@ -1,0 +1,1427 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11.1 최소분산 포트폴리오</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_other_data.html">
+   8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/13_portfolio.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/13_portfolio.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   11.1 최소분산 포트폴리오
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solvers-qp">
+     11.1.1 solvers.qp 함수를 이용한 최적화
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     11.1.2 최소분산 포트폴리오 계산하기
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   11.1.3 최소 및 최대 투자비중 제약조건
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     11.1.4 각 자산별 제약조건의 추가
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   11.2 위험 균형 포트폴리오
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     11.2.1 주식 60%와 채권 40% 포트폴리오의 위험기여도
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minimize">
+     11.2.2 minimize() 함수를 이용한 최적화
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     11.2.3 위험균형 포트폴리오 계산하기
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     11.2.4 위험예산 포트폴리오
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <ul class="simple">
+<li><p>데이터 다운로드</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">tickers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="c1"># 미국 주식</span>
+            <span class="s1">&#39;IEV&#39;</span><span class="p">,</span> <span class="c1"># 유럽 주식 </span>
+            <span class="s1">&#39;EWJ&#39;</span><span class="p">,</span> <span class="c1"># 일본 주식</span>
+            <span class="s1">&#39;EEM&#39;</span><span class="p">,</span> <span class="c1"># 이머징 주식</span>
+            <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="c1"># 미국 장기채</span>
+            <span class="s1">&#39;IEF&#39;</span><span class="p">,</span> <span class="c1"># 미국 중기채</span>
+            <span class="s1">&#39;IYR&#39;</span><span class="p">,</span> <span class="c1"># 미국 리츠</span>
+            <span class="s1">&#39;RWX&#39;</span><span class="p">,</span> <span class="c1"># 글로벌 리츠</span>
+            <span class="s1">&#39;GLD&#39;</span><span class="p">,</span> <span class="c1"># 금</span>
+            <span class="s1">&#39;DBC&#39;</span>  <span class="c1"># 상품</span>
+            <span class="p">]</span>
+
+<span class="n">all_data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">ticker</span> <span class="ow">in</span> <span class="n">tickers</span><span class="p">:</span>
+    <span class="n">all_data</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">tic</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">tic</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">all_data</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+<span class="n">prices</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/asset_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/asset_data.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rets</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2016-02-09</th>
+      <td>0.000054</td>
+      <td>-0.008882</td>
+      <td>-0.019213</td>
+      <td>-0.013851</td>
+      <td>0.001065</td>
+      <td>0.000181</td>
+      <td>-0.016174</td>
+      <td>-0.004065</td>
+      <td>-0.002196</td>
+      <td>-0.025662</td>
+    </tr>
+    <tr>
+      <th>2016-02-10</th>
+      <td>-0.000863</td>
+      <td>0.004200</td>
+      <td>-0.017724</td>
+      <td>0.004111</td>
+      <td>0.008812</td>
+      <td>0.002984</td>
+      <td>0.005231</td>
+      <td>0.000272</td>
+      <td>0.007748</td>
+      <td>0.001646</td>
+    </tr>
+    <tr>
+      <th>2016-02-11</th>
+      <td>-0.013008</td>
+      <td>-0.014222</td>
+      <td>-0.019943</td>
+      <td>-0.016718</td>
+      <td>0.007003</td>
+      <td>0.004598</td>
+      <td>-0.014719</td>
+      <td>-0.008433</td>
+      <td>0.040189</td>
+      <td>0.012325</td>
+    </tr>
+    <tr>
+      <th>2016-02-12</th>
+      <td>0.020617</td>
+      <td>0.019519</td>
+      <td>0.008721</td>
+      <td>0.017349</td>
+      <td>-0.016602</td>
+      <td>-0.007628</td>
+      <td>0.012977</td>
+      <td>0.015089</td>
+      <td>-0.005879</td>
+      <td>0.014610</td>
+    </tr>
+    <tr>
+      <th>2016-02-16</th>
+      <td>0.016878</td>
+      <td>0.016093</td>
+      <td>0.036503</td>
+      <td>0.022169</td>
+      <td>-0.010570</td>
+      <td>-0.002984</td>
+      <td>0.019217</td>
+      <td>0.020270</td>
+      <td>-0.030331</td>
+      <td>-0.011200</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-02-01</th>
+      <td>0.016646</td>
+      <td>0.013551</td>
+      <td>0.010449</td>
+      <td>0.027012</td>
+      <td>0.001159</td>
+      <td>0.001248</td>
+      <td>0.024156</td>
+      <td>0.000297</td>
+      <td>0.009385</td>
+      <td>0.019092</td>
+    </tr>
+    <tr>
+      <th>2021-02-02</th>
+      <td>0.014140</td>
+      <td>0.009400</td>
+      <td>0.007978</td>
+      <td>0.012968</td>
+      <td>-0.006447</td>
+      <td>-0.002527</td>
+      <td>0.005381</td>
+      <td>0.004160</td>
+      <td>-0.012168</td>
+      <td>0.007752</td>
+    </tr>
+    <tr>
+      <th>2021-02-03</th>
+      <td>0.000786</td>
+      <td>0.001863</td>
+      <td>0.005862</td>
+      <td>0.005049</td>
+      <td>-0.008873</td>
+      <td>-0.002449</td>
+      <td>-0.002733</td>
+      <td>0.000000</td>
+      <td>-0.001511</td>
+      <td>0.007051</td>
+    </tr>
+    <tr>
+      <th>2021-02-04</th>
+      <td>0.011366</td>
+      <td>0.000000</td>
+      <td>0.001166</td>
+      <td>0.000359</td>
+      <td>-0.002672</td>
+      <td>-0.000339</td>
+      <td>0.005710</td>
+      <td>-0.001184</td>
+      <td>-0.021530</td>
+      <td>0.005092</td>
+    </tr>
+    <tr>
+      <th>2021-02-05</th>
+      <td>0.003936</td>
+      <td>0.006817</td>
+      <td>0.007859</td>
+      <td>0.008608</td>
+      <td>-0.008374</td>
+      <td>-0.002117</td>
+      <td>0.001930</td>
+      <td>0.005926</td>
+      <td>0.009872</td>
+      <td>0.005066</td>
+    </tr>
+  </tbody>
+</table>
+<p>1258 rows × 10 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">rets</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">linewidths</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">square</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">linecolor</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">annot_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;size&quot;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/13_portfolio_6_1.png" src="_images/13_portfolio_6_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covmat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">rets</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>11.1 최소분산 포트폴리오<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="solvers-qp">
+<h2>11.1.1 solvers.qp 함수를 이용한 최적화<a class="headerlink" href="#solvers-qp" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>CVXOPT 패키지 이용</p></li>
+<li><p>CVXOPT Link:  https://courses.csail.mit.edu/6.867/wiki/images/a/a7/Qp-cvxopt.pdf</p></li>
+</ul>
+<p>목적함수
+$<span class="math notranslate nohighlight">\( \min \frac{1}{2} x^TPx + q^Tx \)</span>$</p>
+<p>제약조건
+$<span class="math notranslate nohighlight">\(Gx  ≤ h\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(Ax = b\)</span>$</p>
+<p><strong>예시</strong></p>
+<ul class="simple">
+<li><p>목적함수
+$<span class="math notranslate nohighlight">\(\min_{x,y} \frac{1}{2}x^2 + 3x + 4y \)</span>$</p></li>
+<li><p>제약조건
+$<span class="math notranslate nohighlight">\(x,y \ge 0\)</span><span class="math notranslate nohighlight">\( 
+\)</span><span class="math notranslate nohighlight">\( x + 3y \ge 15 \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( 2x + 5y \le 100 \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( 3x + 4y \le 80 \)</span>$</p></li>
+</ul>
+<p><strong>행렬로 전환하면 다음과 같음</strong></p>
+<ul class="simple">
+<li><p>목적함수
+$<span class="math notranslate nohighlight">\( \min_{x,y} \frac{1}{2} \begin{bmatrix} x \\ y \end{bmatrix}^T \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 0 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} +
+ \begin{bmatrix} 3 \\ 4 \end{bmatrix}^T + \begin{bmatrix} x \\ y \end{bmatrix} \)</span>$</p></li>
+<li><p>제약함수
+$<span class="math notranslate nohighlight">\( \begin{bmatrix} -1 &amp; 0 \\ 0 &amp; -1 \\ -1 &amp; -3 \\ 2 &amp; 5 \\ 3 &amp; 4 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} \le \begin{bmatrix} 0 \\ 0 \\ -15 \\ 100 \\ 80 \end{bmatrix}\)</span>$</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(x = \begin{bmatrix} x \\ y \end{bmatrix},\ P = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 0 \end{bmatrix},\ q =  \begin{bmatrix} 3 \\ 4 \end{bmatrix}\)</span></p>
+<p><span class="math notranslate nohighlight">\(G = \begin{bmatrix} -1 &amp; 0 \\ 0 &amp; -1 \\ -1 &amp; -3 \\ 2 &amp; 5 \\ 3 &amp; 4 \end{bmatrix} \ h = \begin{bmatrix} 0 \\ 0 \\ -15 \\ 100 \\ 80 \end{bmatrix}\)</span></p>
+<ul class="simple">
+<li><p>위 형태를 만들어서 함수 내에 넣어주면 최적값 구해줌</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">matrix</span>
+<span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">solvers</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> <span class="n">tc</span><span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span> <span class="n">tc</span><span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]),</span> <span class="n">tc</span><span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">80</span><span class="p">]),</span> <span class="n">tc</span><span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="o">.</span><span class="n">qp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting cvxopt
+  Downloading cvxopt-1.2.5.post1-cp38-cp38-win_amd64.whl (9.5 MB)
+Installing collected packages: cvxopt
+Successfully installed cvxopt-1.2.5.post1
+     pcost       dcost       gap    pres   dres
+ 0:  1.0780e+02 -7.6366e+02  9e+02  0e+00  4e+01
+ 1:  9.3245e+01  9.7637e+00  8e+01  6e-17  3e+00
+ 2:  6.7311e+01  3.2553e+01  3e+01  2e-16  1e+00
+ 3:  2.6071e+01  1.5068e+01  1e+01  2e-16  7e-01
+ 4:  3.7092e+01  2.3152e+01  1e+01  1e-16  4e-01
+ 5:  2.5352e+01  1.8652e+01  7e+00  6e-17  3e-16
+ 6:  2.0062e+01  1.9974e+01  9e-02  9e-17  2e-16
+ 7:  2.0001e+01  2.0000e+01  9e-04  2e-16  1e-16
+ 8:  2.0000e+01  2.0000e+01  9e-06  1e-16  3e-16
+Optimal solution found.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.],
+       [5.]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>11.1.2 최소분산 포트폴리오 계산하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>목적함수</p></li>
+</ul>
+<p>solvers.qp() 함수에서는 <span class="math notranslate nohighlight">\( \min \frac{1}{2} x^TPx + q^Tx \)</span> 이며, 최소분산 포트폴리오에서는 <span class="math notranslate nohighlight">\( \min \frac{1}{2}w'\Omega w \)</span></p>
+<p>따라서 각각 <span class="math notranslate nohighlight">\(x → w\)</span>, <span class="math notranslate nohighlight">\(P → \Omega\)</span>, <span class="math notranslate nohighlight">\(q → 0\)</span> 에 대응된다.</p>
+<ul class="simple">
+<li><p>제약조건: 부등식</p></li>
+</ul>
+<p>함수에서는 <span class="math notranslate nohighlight">\(Gx  ≤ h\)</span>, 최소분산 포트폴리오 에서는 <span class="math notranslate nohighlight">\(w_i \ge 0\)</span></p>
+<p>최소분산 포트폴리오의 부등식 제약조건 <span class="math notranslate nohighlight">\(w_i \ge 0\)</span>을 행렬로 표현하면 다음과 같음</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 1 &amp;  \dots &amp; 0 \\ \vdots &amp;  \ddots &amp; \vdots \\ 0 &amp;  \dots &amp; 1 \end{bmatrix}
+\begin{bmatrix} w_1 \\  \vdots \\ w_n \end{bmatrix}  \ge \begin{bmatrix} 0 \\  \vdots \\ 0 \end{bmatrix}\end{split}\]</div>
+<p>solvers.qp() 함수에서는 우변에 더 큰 형태이므로, 이를 맞춰주기 위해 양변에 음수를 곱해주면 다음과 같음</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}-1 &amp; \dots &amp; 0 \\ \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; \dots &amp; -1 \end{bmatrix} \begin{bmatrix} w_1 \\  \vdots \\ w_n \end{bmatrix} \le \begin{bmatrix} 0 \\  \vdots \\ 0 \end{bmatrix}\end{split}\]</div>
+<p>따라서 <span class="math notranslate nohighlight">\(G → \begin{bmatrix}-1 &amp; \dots &amp; 0 \\ \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; \dots &amp; -1 \end{bmatrix} \)</span>, <span class="math notranslate nohighlight">\(h →\begin{bmatrix} 0 \\  \vdots \\ 0 \end{bmatrix}\)</span>에 대응된다.</p>
+<ul class="simple">
+<li><p>제약조건: 등식</p></li>
+</ul>
+<p>solvers.qp() 함수에서는 <span class="math notranslate nohighlight">\(Ax = b\)</span>, 최소분산 포트폴리오 에서는 <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}w_i = 1\)</span></p>
+<p>최소분산 포트폴리오의 부등식 제약조건 <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}w_i = 1\)</span>을 행렬로 표현하면 다음과 같음</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}1 &amp; \dots &amp; 1 \end{bmatrix}\begin{bmatrix} w_1 \\  \vdots \\ w_n \end{bmatrix} = 1 \end{split}\]</div>
+<p>따라서 <span class="math notranslate nohighlight">\(A → \begin{bmatrix}1 &amp; \dots &amp; 1 \end{bmatrix}\)</span>, <span class="math notranslate nohighlight">\(b → 1\)</span>에 대응된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">covmat</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 분산-공분산 행렬</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1">#0  행렬</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 부등식 제약조건의 좌변</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 부등식 제약조건의 우변</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="c1"># 등식 제약조건의 좌변</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 등식 제약조건의 우변</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="o">.</span><span class="n">qp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">h</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     pcost       dcost       gap    pres   dres
+ 0:  2.3861e-05 -1.0000e+00  1e+00  2e-16  3e+00
+ 1:  2.3858e-05 -1.0031e-02  1e-02  7e-17  3e-02
+ 2:  2.3656e-05 -1.3077e-04  2e-04  8e-17  5e-04
+ 3:  1.5596e-05 -1.5581e-05  3e-05  6e-17  9e-05
+ 4:  8.7465e-06 -1.3361e-05  2e-05  2e-16  5e-05
+ 5:  4.2114e-06  1.3927e-06  3e-06  1e-16  2e-20
+ 6:  3.5495e-06  3.1315e-06  4e-07  3e-16  8e-21
+ 7:  3.3154e-06  3.2408e-06  7e-08  1e-16  5e-21
+Optimal solution found.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.087],
+       [0.009],
+       [0.034],
+       [0.003],
+       [0.001],
+       [0.805],
+       [0.001],
+       [0.003],
+       [0.001],
+       [0.057]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="n">res_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">rets</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">res_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/13_portfolio_21_1.png" src="_images/13_portfolio_21_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>11.1.3 최소 및 최대 투자비중 제약조건<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<p>부등식 제약조건 <span class="math notranslate nohighlight">\(0.05 \le w_i \le 0.2\)</span>로 바꿈</p>
+<p>이를 <span class="math notranslate nohighlight">\(Gx  ≤ h\)</span>의 형태로 나타내면 다음과 같음</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}-1 &amp; \dots &amp; 0 \\ \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; \dots &amp; -1 \\ 1 &amp; \dots &amp; 0 \\ \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; \dots &amp; 1\end{bmatrix} \begin{bmatrix} w_1 \\  \vdots \\ w_n \end{bmatrix} \le \begin{bmatrix} -0.05 \\  \vdots \\ -0.05 \\ 0.2 \\ \vdots \\ 0.2 \end{bmatrix}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">covmat</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 분산-공분산 행렬</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1">#0  행렬</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))))</span> <span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 부등식 제약조건의 좌변</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span> <span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 부등식 제약조건의 우변</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="c1"># 등식 제약조건의 좌변</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 등식 제약조건의 우변</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="o">.</span><span class="n">qp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">h</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     pcost       dcost       gap    pres   dres
+ 0:  2.3866e-05 -1.5250e+00  2e+00  1e-16  3e-16
+ 1:  2.3865e-05 -1.5280e-02  2e-02  2e-16  5e-16
+ 2:  2.3799e-05 -1.8247e-04  2e-04  1e-16  5e-18
+ 3:  2.0110e-05 -1.2692e-05  3e-05  5e-17  8e-19
+ 4:  1.2717e-05  8.2178e-06  4e-06  9e-17  3e-20
+ 5:  1.1116e-05  1.0598e-05  5e-07  8e-17  2e-20
+ 6:  1.0828e-05  1.0799e-05  3e-08  2e-16  1e-20
+Optimal solution found.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.051],
+       [0.05 ],
+       [0.054],
+       [0.05 ],
+       [0.2  ],
+       [0.2  ],
+       [0.05 ],
+       [0.05 ],
+       [0.178],
+       [0.116]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="n">res_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">rets</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">res_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/13_portfolio_26_1.png" src="_images/13_portfolio_26_1.png" />
+</div>
+</div>
+<div class="section" id="id4">
+<h2>11.1.4 각 자산별 제약조건의 추가<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>제약</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+<th class="head"><p>7</p></th>
+<th class="head"><p>8</p></th>
+<th class="head"><p>9</p></th>
+<th class="head"><p>10</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>최소</p></td>
+<td><p>0.10</p></td>
+<td><p>0.10</p></td>
+<td><p>0.05</p></td>
+<td><p>0.05</p></td>
+<td><p>0.10</p></td>
+<td><p>0.10</p></td>
+<td><p>0.05</p></td>
+<td><p>0.05</p></td>
+<td><p>0.03</p></td>
+<td><p>0.03</p></td>
+</tr>
+<tr class="row-odd"><td><p>최대</p></td>
+<td><p>0.25</p></td>
+<td><p>0.25</p></td>
+<td><p>0.20</p></td>
+<td><p>0.20</p></td>
+<td><p>0.20</p></td>
+<td><p>0.20</p></td>
+<td><p>0.10</p></td>
+<td><p>0.10</p></td>
+<td><p>0.08</p></td>
+<td><p>0.08</p></td>
+</tr>
+</tbody>
+</table>
+<p>이를 <span class="math notranslate nohighlight">\(Gx  ≤ h\)</span>의 형태로 나타내면 다음과 같음</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} -1 &amp; \dots &amp; 0 \\ \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; \dots &amp; -1 \\ 1 &amp; \dots &amp; 0 \\ \vdots &amp;  \ddots &amp; \vdots \\
+0 &amp; \dots &amp; 1 \\ \\ \end{bmatrix}
+\begin{bmatrix} w_1 \\ w_2 \\ \vdots \\ w_{10} \end{bmatrix} 
+= \begin{bmatrix} -w_1 \\ -w_2 \\ -w_3 \\ -w_4 \\ -w_5 \\ -w_6 \\ -w_7 \\ -w_8 \\ -w_9 \\ -w_{10} \\ w_1 \\ w_2 \\ w_3 \\ w_4 \\ w_5 \\ w_6 \\ w_7\\ w_8\\ w_9\\ w_{10} \end{bmatrix} \le \begin{bmatrix} -0.10 \\ -0.10 \\ -0.05 \\ -0.05 \\ -0.10 \\ -0.10 \\ -0.05 \\ -0.05 \\ -0.03 \\ -0.03 \\ 0.25 \\ 0.25 \\ 0.20 \\ 0.20 \\ 0.20 \\ 0.20 \\ 0.10 \\ 0.10 \\ 0.08 \\ 0.08
+\end{bmatrix} \end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boundary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.03</span><span class="p">,</span>
+                    <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">])</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">covmat</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 분산-공분산 행렬</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1">#0  행렬</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))))</span> <span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 부등식 제약조건의 좌변</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">boundary</span><span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 부등식 제약조건의 우변</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="c1"># 등식 제약조건의 좌변</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 등식 제약조건의 우변</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="o">.</span><span class="n">qp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">h</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     pcost       dcost       gap    pres   dres
+ 0:  2.4674e-05 -1.0259e+00  1e+00  0e+00  4e-16
+ 1:  2.4674e-05 -1.0275e-02  1e-02  8e-17  5e-16
+ 2:  2.4625e-05 -1.1869e-04  1e-04  2e-16  9e-18
+ 3:  2.1682e-05 -2.8431e-06  2e-05  2e-16  1e-18
+ 4:  1.4840e-05  7.8503e-06  7e-06  7e-17  5e-20
+ 5:  1.3467e-05  1.2059e-05  1e-06  8e-17  2e-20
+ 6:  1.3080e-05  1.2808e-05  3e-07  1e-16  2e-20
+ 7:  1.2958e-05  1.2954e-05  4e-09  8e-17  2e-20
+Optimal solution found.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.1 ],
+       [0.1 ],
+       [0.09],
+       [0.05],
+       [0.2 ],
+       [0.2 ],
+       [0.05],
+       [0.05],
+       [0.08],
+       [0.08]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="n">res_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">rets</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">res_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/13_portfolio_32_1.png" src="_images/13_portfolio_32_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>11.2 위험 균형 포트폴리오<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id6">
+<h2>11.2.1 주식 60%와 채권 40% 포트폴리오의 위험기여도<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">RC</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">covmat</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">covmat</span> <span class="o">@</span> <span class="n">weight</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">variance</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="n">mrc</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">sigma</span> <span class="o">*</span> <span class="p">(</span><span class="n">weight</span> <span class="o">@</span> <span class="n">covmat</span><span class="p">)</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">mrc</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">rc</span> <span class="o">/</span> <span class="n">rc</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">rc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(w\)</span>: weight</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Omega \)</span>: variance</p></li>
+<li><p><span class="math notranslate nohighlight">\(w'\Omega w\)</span>: sigma</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret_stock_bond</span>  <span class="o">=</span> <span class="n">rets</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">]]</span>
+<span class="n">cov_stock_bond</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">ret_stock_bond</span><span class="p">)</span>
+<span class="n">RC_stock_bond</span>  <span class="o">=</span> <span class="n">RC</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="n">cov_stock_bond</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RC_stock_bond</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SPY    0.9518
+TLT    0.0482
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="minimize">
+<h2>11.2.2 minimize() 함수를 이용한 최적화<a class="headerlink" href="#minimize" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>scipy.optimize의 minimize() 함수 사용</p></li>
+<li><p>https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html</p></li>
+<li><p>이 중 slsqp(Sequential Least Squares Programming) 방법 사용</p></li>
+</ul>
+<p>목적함수
+$<span class="math notranslate nohighlight">\( \min f(x) \)</span>$</p>
+<p>제약조건
+$<span class="math notranslate nohighlight">\(b(x) \ge 0\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(c(x) = 0\)</span>$</p>
+<p>함수 형태는 다음과 같음</p>
+<ul class="simple">
+<li><p>minimize(fun, x0, method=, bounds, constraints, options)</p></li>
+<li><p>fun: 목적함수</p></li>
+<li><p>x0: 초기값</p></li>
+<li><p>bounds: 변수 범위</p></li>
+<li><p>constraints: 제약조건</p></li>
+<li><p>options: 기타 옵션</p></li>
+</ul>
+<p><strong>예시</strong></p>
+<ul class="simple">
+<li><p>목적함수
+$<span class="math notranslate nohighlight">\(\min x_1 x_4(x_1 + x_2 + x_3) + x3\)</span>$</p></li>
+<li><p>제약조건
+$<span class="math notranslate nohighlight">\(x_1 x_2 x_3 x_4 \ge 25\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(x_1^2 + x_2^2 + x_3^2 + x_4^2 = 40\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(1 \le x_1, x_2, x_3, x_4 \le 5\)</span>$</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 목적식</span>
+<span class="k">def</span> <span class="nf">obj_function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">x3</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">x4</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">x1</span><span class="o">*</span><span class="n">x4</span><span class="o">*</span><span class="p">(</span><span class="n">x1</span><span class="o">+</span><span class="n">x2</span><span class="o">+</span><span class="n">x3</span><span class="p">)</span><span class="o">+</span><span class="n">x3</span>
+
+<span class="c1"># 제약조건 1</span>
+<span class="k">def</span> <span class="nf">cons_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="mi">25</span>
+
+<span class="c1"># 제약조건 2</span>
+<span class="k">def</span> <span class="nf">cons_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">40</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>첫번째 제약조건은 <span class="math notranslate nohighlight">\(x_1 x_2 x_3 x_4 \ge 25\)</span></p></li>
+<li><p>함수에서는 <span class="math notranslate nohighlight">\(b(x) \ge 0\)</span> 형태로 입력해주어야 하므로 25를 좌변으로 넘김</p></li>
+<li><p>두번째 제약조건 역시 <span class="math notranslate nohighlight">\(c(x) = 0\)</span> 형태를 만들기 위해 40을 좌변으로 넘김</p></li>
+<li><p>세번째 변수 범위 제약조건은 함수 내에 직접 입력</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">bnds</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+
+<span class="n">constraints</span> <span class="o">=</span> <span class="p">({</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ineq&#39;</span><span class="p">,</span> <span class="s1">&#39;fun&#39;</span><span class="p">:</span> <span class="n">cons_1</span><span class="p">},</span>
+               <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;eq&#39;</span><span class="p">,</span> <span class="s1">&#39;fun&#39;</span><span class="p">:</span> <span class="n">cons_2</span><span class="p">})</span>
+<span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ftol&#39;</span><span class="p">:</span> <span class="mf">1e-20</span><span class="p">,</span> <span class="s1">&#39;maxiter&#39;</span><span class="p">:</span> <span class="mi">800</span><span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">fun</span> <span class="o">=</span> <span class="n">obj_function</span><span class="p">,</span>
+                  <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span><span class="p">,</span>
+                  <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;SLSQP&#39;</span><span class="p">,</span>
+                  <span class="n">bounds</span> <span class="o">=</span> <span class="n">bnds</span><span class="p">,</span>
+                  <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">,</span>                      
+                  <span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: 17.014017289156026
+     jac: array([14.5722754 ,  1.37940812,  2.37940812,  9.56414962])
+ message: &#39;Positive directional derivative for linesearch&#39;
+    nfev: 104
+     nit: 16
+    njev: 12
+  status: 8
+ success: False
+       x: array([1.        , 4.74299961, 3.82115002, 1.37940829])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>fun: 목적함수의 결과물</p></li>
+<li><p>x: 최적값을 만족하는 해</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.        , 4.74299961, 3.82115002, 1.37940829])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>11.2.3 위험균형 포트폴리오 계산하기<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>목적조건: <span class="math notranslate nohighlight">\(min \sum_{i=1}^{n}(Target RC_{i} - RC_{i})^2\)</span></p>
+<p>제약조건: <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}w_i = 1, w_i \ge 0 \)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 목적식</span>
+<span class="k">def</span> <span class="nf">RiskParity_objective</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">covmat</span> <span class="o">@</span> <span class="n">weight</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">variance</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="n">mrc</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">sigma</span> <span class="o">*</span> <span class="p">(</span><span class="n">weight</span> <span class="o">@</span> <span class="n">covmat</span><span class="p">)</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">mrc</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">rc</span> <span class="o">/</span> <span class="n">rc</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    
+    <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+    <span class="n">risk_diffs</span> <span class="o">=</span> <span class="n">rc</span> <span class="o">-</span> <span class="n">target</span>
+    <span class="n">sum_risk_diffs_squared</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">risk_diffs</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">sum_risk_diffs_squared</span><span class="p">)</span>
+
+<span class="c1"># 제약조건 1: 합계가 1</span>
+<span class="k">def</span> <span class="nf">weight_sum_constraint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)</span>
+
+<span class="c1"># 제약조건 2: 비중이 0보다 클 것</span>
+<span class="k">def</span> <span class="nf">weight_longonly</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RiskParity</span><span class="p">(</span><span class="n">covmat</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> 
+    <span class="n">bnds</span> <span class="o">=</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+    
+    <span class="n">constraints</span> <span class="o">=</span> <span class="p">({</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;eq&#39;</span><span class="p">,</span> <span class="s1">&#39;fun&#39;</span><span class="p">:</span> <span class="n">weight_sum_constraint</span><span class="p">},</span>
+                   <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ineq&#39;</span><span class="p">,</span> <span class="s1">&#39;fun&#39;</span><span class="p">:</span> <span class="n">weight_longonly</span><span class="p">})</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ftol&#39;</span><span class="p">:</span> <span class="mf">1e-20</span><span class="p">,</span> <span class="s1">&#39;maxiter&#39;</span><span class="p">:</span> <span class="mi">800</span><span class="p">}</span>
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">fun</span> <span class="o">=</span> <span class="n">RiskParity_objective</span><span class="p">,</span>
+                      <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span><span class="p">,</span>
+                      <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;SLSQP&#39;</span><span class="p">,</span>
+                      <span class="n">bounds</span> <span class="o">=</span> <span class="n">bnds</span><span class="p">,</span>
+                      <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">,</span>                      
+                      <span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">RiskParity</span><span class="p">(</span><span class="n">covmat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.05824497, 0.05037431, 0.06472055, 0.04440103, 0.14331185,
+       0.36599374, 0.04607843, 0.05267282, 0.09258011, 0.0816222 ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">rets</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">res_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/13_portfolio_54_1.png" src="_images/13_portfolio_54_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RC</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">covmat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SPY    0.1
+IEV    0.1
+EWJ    0.1
+EEM    0.1
+TLT    0.1
+IEF    0.1
+IYR    0.1
+RWX    0.1
+GLD    0.1
+DBC    0.1
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>11.2.4 위험예산 포트폴리오<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RiskParity_objective</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">covmat</span> <span class="o">@</span> <span class="n">weight</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">variance</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="n">mrc</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">sigma</span> <span class="o">*</span> <span class="p">(</span><span class="n">weight</span> <span class="o">@</span> <span class="n">covmat</span><span class="p">)</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">mrc</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">rc</span> <span class="o">/</span> <span class="n">rc</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    
+    <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">])</span>
+    <span class="n">risk_diffs</span> <span class="o">=</span> <span class="n">rc</span> <span class="o">-</span> <span class="n">target</span>
+    <span class="n">sum_risk_diffs_squared</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">risk_diffs</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">sum_risk_diffs_squared</span><span class="p">)</span>
+
+<span class="c1"># 제약조건 1: 합계가 1</span>
+<span class="k">def</span> <span class="nf">weight_sum_constraint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)</span>
+
+<span class="c1"># 제약조건 2: 비중이 0보다 클 것</span>
+<span class="k">def</span> <span class="nf">weight_longonly</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">RiskParity</span><span class="p">(</span><span class="n">covmat</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> 
+    <span class="c1"># target = np.array(target)</span>
+    <span class="n">constraints</span> <span class="o">=</span> <span class="p">({</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;eq&#39;</span><span class="p">,</span> <span class="s1">&#39;fun&#39;</span><span class="p">:</span> <span class="n">weight_sum_constraint</span><span class="p">},</span>
+                   <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ineq&#39;</span><span class="p">,</span> <span class="s1">&#39;fun&#39;</span><span class="p">:</span> <span class="n">weight_longonly</span><span class="p">})</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ftol&#39;</span><span class="p">:</span> <span class="mf">1e-20</span><span class="p">,</span> <span class="s1">&#39;maxiter&#39;</span><span class="p">:</span> <span class="mi">800</span><span class="p">}</span>
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">fun</span> <span class="o">=</span> <span class="n">RiskParity_objective</span><span class="p">,</span>
+                      <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span><span class="p">,</span>
+                      <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;SLSQP&#39;</span><span class="p">,</span>
+                      <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">,</span>                      
+                      <span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+
+<span class="n">res_rc</span> <span class="o">=</span> <span class="n">RiskParity</span><span class="p">(</span><span class="n">covmat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res_rc</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">rets</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SPY</th>
+      <td>0.080432</td>
+    </tr>
+    <tr>
+      <th>IEV</th>
+      <td>0.070358</td>
+    </tr>
+    <tr>
+      <th>EWJ</th>
+      <td>0.087400</td>
+    </tr>
+    <tr>
+      <th>EEM</th>
+      <td>0.061755</td>
+    </tr>
+    <tr>
+      <th>TLT</th>
+      <td>0.151115</td>
+    </tr>
+    <tr>
+      <th>IEF</th>
+      <td>0.398800</td>
+    </tr>
+    <tr>
+      <th>IYR</th>
+      <td>0.022985</td>
+    </tr>
+    <tr>
+      <th>RWX</th>
+      <td>0.026236</td>
+    </tr>
+    <tr>
+      <th>GLD</th>
+      <td>0.055406</td>
+    </tr>
+    <tr>
+      <th>DBC</th>
+      <td>0.045512</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RC</span><span class="p">(</span><span class="n">res_rc</span><span class="p">,</span> <span class="n">covmat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SPY    0.15
+IEV    0.15
+EWJ    0.15
+EEM    0.15
+TLT    0.10
+IEF    0.10
+IYR    0.05
+RWX    0.05
+GLD    0.05
+DBC    0.05
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
