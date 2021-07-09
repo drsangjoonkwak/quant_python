@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -40,6 +40,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -78,6 +79,7 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -144,13 +146,68 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="05_crawl_practice.html">
    5. 금융 데이터 수집하기 (기본)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="08_other_data.html">
-   8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
   </a>
  </li>
 </ul>
@@ -300,8 +357,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-src">
-     2.3.6 a 태그와 src 태그 및 속성
+    <a class="reference internal nav-link" href="#a-img">
+     2.3.6 a 태그와 img 태그 및 속성
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -326,6 +383,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    2.4 오류에 대한 예외처리
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tqdm">
+   2.5 tqdm()를 이용한 진행 단계 확인하기
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -339,8 +401,8 @@ commentsRunWhenDOMLoaded(addUtterances);
                 
   <div class="section" id="id1">
 <h1>2. 크롤링을 위한 기본 지식<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>프로그래밍에 익숙한 분들도 크롤링은 생소한 경우가 많습니다. 기본적인 프로그래밍에 관한 책과 강의가 굉장히 많지만 크롤링을 다루는 자료는 접하기 힘들기 때문입니다. 크롤링은 기계적인 단계가 많기 때문에 조금만 연습해도 활용할 수 있는 기술입니다. 그러나 복잡한 웹페이지나 데이터 내용을 수집하려면 인코딩, 통신 구조에 대한 지 식이 필요할 때가 있습니다.</p>
-<p>이번 장에서는 크롤링을 하기 위해 사전에 알고 있으면 도움이 되는 인코딩, 웹의 동작 방식, HTML과 CSS에 대해 알아보겠습니다. 그리고 실제 크롤링 시 유용한 오류에 대한 예외처리에 대해서도 알아보겠습니다.</p>
+<p>프로그래밍에 익숙한 분들도 크롤링은 생소한 경우가 많습니다. 기본적인 프로그래밍에 관한 책과 강의는 굉장히 많지만 크롤링을 다루는 자료는 접하기 힘들기 때문입니다. 크롤링은 기계적인 단계가 많기 때문에 조금만 연습해도 활용할 수 있는 기술입니다. 그러나 복잡한 웹페이지나 데이터 내용을 수집하려면 인코딩, 통신 구조에 대한 지식이 필요할 때가 있습니다.</p>
+<p>이번 장에서는 크롤링을 하기 위해 사전에 알고 있으면 도움이 되는 인코딩, 웹의 동작 방식, HTML과 CSS에 대해 알아보겠습니다. 그리고 실제 크롤링 시 유용한 오류에 대한 예외처리 및 여러 팁들에 대해서도 알아보겠습니다.</p>
 <div class="section" id="id2">
 <h2>2.1 인코딩의 이해<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="ascii">
@@ -469,6 +531,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <img alt="_images/02_html_2.png" src="_images/02_html_2.png" />
 <p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">HTML 구성 요소 분석</span><a class="headerlink" href="#html-2" title="Permalink to this image">¶</a></p>
 </div>
+<p>꺾쇠(&lt;&gt;)로 감싸져 있는 부분을 태그라고 하며, 여는 태그 &lt;&gt;가 있으면 반드시 이를 닫는 태그인 &lt;/&gt;가 쌍으로 있어야 합니다. 속성은 해당 태그에 대한 추가적인 정보를 제공해주는 것으로, 뒤에 속성값이 따라와야 합니다. 내용은 우리가 눈으로 보는 텍스트 부분을 의미합니다. 앞의 HTML 코드는 문단을 나타내는 &lt;p&gt; 그, 정렬을 나타내는 align 속성과 center를 통해 가운데 정렬을 지정하며, 내용에는 ‘퀀트 투자 Cookbook’을 나타내고, &lt;/p&gt; 태그를 통해 태그를 마쳤습니다.</p>
 </div>
 <div class="section" id="h-p">
 <h3>2.3.3 h 태그와 p 태그<a class="headerlink" href="#h-p" title="Permalink to this headline">¶</a></h3>
@@ -521,14 +584,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 
 <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;tokenize&gt;&quot;</span><span class="gt">, line </span><span class="mi">17</span>
-    <span class="o">&lt;/</span><span class="n">ol</span><span class="o">&gt;</span>
-    <span class="o">^</span>
-<span class="ne">IndentationError</span>: unindent does not match any outer indentation level
 </pre></div>
 </div>
 </div>
@@ -589,9 +644,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <p>table 태그 내의 tr 태그는 각 행을 의미합니다. 각 셀의 구분은 th 혹은 td 태그를 통해 구분할 수 있습니다. th 태그는 진하게 표현되므로 주로 테이블의 제목에 사용되고, td 태그는 테이블의 내용에 사용됩니다.</p>
 </div>
-<div class="section" id="a-src">
-<h3>2.3.6 a 태그와 src 태그 및 속성<a class="headerlink" href="#a-src" title="Permalink to this headline">¶</a></h3>
-<p>a 태그와 src 태그는 다른 태그와는 다르게, 혼자 쓰이기보다는 속성과 결합해 사용됩니다. a 태그는 href 속성과 결합해 다른 페이지의 링크를 걸 수 있습니다. src 태그는 img 속성과 결합해 이미지를 불러옵니다.</p>
+<div class="section" id="a-img">
+<h3>2.3.6 a 태그와 img 태그 및 속성<a class="headerlink" href="#a-img" title="Permalink to this headline">¶</a></h3>
+<p>a 태그와 img 태그는 다른 태그와는 다르게, 혼자 쓰이기보다는 속성과 결합해 사용됩니다. a 태그는 href 속성과 결합해 다른 페이지의 링크를 걸 수 있습니다. img 태그는 src 속성과 결합해 이미지를 불러옵니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
@@ -767,6 +822,8 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">id 예제</span><a class="headerlink" href="#html-10" title="Permalink to this image">¶</a></p>
 </div>
 <p>셀렉터를 id에 적용할 때는 클래스명 앞에 샵(#)를 붙여 표현하며, 페이지에서 한 번만 사용된다는 점을 제외하면 클래스와 사용 방법이 거의 동일합니다. 클래스나 id 값을 통해 원하는 내용을 크롤링하는 경우도 많으므로, 각각의 이름 앞에 마침표(.)와 샵(#) 을 붙여야 한다는 점을 꼭 기억하기 바랍니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>HTML과 관련해 추가적인 정보가 필요하거나 내용이 궁금하다면 아래 웹사이트를 참고하기 바랍니다.</p>
 <ul class="simple">
 <li><p>w3schools: https://www.w3schools.in/html-tutorial/</p></li>
@@ -774,9 +831,10 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </div>
 </div>
+</div>
 <div class="section" id="id7">
 <h2>2.4 오류에 대한 예외처리<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>크롤링을 이용해 데이터를 수집할 때 일반적으로 <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> 구문을 통해 수천 종목에 해당하는 웹페이지에 접속해 해당 데이터를 읽어옵니다. 그러나 특정 종목에 해당하는 페이지가 없거나, 단기적으로 접속이 불안정할 경우 오류가 발생해 루프를 처음부터 다시 실행해야 하는 번거로움이 있습니다. <code class="docutils literal notranslate"><span class="pre">try-except</span></code> 구문을 이용하면 예외처리, 즉 오류가 발생할 경우 이를 무시하고 넘어갈 수 있습니다.</p>
+<p>크롤링을 이용해 데이터를 수집할 때 일반적으로 <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> 구문을 통해 수천 종목에 해당하는 웹페이지에 접속해 해당 데이터를 읽어옵니다. 그러나 특정 종목에 해당하는 페이지가 없거나, 단기적으로 접속이 불안정할 경우 오류가 발생하면 작업이 끊겨 루프를 처음부터 다시 실행해야 하는 번거로움이 있습니다. <code class="docutils literal notranslate"><span class="pre">try-except</span></code> 구문을 이용하면 예외처리, 즉 오류가 발생할 경우 이를 무시하고 넘어갈 수 있습니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">try-except</span></code> 구문의 구조는 다음과 같습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -793,7 +851,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <ol class="simple">
-<li><p>먼저 try 내의 <code class="docutils literal notranslate"><span class="pre">expr</span></code>는 실행하고자 하는 코드를 의미합니다.</p></li>
+<li><p>try 내의 <code class="docutils literal notranslate"><span class="pre">expr</span></code>는 실행하고자 하는 코드를 의미합니다.</p></li>
 <li><p>except 내의 <code class="docutils literal notranslate"><span class="pre">error-handler-code</span></code>는 오류 발생 시 실행할 코드를 의미합니다.</p></li>
 <li><p>else 내의 <code class="docutils literal notranslate"><span class="pre">running-code</span></code>는 expr 코드가 문제가 없을 경우 실행되는 코드, finally 내의 <code class="docutils literal notranslate"><span class="pre">cleanup-code</span></code> 코드는 오류 여부와 관계 없이 무조건 수행할 구문을 의미하며, 이 둘은 생략할 수도 있습니다.</p></li>
 </ol>
@@ -821,7 +879,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <span class="k">try</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error at&#39;</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>       
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error at: &#39;</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>       
 </pre></div>
 </div>
 </div>
@@ -829,13 +887,34 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 4
 9
-Error at4
+Error at: 4
 25
 </pre></div>
 </div>
 </div>
 </div>
 <p>expr 부분은 <code class="docutils literal notranslate"><span class="pre">print(i</span> <span class="pre">**</span> <span class="pre">2)</span></code>이며, error-handler-code 부분은 오류가 발생한 i를 출력합니다. 해당 코드를 실행하면 문자 4에서 오류가 발생함을 알려준 후 루프가 멈추지 않고 다음으로 진행됩니다.</p>
+</div>
+<div class="section" id="tqdm">
+<h2>2.5 tqdm()를 이용한 진행 단계 확인하기<a class="headerlink" href="#tqdm" title="Permalink to this headline">¶</a></h2>
+<p>수천개 종목의 주식 데이터를 <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code>를 이용해 다운로드 받다보면, 어느정도 진행되었는지 궁금할 때가 있습니다. 파이썬 내에서는 tqdm 패키지를 통해 진행정도를 손쉽게 확인할 수 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████| 10/10 [00:01&lt;00:00,  9.40it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<p>tqdm 패키지에서 <code class="docutils literal notranslate"><span class="pre">tqdm()</span></code> 함수를 불러온 뒤, <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code>의 loop에 해당하는 부분을 <code class="docutils literal notranslate"><span class="pre">tqdm()</span></code> 로 감싸주면, 진행 정도가 퍼센트로 확인됩니다.</p>
 </div>
 </div>
 

@@ -1,0 +1,759 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt;</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/QV backtest.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/QV backtest.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">stdev</span> 
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">zscore</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">KOR_value</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_value.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_value</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">KOR_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_price.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_price</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">KOR_price</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">KOR_price</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>   
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/KOR_fs.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">KOR_fs</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_price</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;BM&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>005930</th>
+      <th>000660</th>
+      <th>035420</th>
+      <th>051910</th>
+      <th>207940</th>
+      <th>035720</th>
+      <th>005380</th>
+      <th>006400</th>
+      <th>068270</th>
+      <th>000270</th>
+      <th>...</th>
+      <th>058220</th>
+      <th>038160</th>
+      <th>033600</th>
+      <th>195440</th>
+      <th>058420</th>
+      <th>121890</th>
+      <th>114570</th>
+      <th>080440</th>
+      <th>158310</th>
+      <th>028040</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2016-04-29</th>
+      <td>24900</td>
+      <td>28150</td>
+      <td>135592</td>
+      <td>297000</td>
+      <td>NaN</td>
+      <td>100500</td>
+      <td>143500</td>
+      <td>114000</td>
+      <td>94000</td>
+      <td>47900</td>
+      <td>...</td>
+      <td>2195</td>
+      <td>NaN</td>
+      <td>1845</td>
+      <td>NaN</td>
+      <td>30439</td>
+      <td>6514</td>
+      <td>82954</td>
+      <td>8153</td>
+      <td>10600</td>
+      <td>6200.0</td>
+    </tr>
+    <tr>
+      <th>2016-05-31</th>
+      <td>25840</td>
+      <td>28700</td>
+      <td>144205</td>
+      <td>271000</td>
+      <td>NaN</td>
+      <td>102800</td>
+      <td>139500</td>
+      <td>112500</td>
+      <td>92599</td>
+      <td>46650</td>
+      <td>...</td>
+      <td>3035</td>
+      <td>NaN</td>
+      <td>1785</td>
+      <td>NaN</td>
+      <td>24272</td>
+      <td>6750</td>
+      <td>73999</td>
+      <td>8153</td>
+      <td>8980</td>
+      <td>7000.0</td>
+    </tr>
+    <tr>
+      <th>2016-06-30</th>
+      <td>28500</td>
+      <td>32400</td>
+      <td>142202</td>
+      <td>260000</td>
+      <td>NaN</td>
+      <td>93100</td>
+      <td>135500</td>
+      <td>108000</td>
+      <td>89795</td>
+      <td>43200</td>
+      <td>...</td>
+      <td>3460</td>
+      <td>NaN</td>
+      <td>1800</td>
+      <td>NaN</td>
+      <td>22890</td>
+      <td>5365</td>
+      <td>69993</td>
+      <td>8153</td>
+      <td>12250</td>
+      <td>7400.0</td>
+    </tr>
+    <tr>
+      <th>2016-07-29</th>
+      <td>30780</td>
+      <td>34400</td>
+      <td>142202</td>
+      <td>243500</td>
+      <td>NaN</td>
+      <td>90900</td>
+      <td>132000</td>
+      <td>105500</td>
+      <td>97270</td>
+      <td>42150</td>
+      <td>...</td>
+      <td>3800</td>
+      <td>NaN</td>
+      <td>2040</td>
+      <td>NaN</td>
+      <td>26459</td>
+      <td>5748</td>
+      <td>68230</td>
+      <td>8153</td>
+      <td>9500</td>
+      <td>7740.0</td>
+    </tr>
+    <tr>
+      <th>2016-08-31</th>
+      <td>32400</td>
+      <td>36450</td>
+      <td>169240</td>
+      <td>270500</td>
+      <td>NaN</td>
+      <td>81300</td>
+      <td>133000</td>
+      <td>115500</td>
+      <td>99793</td>
+      <td>41950</td>
+      <td>...</td>
+      <td>3425</td>
+      <td>5660.0</td>
+      <td>2035</td>
+      <td>NaN</td>
+      <td>21646</td>
+      <td>5424</td>
+      <td>65987</td>
+      <td>8153</td>
+      <td>7790</td>
+      <td>5030.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-12-31</th>
+      <td>81000</td>
+      <td>118500</td>
+      <td>292500</td>
+      <td>824000</td>
+      <td>826000.0</td>
+      <td>389500</td>
+      <td>192000</td>
+      <td>628000</td>
+      <td>359000</td>
+      <td>62400</td>
+      <td>...</td>
+      <td>275</td>
+      <td>862.0</td>
+      <td>179</td>
+      <td>2075.0</td>
+      <td>3829</td>
+      <td>739</td>
+      <td>620</td>
+      <td>498</td>
+      <td>505</td>
+      <td>279.0</td>
+    </tr>
+    <tr>
+      <th>2021-01-29</th>
+      <td>82000</td>
+      <td>122500</td>
+      <td>343000</td>
+      <td>917000</td>
+      <td>793000.0</td>
+      <td>441000</td>
+      <td>229000</td>
+      <td>734000</td>
+      <td>324000</td>
+      <td>82500</td>
+      <td>...</td>
+      <td>275</td>
+      <td>862.0</td>
+      <td>179</td>
+      <td>2075.0</td>
+      <td>2314</td>
+      <td>739</td>
+      <td>620</td>
+      <td>498</td>
+      <td>505</td>
+      <td>279.0</td>
+    </tr>
+    <tr>
+      <th>2021-02-26</th>
+      <td>82500</td>
+      <td>141500</td>
+      <td>375000</td>
+      <td>831000</td>
+      <td>750000.0</td>
+      <td>488000</td>
+      <td>237000</td>
+      <td>674000</td>
+      <td>297500</td>
+      <td>79400</td>
+      <td>...</td>
+      <td>275</td>
+      <td>862.0</td>
+      <td>179</td>
+      <td>2075.0</td>
+      <td>2160</td>
+      <td>739</td>
+      <td>620</td>
+      <td>498</td>
+      <td>505</td>
+      <td>279.0</td>
+    </tr>
+    <tr>
+      <th>2021-03-31</th>
+      <td>81400</td>
+      <td>132500</td>
+      <td>377000</td>
+      <td>805000</td>
+      <td>748000.0</td>
+      <td>498000</td>
+      <td>218000</td>
+      <td>660000</td>
+      <td>324500</td>
+      <td>82900</td>
+      <td>...</td>
+      <td>275</td>
+      <td>862.0</td>
+      <td>179</td>
+      <td>2075.0</td>
+      <td>2160</td>
+      <td>739</td>
+      <td>620</td>
+      <td>498</td>
+      <td>505</td>
+      <td>279.0</td>
+    </tr>
+    <tr>
+      <th>2021-04-30</th>
+      <td>83600</td>
+      <td>137000</td>
+      <td>393500</td>
+      <td>891000</td>
+      <td>789000.0</td>
+      <td>558000</td>
+      <td>234000</td>
+      <td>695000</td>
+      <td>313500</td>
+      <td>86700</td>
+      <td>...</td>
+      <td>275</td>
+      <td>862.0</td>
+      <td>179</td>
+      <td>2075.0</td>
+      <td>2160</td>
+      <td>739</td>
+      <td>620</td>
+      <td>498</td>
+      <td>505</td>
+      <td>6.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>61 rows × 2196 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">start_year</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">start_year</span> <span class="o">+</span> <span class="s1">&#39;-04-30&#39;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">reb_date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">(),</span>
+                         <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="n">reb_date</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">month</span> <span class="ow">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">num_col</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">num_col</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    
+<span class="n">ROE</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;지배주주순이익&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;자본&#39;</span><span class="p">]</span>
+<span class="n">ROE</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">61</span><span class="o">-</span><span class="mi">0</span><span class="n">daac33fe91a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">num_col</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="n">num_col</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">ROE</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;지배주주순이익&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;자본&#39;</span><span class="p">]</span>
+
+<span class="ne">AttributeError</span>: &#39;str&#39; object has no attribute &#39;year&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reb_date</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2018-04-30&#39;
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

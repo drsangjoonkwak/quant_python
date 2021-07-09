@@ -1,0 +1,1664 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>16. 백테스팅 시뮬레이션</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="15. 트레이딩 전략을 위한 기술적 지표" href="15_trading.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/16_backtest.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/16_backtest.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bt">
+   16.1 bt 패키지
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     16.1.1 가격 데이터의 수집
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     16.1.2 전략의 정의
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     16.1.3 전략의 백테스트
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   16.1.4 결과에 대한 평가
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   16.2 정적 자산배분: 올웨더 포트폴리오
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     16.2.1 올웨더 포트폴리오 백테스트
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   16.3 동적 자산배분
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     16.3.1 동적 자산배분 백테스트¶
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     16.3.2 거래 비용 고려하기
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   16.4 추세추종 전략 백테스트
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     16.4.1 마켓 타이밍 전략
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     16.4.2 파라미터 최적화
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     16.4.3 롱숏 전략
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   16.5 평균회귀 전략 백테스트
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rsi">
+     16.5.1 RSI를 이용한 전략
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     16.5.2 볼린저 밴드를 이용한 전략
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#target-volatility">
+   16.6 타겟 볼(Target Volatility) 전략
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     16.6.1 타겟볼 구현하기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     16.6.2 캡 씌우기
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>16. 백테스팅 시뮬레이션<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>백테스트란 현재 생각하는 전략을 과거부터 실행했을 때 어떠한 성과가 발생하는지 테스트해보는 과정입니다. 과거의 데이터를 기반으로 전략을 실행하는 퀀트 투자에 있어서 이는 핵심 단계이기도 합니다. 백테스트 결과를 통해 해당 전략의 손익뿐만 아니라 각종 위험을 대략적으로 판단할 수 있으며, 어떤 구간에서 전략이 좋았는지 혹은 나빴는지에 대한 이해도 키울 수 있습니다. 이러한 이해를 바탕으로 퀀트 투자를 지속한다면 단기적으로 수익이 나쁜 구간에서도 그 이유에 대한 객관적인 안목을 키울 수 있으며, 확신을 가지고 전략을 지속할 수 있습니다.</p>
+<p>그러나 백테스트를 아무리 보수적으로 혹은 엄밀하게 진행하더라도 이미 일어난 결과를 대상으로 한다는 사실은 변하지 않습니다. 백테스트 수익률만을 보고 투자에 대해 판단하거나, 혹은 동일한 수익률이 미래에도 반복될 것이라고 믿는다면 이는 백미러만 보고 운전하는 것처럼 매우 위험한 결과를 초래할 수도 있습니다.</p>
+<p>파이썬에는 백테스트를 위한 수많은 패키지들이 존재하지만 대표적인 패키지는 다음과 같습니다.</p>
+<ul class="simple">
+<li><p>backtesting: 각종 트레이딩 전략에 최적화된 인터페이스를 제공하며, 앞서 살펴본 TA-Lib 패키지와의 상당한 호환성 및 파라미터에 대한 최적화 기능도 제공합니다.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">kernc</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">backtesting</span><span class="o">.</span><span class="n">py</span><span class="o">/</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Backtrader: 구글에서 파이썬 관련 백테스트를 검색하면 가장 많이 검색되는 패키지일 만큼 사용법에 대한 메뉴얼이 잘 구성되어 있습니다.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">backtrader</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>bt: 앞의 패키지들과는 다르게 트레이딩 전략 뿐만 아니라 포트폴리오 기반의 퀀트를 백테스트를 하는데도 매우 유용한 기능들을 제공합니다.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pmorissette</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">bt</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>모든 패키지에는 장단점이 있기 마련이기에, 모두 사용해보고 본인에게 맞는것을 선택하는 것이 최고의 방법입니다. 본 책에서는 포트폴리오 전략과 트레이딩 전략을 동시에 다루기에 <strong>bt</strong> 패키지를 사용해 백테스트를 하도록 하겠습니다. 해당 패키지에는 본 책에서 다루는 내용 외에도 백테스트 및 결과 평가에 대한 수많은 함수들이 존재하기에, 공식 페이지와 github의 코드를 모두다 뜯어보는 것도 재밌는 작업입니다.</p>
+<p>또한 본 패키지의 함수는 대부분 <strong>ffn</strong> 패키지를 기초로 하므로 이 역시 찾아보는 것이 추천드립니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">pmorissette</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">ffn</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="section" id="bt">
+<h2>16.1 bt 패키지<a class="headerlink" href="#bt" title="Permalink to this headline">¶</a></h2>
+<p>bt 패키지에서는 백테스트의 과정을 다음과 같이 정의합니다.</p>
+<ol class="simple">
+<li><p>가격 데이터의 수집</p></li>
+<li><p>전략의 정의</p></li>
+<li><p>데이터를 이용한 전략의 백테스트</p></li>
+<li><p>결과에 대한 평가</p></li>
+</ol>
+<p>이 중 본 장에서는 1번에서 3번까지의 과정에 대해 자세히 다루도록 하겠으며, 4번 결과에 대한 평가는 본 장에서는 간략하게 다루며, 다음장에서 더욱 자세히 다루도록 하갰습니다.</p>
+<div class="section" id="id2">
+<h3>16.1.1 가격 데이터의 수집<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>백테스트를 위해서는 먼저 가격 데이터를 준비해야 합니다. bt 패키지의 <code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수는 야후 파이낸스 API를 이용해 수정주가를 다운로드 받을 수 있게 해줍니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SPY, TLT&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;2003-01-01&#39;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;2020-12-31&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>spy</th>
+      <th>tlt</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2002-12-31</th>
+      <td>61.700169</td>
+      <td>47.430649</td>
+    </tr>
+    <tr>
+      <th>2003-01-02</th>
+      <td>63.686214</td>
+      <td>46.204308</td>
+    </tr>
+    <tr>
+      <th>2003-01-03</th>
+      <td>63.882019</td>
+      <td>46.311401</td>
+    </tr>
+    <tr>
+      <th>2003-01-06</th>
+      <td>65.007927</td>
+      <td>46.188263</td>
+    </tr>
+    <tr>
+      <th>2003-01-07</th>
+      <td>64.847061</td>
+      <td>46.354237</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">get()</span></code> 패키지 내에 다운로드 받고자 하는 종목의 티커를 입력하면 수정주가만 데이터프레임 형태로 가공됩니다. 물론 앞에서 살펴본 크롤링, API 등을 이용해 다운로드 받은 데이터를 이용해 백테스를 해도 되며, 본 장에서는 앞서 다운로드 받은 글로벌 자산을 대표하는 ETF 데이터를 사용하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/asset_data.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">prices</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">prices</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>16.1.2 전략의 정의<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>두번째로 시뮬레이션 하고자 하는 백테스트가 어떤 것인지를 정의해야 합니다. 10개 자산을 동일비중으로 투자하며, 매월 말 리밸런싱 하는 전략을 정의해보도록 하겠습니다. <code class="docutils literal notranslate"><span class="pre">Strategy()</span></code> 함수 내에 algos 모듈을 이용해 백테스트 하고자 하는 내용을 입력합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 전체 자산 동일비중, 매월 말 리밸런싱</span>
+<span class="n">strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s2">&quot;Asset_EW&quot;</span><span class="p">,</span>
+                       <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunMonthly</span><span class="p">(),</span>
+                        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()</span>
+                       <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>먼저 전략의 이름(Asset_EW)을 입력합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.algos.SelectAll()</span></code> 함수를 통해 모든 데이터를 사용함을 정의합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.algos.WeighEqually()</span></code> 함수를 통해 동일비중을 정의합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.algos.RunMonthly()</span></code> 함수를 통해 매월말 리밸런싱 함을 정의합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.algos.Rebalance()</span></code> 함수를 통해 계산된 비중에 따라 리밸런싱 함을 정의합니다.</p></li>
+</ol>
+<p>이 외에 algos 모듈을 통해 다양한 백테스트 로직을 정의할 수 있으며, 자세한 내용은 아래 사이트에서 확인할 수 있습니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pmorissette</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">bt</span><span class="o">/</span><span class="n">bt</span><span class="o">.</span><span class="n">html</span><span class="c1">#module-bt.algos</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>16.1.3 전략의 백테스트<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>앞에서 정의된 내용을 바탕으로 백테스트를 실행하도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># 백테스트 생성</span>
+<span class="n">backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">strategy</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># 백테스트 실행</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">backtest</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>가격 데이터 중 ETF의 시작 시점이 모두 다르므로, <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> 함수를 통해 NA를 모두 제거하여 시작시점을 동일하게 만듭니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Backtest()</span></code> 함수를 통해 백테스트를 생성할 수 있으며, 앞에서 정의한 백테스트 내용된 가격 데이터를 입력합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run()</span></code> 함수를 통해 백테스트를 실행하며, 앞에서 생성된 백테스트를 입력합니다.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>16.1.4 결과에 대한 평가<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>위 과정을 통해 시뮬레이션 된 백테스트의 결과를 살펴보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">prices</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Asset_EW</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2006-12-18</th>
+      <td>100.000000</td>
+    </tr>
+    <tr>
+      <th>2006-12-19</th>
+      <td>100.000000</td>
+    </tr>
+    <tr>
+      <th>2006-12-20</th>
+      <td>100.208564</td>
+    </tr>
+    <tr>
+      <th>2006-12-21</th>
+      <td>100.077634</td>
+    </tr>
+    <tr>
+      <th>2006-12-22</th>
+      <td>100.038885</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-04-12</th>
+      <td>211.231709</td>
+    </tr>
+    <tr>
+      <th>2021-04-13</th>
+      <td>212.561644</td>
+    </tr>
+    <tr>
+      <th>2021-04-14</th>
+      <td>212.866016</td>
+    </tr>
+    <tr>
+      <th>2021-04-15</th>
+      <td>215.040685</td>
+    </tr>
+    <tr>
+      <th>2021-04-16</th>
+      <td>215.357183</td>
+    </tr>
+  </tbody>
+</table>
+<p>3606 rows × 1 columns</p>
+</div></div></div>
+</div>
+<p>백테스트 결과에서 <code class="docutils literal notranslate"><span class="pre">price</span></code>를 입력하면 누적수익률이 데이터프레임 형태로 나타며, 시작시점을 100으로 환산하여 계산됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">prices</span><span class="o">.</span><span class="n">to_returns</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Asset_EW</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2006-12-18</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2006-12-19</th>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2006-12-20</th>
+      <td>0.002086</td>
+    </tr>
+    <tr>
+      <th>2006-12-21</th>
+      <td>-0.001307</td>
+    </tr>
+    <tr>
+      <th>2006-12-22</th>
+      <td>-0.000387</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-04-12</th>
+      <td>-0.001979</td>
+    </tr>
+    <tr>
+      <th>2021-04-13</th>
+      <td>0.006296</td>
+    </tr>
+    <tr>
+      <th>2021-04-14</th>
+      <td>0.001432</td>
+    </tr>
+    <tr>
+      <th>2021-04-15</th>
+      <td>0.010216</td>
+    </tr>
+    <tr>
+      <th>2021-04-16</th>
+      <td>0.001472</td>
+    </tr>
+  </tbody>
+</table>
+<p>3606 rows × 1 columns</p>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">prices</span></code>에 추가로 <code class="docutils literal notranslate"><span class="pre">to_returns()</span></code>를 입력하면, 수익률이 계산됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_23_0.png" src="_images/16_backtest_23_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">plot()</span></code> 함수를 통해 누적수익률을 그래프로 나타낼 수도 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">plot_weights</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_25_0.png" src="_images/16_backtest_25_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">plot_weights()</span></code> 함수를 통해 각 종목 별 투자 비중을 구할 수도 있습니다. 그러나 비중이 겹쳐 잘 보이지 않으므로, matplotlib 패키지를 이용해 꾸며보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">colormap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">handles</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.15</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_27_0.png" src="_images/16_backtest_27_0.png" />
+</div>
+</div>
+<p>종목별 투자비중은 <code class="docutils literal notranslate"><span class="pre">get_security_weights()</span></code> 함수를 통해 데이터프레임 형태로 구할 수 있으며, 이를 그림으로 나타내주도록 합니다. 매월 말 리밸런싱을 하므로, 대부분의 구간에서 모든 자산에 10%씩 균등하게 투자됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Asset_EW</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>start</th>
+      <td>2006-12-18 00:00:00</td>
+    </tr>
+    <tr>
+      <th>end</th>
+      <td>2021-04-16 00:00:00</td>
+    </tr>
+    <tr>
+      <th>rf</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>total_return</th>
+      <td>1.15357</td>
+    </tr>
+    <tr>
+      <th>cagr</th>
+      <td>0.0550029</td>
+    </tr>
+    <tr>
+      <th>max_drawdown</th>
+      <td>-0.423533</td>
+    </tr>
+    <tr>
+      <th>calmar</th>
+      <td>0.129867</td>
+    </tr>
+    <tr>
+      <th>mtd</th>
+      <td>0.0372992</td>
+    </tr>
+    <tr>
+      <th>three_month</th>
+      <td>0.0430328</td>
+    </tr>
+    <tr>
+      <th>six_month</th>
+      <td>0.12863</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>마지막으로 <code class="docutils literal notranslate"><span class="pre">stats</span></code>를 통해 각종 성과 측정치를 구할 수 있습니다. 성과 평가에 대해서는 다음 장에서 더욱 자세히 다루도록 하겠습니다.</p>
+</div>
+<div class="section" id="id6">
+<h2>16.2 정적 자산배분: 올웨더 포트폴리오<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>자산배분은 포트폴리오 내에 다양한 자산에 분산 투자하여 위험을 줄이고 일정수준의 수익률 달성하고자 하는 방법입니다. 이러한 자산 배분은 크게 <strong>정적 자산배분</strong>과 <strong>동적 자산배분</strong>으로 나뉩니다.</p>
+<p>정적 자산배분은 주식과 채권 비중 등 자산에 대한 비중을 어떠한 시장 상황에서도 6:4 혹은 8:2로 배분하고 유지하는 전략을 말합니다. 대표적인 정적 자산배분 전략은 레이 달리오가 운용하는 기법으로 유명해진 올웨더 포트폴리오가 있습니다. 레이 달리오는 세계 최대 헤지펀드인 브릿지워터(Bridgewater Associate)의 설립자입니다. 그는 시시각각 변화는 경제 상황속에서 어떻게 자산배분을 해도 견딜수 있는 포트폴리오를 구상하였으며, 이것이 올웨더 포트폴리오 입니다. 경제환경은 크게 경제 성장률과 물가 상승률로 나눌 수 있으며, 각 국면마다 우수한 성과를 보이는 자산은 다릅니다.</p>
+<div class="figure align-default" id="backtest-allweather">
+<img alt="_images/backtest_allweather.png" src="_images/backtest_allweather.png" />
+<p class="caption"><span class="caption-number">Fig. 76 </span><span class="caption-text">경제환경의 구분</span><a class="headerlink" href="#backtest-allweather" title="Permalink to this image">¶</a></p>
+</div>
+<ol class="simple">
+<li><p>경제 성장률이 높은 구간에서는 위험 자산의 성과가 우수합니다.</p></li>
+<li><p>경제 성장률이 낮은 구간에서는 우량 채권의 성과가 우수합니다.</p></li>
+<li><p>물가 상승률이 높은 구간에서는 원자재나 신흥국 채권의 성과가 우수합니다.</p></li>
+<li><p>물가 상승률이 낮은 구간에서는 주식과 채권 모두 성과가 우수합니다.</p></li>
+</ol>
+<p>올웨더 포트폴리오는 네 가지 상황 중 하나를 예측하기 보다는, 각각의 상황에 맞는 자산을 모두 포트폴리오에 담아 미리 대비합니다. 또한 각 상황이 올 확률이 25%씩 같다고 가정할 경우, 자산별 투자비중은 <a class="reference internal" href="#backtest-aw"><span class="std std-numref">Fig. 77</span></a>와 같습니다.</p>
+<div class="figure align-default" id="backtest-aw">
+<img alt="_images/backtest_aw.png" src="_images/backtest_aw.png" />
+<p class="caption"><span class="caption-number">Fig. 77 </span><span class="caption-text">올웨더 포트폴리오 투자 비중</span><a class="headerlink" href="#backtest-aw" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="id7">
+<h3>16.2.1 올웨더 포트폴리오 백테스트<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;IEF&#39;</span><span class="p">,</span> <span class="s1">&#39;GLD&#39;</span><span class="p">,</span> <span class="s1">&#39;DBC&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">aw</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;All Weather&#39;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                     <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighSpecified</span><span class="p">(</span><span class="n">SPY</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">TLT</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">IEF</span> <span class="o">=</span> <span class="mf">0.15</span><span class="p">,</span> <span class="n">GLD</span> <span class="o">=</span> <span class="mf">0.075</span><span class="p">,</span> <span class="n">DBC</span> <span class="o">=</span> <span class="mf">0.075</span><span class="p">),</span>
+                     <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunQuarterly</span><span class="p">(),</span>
+                     <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+<span class="n">aw_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">aw</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">aw_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">aw_backtest</span><span class="p">)</span>
+
+<span class="n">aw_result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;All Weather&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_35_0.png" src="_images/16_backtest_35_0.png" />
+</div>
+</div>
+<ol class="simple">
+<li><p>prices 데이터 중 주식, 장기채, 중기채, 금, 원자재에 해당하는 열만 선택합니다.</p></li>
+<li><p>전략을 정의해주며, <code class="docutils literal notranslate"><span class="pre">bt.algos.WeighSpecified()</span></code>에 각 자산별 비중을 직접 입력합니다. 또한 <code class="docutils literal notranslate"><span class="pre">bt.algos.RunQuarterly()</span></code>를 통해 분기별 리밸런싱을 정의합니다.</p></li>
+<li><p>백테스트를 생성 및 실행합니다.</p></li>
+</ol>
+<p>누적 수익률을 확인해보면 다양한 자산에 분산되어 있기에 장기간 동안 꾸준히 상승하는 모습을 보입니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">aw_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">colormap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">handles</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_37_0.png" src="_images/16_backtest_37_0.png" />
+</div>
+</div>
+<p>분기 별로 리밸런싱이 이루어짐에 따라, 각 자산별 투자비중이 일정하게 유지됩니다.</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>16.3 동적 자산배분<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>정적 자산배분이 자산 별 일정 비중을 유지하는 전략이라면, 동적 자산배분은 시장 상황에 따라 투자하는 대상과 비중을 계속해서 변경하는 전략입니다. 여러 경제 상황에서 상대적으로 유리한 자산은 좋은 성과를 보일 것이며, 경제 국면은 장기간 지속되는 추세가 있으므로 모멘텀이 있는 자산에 투자하는 것이 현명한 방법일 수 있습니다. 모멘텀을 이용한 동적 자산배분 포트폴리오는 다음과 같이 구성됩니다.</p>
+<ol class="simple">
+<li><p>글로벌 10개 자산 중 과거 12개월 수익률이 높은 5개 자산을 선택합니다.</p></li>
+<li><p>위험균형 포트폴리오를 구성합니다.</p></li>
+<li><p>매월 말 리밸런싱을 실시합니다.</p></li>
+</ol>
+<p>10개 자산에서 과거 수익률 기준 5개 자산만 선택하는 이유는 모멘텀 효과를 얻기 위해서 입니다. <a class="reference internal" href="#mom-rank"><span class="std std-numref">Fig. 78</span></a>는 글로벌 10개 자산의 과거 6개월 수익률을 기준으로 순위를 매기고, 이들의 다음 월 수익률이 상위 50%가 될 확률을 구한 값입니다. 수익률이 높은 1-5위 까지의 자산은 다음 월에도 수익률이 높을 확률이 50%가 넘지만, 수익률이 낮은 6-10위 까지의 자산은 다음 월에 수익률이 높을 확률이 50%가 되지 않습니다. 따라서 자산군 간에도 모멘텀 효과가 존재하며, 이를 활용하기 위해 5개 자산만을 선택해 투자합니다.</p>
+<div class="figure align-default" id="mom-rank">
+<img alt="_images/mom_rank.png" src="_images/mom_rank.png" />
+<p class="caption"><span class="caption-number">Fig. 78 </span><span class="caption-text">자산군 내 모멘텀 효과</span><a class="headerlink" href="#mom-rank" title="Permalink to this image">¶</a></p>
+</div>
+<p>또한 위험균형 포트폴리오를 이용해 변동성이 지나치게 큰 자산에 의해 포트폴리오의 수익률이 크게 영향받는 일을 줄이고, 최대한 안정적으로 포트폴리오를 구성합니다.</p>
+<div class="section" id="id9">
+<h3>16.3.1 동적 자산배분 백테스트¶<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>동적 자산배분의 로직이 다소 복잡해 보이지만, bt 패키지에 내장된 함수를 이용할 경우 역시나 매우 손쉽게 백테스트 할 수 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">gdaa</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;GDAA&#39;</span><span class="p">,</span> 
+                   <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                    <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectMomentum</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span><span class="n">lookback</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">years</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)),</span>
+                    <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunMonthly</span><span class="p">(),</span>
+                    <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighERC</span><span class="p">(</span><span class="n">lookback</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">years</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)),</span>
+                    <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()</span>
+                   <span class="p">])</span>      
+
+<span class="n">gdaa_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">gdaa</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">gdaa_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">gdaa_backtest</span><span class="p">)</span>
+
+<span class="n">gdaa_result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Global Dynamic Asset Allocation&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_43_0.png" src="_images/16_backtest_43_0.png" />
+</div>
+</div>
+<ol class="simple">
+<li><p>prices 데이터에서 NA를 제거합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.Strategy()</span></code> 내에 전략을 정의해줍니다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.algos.SelectAll()</span></code>: 전체 데이터를 선택합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.algos.SelectMomentum(n</span> <span class="pre">=</span> <span class="pre">5,lookback</span> <span class="pre">=</span> <span class="pre">pd.DateOffset(years</span> <span class="pre">=</span> <span class="pre">1))</span></code>: 모멘텀 상위 종목을 선택하며 개수는 5개, 모멘텀 관측 기간은 과거 1년을 합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.algos.RunMonthly()</span></code>: 매월 리밸런싱을 실시합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.algos.WeighERC(lookback</span> <span class="pre">=</span> <span class="pre">pd.DateOffset(years</span> <span class="pre">=</span> <span class="pre">1))</span></code>: ERC 즉 위험균형 포트폴리오를 구성하며, 분산-공분산 계산을 위한 수익률은 과거 1년 데이터를 이용합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.algos.Rebalance()</span></code>: 리밸런싱을 정의합니다.</p></li>
+</ul>
+</li>
+<li><p>백테스트를 생성 및 실행합니다.</p></li>
+</ol>
+<p>이처럼 algos 모듈 내의 각종 함수를 이용하면 다양한 전략을 손쉽게 정의 및 백테스트 할 수 있습니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>그래프를 살펴보면 처음 1년간은 수익률에 변화가 없으며, 이는 모멘텀 관측을 위한 1년 간은 투자를 할 수 없기 때문입니다. 성과를 평가할 때는 이처럼 투자가 이루어지지 않는 기간을 제외하고 실제 투자가 이루어진 부분부터 평가해야 합니다.</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>16.3.2 거래 비용 고려하기<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>정적 자산배분과는 달리 동적 자산배분은 매 시점마다 투자하는 대상 및 투자비중이 변합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">wt</span> <span class="o">=</span> <span class="n">gdaa_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">wt</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">colormap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">handles</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.15</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_47_0.png" src="_images/16_backtest_47_0.png" />
+</div>
+</div>
+<p>기존 정적 자산배분보다 투자 비중의 변화가 상당히 심한것을 확인할 수 있습니다. 이는 수익률 상위 5개에 해당하는 자산이 매월 말 바뀌며, 위험균형 포트폴리오를 구성하는 비중이 계속해서 바뀌기 때문입니다.</p>
+<p>모델 포트폴리오의 경우 이러한 점을 신경쓰지 않아도 되지만, 실제 투자에서는 잦은 턴오버로 인한 매매비용, 세금, 기타비용 등이 매우 중요해집니다. 해당 전략의 턴오버를 살펴보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdaa_backtest</span><span class="o">.</span><span class="n">turnover</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_49_0.png" src="_images/16_backtest_49_0.png" />
+</div>
+</div>
+<p>생성된 백테스트에서 <code class="docutils literal notranslate"><span class="pre">turnover</span></code>를 통해 턴오버를 구할 수 있습니다. 매월 상당한 턴오버가 발생하므로, 이를 고려한 수익률을 추가로 살펴볼 필요가 있습니다. 매수 혹은 매도당 발생하는 세금, 수수료, 시장충격 등 총 비용을 0.2%로 가정하여 백테스트를 실행하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdaa_backtest_net</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">gdaa</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;GDAA_net&#39;</span><span class="p">,</span> <span class="n">commissions</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">q</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="mf">0.002</span><span class="p">)</span>
+<span class="n">gdaa_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">gdaa_backtest</span><span class="p">,</span> <span class="n">gdaa_backtest_net</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.Backtest()</span></code> 함수 내에 기존에 정의된 백테스트인 gdaa를 그대로 사용하며, 이름만 <strong>GDAA_net</strong>으로 변경합니다. 또한 commissions 부분에 수수료를 계산하는 부분을 입력합니다. q는 quantity(주수), p는 price(주가)를 의미하며, 즉 총 거래 가격에서 0.2%가 수수료로 나간다고 가정합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bt.run()</span></code> 내에 기존에 생성된 백테스트 내용(gdaa_backtest)과 새롭게 생성된 백테스트 내용(gdaa_backtest_net)을 동시에 입력하면, 두 개의 백테스트가 한번에 실행됩니다.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdaa_result</span><span class="o">.</span><span class="n">prices</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Global Dynamic Asset Allocation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_53_0.png" src="_images/16_backtest_53_0.png" />
+</div>
+</div>
+<p>기존의 비용을 고려하지 않은 포트폴리오(GDAA)에 비해, 비용을 차감한 포트폴리오(GDAA_net)의 수익률이 시간이 지남에 따라 서서히 감소합니다. 이러한 차이는 비용이 크거나 턴오버가 높을수록 더욱 벌어지게 됩니다</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>실제 전문적인 백테스트에서는 매매비용을 일괄적으로 적용하기 보다는, 각 ETF별 매수-매도 스프레드 등 더욱 현실과 가까운 값을 적용합니다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>16.4 추세추종 전략 백테스트<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>추세추종이란 주가가 동일한 방향으로 지속될 것이라는데 베팅하는 것입니다. 추세추종, 혹은 모멘텀 전략은 월스트리트에서 가장 오래된 투자전략 중 하나로써, 무려 1838년에 출간된 책에도 설명될 만큼 역사가 길고, 현재에도 가장 많이 사용되는 전략 중 하나입니다.</p>
+<div class="section" id="id12">
+<h3>16.4.1 마켓 타이밍 전략<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>대표적인 추세추종 전략인 이동평균선을 이용한 트레이딩의 백테스트를 진행해보도록 하겠습니다. 메브 파버(Meb Faber)는 본인의 논문을 통해, 시점 선택(Market Timing) 전략을 사용할 경우 단순히 매수 후 보유하는 것 대비 극심한 하락장에서 낙폭을 줄일 수 있으며, 이로 인해 위험 대비 수익률을 올릴 수 있다고 설명합니다. 논문에서 말하는 시점 선택의 투자 규칙은 다음과 같습니다.</p>
+<div class="math notranslate nohighlight">
+\[ 주가 &gt; 10개월 이동평균 → 매수\]</div>
+<div class="math notranslate nohighlight">
+\[ 주가 &lt; 10개월 이동평균 → 매도\ 및\ 현금보유\]</div>
+<p>즉 주가가 10개월 이동평균 보다 위에 있다는 것은 상승추세를 의미하므로 매수 포지션을, 10개월 이동평균 보다 아래에 있다는 것을 하락추세를 의미하므로 현금 보유를 통해 하락 방어를 하고자 합니다. 먼저 해당 규칙을 미국 S&amp;P 500를 추종하는 SPY ETF에 적용하는 예제를 살펴보겠으며, 리밸런싱은 매월 실행합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SMA</span>
+<span class="kn">import</span> <span class="nn">talib</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">sma</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>먼저 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 함수 내부에 <code class="docutils literal notranslate"><span class="pre">SMA()</span></code>을 이용해 200일(10개월) 이동평균을 구해줍니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bt</span>
+
+<span class="n">bt_sma</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;Timing&#39;</span><span class="p">,</span> 
+                     <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectWhere</span><span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="n">sma</span><span class="p">),</span>
+                      <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunMonthly</span><span class="p">(),</span>
+                      <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                      <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+<span class="n">bt_sma_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_sma</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">bt.algos.SelectWhere()</span></code>는 입력값이 True 일때만 투자를 하도록 정의합니다. 즉, data(SPY)가 sma(이동평균) 보다 클 때에만 투자를 합니다. 나머지는 위에서 살펴본 것들과 동일합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">buy_and_hold</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    
+    <span class="c1"># Define the benchmark strategy</span>
+    <span class="n">bt_strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> 
+                              <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunOnce</span><span class="p">(),</span>
+                               <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                               <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                               <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+    <span class="c1"># Return the backtest</span>
+    <span class="k">return</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_strategy</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Create benchmark strategy backtest</span>
+<span class="n">stock</span> <span class="o">=</span> <span class="n">buy_and_hold</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;stock&#39;</span><span class="p">)</span>
+
+<span class="n">bt_sma_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_sma_backtest</span><span class="p">,</span> <span class="n">stock</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">buy_and_hold()</span></code> 함수를 통해 단순 매수 후 보유의 경우를 정의합니다. <code class="docutils literal notranslate"><span class="pre">bt.algos.RunOnce()</span></code>는 리밸런싱이 없이 처음 상태가 그대로 유지되는 것입니다.</p></li>
+<li><p>SPY의 매수 후 보유 전략을 생성합니다.</p></li>
+<li><p>앞에서 생성된 추세추종 전략과, 매수 후 보유의 백테스트를 실행합니다.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">bt_sma_result</span><span class="o">.</span><span class="n">prices</span><span class="p">[</span><span class="mi">200</span><span class="p">:]</span><span class="o">.</span><span class="n">rebase</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_65_0.png" src="_images/16_backtest_65_0.png" />
+</div>
+</div>
+<p>추세추종 전략의 경우 이동평균 계산을 위해 처음 200 일간은 투자가 되지 않으므로 매수 후 보유 전략과 시작 시점이 일치하지 않습니다. 따라서 두 전략 모두 200번째 날부터를 시작시점으로 삼아야 하며, <code class="docutils literal notranslate"><span class="pre">rebase()</span></code> 함수를 이용하여 선택된 데이터의 시작시점을 다시 100으로 만들어줍니다.</p>
+<p>추세추종 전략을 사용할 경우 2000년 IT 버블이나 2008년 금융위기, 2020년 코로나 사태에서 하락폭이 제한됩니다. 즉 하락추세가 시작되면 주식을 모두 매도하여, 추가적인 하락을 방어합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bt_sma_result</span><span class="o">.</span><span class="n">prices</span><span class="p">[</span><span class="mi">200</span><span class="p">:]</span><span class="o">.</span><span class="n">rebase</span><span class="p">()</span><span class="o">.</span><span class="n">to_drawdown_series</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_67_0.png" src="_images/16_backtest_67_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">to_drawdown_series()</span></code> 함수는 낙폭(drawdown)을 계산해 줍니다. 추세추종 전략을 사용할 경우 하락 방어가 우수함이 확인됩니다.</p>
+</div>
+<div class="section" id="id13">
+<h3>16.4.2 파라미터 최적화<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>그렇다면 과연 200일(10개월) 이동평균을 사용하는 것이 최적일까요? 혹은 다른 값을 사용했을 때 수익률이 더 좋을수 있지 않을까요?</p>
+<p>200일과 같이 변수를 파라미터(parameter)라 하며, 성과가 최대화 되는 파라미터를 찾는 것을 파라미터 최적화라고 합니다. 트레이딩에서 이러한 파라미터 최적화는 매우 중요한 작업입니다. 앞선 마켓 타이밍 전략에서 이동평균을 계산할 때 사용하는 일수를 변경해가며 수익률을 확인해보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SMA</span>
+<span class="kn">import</span> <span class="nn">talib</span>
+<span class="kn">import</span> <span class="nn">bt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">timing</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    
+    <span class="n">sma</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">stragety</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="n">n</span><span class="p">,</span>
+                           <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectWhere</span><span class="p">(</span><span class="n">price</span> <span class="o">&gt;</span> <span class="n">sma</span><span class="p">),</span>
+                            <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunMonthly</span><span class="p">(),</span>
+                            <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                            <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+    
+    <span class="n">backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">stragety</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>  
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">backtest</span><span class="p">)</span>
+
+<span class="n">n_20</span> <span class="o">=</span> <span class="n">timing</span><span class="p">(</span><span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">n_60</span> <span class="o">=</span> <span class="n">timing</span><span class="p">(</span><span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">n_100</span> <span class="o">=</span> <span class="n">timing</span><span class="p">(</span><span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">n_120</span> <span class="o">=</span> <span class="n">timing</span><span class="p">(</span><span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="mi">120</span><span class="p">)</span>
+<span class="n">n_150</span> <span class="o">=</span> <span class="n">timing</span><span class="p">(</span><span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="mi">150</span><span class="p">)</span>
+<span class="n">n_200</span> <span class="o">=</span> <span class="n">timing</span><span class="p">(</span><span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">n_230</span> <span class="o">=</span> <span class="n">timing</span><span class="p">(</span><span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="mi">230</span><span class="p">)</span>
+<span class="n">n_250</span> <span class="o">=</span> <span class="n">timing</span><span class="p">(</span><span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="mi">250</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">n_20</span><span class="p">,</span> <span class="n">n_60</span><span class="p">,</span> <span class="n">n_100</span><span class="p">,</span> <span class="n">n_120</span><span class="p">,</span> <span class="n">n_150</span><span class="p">,</span> <span class="n">n_200</span><span class="p">,</span> <span class="n">n_230</span><span class="p">,</span> <span class="n">n_250</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>이동평균을 계산한 후, 백테스트를 생성하는 부분을 <code class="docutils literal notranslate"><span class="pre">timing()</span></code> 함수로 작성합니다.</p></li>
+<li><p>20일부터 250일까지 이동평균을 이용한 마켓타이밍 모델의 백테스트를 생성합니다.</p></li>
+<li><p>모든 백테스트를 한번에 실행합니다.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">result</span><span class="o">.</span><span class="n">prices</span><span class="p">[</span><span class="mi">250</span><span class="p">:]</span><span class="o">.</span><span class="n">rebase</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">colormap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_73_0.png" src="_images/16_backtest_73_0.png" />
+</div>
+</div>
+<p>누적수익률을 확인해보면 단기 보다는 장기 이동평균을 사용할 수록 우수한 성과를 기록합니다. 그러나 예를들어 230일 이동평균이 최고의 수익률을 기록한다고 이것이 최적의 파라미터라고 말하기는 힘듭니다. 장기 이동평균을 사용하는 것이 단기 이동평균을 사용하는 것보다 성과가 좋은 이유는, 장기 이동평균이 장기적인 추세를 더 잘영하기 때문일 수 있습니다. 그러나 같은 장기 이동평균에서도 예를들어 230일이 210일 보다 우수한 것은 단순히 우연의 결과일 수 있으며, 백테스트 기간을 다르게 하면 전혀 다른 결과가 나타날 수도 있습니다.</p>
+<p>백테스트 기간에서 최적화된 파라미터가 향후에도 최고의 수익률을 기록할 것이라는 생각은 위험할 수 있습니다. 백테스트에서는 엄청나게 우수한 성과를 보였던 전략을 찾아 용기있게 실제 투자에 나섰다가 과최적화의 저주에 빠져 실망스러운 수익률로 이어지는 경우도 종종 목겼했습니다. 따라서 모델에 사용되는 파라미터의 갯수는 최대한 작게, 그리고 인샘플(in-sample) 뿐만 아니라 아웃오브샘플(out-of-sample) 테스트에서도 뛰어난 성과를 보이는 파라미터를 택해야 하겠습니다.</p>
+</div>
+<div class="section" id="id14">
+<h3>16.4.3 롱숏 전략<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>지금까지는 주가가 이동평균선 위에 있을 때 매수하며 그렇지 않으면 매도하는 ‘롱온리’ 전략에 대한 백테스트를 실시했습니다. 그러나 추세추종 전략은 상승추세에 대한 베팅뿐만 아니라 공매도, 인버스 ETF 혹은 선물매도 포지션을 통해 하락추세에도 베팅할 수 있습니다.</p>
+<p>흔히 단기 이동평균선이 중장기 이동평균선을 뚫고 올라가는 골든크로스의 경우 상승추세에 대한 신호를, 반대로 뚫고 내려가는 데드크로스의 경우 하락추세에 대한 신호를 나타냅니다. 과연 이러한 신호를 이용해 트레이딩 했을 때 성과가 어떤지 살펴보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">talib</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]]</span>
+<span class="n">EMA_200</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">talib</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">EMA_60</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">talib</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">60</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>먼저 장기추세에 해당하는 200일 지수 이동평균과 단기추세에 해당하는 60일 지수 이동평균을 구합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal</span> <span class="o">=</span> <span class="n">EMA_200</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">EMA_60</span> <span class="o">&gt;=</span> <span class="n">EMA_200</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">EMA_60</span> <span class="o">&lt;</span> <span class="n">EMA_200</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">signal</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>만일 60일 이동평균이 200일 이동평균보다 위에 있을 경우(골든크로스) 100% 투자 즉 매수를 하며, 반대의 경우(데드크로스) -100% 투자 즉 매도를 합니다. 이동평균을 계산하기 위한 처음 200일 부분은 데이터가 없으므로 포지션을 0으로 둡니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">bind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data</span><span class="p">,</span> <span class="n">EMA_200</span><span class="p">,</span> <span class="n">EMA_60</span><span class="p">,</span> <span class="n">signal</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">bind</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;EMA 200&#39;</span><span class="p">,</span> <span class="s1">&#39;EMA 60&#39;</span><span class="p">,</span> <span class="s1">&#39;signal&#39;</span><span class="p">]</span>
+
+<span class="n">bind</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">600</span><span class="p">:</span> <span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">secondary_y</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_81_0.png" src="_images/16_backtest_81_0.png" />
+</div>
+</div>
+<p>주가와 각 이동평균선, 신호를 그림으로 나타내보면, 단기 이동평균선이 장기 이동평균선 위에 있을 경우에는 매수, 그렇지 않을 때는 매도를 하는 것이 확인됩니다. 이제 해당 전략의 백테스트를 실시해보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bt</span>
+
+<span class="n">strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;EMA_crossover&#39;</span><span class="p">,</span> 
+                       <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighTarget</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span>
+                        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+<span class="n">backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">strategy</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">backtest</span><span class="p">)</span>
+
+<span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_83_0.png" src="_images/16_backtest_83_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">bt.algos.WeighTarget()</span></code> 함수 내에 각 시점별 비중을 입력하면, 해당 시점과 비중에 맞춰 리밸런싱이 실시됩니다. 이를 통해 해당 패키지에서 함수 형태로 제공하지 않는 매우 복잡한 전략의 백테스트도 얼마든지 실행할 수 있습니다.</p>
+<p>결과를 살펴보면 장기간 동안 우상향을 하다가 2020년 엄청난 낙폭으로 대부분의 수익을 반납했습니다. 왜 이런 결과가 나왔는지 해당 구간을 자세히 살펴보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bind</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">prices</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)[</span><span class="s1">&#39;2020-01&#39;</span><span class="p">:</span><span class="s1">&#39;2020-09&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">secondary_y</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_85_0.png" src="_images/16_backtest_85_0.png" />
+</div>
+</div>
+<p>코로나 사태로 인해 2020년 3월부터 미국 주식은 급격하게 하락하기 시작했으며, 3월 중순에는 60일 이동평균선이 200일 이동평균선을 하회함에 따라 숏 신호가 발생하였습니다. 그러나 공교롭게도 해당 시점부터 시장은 바닥을 다지고 엄청난 상승을 보였으며, 전략에서는 숏포지션을 취하고 있는 만큼 손실이 발생하기 시작합니다. 6월이 되서야 다시 골든크로스가 발생하여 롱 포지션으로 전환하였지만, 불과 3달동안 복구할 수 없을 정도의 손실을 입게 됩니다.</p>
+<p>실제로 추세추종 전략을 사용하는 많은 펀드들이 실제로 2020년 3월부터 6월까지 막대한 손실을 입었습니다. 2020년 초반에는 롱 포지션에서 손실을 입고, 3월부터는 숏포지션에서 손실을 입어 양방향에서 모두 손실을 입은 것입니다.</p>
+<p>만일 롱온리 전략을 택했다면 3월부터 6월까지 단순히 수익을 얻지 못한것에 그쳤겠지만, 숏 포지션으로 인해 손실이 배가 된 것입니다. 이처럼 숏 베팅은 하락 시장에서도 돈을 벌 수 있게 해주지만, 예상치 못한 급반등이 나올 경우 손실을 입히는 양날의 검이 되기도 합니다. 이를 방지하기 위해 트레이딩에서는 다양한 신호의 결합, 손실제한(스탑로스, 로스컷) 등을 추가하기도 합니다.</p>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>16.5 평균회귀 전략 백테스트<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<p>추세추종 전략은 주가가 동일한 방향으로 지속된다고 보는 반면, 평균회귀 전략은 주가가 평균으로 회귀한다고 보면 이에 베팅합니다. 주가가 무한정 한방향으로 지속될 수는 없기에 추세추종 전략과 평균회귀 전략을 잘 조합할 필요가 있습니다.</p>
+<div class="section" id="rsi">
+<h3>16.5.1 RSI를 이용한 전략<a class="headerlink" href="#rsi" title="Permalink to this headline">¶</a></h3>
+<p>RSI는 일정기간 동안 주가의 상승폭과 하락폭의 크기를 비교해 상승과 하락의 상대적인 강도를 나타낸 지표로써, 일반적으로 RSI가 70 이상일 경우 과매수 구간으로써 매도할 때를, 30 이하일 경우 과매도 구간으로써 매수해야 할 때로 여겨집니다. 이에 대한 백테스트를 실행해보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">talib</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]]</span>
+<span class="n">spy_rsi</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">talib</span><span class="o">.</span><span class="n">RSI</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+
+<span class="n">signal</span> <span class="o">=</span> <span class="n">spy_rsi</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">spy_rsi</span> <span class="o">&gt;</span> <span class="mi">70</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">spy_rsi</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">signal</span><span class="p">[(</span><span class="n">spy_rsi</span> <span class="o">&lt;=</span> <span class="mi">70</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">spy_rsi</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">signal</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>먼저 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 함수 내부에 <code class="docutils literal notranslate"><span class="pre">RSI()</span></code>을 이용해 14일 기준 RSI를 구합니다. 그 후 RSI가 70을 초과하면 -1(숏 포지션), 30 미만이면 1(롱 포지션), 30과 70 사이면 0(뉴트럴)인 신호를 만듭니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">nrows</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">spy_rsi</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">70</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_93_0.png" src="_images/16_backtest_93_0.png" />
+</div>
+</div>
+<p>위 그래프는 주가를 나타내며, 아래 그래프는 RSI를 나타냅니다. 이제 만들어진 신호를 바탕으로 백테스트를 실핻해보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;RSI_MeanReversion&#39;</span><span class="p">,</span> 
+                       <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighTarget</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span>
+                        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+<span class="n">backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">strategy</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">backtest</span><span class="p">)</span>
+
+<span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_95_0.png" src="_images/16_backtest_95_0.png" />
+</div>
+</div>
+<p>RSI를 이용하여 트레이딩을 할 경우 장기간으로 큰 손실없이 잘 작동하지만, 과매수 혹은 과매도로 인한 투자 신호가 나타나는 경우가 드물어 누적수익률 자체도 그렇게 높지 않습니다. 반면 2020년의 경우 추세추종 전략과는 반대로 3월 급락장에서 과매도 신호로 인해 매수를 함으로써, 반등으로 인해 상당한 수익을 거두기도 합니다. 이처럼 추세추종과 평균회귀는 서로 상반댄 특징이 있으므로, 이를 잘 조합하면 훨씬 안정적인 수익을 거둘 수 있는 트레이딩 전략을 개발할 수도 있습니다.</p>
+</div>
+<div class="section" id="id16">
+<h3>16.5.2 볼린저 밴드를 이용한 전략<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>이번에는 볼린저 밴드를 이용한 평균회귀 전략을 백테스트 해보도록 하겠습니다. 볼린저밴드는 이동평균선을 중심으로 일정 표준편차를 상한선과 하한선으로 설정한 밴드입니다. 주가가 정규분포를 따른다면 주가의 움직임은 상한선과 하한선으로 구성된 밴드 내에서만 움직일 확률이 높습니다. 따라서 주가가 상한선 위에 있다는 것은 과매수 상태이므로 하락할 가능성이 높으르로 숏 포지션을, 하단선 아래에 있다는 것은 과매도 상태이므로 상승할 가능성이 높으므로 롱 포지션을 취합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">upper_2sd</span><span class="p">,</span> <span class="n">mid_2sd</span><span class="p">,</span> <span class="n">lower_2sd</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">BBANDS</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">],</span>
+                                             <span class="n">nbdevup</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                                             <span class="n">nbdevdn</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                                             <span class="n">timeperiod</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">bb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">upper_2sd</span><span class="p">,</span> <span class="n">mid_2sd</span><span class="p">,</span> <span class="n">lower_2sd</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">bb</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Upper Band&#39;</span><span class="p">,</span> <span class="s1">&#39;Mid Band&#39;</span><span class="p">,</span> <span class="s1">&#39;Lower Band&#39;</span><span class="p">,</span> <span class="s1">&#39;SPY&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">BBANDS()</span></code> 함수를 이용해 20일 기준 2 표준편차에 해당하는 볼린저 밴드의 상, 중, 하단 값을 계산한 후 하나의 데이터프레임으로 묶어줍니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">signal</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">signal</span><span class="p">[</span><span class="n">bb</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">bb</span><span class="p">[</span><span class="s1">&#39;Upper Band&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">bb</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">bb</span><span class="p">[</span><span class="s1">&#39;Lower Band&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">signal</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>주가가 상한선 위에 있을 경우 -1(숏 포지션), 주가가 하한선 아래에 있을 경우 1(롱 포지션), 그 외의 경우 0(뉴트럴)의 신호를 만듭니다. 해당 신호를 바탕으로 백테스트를 실핻해보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;BB&#39;</span><span class="p">,</span> 
+                       <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighTarget</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span>
+                        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+<span class="n">backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">strategy</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">backtest</span><span class="p">)</span>
+
+<span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_103_0.png" src="_images/16_backtest_103_0.png" />
+</div>
+</div>
+<p>RSI와 마찬가지로 0볼린저밴드를 이용한 평균회귀 트레이딩을 할 경우에도 장기간으로 큰 손실없이 잘 작동합니다. 또한 RSI 대비 투자 신호도 자주 발생해 누적 수익률 역시 높습니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>위에서 백테스트한 추세추종과 평균회귀 전략의 경우 신호가 발생하면 해당일 종가에 포지션을 취한다고 가정했습니다. 그러나 현실에서는 종가 직전까지 발생한 신호를 바탕으로 종가에 매매를 하거나 종가로 계산된 신호를 바탕으로 다음날 시가에 매매를 해야하므로, 백테스트의 수익률과 실제 수익률은 상당히 차이가 있을 수 있습니다. 매매수수료의 경우도 백테스트의 수익률과 실제 수익률간 차이를 발생시키는 원인이 될 수 있지만, 선물을 이용할 경우 수수료나 시장 충격은 거의 없다고 봐도 무방합니다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="target-volatility">
+<h2>16.6 타겟 볼(Target Volatility) 전략<a class="headerlink" href="#target-volatility" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>변동성과 수익률의 역관계 (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=709623</p></li>
+<li><p>volatility clustering</p></li>
+</ol>
+<p>https://quantpedia.com/an-introduction-to-volatility-targeting/</p>
+<div class="section" id="id17">
+<h3>16.6.1 타겟볼 구현하기<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]]</span>
+<span class="n">vol</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">vol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SPY    0.19955
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">roll_std</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">roll_std</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rolling Std&#39;</span><span class="p">]</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data</span><span class="p">,</span> <span class="n">roll_std</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
+                                           <span class="n">secondary_y</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rolling Std&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">vol</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_109_0.png" src="_images/16_backtest_109_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bt</span>
+
+<span class="n">tv</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;Target Vol&#39;</span><span class="p">,</span>
+                 <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>                                    
+                  <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>                  
+                  <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">TargetVol</span><span class="p">(</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span> <span class="o">=</span> <span class="mi">1</span><span class="p">),</span> <span class="n">lag</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">days</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)),</span>
+                  <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunWeekly</span><span class="p">(),</span>
+                  <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+<span class="n">tv_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">tv</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">tv_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tv_backtest</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tv_vol</span> <span class="o">=</span> <span class="n">tv_result</span><span class="o">.</span><span class="n">prices</span><span class="o">.</span><span class="n">to_returns</span><span class="p">()</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">tv_wt</span> <span class="o">=</span> <span class="n">tv_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tv_vol</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Target Vol&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">roll_std</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Buy and Hold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.20</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Rolling Std&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tv_wt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Leverage Ratio&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_111_0.png" src="_images/16_backtest_111_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret_bind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data</span><span class="p">,</span> <span class="n">tv_result</span><span class="o">.</span><span class="n">prices</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">rebase</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ret_bind</span><span class="p">[[</span><span class="s1">&#39;Target Vol&#39;</span><span class="p">]],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Target Vol&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ret_bind</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Buy and Hold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cumulative Return&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ret_bind</span><span class="o">.</span><span class="n">to_drawdown_series</span><span class="p">(),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Leverage Ratio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Drawdown&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_112_0.png" src="_images/16_backtest_112_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>16.6.2 캡 씌우기<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tv_wt</span> <span class="o">=</span> <span class="n">tv_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">tv_wt</span><span class="p">[</span><span class="n">tv_wt</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">tv_wt</span><span class="p">[</span><span class="n">tv_wt</span> <span class="o">&lt;=</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tv_cap</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;Target Vol (Cap)&#39;</span><span class="p">,</span>
+                 <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighTarget</span><span class="p">(</span><span class="n">tv_wt</span><span class="p">),</span>                    
+                  <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunWeekly</span><span class="p">(),</span>
+                  <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+<span class="n">tv_backtest_cap</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">tv_cap</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">tv_result_cap</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tv_backtest_cap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret_bind_cap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data</span><span class="p">,</span> <span class="n">tv_result_cap</span><span class="o">.</span><span class="n">prices</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">rebase</span><span class="p">()</span>
+<span class="n">tv_vol_cap</span> <span class="o">=</span> <span class="n">tv_result_cap</span><span class="o">.</span><span class="n">prices</span><span class="o">.</span><span class="n">to_returns</span><span class="p">()</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">tv_wt_cap</span> <span class="o">=</span> <span class="n">tv_result_cap</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ret_bind_cap</span><span class="p">[[</span><span class="s1">&#39;Target Vol (Cap)&#39;</span><span class="p">]],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Target Vol (Cap)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ret_bind_cap</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Buy and Hold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cumulative Return&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ret_bind_cap</span><span class="o">.</span><span class="n">to_drawdown_series</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Drawdown&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tv_vol_cap</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.20</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Rolling Std&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tv_wt_cap</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Leverage Ratio&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16_backtest_116_0.png" src="_images/16_backtest_116_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="15_trading.html" title="previous page">15. 트레이딩 전략을 위한 기술적 지표</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

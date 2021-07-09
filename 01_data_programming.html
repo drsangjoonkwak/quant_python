@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -40,6 +40,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -78,6 +79,7 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -144,13 +146,68 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="05_crawl_practice.html">
    5. 금융 데이터 수집하기 (기본)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="08_other_data.html">
-   8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
   </a>
  </li>
 </ul>
@@ -255,6 +312,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    1.3 왜 파이썬인가?
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   1.4 본 책에서 사용되는 패키지들
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -268,15 +330,15 @@ commentsRunWhenDOMLoaded(addUtterances);
                 
   <div class="section" id="id1">
 <h1>1. 퀀트 투자의 심장: 데이터와 프로그래밍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>몇 년 전까지만 하더라도 퀀트 투자는 일반 투자자들에게 매우 낯선 영역이었지만, 최근에는 각종 커뮤니티와 매체를 통해 많은 사람들에게 익숙한 단어가 되었습니다. 퀀트 투자에서 ‘퀀트’란 모형을 기반으로 금융상품의 가격을 산정하거나, 이를 바탕으로투자를 하는 사람을 말합니다. 퀀트(Quant)라는 단어가 ‘계량적’을 의미하는 퀀티터티브(Quantitative)의 앞 글자를 따왔음을 생각하면 쉽게 이해가 될 것입니다.
-일반적으로 투자자들이 산업과 기업을 분석해 가치를 매기는 정성적인 투자법과는 달리, 퀀트 투자는 수학과 통계를 기반으로 전략을 만들고 이를 바탕으로 투자하는 정량적인 투자법을 의미합니다. 이처럼 데이터를 수집·가공한 후 이를 바탕으로 모델을 만들고 실행하는 단계는 데이터 과학의 업무 흐름도와 매우 유사합니다. 해들리 위컴에 따르면 데이터 과학의 업무 과정은 <a class="reference internal" href="#ds-flow"><span class="std std-numref">Fig. 1</span></a>과 같습니다.</p>
+<p>몇 년 전까지만 하더라도 퀀트 투자는 일반 투자자들에게 매우 낯선 영역이었지만, 최근에는 각종 커뮤니티와 매체를 통해 많은 사람들에게 익숙한 단어가 되었습니다. 퀀트 투자에서 ‘퀀트’란 모형을 기반으로 금융상품의 가격을 산정하거나, 이를 바탕으로 투자를 하는 사람을 말합니다. 퀀트(Quant)라는 단어가 ‘계량적’을 의미하는 퀀티터티브(Quantitative)의 앞 글자를 따왔음을 생각하면 쉽게 이해가 될 것입니다.</p>
+<p>일반적으로 투자자들이 산업과 기업을 분석해 가치를 매기는 정성적인 투자법과는 달리, 퀀트 투자는 수학과 통계를 기반으로 전략을 만들고 이를 바탕으로 투자하는 정량적인 투자법을 의미합니다. 이처럼 데이터를 수집·가공한 후 이를 바탕으로 모델을 만들고 실행하는 단계는 데이터 과학의 업무 흐름도와 매우 유사합니다. 해들리 위컴에 따르면 데이터 과학의 업무 과정은 <a class="reference internal" href="#ds-flow"><span class="std std-numref">Fig. 1</span></a>과 같습니다.</p>
 <div class="figure align-default" id="ds-flow">
 <img alt="_images/01_ds_flow.png" src="_images/01_ds_flow.png" />
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">데이터 과학 업무 과정</span><a class="headerlink" href="#ds-flow" title="Permalink to this image">¶</a></p>
 </div>
 <p>데이터 과학자들은 프로그래밍을 통해 데이터를 불러온 후 이를 정리하고, 원하는 결과를 찾기 위해 데이터를 변형하거나 시각화하고 모델링합니다. 이러한 결과를 바탕으로 타인과 소통하는 일련의 과정을 거칩니다.</p>
 <p>퀀트 투자의 단계 역시 이와 매우 유사합니다. 투자에 필요한 주가, 재무제표 등의 데이터를 수집해 정리한 후 필요한 지표를 얻기 위해 가공합니다. 그 후 각종 모형을 이용해 투자 종목을 선택하거나 백테스트를 수행하며, 이를 바탕으로 실제로 투자하고 성과를 평가합니다. 따라서 퀀트 투자는 데이터 과학이 금융에 응용된 사례라고도 볼수 있으며, 퀀트 투자의 중심에는 데이터와 프로그래밍이 있습니다.</p>
-<p>이 책에서도 데이터 과학의 업무 단계와 동일하게 데이터 불러오기, 데이터별로 정리하고 가공하기, 시각화를 통해 데이터의 특징 파악하기, 퀀트 모델을 이용해 종목 선택하기, 백테스트를 실시한 후 성과 및 위험 평가하기에 대해 알아보겠습니다. 이에 앞서 이 CHAPTER에서는 퀀트 투자의 심장이라고 할 수 있는 데이터를 어떻게 얻을 수 있 는지, 왜 프로그래밍을 해야 하는지, 그중에서도 R이 무엇인지에 대해 간략히 살펴보겠습니다.</p>
+<p>이 책에서도 데이터 과학의 업무 단계와 동일하게 데이터 불러오기, 데이터별로 정리하고 가공하기, 시각화를 통해 데이터의 특징 파악하기, 퀀트 모델을 이용해 종목 선택하기, 백테스트를 실시한 후 성과 및 위험 평가하기, 매매 및 사후보고에 대해 알아보겠습니다. 이에 앞서 이 장에서는 퀀트 투자의 심장이라고 할 수 있는 데이터를 어떻게 얻을 수 있는지, 왜 프로그래밍을 해야 하는지, 그중에서도 파이썬을 사용하는 이유에 대해 간략히 살펴보겠습니다.</p>
 <div class="section" id="id2">
 <h2>1.1 데이터 구하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>퀀트 투자에 필요한 데이터는 여러 데이터 제공업체의 서비스를 이용해서 매우 쉽게 구할 수 있습니다. 해외 데이터 수집에는 블룸버그 혹은 Factset, 국내 데이터 수집에는 DataGuide가 흔히 사용됩니다. 물론 비용을 더 지불한다면 단순 데이터 수집뿐만 아니라 즉석에서 백테스트 및 성과 평가까지 가능합니다. Factset에서 판매하는 Alpha Testing 혹은 S&amp;P Global에서 판매하는 ClariFI를 사용한다면, 전 세계 주식을 대상으로 원하는 전략의 백테스트 결과를 마우스 몇 번 클릭해서 얻을 수 있습니다.</p>
@@ -285,13 +347,13 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">ClariFI®의 백테스트 기능</span><a class="headerlink" href="#clarifi-backtest" title="Permalink to this image">¶</a></p>
 </div>
 <p>데이터 제공업체를 이용하는 방법의 최대 단점은 바로 비용입니다. 블룸버그 단말기는 1년 사용료가 대리 한 명의 연봉과 비슷해, 흔히 ‘블대리’라고 부르기도 합니다. 국내 데이터 업체의 사용료는 이보다 저렴하기는 하지만, 역시 1년 사용료가 수백만 원 정도로, 일반 개인 투자자가 감당하기에는 부담이 됩니다.</p>
-<p>해외데이터는 Quandl이나 tiingo등의 업체가 제공하는 서비스를 이용하면 상대적으로 저렴한 가격에 데이터를 구할 수 있습니다. 물론 대형 데이터 제공업체에 비해 데 이터의 종류가 적고 기간은 짧은 편이지만, 대부분의 일반 투자자가 사용하기에는 충분한 데이터를 얻을 수 있습니다. tiingo에서는 전 세계 64,386개 주식의 30년 이상 가격 정보, 21,352개 주식의 12년 이상 재무정보를 월 $10에 받을 수 있으며, 한정된 종목과 용량에 대해서는 무료로 데이터를 받을 수도 있습니다. 더군다나 API를 통해 프로그램 내에서 직접 데이터를 받을 수 있어 편리합니다.</p>
-<p>그러나 아쉽게도 이러한 데이터에서 한국 시장의 정보는 소외되어 있습니다. 따라서 돈을 들이지 않고 국내 데이터를 얻기 위해서는 직접 발품을 파는 수밖에 없습니다.야후 파이낸스 혹은 국내 금융 웹사이트에서 제공하는 정보를 크롤링해 데이터를 수집할 수 있습니다.</p>
+<p>해외데이터는 Quandl이나 tiingo등의 업체가 제공하는 서비스를 이용하면 상대적으로 저렴한 가격에 데이터를 구할 수 있습니다. 물론 대형 데이터 제공업체에 비해 데이터의 종류가 적고 기간은 짧은 편이지만, 대부분의 일반 투자자가 사용하기에는 충분한 데이터를 얻을 수 있습니다. tiingo에서는 전 세계 74,608개 주식의 30년 이상 가격 정보, 25,218개 주식의 15년 이상 재무정보를 월 10 달러에 받을 수 있으며, 한정된 종목과 용량에 대해서는 무료로 데이터를 받을 수도 있습니다. 더군다나 API를 통해 프로그램 내에서 직접 데이터를 받을 수 있어 편리합니다.</p>
+<p>그러나 아쉽게도 이러한 데이터에서 한국 시장의 정보는 소외되어 있습니다. 따라서 돈을 들이지 않고 국내 데이터를 얻기 위해서는 직접 발품을 파는 수밖에 없습니다. 다행히 국내 금융 웹사이트에서 제공하는 정보를 크롤링해 데이터를 수집할 수 있습니다.</p>
 <div class="figure align-default" id="naver-finance-table">
 <img alt="_images/01_naver_finance_table.png" src="_images/01_naver_finance_table.png" />
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">네이버 금융 제공 재무정보</span><a class="headerlink" href="#naver-finance-table" title="Permalink to this image">¶</a></p>
 </div>
-<p>이러한 정보를 잘만 활용한다면 장기간의 주가 및 재무정보를 무료로 수집할 수 있습니다. 물론 데이터 제공업체가 제공하는 깔끔한 형태의 데이터가 아니므로 클렌징 작업이 필요하고 상장폐지된 기업의 데이터를 구하기 힘들다는 단점이 있습니다. 그러나 비용이 들지 않는 데다 현재 시점에서 투자 종목을 선택할 때는 상장폐지된 기업의 정 보가 필요하지 않는다는 점을 고려하면 이는 큰 문제가 되지 않습니다.</p>
+<p>이러한 정보를 잘만 활용한다면 장기간의 주가 및 재무정보를 무료로 수집할 수 있습니다. 물론 데이터 제공업체가 제공하는 깔끔한 형태의 데이터가 아니므로 클렌징 작업이 필요하고 상장폐지된 기업의 데이터를 구하기 힘들다는 단점이 있습니다. 그러나 비용이 들지 않는 데다 현재 시점에서 투자 종목을 선택할 때는 상장폐지된 기업의 정보가 필요하지 않는다는 점을 고려하면 이는 큰 문제가 되지 않습니다.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -304,9 +366,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="section" id="id3">
 <h2>1.2 퀀트 투자와 프로그래밍<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>우리가 구한 데이터는 연구나 투자에 바로 사용할 수 있는 형태로 주어지는 경우가 거의 없습니다. 따라서 데이터를 목적에 맞게 처리하는 과정을 거쳐야 하며, 이를 흔히 데이터 클렌징 작업이라고 합니다. 또한 정제된 데이터를 활용한 투자 전략의 백테스트나 종목 선정을 위해서 프로그래밍은 필수입니다. 물론 모든 퀀트 투자에서 프로그래 밍이 필수인 것은 아닙니다. 엑셀을 이용해도 간단한 형태의 백테스트 및 종목 선정은 얼마든지 가능합니다. 그러나 응용성 및 효율성의 측면에서 엑셀은 매우 비효율적입니다.</p>
+<p>우리가 구한 데이터는 연구나 투자에 바로 사용할 수 있는 형태로 주어지는 경우가 거의 없습니다. 따라서 데이터를 목적에 맞게 처리하는 과정을 거쳐야 하며, 이를 흔히 데이터 클렌징 작업이라고 합니다. 또한 정제된 데이터를 활용한 투자 전략의 백테스트나 종목 선정을 위해서 프로그래밍은 필수입니다. 물론 모든 퀀트 투자에서 프로그래밍이 필수인 것은 아닙니다. 엑셀을 이용해도 간단한 형태의 백테스트 및 종목 선정은 얼마든지 가능합니다. 그러나 응용성 및 효율성의 측면에서 엑셀은 매우 비효율적입니다.</p>
 <p>데이터를 수집하고 클렌징 작업을 할 때 대상이 몇 종목 되지 않는다면 엑셀을 이용해도 충분히 가능합니다. 그러나 종목 수가 수천 종목을 넘어간다면 데이터를 손으로 일일이 처리하기가 사실상 불가능에 가깝습니다. 이러한 단순 반복 작업은 프로그래밍을 이용한다면 훨씬 효율적으로 수행할 수 있습니다.</p>
-<p>백테스트에서도 프로그래밍이 훨씬 효율적입니다. 과거 12개월 누적수익률이 높은 종목에 투자하는 모멘텀 전략의 백테스트를 한다고 가정합시다. 처음에는 엑셀로 백테스트를 하는 것이 편하다고 생각할 수 있습니다. 그러나 만일 12개월이 아닌 6개월 누적 수익률로 백테스트를 하고자 한다면 어떨까요? 엑셀에서 다시 6개월 누적수익률을 구하기 위해 명령어를 바꾸고 드래그하는 작업을 반복해야 할 것입니다. 그러나 프로그래밍을 이용한다면 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">12</span></code>였던 부분을 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">6</span></code>으로 변경한 후 단지 클릭 한 번만으로 새로운 백테스트가 완료됩니다.</p>
+<p>백테스트에서도 프로그래밍이 훨씬 효율적입니다. 과거 12개월 누적수익률이 높은 종목에 투자하는 모멘텀 전략의 백테스트를 한다고 가정합시다. 처음에는 엑셀로 백테스트를 하는 것이 편하다고 생각할 수 있습니다. 그러나 만일 12개월이 아닌 6개월 누적수익률로 백테스트를 하고자 한다면 어떨까요? 엑셀에서 다시 6개월 누적수익률을 구하기 위해 명령어를 바꾸고 드래그하는 작업을 반복해야 할 것입니다. 그러나 프로그래밍을 이용한다면 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">12</span></code>였던 부분을 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">6</span></code>으로 변경한 후 단지 클릭 한 번만으로 새로운 백테스트가 완료됩니다.</p>
 <p>전체 데이터가 100MB 정도라고 가정할 때, 투자 전략이 계속해서 늘어날 경우는 어떨까요? 엑셀에서 A라는 전략을 백테스트하기 위해서는 해당 데이터로 작업한 후 저장할 것입니다. 그 후 B라는 전략을 새롭게 백테스트하려면 해당 데이터를 새로운 엑셀 파일에 복사해 작업한 후 다시 저장해야 합니다. 결과적으로 10개의 전략만 백테스트 하더라도 100MB짜리 엑셀 파일이 10개, 즉 1GB 정도의 엑셀 파일이 쌓이게 됩니다. 만일 데이터가 바뀔 경우 다시 10개 엑셀 시트의 데이터를 일일이 바꿔야 하는 귀찮음도 감수해야 합니다. 물론 하나의 엑셀 파일 내에서 모든 전략을 수행할 수도 있지만, 이러한 경우 속도가 상당히 저하되는 문제가 있습니다.</p>
 <p>프로그래밍을 이용한다면 어떨까요? 백테스트를 수행하는 프로그래밍 스크립트는 불과 몇 KB에 불과하므로, 10개의 전략에 대한 스크립트 파일을 합해도 1MB가 되지 않습니다. 데이터가 바뀌더라도 원본 데이터 파일 하나만 수정해주면 됩니다.</p>
 <p>물론 대부분의 사람들에게 프로그래밍은 낯선 도구입니다. 그러나 퀀트 투자에 필요한 프로그래밍은 매우 한정적이고 몇 가지 기능을 반복적으로 쓰기 때문에 몇 개의 단어와 구문만 익숙해지면 사용하는 데 큰 어려움이 없습니다. 또한 전문 개발자들의 프로그래밍에 비하면 상당히 쉬운 수준이므로, 비교적 빠른 시간 내에 원하는 전략을 테스트하고 수행하는 정도의 능력을 갖출 수도 있습니다.</p>
@@ -319,6 +381,26 @@ commentsRunWhenDOMLoaded(addUtterances);
 <img alt="_images/01_tiobe.png" src="_images/01_tiobe.png" />
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">프로그래밍 언어 사용 순위</span><a class="headerlink" href="#tiobe" title="Permalink to this image">¶</a></p>
 </div>
+</div>
+<div class="section" id="id6">
+<h2>1.4 본 책에서 사용되는 패키지들<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>파이썬에는 다양한 패키지가 만들어져 있으며, 누구나 무료로 이용할 수 있습니다. 본 책에서 사용되는 패키지 리스트는 다음과 같으며, 미리 설치하시길 바랍니다. 패키지는 콘솔창에서 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">패키지이름</span></code> 을 통해 할 수 있습니다.</p>
+<ul class="simple">
+<li><p>requests</p></li>
+<li><p>bs4</p></li>
+<li><p>pandas</p></li>
+<li><p>pandas_datareader</p></li>
+<li><p>numpy</p></li>
+<li><p>fredapi</p></li>
+<li><p>matplotlib</p></li>
+<li><p>seaborn</p></li>
+<li><p>keyring</p></li>
+<li><p>cvxopt</p></li>
+<li><p>tqdm</p></li>
+<li><p>pyinstaller</p></li>
+<li><p>plotly</p></li>
+<li><p>stargazer</p></li>
+</ul>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="mynote"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>

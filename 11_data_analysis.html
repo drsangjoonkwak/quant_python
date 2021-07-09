@@ -1,0 +1,1851 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11. 데이터 분석 및 시각화하기</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="12. 퀀트 전략을 이용한 종목선정 (기본)" href="12_factor_basic.html" />
+    <link rel="prev" title="10. 데이터 정리하기" href="10_bind_data.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/11_data_analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/11_data_analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   11.1 종목정보 데이터 분석
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     11.1.1 데이터 합치기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     11.1.2 열 이름 바꾸기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     11.1.3 고유한 값 확인
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     11.1.4 열 만들기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     11.1.5 조건을 충족하는 종목 선택
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     11.1.6 요약 통계량
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     11.1.7 데이터 정렬
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     11.1.8 순위 계산
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     11.1.9 분위수 계산
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     11.1.10 그룹별 계산
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     11.1.11 피벗 테이블
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   11.2 종목정보 시각화
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     11.2.1 산점도 나타내기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     11.2.2 히스토그램 나타내기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     11.2.3 박스 플롯 나타내기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     11.2.4 막대 그래프 나타내기
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>11. 데이터 분석 및 시각화하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>데이터 수집 및 정리가 끝났다면, 내가 가지고 있는 데이터가 어떠한 특성을 가지고 있는지에 대한 분석 및 시각화 과정, 즉 **탐색적 데이터 분석(Exploratory Data Analysis)**을 할 필요가 있습니다. 이 과정을 통해 데이터를 더 잘 이해할 수 있으며, 극단치나 결측치 등 데이터가 가지고 있는 잠재적인 문제를 발견하고 이를 어떻게 처리할지 고민할 수 있습니다.</p>
+<p>이번 장에서는 데이터 분석 및 시각화에 대해 알아보겠습니다.</p>
+<div class="section" id="id2">
+<h2>11.1 종목정보 데이터 분석<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>먼저 거래소를 통해 수집한 산업별 현황과 개별지표를 정리한 파일, WICS 기준 섹터 지표를 정리한 파일을 통해 국내 상장종목의 데이터를 분석해보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">KOR_sector</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_sector.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_sector</span><span class="p">[</span><span class="s1">&#39;CMP_CD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_sector</span><span class="p">[</span><span class="s1">&#39;CMP_CD&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>각 파일을 불러온 후 티커에 해당하는 종목코드와 CMP_CD 열을 6자리 숫자로 만들어줍니다. 이제 파이썬에서 대표적인 데이터 분석 패키지인 pandas를 이용해 데이터를 분석해보겠습니다.</p>
+<div class="section" id="id3">
+<h3>11.1.1 데이터 합치기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>두 테이블을 하나로 합치기 위해 <code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수를 이용합니다. 데이터를 합치는 방법은 <a class="reference internal" href="#eda-merge"><span class="std std-numref">Fig. 62</span></a>와 같이 크게 네가지 종류가 있습니다.</p>
+<div class="figure align-default" id="eda-merge">
+<img alt="_images/eda_merge.png" src="_images/eda_merge.png" />
+<p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">merge 종류</span><a class="headerlink" href="#eda-merge" title="Permalink to this image">¶</a></p>
+</div>
+<p>이 중 거래소 티커 기준으로 데이터를 맞추기 위해 left를 기준으로 두 데이터를 합치겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">,</span> <span class="n">KOR_sector</span><span class="p">,</span> <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">,</span><span class="s1">&#39;종목명&#39;</span><span class="p">],</span> <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CMP_CD&#39;</span><span class="p">,</span><span class="s1">&#39;CMP_KOR&#39;</span><span class="p">],</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">data_market</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목코드</th>
+      <th>종목명</th>
+      <th>시장구분</th>
+      <th>업종명</th>
+      <th>종가</th>
+      <th>대비</th>
+      <th>등락률</th>
+      <th>시가총액</th>
+      <th>EPS</th>
+      <th>PER</th>
+      <th>...</th>
+      <th>CMP_KOR</th>
+      <th>MKT_VAL</th>
+      <th>WGT</th>
+      <th>S_WGT</th>
+      <th>CAL_WGT</th>
+      <th>SEC_CD</th>
+      <th>SEC_NM_KOR</th>
+      <th>SEQ</th>
+      <th>TOP60</th>
+      <th>APT_SHR_CNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>005930</td>
+      <td>삼성전자</td>
+      <td>KOSPI</td>
+      <td>전기전자</td>
+      <td>83200</td>
+      <td>-400</td>
+      <td>-0.48</td>
+      <td>496685908160000</td>
+      <td>3166.0</td>
+      <td>26.28</td>
+      <td>...</td>
+      <td>삼성전자</td>
+      <td>372514431.0</td>
+      <td>60.03</td>
+      <td>60.03</td>
+      <td>1.0</td>
+      <td>G45</td>
+      <td>IT</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>4.477337e+09</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>000660</td>
+      <td>SK하이닉스</td>
+      <td>KOSPI</td>
+      <td>전기전자</td>
+      <td>137500</td>
+      <td>-2500</td>
+      <td>-1.79</td>
+      <td>100100325187500</td>
+      <td>2943.0</td>
+      <td>46.72</td>
+      <td>...</td>
+      <td>SK하이닉스</td>
+      <td>74074241.0</td>
+      <td>11.94</td>
+      <td>71.96</td>
+      <td>1.0</td>
+      <td>G45</td>
+      <td>IT</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>5.387218e+08</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>035420</td>
+      <td>NAVER</td>
+      <td>KOSPI</td>
+      <td>서비스업</td>
+      <td>385500</td>
+      <td>2000</td>
+      <td>0.52</td>
+      <td>63323538772500</td>
+      <td>4006.0</td>
+      <td>96.23</td>
+      <td>...</td>
+      <td>NAVER</td>
+      <td>49392360.0</td>
+      <td>32.00</td>
+      <td>32.00</td>
+      <td>1.0</td>
+      <td>G50</td>
+      <td>커뮤니케이션서비스</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>1.281254e+08</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>051910</td>
+      <td>LG화학</td>
+      <td>KOSPI</td>
+      <td>화학</td>
+      <td>817000</td>
+      <td>5000</td>
+      <td>0.62</td>
+      <td>57673944231000</td>
+      <td>4085.0</td>
+      <td>200.00</td>
+      <td>...</td>
+      <td>LG화학</td>
+      <td>36911324.0</td>
+      <td>29.87</td>
+      <td>29.87</td>
+      <td>1.0</td>
+      <td>G15</td>
+      <td>소재</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>4.517910e+07</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>207940</td>
+      <td>삼성바이오로직스</td>
+      <td>KOSPI</td>
+      <td>의약품</td>
+      <td>782000</td>
+      <td>12000</td>
+      <td>1.56</td>
+      <td>51741030000000</td>
+      <td>3067.0</td>
+      <td>254.97</td>
+      <td>...</td>
+      <td>삼성바이오로직스</td>
+      <td>12935258.0</td>
+      <td>8.71</td>
+      <td>30.59</td>
+      <td>1.0</td>
+      <td>G35</td>
+      <td>건강관리</td>
+      <td>2.0</td>
+      <td>19.0</td>
+      <td>1.654125e+07</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 28 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목코드</th>
+      <th>종목명</th>
+      <th>시장구분</th>
+      <th>업종명</th>
+      <th>종가</th>
+      <th>대비</th>
+      <th>등락률</th>
+      <th>시가총액</th>
+      <th>EPS</th>
+      <th>PER</th>
+      <th>...</th>
+      <th>CMP_KOR</th>
+      <th>MKT_VAL</th>
+      <th>WGT</th>
+      <th>S_WGT</th>
+      <th>CAL_WGT</th>
+      <th>SEC_CD</th>
+      <th>SEC_NM_KOR</th>
+      <th>SEQ</th>
+      <th>TOP60</th>
+      <th>APT_SHR_CNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2191</th>
+      <td>121890</td>
+      <td>에스디시스템</td>
+      <td>KOSDAQ</td>
+      <td>정보기기</td>
+      <td>739</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>7101198800</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2192</th>
+      <td>114570</td>
+      <td>지스마트글로벌</td>
+      <td>KOSDAQ</td>
+      <td>반도체</td>
+      <td>620</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>7030424280</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2193</th>
+      <td>080440</td>
+      <td>에스제이케이</td>
+      <td>KOSDAQ</td>
+      <td>유통</td>
+      <td>498</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>6636328080</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2194</th>
+      <td>158310</td>
+      <td>스타모빌리티</td>
+      <td>KOSDAQ</td>
+      <td>기계·장비</td>
+      <td>505</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>6096179210</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2195</th>
+      <td>028040</td>
+      <td>미래SCI</td>
+      <td>KOSDAQ</td>
+      <td>유통</td>
+      <td>6</td>
+      <td>-11</td>
+      <td>-64.71</td>
+      <td>269877012</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 28 columns</p>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수를 이용해 KOR_ticker와 KOR_sector 데이터를 합쳐줍니다. 왼쪽(KOR_ticker)의 종목코드와 종목명이 오른쪽(KOR_sector)의 CMP_CD와 CMP_KOR에 각각 대응되므로 left_on 및 right_on에 이를 입력해주며, 합치는 방법으로 left를 입력해줍니다. 소형주의 경우 KOR_sector에 해당종목의 정보가 없어, NA가 생성됩니다.</p>
+</div>
+<div class="section" id="id4">
+<h3>11.1.2 열 이름 바꾸기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;종목코드&#39;, &#39;종목명&#39;, &#39;시장구분&#39;, &#39;업종명&#39;, &#39;종가&#39;, &#39;대비&#39;, &#39;등락률&#39;, &#39;시가총액&#39;, &#39;EPS&#39;, &#39;PER&#39;,
+       &#39;BPS&#39;, &#39;PBR&#39;, &#39;주당배당금&#39;, &#39;배당수익률&#39;, &#39;IDX_CD&#39;, &#39;IDX_NM_KOR&#39;, &#39;ALL_MKT_VAL&#39;,
+       &#39;CMP_CD&#39;, &#39;CMP_KOR&#39;, &#39;MKT_VAL&#39;, &#39;WGT&#39;, &#39;S_WGT&#39;, &#39;CAL_WGT&#39;, &#39;SEC_CD&#39;,
+       &#39;SEC_NM_KOR&#39;, &#39;SEQ&#39;, &#39;TOP60&#39;, &#39;APT_SHR_CNT&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>열 이름 중에 ‘배당수익률’이 있습니다. 이를 ‘배당수익률(%)’로 바꿔주도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span> <span class="o">=</span> <span class="n">data_market</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;배당수익률&#39;</span><span class="p">:</span><span class="s1">&#39;배당수익률(%)&#39;</span><span class="p">})</span>
+
+<span class="n">data_market</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;종목코드&#39;, &#39;종목명&#39;, &#39;시장구분&#39;, &#39;업종명&#39;, &#39;종가&#39;, &#39;대비&#39;, &#39;등락률&#39;, &#39;시가총액&#39;, &#39;EPS&#39;, &#39;PER&#39;,
+       &#39;BPS&#39;, &#39;PBR&#39;, &#39;주당배당금&#39;, &#39;배당수익률(%)&#39;, &#39;IDX_CD&#39;, &#39;IDX_NM_KOR&#39;,
+       &#39;ALL_MKT_VAL&#39;, &#39;CMP_CD&#39;, &#39;CMP_KOR&#39;, &#39;MKT_VAL&#39;, &#39;WGT&#39;, &#39;S_WGT&#39;,
+       &#39;CAL_WGT&#39;, &#39;SEC_CD&#39;, &#39;SEC_NM_KOR&#39;, &#39;SEQ&#39;, &#39;TOP60&#39;, &#39;APT_SHR_CNT&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">rename()</span></code> 함수 내에 딕셔너리 형태로 {‘old name’:’new name’}을 입력하면 열 이름이 바뀌게 됩니다.</p>
+</div>
+<div class="section" id="id5">
+<h3>11.1.3 고유한 값 확인<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;IT&#39;, &#39;커뮤니케이션서비스&#39;, &#39;소재&#39;, &#39;건강관리&#39;, &#39;경기관련소비재&#39;, &#39;에너지&#39;, &#39;산업재&#39;, &#39;금융&#39;,
+       &#39;유틸리티&#39;, &#39;필수소비재&#39;, nan], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>먼저 <code class="docutils literal notranslate"><span class="pre">unique()</span></code> 함수는 해당 열의 고유한 값을 반환합니다. 데이터의 섹터 정보를 확인해보면, WICS 기준 10개 섹터 및 섹터 정보가 없는 종목인 NA 값이 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IT           560
+산업재          349
+경기관련소비재      336
+건강관리         273
+소재           229
+NaN          118
+커뮤니케이션서비스    111
+필수소비재         99
+금융            76
+에너지           25
+유틸리티          20
+Name: SEC_NM_KOR, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> 함수는 고유한 값별로 개수를 세며, dropna를 False로 지정할 경우 NA 값도 포함됩니다. 우리나라 종목들의 섹터 정보를 확인해보면 IT 섹터에 포함된 종목이 압도적으로 많습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IT           0.255009
+산업재          0.158925
+경기관련소비재      0.153005
+건강관리         0.124317
+소재           0.104281
+NaN          0.053734
+커뮤니케이션서비스    0.050546
+필수소비재        0.045082
+금융           0.034608
+에너지          0.011384
+유틸리티         0.009107
+Name: SEC_NM_KOR, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>normalize를 True로 지정하면, 값들이 비율로 계산됩니다.</p>
+</div>
+<div class="section" id="id6">
+<h3>11.1.4 열 만들기<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>기존에 존재하는 데이터를 통해 새로운 열을 만들어 보도록 하겠습니다. 먼저, PBR과 PER의 관계를 이용하면 ROE를 계산할 수 있습니다.</p>
+<div class="math notranslate nohighlight">
+\[ \frac{PBR}{PER} = \frac{\frac{Price}{BPS}}{\frac{Price}{EPS}} = \frac{Price\ \times\ EPS}{Price\ \times\ BPS} = \frac{EPS}{BPS} = ROE\]</div>
+<p>또한 시가총액에 중앙값(median)보다 위면 대형주, 낮으면 소형주로 구분할 수 있습니다. 이를 이용해 ROE 및 size 열을 생성하도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;ROE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;PER&#39;</span><span class="p">]</span>
+<span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;시가총액&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;시가총액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="s1">&#39;big&#39;</span><span class="p">,</span> <span class="s1">&#39;small&#39;</span><span class="p">)</span>
+
+<span class="n">data_market</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">,</span> <span class="s1">&#39;ROE&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목명</th>
+      <th>ROE</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>삼성전자</td>
+      <td>0.084475</td>
+      <td>big</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>SK하이닉스</td>
+      <td>0.044735</td>
+      <td>big</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NAVER</td>
+      <td>0.113686</td>
+      <td>big</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>LG화학</td>
+      <td>0.018800</td>
+      <td>big</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>삼성바이오로직스</td>
+      <td>0.046594</td>
+      <td>big</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>먼저 PBR을 PER로 나눈 ROE에 해당하는 열을 만들어 줍니다. 그 후, numpy의 <code class="docutils literal notranslate"><span class="pre">where()</span></code> 함수를 통해 시가총액이 median 보다 크면 big, 아니면 small에 해당하는 size 열을 만들어 줍니다.</p>
+</div>
+<div class="section" id="id7">
+<h3>11.1.5 조건을 충족하는 종목 선택<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>필터를 이용해 내가 원하는 조건에 해당하는 종목을 선택할 수도 있습니다. 먼저 PBR이 1 미만인 기업을 선택해보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_market</span><span class="o">.</span><span class="n">PBR</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목명</th>
+      <th>PBR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6</th>
+      <td>현대차</td>
+      <td>0.89</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>POSCO</td>
+      <td>0.65</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>현대모비스</td>
+      <td>0.89</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>KB금융</td>
+      <td>0.58</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>신한지주</td>
+      <td>0.47</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이번에는 PBR 1 미만, PER 20 미만, ROE 10% 초과인 기업을 선택해보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">data_market</span><span class="o">.</span><span class="n">PBR</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data_market</span><span class="o">.</span><span class="n">PER</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data_market</span><span class="o">.</span><span class="n">ROE</span> <span class="o">&gt;</span> <span class="mf">0.1</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">,</span> <span class="s1">&#39;PER&#39;</span><span class="p">,</span> <span class="s1">&#39;ROE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목명</th>
+      <th>PBR</th>
+      <th>PER</th>
+      <th>ROE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>80</th>
+      <td>GS건설</td>
+      <td>0.90</td>
+      <td>8.01</td>
+      <td>0.112360</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>메리츠증권</td>
+      <td>0.81</td>
+      <td>4.98</td>
+      <td>0.162651</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>신세계</td>
+      <td>0.70</td>
+      <td>5.32</td>
+      <td>0.131579</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>두산인프라코어</td>
+      <td>0.99</td>
+      <td>9.15</td>
+      <td>0.108197</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>메리츠화재</td>
+      <td>0.87</td>
+      <td>6.89</td>
+      <td>0.126270</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이러한 필터 조건을 통해 간단하게 종목을 스크리닝 할 수도 있습니다.</p>
+</div>
+<div class="section" id="id8">
+<h3>11.1.6 요약 통계량<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[[</span><span class="s1">&#39;PBR&#39;</span><span class="p">,</span> <span class="s1">&#39;ROE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PBR</th>
+      <th>ROE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>2161.000000</td>
+      <td>1419.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>4.102582</td>
+      <td>0.099866</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>19.260562</td>
+      <td>0.157896</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.020000</td>
+      <td>0.000088</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.900000</td>
+      <td>0.035265</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.670000</td>
+      <td>0.071669</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>3.300000</td>
+      <td>0.126348</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>686.210000</td>
+      <td>4.414634</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">describe()</span></code> 함수는 요약 통계량을 계산해줍니다. 국내 종목의 PBR를 확인해보면 0에 가까운 극단적인 저PBR 종목부터, 수백에 해당하는 극단적인 고PBR 종목까지 분포하고 있습니다. ROE 역시 저ROE 부터 고ROE 까지 그 차이가 매우 크며, PBR과 ROE의 갯수(count)가 다른 이유는 PER가 없는 종목(적자 종목)의 경우 ROE가 NA로 계산되기 때문입니다.</p>
+</div>
+<div class="section" id="id9">
+<h3>11.1.7 데이터 정렬<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;PBR&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목명</th>
+      <th>PBR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2195</th>
+      <td>미래SCI</td>
+      <td>0.02</td>
+    </tr>
+    <tr>
+      <th>2192</th>
+      <td>지스마트글로벌</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <th>627</th>
+      <td>세아홀딩스</td>
+      <td>0.18</td>
+    </tr>
+    <tr>
+      <th>2188</th>
+      <td>럭슬</td>
+      <td>0.18</td>
+    </tr>
+    <tr>
+      <th>1767</th>
+      <td>세원정공</td>
+      <td>0.19</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> 함수는 선택한 열을 기준으로 데이터를 정렬해주며, 기본적으로 오름차순(ascending)으로 정렬을 해줍니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">,</span> <span class="s1">&#39;ROE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;ROE&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목명</th>
+      <th>ROE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2129</th>
+      <td>이엠앤아이</td>
+      <td>4.414634</td>
+    </tr>
+    <tr>
+      <th>372</th>
+      <td>한진중공업</td>
+      <td>1.754967</td>
+    </tr>
+    <tr>
+      <th>1278</th>
+      <td>제노코</td>
+      <td>1.746517</td>
+    </tr>
+    <tr>
+      <th>865</th>
+      <td>유일에너테크</td>
+      <td>0.830023</td>
+    </tr>
+    <tr>
+      <th>1023</th>
+      <td>양지사</td>
+      <td>0.741007</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>만일 내림차순으로 정렬을 원할 경우, ascending=False 를 입력해주면 됩니다.</p>
+</div>
+<div class="section" id="id10">
+<h3>11.1.8 순위 계산<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;PBR_rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;first&#39;</span><span class="p">)</span>
+<span class="n">data_market</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">,</span> <span class="s1">&#39;PBR_rank&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;PBR_rank&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목명</th>
+      <th>PBR</th>
+      <th>PBR_rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2195</th>
+      <td>미래SCI</td>
+      <td>0.02</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2192</th>
+      <td>지스마트글로벌</td>
+      <td>0.15</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>627</th>
+      <td>세아홀딩스</td>
+      <td>0.18</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2188</th>
+      <td>럭슬</td>
+      <td>0.18</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>1767</th>
+      <td>세원정공</td>
+      <td>0.19</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">rank()</span></code> 함수는 선택한 열의 순위를 구해줍니다. 기본적으로 오름차순으로 순위를 구하며, method 인자를 first로 입력하면 동점이 존재할 경우 데이터 상에서 먼저 나타나는 관측치부터 순위를 부여합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;ROE_rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;ROE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">data_market</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">,</span> <span class="s1">&#39;ROE&#39;</span><span class="p">,</span> <span class="s1">&#39;ROE_rank&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;ROE_rank&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목명</th>
+      <th>ROE</th>
+      <th>ROE_rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2129</th>
+      <td>이엠앤아이</td>
+      <td>4.414634</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>372</th>
+      <td>한진중공업</td>
+      <td>1.754967</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1278</th>
+      <td>제노코</td>
+      <td>1.746517</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>865</th>
+      <td>유일에너테크</td>
+      <td>0.830023</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>1023</th>
+      <td>양지사</td>
+      <td>0.741007</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>만일 내림차순으로 순위를 계산하고자 할 경우, 역시나 ascending = False 를 추가로 입력해줍니다.</p>
+</div>
+<div class="section" id="id11">
+<h3>11.1.9 분위수 계산<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;quantile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">],</span> <span class="n">q</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">data_market</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">,</span> <span class="s1">&#39;quantile&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목명</th>
+      <th>PBR</th>
+      <th>quantile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>삼성전자</td>
+      <td>2.22</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>SK하이닉스</td>
+      <td>2.09</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NAVER</td>
+      <td>10.94</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>LG화학</td>
+      <td>3.76</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>삼성바이오로직스</td>
+      <td>11.88</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">qcut()</span></code> 함수는 분위수를 계산해주며, q 인자를 통해 몇 분위로 나눌지 선택할 수 있습니다. 추가적으로 labels 인자를 입력하면 반환된 구간들에 대한 레이블을 명시합니다.해당 함수 역시 오름차순으로 분위수를 나눕니다.</p>
+</div>
+<div class="section" id="id12">
+<h3>11.1.10 그룹별 계산<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">)[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SEC_NM_KOR
+IT           2.140
+건강관리         3.650
+경기관련소비재      1.280
+금융           0.770
+산업재          1.215
+소재           1.125
+에너지          1.220
+유틸리티         0.535
+커뮤니케이션서비스    2.530
+필수소비재        1.070
+Name: PBR, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 함수는 선택한 열 중 동일한 데이터를 기준으로 데이터를 묶어줍니다. 위 예제에서는 섹터를 나타내는 SEC_NM_KOR 기준으로 데이터를 묶었으며, 각 섹터별 PBR의 median 값을 계산하였습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;시장구분&#39;</span><span class="p">,</span> <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">])[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>시장구분    SEC_NM_KOR
+KOSDAQ  IT            2.170
+        건강관리          4.300
+        경기관련소비재       1.660
+        금융            2.170
+        산업재           1.480
+        소재            1.650
+        에너지           1.680
+        유틸리티          0.960
+        커뮤니케이션서비스     2.960
+        필수소비재         1.545
+KOSPI   IT            1.740
+        건강관리          2.380
+        경기관련소비재       0.910
+        금융            0.585
+        산업재           1.030
+        소재            0.965
+        에너지           0.720
+        유틸리티          0.480
+        커뮤니케이션서비스     1.865
+        필수소비재         0.950
+Name: PBR, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>이번에는 예제는 시장과 섹터를 기준으로 데이터를 그룹화한 후 각 그룹별 PBR의 중앙값을 구했습니다. 이처럼 그룹은 하나만이 아닌 원하는 만큼 나눌 수 있습니다.</p>
+</div>
+<div class="section" id="id13">
+<h3>11.1.11 피벗 테이블<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">data_market</span><span class="p">,</span>              <span class="c1"># 데이터프레임</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">,</span>     <span class="c1"># 행에 들어갈 열</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;시장구분&#39;</span><span class="p">,</span>     <span class="c1"># 열에 들어갈 열</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="s1">&#39;배당수익률(%)&#39;</span><span class="p">,</span> <span class="c1"># 데이터로 사용할 열</span>
+    <span class="n">aggfunc</span> <span class="o">=</span> <span class="s1">&#39;median&#39;</span>        <span class="c1"># 데이터 집계 함수</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>시장구분</th>
+      <th>KOSDAQ</th>
+      <th>KOSPI</th>
+    </tr>
+    <tr>
+      <th>SEC_NM_KOR</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>IT</th>
+      <td>0.00</td>
+      <td>0.145</td>
+    </tr>
+    <tr>
+      <th>건강관리</th>
+      <td>0.00</td>
+      <td>0.460</td>
+    </tr>
+    <tr>
+      <th>경기관련소비재</th>
+      <td>0.00</td>
+      <td>0.840</td>
+    </tr>
+    <tr>
+      <th>금융</th>
+      <td>0.80</td>
+      <td>4.055</td>
+    </tr>
+    <tr>
+      <th>산업재</th>
+      <td>0.00</td>
+      <td>0.975</td>
+    </tr>
+    <tr>
+      <th>소재</th>
+      <td>0.39</td>
+      <td>1.045</td>
+    </tr>
+    <tr>
+      <th>에너지</th>
+      <td>0.00</td>
+      <td>1.215</td>
+    </tr>
+    <tr>
+      <th>유틸리티</th>
+      <td>1.71</td>
+      <td>2.910</td>
+    </tr>
+    <tr>
+      <th>커뮤니케이션서비스</th>
+      <td>0.00</td>
+      <td>0.020</td>
+    </tr>
+    <tr>
+      <th>필수소비재</th>
+      <td>0.43</td>
+      <td>0.940</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pivot_table()</span></code> 함수는 엑셀의 피벗테이블과 비슷한 기능을 합니다. 행 인덱스, 열 인덱스, 데이터 값, 데이터 집계함수를 입력하면 이에 해당하는 피벗 테이블이 계산됩니다. 위의 예제는 각 시장과 섹터 별 배당수익률의 중앙값을 계산하였습니다.</p>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>11.2 종목정보 시각화<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<p>파이썬에서 사용되는 대표적인 시각화 패키지는 Matplotlib 이며, 이를 이용해 다양한 시각화를 구현할 수 있습니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">gallery</span><span class="o">/</span><span class="n">style_sheets</span><span class="o">/</span><span class="n">style_sheets_reference</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>그러나 pandas 패키지에는 Matplotlib의 기능이 일부 내장되어 있기 때문에, 이를 이용하면 훨씬 간단하게 그래프를 그릴 수 있습니다. pandas의 시각화에 대한 메뉴얼은 아래 사이트에 자세히 나와 있습니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pandas</span><span class="o">.</span><span class="n">pydata</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pandas</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">user_guide</span><span class="o">/</span><span class="n">visualization</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>이 외에도 다소 복잡한 그래프는 searborn 패키지를 사용하는 것이 훨씬 효율적입니다. 이를 바탕으로 각종 종목정보를 시각화하도록 하겠습니다.</p>
+<div class="section" id="id15">
+<h3>11.2.1 산점도 나타내기<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">data_market</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;ROE&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;PBR&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/11_data_analysis_60_0.png" src="_images/11_data_analysis_60_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">scatter()</span></code> 함수는 산점도를 표현하는 함수입니다. <span class="math notranslate nohighlight">\(x\)</span>축에는 ROE를, <span class="math notranslate nohighlight">\(y\)</span>축에는 PBR를 입력하면 이에 해당하는 산점도가 표현됩니다. 원하는 그림이 그려지기는 했으나, 극단치 데이터가 있어 둘 사이의 관계가 잘 보이지 않습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;ROE&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;PBR&#39;</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/11_data_analysis_62_0.png" src="_images/11_data_analysis_62_0.png" />
+</div>
+</div>
+<p>극단치 효과를 제거하기 위해 xlim과 ylim을 통해 <span class="math notranslate nohighlight">\(x\)</span>축과 <span class="math notranslate nohighlight">\(y\)</span>의 범위를 직접 지정해줍니다. 극단치가 제거되어 데이터를 더욱 쉽게 확인할 수 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="s1">&#39;Malgun Gothic&#39;</span><span class="p">)</span> <span class="c1"># 한글 폰트 설정</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data_market</span><span class="p">,</span>
+               <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;ROE&#39;</span><span class="p">,</span> 
+               <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;PBR&#39;</span><span class="p">,</span> 
+               <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;시장구분&#39;</span><span class="p">,</span>
+               <span class="n">markers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">],</span>
+               <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">,</span>
+               <span class="n">ci</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">legend_out</span> <span class="o">=</span> <span class="kc">False</span>
+              <span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/11_data_analysis_64_0.png" src="_images/11_data_analysis_64_0.png" />
+</div>
+</div>
+<p>그룹별로 시각화를 하기 위해서는 seaborn 패키지를 사용해야 합니다. <code class="docutils literal notranslate"><span class="pre">lmplot()</span></code> 함수를 이용하면 산점도와 평활선을 함께 그릴 수 있으며, hue 인자에 그룹을 나누고자 하는 열을 입력합니다. KOSPI와 KOSDAQ 종목의 ROE와 PBR이 각기 다른 색으로 표현되며, 직선을 통해 그 관계를 볼 수 있습니다. 두 시장에 속한 종목 모두 ROE와 PBR은 선형 관계가 있으며, KOSDAQ 종목의 PBR이 더 높습니다.</p>
+</div>
+<div class="section" id="id16">
+<h3>11.2.2 히스토그램 나타내기<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/11_data_analysis_67_0.png" src="_images/11_data_analysis_67_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">hist()</span></code> 함수는 히스토그램을 나타내져며, bins 인자는 원하는 구간 수를 입력합니다. 국내 종목들의 PBR 데이터는 왼쪽에 쏠려 있고 오른쪽으로 꼬리가 긴 분포를 가지고 있습니다.</p>
+</div>
+<div class="section" id="id17">
+<h3>11.2.3 박스 플롯 나타내기<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;PBR&#39;</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">,</span> <span class="n">vert</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/11_data_analysis_70_0.png" src="_images/11_data_analysis_70_0.png" />
+</div>
+</div>
+<p>박스 플롯은 데이터의 분포와 이상치를 확인하기 좋은 그림이며, <code class="docutils literal notranslate"><span class="pre">boxplot()</span></code> 함수를 통해 나타낼 수 있습니다. column에는 나타내고자 하는 값이 있는 열은, by에는 그룹을 나누고 싶은 열을 입력하며, vert를 False로 설정하면 <span class="math notranslate nohighlight">\(x\)</span>축과 <span class="math notranslate nohighlight">\(y\)</span>축을 뒤집어 표현해줍니다.</p>
+<p>결과를 살펴보면 유틸리티나 에너지, 금융 섹터는 PBR이 잘 모여 있는 반면, IT나 건강관리 섹터 등은 매우 극단적인 PBR을 가지고 있는 종목이 있습니다.</p>
+</div>
+<div class="section" id="id18">
+<h3>11.2.4 막대 그래프 나타내기<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/11_data_analysis_73_0.png" src="_images/11_data_analysis_73_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> 함수는 그룹별 고유한 값을 계산하는 함수였습니다. 이를 계산한 후 <code class="docutils literal notranslate"><span class="pre">bar()</span></code> 함수를 이용하면 세로 형태의 막대 그래프 형태로 나타낼 수 있습니다. IT 종목이 압도적으로 많은 것이 쉽게 확인됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">)[</span><span class="s1">&#39;배당수익률(%)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/11_data_analysis_75_0.png" src="_images/11_data_analysis_75_0.png" />
+</div>
+</div>
+<p>먼저 각 섹터별 배당수익률의 중앙값을 계산한 후 정렬을 해줍니다. 그 후 <code class="docutils literal notranslate"><span class="pre">barh()</span></code> 함수를 이용하면 가로 형태의 막대 그래프를 나타낼 수 있습니다. 금융, 유틸리티, 에너지 섹터가 배당을 많이주며 건강관리나 IT 섹터는 배당을 거의 주지 않습니다.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="10_bind_data.html" title="previous page">10. 데이터 정리하기</a>
+    <a class='right-next' id="next-link" href="12_factor_basic.html" title="next page">12. 퀀트 전략을 이용한 종목선정 (기본)</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

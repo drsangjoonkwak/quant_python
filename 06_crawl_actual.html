@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -40,6 +40,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -78,6 +79,7 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -91,6 +93,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. 증권사 API 연결 및 매매" href="07_hts_api.html" />
+    <link rel="prev" title="5. 금융 데이터 수집하기 (기본)" href="05_crawl_practice.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -125,7 +129,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="01_data_programming.html">
    1. 퀀트 투자의 심장: 데이터와 프로그래밍
@@ -142,13 +146,68 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="05_crawl_practice.html">
    5. 금융 데이터 수집하기 (기본)
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="08_other_data.html">
-   8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
   </a>
  </li>
 </ul>
@@ -253,6 +312,17 @@ commentsRunWhenDOMLoaded(addUtterances);
      6.1.2 전 종목 주가 크롤링
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datareader">
+     6.1.3
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataReader()
+      </span>
+     </code>
+     함수를 이용해 네이버 수정주가 다운로드
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -271,7 +341,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
+    <a class="reference internal nav-link" href="#id8">
      6.2.3 전 종목 재무제표 및 가치지표 다운로드
     </a>
    </li>
@@ -290,11 +360,10 @@ commentsRunWhenDOMLoaded(addUtterances);
                 
   <div class="section" id="id1">
 <h1>6. 금융 데이터 수집하기 (심화)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>지난 장에서 수집한 주식티커를 바탕으로 이번 CHAPTER에서는 퀀트 투자의 핵심 자료인 수정주가, 재무제표, 가치지표를 크롤링하는 방법을 알아보겠습니다.</p>
+<p>지난 장에서 수집한 주식티커를 바탕으로 이번 장에서는 퀀트 투자의 핵심 자료인 수정주가, 재무제표, 가치지표를 크롤링하는 방법을 알아보겠습니다.</p>
 <div class="section" id="id2">
 <h2>6.1 수정주가 크롤링<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>주가 데이터는 투자를 함에 있어 반드시 필요한 데이터이며, 인터넷에서 주가를 수집할 수 있는 방법은 매우 많습니다. 먼저 API를 이용한 데이터 수집에서 살펴본 것과 같이, <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용해 데이터를 받을 수 있습니다. 그러나 야후 파이낸스에서 제공하는 데이터 중 미국 주가는 이상 없이 다운로드되지만, 국내 중소형주는 주가가 없는 경우가 있습니다.</p>
-<p>또한 단순 주가를 구할 수 있는 방법은 많지만, 투자에 필요한 수정주가를 구할 수 있는 방법은 찾기 힘듭니다. 다행히 네이버 금융에서 제공하는 정보를 통해 모든 종목의 수정주가를 매우 손쉽게 구할 수 있습니다.</p>
+<p>주가 데이터는 투자를 함에 있어 반드시 필요한 데이터이며, 인터넷에서 주가를 수집할 수 있는 방법은 매우 많습니다. 그러나 야후 파이낸스에서 제공하는 데이터 중 미국 주가는 이상 없이 다운로드되지만, 국내 중소형주는 주가가 없는 경우가 있습니다. 또한 단순 주가를 구할 수 있는 방법은 많지만, 투자에 필요한 수정주가를 구할 수 있는 방법은 찾기 힘듭니다. 다행히 네이버 금융에서 제공하는 정보를 통해 모든 종목의 수정주가를 매우 손쉽게 구할 수 있습니다.</p>
 <div class="section" id="id3">
 <h3>6.1.1 개별종목 주가 크롤링<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://finance.naver.com/item/fchart.nhn?code=005930
@@ -303,7 +372,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>먼저 네이버 금융에서 특정종목(예: 삼성전자)의 [차트]을 선택합니다. 해당 차트는 주가 데이터를 받아 그래프를 그려주는 형태입니다. 따라서 해당 데이터가 어디에서 오는지 알기 위해 개발자 도구 화면을 이용합니다.</p>
 <div class="figure align-default" id="crawl-practice-price2">
 <img alt="_images/06_crawl_practice_price2.png" src="_images/06_crawl_practice_price2.png" />
-<p class="caption"><span class="caption-text">네이버금융 차트의 통신기록</span><a class="headerlink" href="#crawl-practice-price2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 46 </span><span class="caption-text">네이버금융 차트의 통신기록</span><a class="headerlink" href="#crawl-practice-price2" title="Permalink to this image">¶</a></p>
 </div>
 <p>화면을 연 상태에서 [일] 탭을 선택하면 나오는 항목 중 가장 상단 항목의 Request URL이 주가 데이터를 요청하는 주소입니다. 해당 URL에 접속해보겠습니다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://fchart.stock.naver.com/siseJson.nhn?symbol=005930&amp;requestType=1&amp;startTime=20191117&amp;endTime=20210124&amp;timeframe=day
@@ -311,7 +380,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="figure align-default" id="crawl-practice-price3">
 <img alt="_images/06_crawl_practice_price3.png" src="_images/06_crawl_practice_price3.png" />
-<p class="caption"><span class="caption-text">주가 데이터 페이지</span><a class="headerlink" href="#crawl-practice-price3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 47 </span><span class="caption-text">주가 데이터 페이지</span><a class="headerlink" href="#crawl-practice-price3" title="Permalink to this image">¶</a></p>
 </div>
 <p>각 날짜별로 시가, 고가, 저가, 종가, 거래량, 외국인소진율이 있으며, 주가는 모두 수정주가 기준입니다.</p>
 <p>URL에서 symbol= 뒤에 6자리 티커만 변경하면 해당 종목의 주가 데이터가 있는 페이지로 이동할 수 있으며, 이를 통해 우리가 원하는 모든 종목의 주가 데이터를 크롤링할 수 있습니다. 또한 startTime= 에는 시작일자를, endTime= 에는 종료일자를 입력하여 원하는 기간 만큼의 데이터를 받을 수도 있습니다.</p>
@@ -320,32 +389,33 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5930
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5930
 </pre></div>
 </div>
 </div>
 </div>
+<p>먼저 저장해두었던 티커 항목의 csv 파일을 불러옵니다. 종목코드를 살펴보면 <strong>005930</strong>이어야 할 삼성전자의 티커가 <strong>5930</strong>으로 입력되어 있습니다. 이는 파일을 불러오는 과정에서 0으로 시작하는 숫자들이 지워졌기 때문입니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>005930
 </pre></div>
 </div>
 </div>
 </div>
-<p>먼저 저장해두었던 티커 항목의 csv 파일을 불러옵니다. 종목코드를 살펴보면 <strong>005930</strong>이어야 할 삼성전자의 티커가 <strong>5930</strong>으로 입력되어 있습니다. 이는 파일을 불러오는 과정에서 0으로 시작하는 숫자들이 지워졌기 때문입니다. 먼저 <code class="docutils literal notranslate"><span class="pre">np.str</span></code>을 통해 문자열 형태로 변경한 후, <code class="docutils literal notranslate"><span class="pre">zfill()</span></code> 함수를 사용해 6자리가 되지 않는 문자는 왼쪽에 0을 추가해 강제로 6자리로 만들어주도록 합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.str</span></code>을 통해 문자열 형태로 변경한 후, <code class="docutils literal notranslate"><span class="pre">zfill()</span></code> 함수를 사용해 6자리가 되지 않는 문자는 왼쪽에 0을 추가해 강제로 6자리로 만들어주도록 합니다.</p>
 <p>다음은 첫 번째 종목인 삼성전자의 주가를 크롤링한 후 가공하는 방법입니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -361,46 +431,17 @@ commentsRunWhenDOMLoaded(addUtterances);
 
 <span class="n">price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Price&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]})</span>
 <span class="n">price</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2021-02-15</th>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            Price
+2021-04-11    NaN
+</pre></div>
+</div>
+</div>
 </div>
 <ol class="simple">
 <li><p>data 폴더 내에 KOR_price 폴더를 생성합니다.</p></li>
@@ -414,20 +455,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
 
-<span class="n">fr</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">years</span><span class="o">=-</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">fr</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">years</span><span class="o">=-</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">to</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://fchart.stock.naver.com/siseJson.nhn?symbol=&#39;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;&amp;requestType=1&amp;startTime=&#39;</span><span class="o">+</span><span class="n">fr</span><span class="o">+</span><span class="s1">&#39;&amp;endTime=&#39;</span><span class="o">+</span><span class="n">to</span><span class="o">+</span><span class="s1">&#39;&amp;timeframe=day&#39;</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
 <span class="n">data_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_price</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">data_price</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -463,57 +499,57 @@ commentsRunWhenDOMLoaded(addUtterances);
   <tbody>
     <tr>
       <th>0</th>
-      <td>["20180219"</td>
-      <td>49800.0</td>
-      <td>49800.0</td>
-      <td>47860.0</td>
-      <td>48380.0</td>
-      <td>307069.0</td>
-      <td>52.25]</td>
+      <td>["20160411"</td>
+      <td>24920.0</td>
+      <td>25420.0</td>
+      <td>24920.0</td>
+      <td>25320.0</td>
+      <td>120693.0</td>
+      <td>49.52]</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>["20180220"</td>
-      <td>48040.0</td>
-      <td>48160.0</td>
-      <td>47220.0</td>
-      <td>47400.0</td>
-      <td>202452.0</td>
-      <td>52.23]</td>
+      <td>["20160412"</td>
+      <td>25400.0</td>
+      <td>25620.0</td>
+      <td>25320.0</td>
+      <td>25500.0</td>
+      <td>134054.0</td>
+      <td>49.53]</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>["20180221"</td>
-      <td>47280.0</td>
-      <td>47580.0</td>
-      <td>46840.0</td>
-      <td>47280.0</td>
-      <td>257604.0</td>
-      <td>52.22]</td>
+      <td>["20160414"</td>
+      <td>26000.0</td>
+      <td>26040.0</td>
+      <td>25780.0</td>
+      <td>26000.0</td>
+      <td>335327.0</td>
+      <td>49.54]</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>["20180222"</td>
-      <td>47260.0</td>
-      <td>47260.0</td>
-      <td>46760.0</td>
-      <td>46760.0</td>
-      <td>177399.0</td>
-      <td>52.22]</td>
+      <td>["20160415"</td>
+      <td>26180.0</td>
+      <td>26200.0</td>
+      <td>25800.0</td>
+      <td>26000.0</td>
+      <td>136599.0</td>
+      <td>49.53]</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>["20180223"</td>
-      <td>46760.0</td>
-      <td>47800.0</td>
-      <td>46760.0</td>
-      <td>47220.0</td>
-      <td>248466.0</td>
-      <td>52.2]</td>
+      <td>["20160418"</td>
+      <td>25900.0</td>
+      <td>26100.0</td>
+      <td>25840.0</td>
+      <td>25980.0</td>
+      <td>128474.0</td>
+      <td>49.54]</td>
       <td>NaN</td>
     </tr>
   </tbody>
@@ -521,30 +557,25 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div></div></div>
 </div>
 <ol class="simple">
-<li><p>먼저 시작일(from)과 종료일(to)에 해당하는 날짜를 입력합니다. <code class="docutils literal notranslate"><span class="pre">today()</span></code>를 통해 오늘 날짜를 불러온 후, 시작일은 <code class="docutils literal notranslate"><span class="pre">relativedelta()</span></code> 함수를 이용해 3년을 빼줍니다. (본인이 원하는 기간 만큼을 빼주면 됩니다.) 그 후 <code class="docutils literal notranslate"><span class="pre">strftime()</span></code> 함수를 통해 yyyymmdd 형식을 만들어 줍니다.</p></li>
+<li><p>먼저 시작일(from)과 종료일(to)에 해당하는 날짜를 입력합니다. <code class="docutils literal notranslate"><span class="pre">today()</span></code>를 통해 오늘 날짜를 불러온 후, 시작일은 <code class="docutils literal notranslate"><span class="pre">relativedelta()</span></code> 함수를 이용해 5년을 빼줍니다. (본인이 원하는 기간 만큼을 빼주면 됩니다.) 그 후 <code class="docutils literal notranslate"><span class="pre">strftime()</span></code> 함수를 통해 yyyymmdd 형식을 만들어 줍니다.</p></li>
 <li><p>종목의 url을 생성합니다. url 중 티커에 해당하는 6자리 부분에 위에서 입력한 name을 설정합니다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수를 통해 페이지의 데이터를 불러온 후, content 부분을 추출합니다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">BytesIO()</span></code> 함수를 이용해 바이너리스트림 형태로 만든 후, <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> 함수를 통해 데이터를 읽어옵니다</p></li>
 </ol>
-<p>결과적으로 날짜 및 주가, 거래량, 외국인소진율 데이터가 추출됩니다. 우리에게 필요한 날짜와 종가에 해당하는 열만 선택하고, 클렌징 작업을 해주도록 하겠습니다.</p>
+<p>결과적으로 날짜 및 주가, 거래량, 외국인소진율 데이터가 추출됩니다. 추가적으로 클렌징 작업을 해주도록 하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
-<span class="n">price</span> <span class="o">=</span> <span class="n">data_price</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
-<span class="n">price</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">]</span>
+<span class="n">price</span> <span class="o">=</span> <span class="n">data_price</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">price</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Open&#39;</span><span class="p">,</span> <span class="s1">&#39;High&#39;</span><span class="p">,</span> <span class="s1">&#39;Low&#39;</span><span class="p">,</span> <span class="s1">&#39;Close&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume&#39;</span><span class="p">]</span>
 <span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">price</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">price</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span>
 <span class="n">price</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">price</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
 <span class="n">price</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">price</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -567,45 +598,73 @@ commentsRunWhenDOMLoaded(addUtterances);
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Price</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
     </tr>
     <tr>
       <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>2018-02-19</th>
-      <td>48380.0</td>
+      <th>2016-04-11</th>
+      <td>24920.0</td>
+      <td>25420.0</td>
+      <td>24920.0</td>
+      <td>25320.0</td>
+      <td>120693.0</td>
     </tr>
     <tr>
-      <th>2018-02-20</th>
-      <td>47400.0</td>
+      <th>2016-04-12</th>
+      <td>25400.0</td>
+      <td>25620.0</td>
+      <td>25320.0</td>
+      <td>25500.0</td>
+      <td>134054.0</td>
     </tr>
     <tr>
-      <th>2018-02-21</th>
-      <td>47280.0</td>
+      <th>2016-04-14</th>
+      <td>26000.0</td>
+      <td>26040.0</td>
+      <td>25780.0</td>
+      <td>26000.0</td>
+      <td>335327.0</td>
     </tr>
     <tr>
-      <th>2018-02-22</th>
-      <td>46760.0</td>
+      <th>2016-04-15</th>
+      <td>26180.0</td>
+      <td>26200.0</td>
+      <td>25800.0</td>
+      <td>26000.0</td>
+      <td>136599.0</td>
     </tr>
     <tr>
-      <th>2018-02-23</th>
-      <td>47220.0</td>
+      <th>2016-04-18</th>
+      <td>25900.0</td>
+      <td>26100.0</td>
+      <td>25840.0</td>
+      <td>25980.0</td>
+      <td>128474.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 <ol class="simple">
-<li><p>날짜에 해당하는 열과, 종가에 해당하는 열만 선택해 저장합니다.</p></li>
-<li><p>열 이름을 Date와 Price로 변경합니다.</p></li>
+<li><p>날짜와 가격, 거래량에 해당하는 데이터만을 선택합니다.</p></li>
+<li><p>열 이름을 변경합니다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dropna()</span></code> 함수를 통해 NA 데이터를 삭제해줍니다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">extract()</span></code> 함수 내에 정규표현식을 통해 숫자만을 추출합니다.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">apply()</span></code> 함수를 통해 Date열을 datetime 형태로 변경해줍니다.</p></li>
-<li><p>Date 열을 인덱스로 설정합니다.</p></li>
+<li><p><strong>날찌</strong>열을 datetime 형태로 변경해줍니다.</p></li>
+<li><p><strong>날짜</strong>열을 인덱스로 설정합니다.</p></li>
 </ol>
 <p>데이터를 확인해보면 우리에게 필요한 형태로 정리되었습니다.</p>
 <div class="cell docutils container">
@@ -632,14 +691,16 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;data/KOR_price&#39;</span><span class="p">):</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data/KOR_price&#39;</span><span class="p">)</span>
 
 <span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">error_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">)):</span> 
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">))):</span> 
 
     <span class="c1"># 빈 데이터프레임 생성</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Price&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]})</span>
@@ -649,7 +710,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <span class="n">name</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
     
     <span class="c1"># 시작일과 종료일 </span>
-    <span class="n">fr</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">years</span><span class="o">=-</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">fr</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">years</span><span class="o">=-</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">to</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
     
     <span class="c1"># 오류 발생 시 이를 무시하고 다음 루프로 진행</span>
@@ -661,17 +722,17 @@ commentsRunWhenDOMLoaded(addUtterances);
         <span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
         <span class="n">data_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> 
         
-        <span class="c1"># 필요한 열만 선택 후 클렌징</span>
-        <span class="n">price</span> <span class="o">=</span> <span class="n">data_price</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
-        <span class="n">price</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">]</span>
+        <span class="c1"># 데이터 클렌징</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">data_price</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+        <span class="n">price</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;날짜&#39;</span><span class="p">,</span> <span class="s1">&#39;시가&#39;</span><span class="p">,</span> <span class="s1">&#39;고가&#39;</span><span class="p">,</span> <span class="s1">&#39;저가&#39;</span><span class="p">,</span> <span class="s1">&#39;종가&#39;</span><span class="p">,</span> <span class="s1">&#39;거래량&#39;</span><span class="p">]</span>
         <span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-        <span class="n">price</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">price</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span>
-        <span class="n">price</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">price</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
-        <span class="n">price</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">price</span><span class="p">[</span><span class="s1">&#39;날짜&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">price</span><span class="p">[</span><span class="s1">&#39;날짜&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span>
+        <span class="n">price</span><span class="p">[</span><span class="s1">&#39;날짜&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">price</span><span class="p">[</span><span class="s1">&#39;날짜&#39;</span><span class="p">])</span>
+        <span class="n">price</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;날짜&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="k">except</span><span class="p">:</span>
-        <span class="c1"># 오류 발생시 해당 종목명을 출력하고 다음 루프로 이동</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in ticker &#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+        <span class="c1"># 오류 발생시 해당 종목명을 저장하고 다음 루프로 이동</span>
+        <span class="n">error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     
     <span class="c1"># 다운로드 받은 파일을 생성한 폴더 내 csv 파일로 저장</span>
     <span class="n">price</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_price/&#39;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;_price.csv&#39;</span><span class="p">)</span>
@@ -681,10 +742,112 @@ commentsRunWhenDOMLoaded(addUtterances);
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████| 2173/2173 [1:15:30&lt;00:00,  2.08s/it]
+</pre></div>
 </div>
-<p>위 코드에서 추가된 점은 다음과 같습니다. 페이지 오류, 통신 오류 등 오류가 발생할 경우 for loop 구문은 멈춰버리는데 전체 데이터를 처음부터 다시 받는 일은 매우 귀찮은 작업입니다. 따라서 <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">except</span></code> 구문을 이용해 오류가 발생할 때 해당 티커를 출력한 후 다음 루프로 넘어가게 합니다.</p>
+</div>
+</div>
+<p>위 코드에서 추가된 점은 다음과 같습니다. 페이지 오류, 통신 오류 등 오류가 발생할 경우 <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> 구문이 멈춰버리면 전체 데이터를 처음부터 다시 받아야 하므로 매우 귀찮은 작업입니다. 따라서 <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">except</span></code> 구문을 이용해 오류가 발생할 때 해당 티커를 저장한 후 다음 루프로 넘어가게 합니다. ProgressBar() 함수를 통해 진행정도 역시 출력이 됩니다.</p>
 <p>또한 오류가 발생하면 미리 만들어둔 빈 데이터프레임을 저장하게 됩니다. 마지막으로 무한 크롤링을 방지하기 위해 한 번의 루프가 끝날 때마다 2초의 타임슬립을 적용했습니다.</p>
 <p>위 코드가 모두 돌아가는 데는 수 시간이 걸립니다. 작업이 끝난 후 data/KOR_price 폴더를 확인해보면 전 종목 주가가 csv 형태로 저장되어 있습니다.</p>
+</div>
+<div class="section" id="datareader">
+<h3>6.1.3 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용해 네이버 수정주가 다운로드<a class="headerlink" href="#datareader" title="Permalink to this headline">¶</a></h3>
+<p>3장에서 살펴본 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수에도 네이버에서 동일한 데이터를 다운로드 받는 기능이 내장되어 있습니다. 삼성전자의 예를 살펴보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+
+<span class="n">fr</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">years</span><span class="o">=-</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">to</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;005930&#39;</span><span class="p">,</span> <span class="s1">&#39;naver&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="n">fr</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">to</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2016-04-11</th>
+      <td>24920</td>
+      <td>25420</td>
+      <td>24920</td>
+      <td>25320</td>
+      <td>120693</td>
+    </tr>
+    <tr>
+      <th>2016-04-12</th>
+      <td>25400</td>
+      <td>25620</td>
+      <td>25320</td>
+      <td>25500</td>
+      <td>134054</td>
+    </tr>
+    <tr>
+      <th>2016-04-14</th>
+      <td>26000</td>
+      <td>26040</td>
+      <td>25780</td>
+      <td>26000</td>
+      <td>335327</td>
+    </tr>
+    <tr>
+      <th>2016-04-15</th>
+      <td>26180</td>
+      <td>26200</td>
+      <td>25800</td>
+      <td>26000</td>
+      <td>136599</td>
+    </tr>
+    <tr>
+      <th>2016-04-18</th>
+      <td>25900</td>
+      <td>26100</td>
+      <td>25840</td>
+      <td>25980</td>
+      <td>128474</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>위에서 직접 크롤링한 것과 결과가 같습니다. 이는 동일한 페이지를 크롤링하고 클렌징 방법도 동일하기 때문입니다. 이처럼 원하는 기능이 이미 함수로 존재하는 경우, 이를 활용하는 것도 좋은 방법입니다.</p>
 </div>
 </div>
 <div class="section" id="id5">
@@ -699,7 +862,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://comp.fnguide.com/SVO2/ASP/SVD_Finance.asp?pGB=1&amp;gicode=A005930
 </pre></div>
 </div>
-<p>우리가 원하는 재무제표 항목들은 모두 테이블 형태로 제공되고 있으므로 pandas의 <code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 이용해 추출할 수 있습니다.</p>
+<p>우리가 원하는 재무제표 항목들은 모두 테이블 형태로 제공되고 있으므로 pandas의 <code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 이용해 쉽게 추출할 수 있습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -710,40 +873,35 @@ commentsRunWhenDOMLoaded(addUtterances);
     
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://comp.fnguide.com/SVO2/ASP/SVD_Finance.asp?pGB=1&amp;gicode=A005930&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">displayed_only</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span> 
+
+<span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  IFRS(연결)    2017/12    2018/12    2019/12    2020/09       전년동기  전년동기(%)
- 0      매출액  2395754.0  2437714.0  2304009.0  1752555.0  1705161.0      2.8
- 1     매출원가  1292907.0  1323944.0  1472395.0  1066834.0  1086850.0     -1.8
- 2    매출총이익  1102847.0  1113770.0   831613.0   685721.0   618311.0     10.9,
-   IFRS(연결)   2019/12   2020/03   2020/06   2020/09      전년동기  전년동기(%)
- 0      매출액  598848.0  553252.0  529661.0  669642.0  620035.0      8.0
- 1     매출원가  385545.0  348067.0  319062.0  399705.0  399939.0     -0.1
- 2    매출총이익  213302.0  205185.0  210599.0  269937.0  220096.0     22.6,
-              IFRS(연결)    2017/12    2018/12    2019/12    2020/09
- 0                  자산  3017521.0  3393572.0  3525645.0  3757887.0
- 1  유동자산계산에 참여한 계정 펼치기  1469825.0  1746974.0  1813853.0  2036349.0
- 2                재고자산   249834.0   289847.0   267665.0   324429.0,
-              IFRS(연결)    2019/12    2020/03    2020/06    2020/09
- 0                  자산  3525645.0  3574575.0  3579595.0  3757887.0
- 1  유동자산계산에 참여한 계정 펼치기  1813853.0  1867397.0  1861368.0  2036349.0
- 2                재고자산   267665.0   284549.0   296455.0   324429.0,
-          IFRS(연결)   2017/12   2018/12   2019/12   2020/09
- 0    영업활동으로인한현금흐름  621620.0  670319.0  453829.0  407724.0
- 1           당기순손익  421867.0  443449.0  217389.0  198007.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  IFRS(연결)    2017/12    2018/12    2019/12    2020/12       전년동기  전년동기(%)
+ 0      매출액  2395754.0  2437714.0  2304009.0  2368070.0  2304009.0      2.8
+ 1     매출원가  1292907.0  1323944.0  1472395.0  1444883.0  1472395.0     -1.9
+ 2    매출총이익  1102847.0  1113770.0   831613.0   923187.0   831613.0     11.0,
+   IFRS(연결)   2020/03   2020/06   2020/09   2020/12      전년동기 전년동기(%)
+ 0      매출액  553252.0  529661.0  669642.0  615515.0  598848.0     2.8
+ 1     매출원가  348067.0  319062.0  399705.0  378049.0  385545.0    -1.9
+ 2    매출총이익  205185.0  210599.0  269937.0  237466.0  213302.0    11.3,
+              IFRS(연결)    2017/12    2018/12    2019/12    2020/12
+ 0                  자산  3017521.0  3393572.0  3525645.0  3782357.0
+ 1  유동자산계산에 참여한 계정 펼치기  1469825.0  1746974.0  1813853.0  1982156.0
+ 2                재고자산   249834.0   289847.0   267665.0   320431.0,
+              IFRS(연결)    2020/03    2020/06    2020/09    2020/12
+ 0                  자산  3574575.0  3579595.0  3757887.0  3782357.0
+ 1  유동자산계산에 참여한 계정 펼치기  1867397.0  1861368.0  2036349.0  1982156.0
+ 2                재고자산   284549.0   296455.0   324429.0   320431.0,
+          IFRS(연결)   2017/12   2018/12   2019/12   2020/12
+ 0    영업활동으로인한현금흐름  621620.0  670319.0  453829.0  652870.0
+ 1           당기순손익  421867.0  443449.0  217389.0  264078.0
  2  법인세비용차감전계속사업이익       NaN       NaN       NaN       NaN,
-          IFRS(연결)   2019/12   2020/03   2020/06   2020/09
- 0    영업활동으로인한현금흐름  197171.0  118299.0  147982.0  141444.0
- 1           당기순손익   52270.0   48849.0   55551.0   93607.0
+          IFRS(연결)   2020/03   2020/06   2020/09   2020/12
+ 0    영업활동으로인한현금흐름  118299.0  147982.0  141444.0  245146.0
+ 1           당기순손익   48849.0   55551.0   93607.0   66071.0
  2  법인세비용차감전계속사업이익       NaN       NaN       NaN       NaN]
 </pre></div>
 </div>
@@ -751,11 +909,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <ol class="simple">
 <li><p>data 폴더 내에 KOR_fs 폴더를 생성합니다.</p></li>
-<li><p>url을 입력한 후 <code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 통해 테이블 데이터만을 가져옵니다. 페이지를 살펴보면 [+] 버튼을 눌러야만 표시가 되는 항목도 있으므로, displayed_only = FALSE를 통해 해당 항목들도 모두 가져오도록 합니다.</p></li>
+<li><p>url을 입력한 후 <code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 통해 테이블 데이터만을 가져옵니다. 페이지를 살펴보면 [+] 버튼을 눌러야만 표시가 되는 항목도 있으므로, displayed_only = False를 통해 해당 항목들도 모두 가져오도록 합니다.</p></li>
 </ol>
-<p>위의 과정을 거치면 총 6개의 테이블이 들어오게 되며, 그 내용은 <code class="xref std std-numref docutils literal notranslate"><span class="pre">fs_table</span></code>와 같습니다.</p>
+<p>위의 과정을 거치면 총 6개의 테이블이 들어오게 되며, 그 내용은 <a class="reference internal" href="#fs-table"><span class="std std-numref">Table 3</span></a>와 같습니다.</p>
 <table class="colwidths-auto table" id="fs-table">
-<caption><span class="caption-text">재무제표 테이블 내역</span><a class="headerlink" href="#fs-table" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">재무제표 테이블 내역</span><a class="headerlink" href="#fs-table" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>순서</p></th>
 <th class="head"><p>내용</p></th>
@@ -782,7 +940,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </tbody>
 </table>
-<p>이 중 연간 기준 재무제표에 해당하는 테이블을 선택합니다.</p>
+<p>이 중 연간 기준 재무제표에 해당하는 테이블을 선택합니다. (분기 기준 재무제표를 원하는 분은 해당 항목을 선택하면 됩니다.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_IS</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -792,20 +950,22 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
+<p>포괄손익계산서, 재무상태표, 현금흐름표를 각각 저장해줍니다. 이번엔 포괄손익계산서의 열 이름을 살펴보겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_IS</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data_IS</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;IFRS(연결)&#39;, &#39;2017/12&#39;, &#39;2018/12&#39;, &#39;2019/12&#39;, &#39;2020/09&#39;, &#39;전년동기&#39;,
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;IFRS(연결)&#39;, &#39;2017/12&#39;, &#39;2018/12&#39;, &#39;2019/12&#39;, &#39;2020/12&#39;, &#39;전년동기&#39;,
        &#39;전년동기(%)&#39;],
       dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
 </div>
+<p>포괄손익계산서 테이블(data_IS)에는 전년동기, 전년동기(%) 열이 있으며, 이는 필요하지 않은 내용이므로 삭제해주도록 하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_IS</span> <span class="o">=</span> <span class="n">data_IS</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_IS</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">)]</span>
@@ -838,7 +998,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       <th>2017/12</th>
       <th>2018/12</th>
       <th>2019/12</th>
-      <th>2020/09</th>
+      <th>2020/12</th>
     </tr>
   </thead>
   <tbody>
@@ -848,7 +1008,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       <td>2395754.0</td>
       <td>2437714.0</td>
       <td>2304009.0</td>
-      <td>1752555.0</td>
+      <td>2368070.0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -856,7 +1016,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       <td>1292907.0</td>
       <td>1323944.0</td>
       <td>1472395.0</td>
-      <td>1066834.0</td>
+      <td>1444883.0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -864,7 +1024,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       <td>1102847.0</td>
       <td>1113770.0</td>
       <td>831613.0</td>
-      <td>685721.0</td>
+      <td>923187.0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -872,7 +1032,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       <td>566397.0</td>
       <td>524903.0</td>
       <td>553928.0</td>
-      <td>416252.0</td>
+      <td>563248.0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -880,13 +1040,17 @@ commentsRunWhenDOMLoaded(addUtterances);
       <td>67972.0</td>
       <td>64514.0</td>
       <td>64226.0</td>
-      <td>51701.0</td>
+      <td>70429.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>포괄손익계산서 테이블(data_IS)에는 전년동기, 전년동기(%) 열이 있는데 통일성을 위해 해당 열을 삭제합니다. <code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수를 이용해 세 테이블을 행으로 묶은 후 클렌징을 하겠습니다.</p>
+<ol class="simple">
+<li><p>포괄손익계산서 중 오른쪽의 두개 열을 삭제합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수를 이용해 세개의 테이블을 하나로 묶습니다.</p></li>
+</ol>
+<p>이제 클렌징 처리를 해주도록 하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_fs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_fs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;계산에 참여한 계정 펼치기&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">},</span> <span class="n">regex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -920,9 +1084,11 @@ commentsRunWhenDOMLoaded(addUtterances);
       <th>2017/12</th>
       <th>2018/12</th>
       <th>2019/12</th>
+      <th>2020/12</th>
     </tr>
     <tr>
       <th>IFRS(연결)</th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -934,37 +1100,42 @@ commentsRunWhenDOMLoaded(addUtterances);
       <td>2395754.0</td>
       <td>2437714.0</td>
       <td>2304009.0</td>
+      <td>2368070.0</td>
     </tr>
     <tr>
       <th>매출원가</th>
       <td>1292907.0</td>
       <td>1323944.0</td>
       <td>1472395.0</td>
+      <td>1444883.0</td>
     </tr>
     <tr>
       <th>매출총이익</th>
       <td>1102847.0</td>
       <td>1113770.0</td>
       <td>831613.0</td>
+      <td>923187.0</td>
     </tr>
     <tr>
       <th>판매비와관리비</th>
       <td>566397.0</td>
       <td>524903.0</td>
       <td>553928.0</td>
+      <td>563248.0</td>
     </tr>
     <tr>
       <th>인건비</th>
       <td>67972.0</td>
       <td>64514.0</td>
       <td>64226.0</td>
+      <td>70429.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 <ol class="simple">
-<li><p>첫 번째 열인 계정명에는 ‘계산에 참여한 계정 펼치기’ 라는 글자가 들어간 항목이 있습니다. 이는 페이지 내에서 펼치기 역할을 하는 [+] 항목에 해당하며 <code class="docutils literal notranslate"><span class="pre">replace()</span></code> 함수를 이용해 해당 글자를 삭제합니다.</p></li>
+<li><p>첫 번째 열인 계정명에는 <strong>‘계산에 참여한 계정 펼치기’</strong> 라는 글자가 들어간 항목이 있습니다. 이는 페이지 내에서 펼치기 역할을 하는 [+] 항목에 해당하며 <code class="docutils literal notranslate"><span class="pre">replace()</span></code> 함수를 이용해 해당 글자를 삭제합니다.</p></li>
 <li><p>첫 번째 열의 계정명을 인덱스로 변경합니다.</p></li>
 <li><p>인덱스에는 중복되는 계정명이 다수 있는데 대부분 불필요한 항목입니다. <code class="docutils literal notranslate"><span class="pre">duplicated()</span></code> 함수를 사용해 중복되는 항목 중, 첫번째 항목만을 남겨둡니다.</p></li>
 <li><p>간혹 12월 결산법인이 아닌 종목이거나 연간 재무제표임에도 불구하고 분기 재무제표가 들어간 경우가 있습니다. 비교의 통일성을 위해 <code class="docutils literal notranslate"><span class="pre">filter()</span></code> 함수를 통해 12라는 숫자가 포함된 열만 선택합니다.</p></li>
@@ -983,7 +1154,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <h3>6.2.2 가치지표 계산하기<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>위에서 구한 재무제표 데이터를 이용해 가치지표를 계산할 수 있습니다. 흔히 사용되는 가치지표는 <strong>PER, PBR, PCR, PSR</strong>이며 분자는 주가, 분모는 재무제표 데이터가 사용됩니다.</p>
 <table class="colwidths-auto table" id="value-table">
-<caption><span class="caption-text">가치지표의 종류</span><a class="headerlink" href="#value-table" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">가치지표의 종류</span><a class="headerlink" href="#value-table" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>지표</p></th>
 <th class="head"><p>분모</p></th>
@@ -1004,6 +1175,10 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>PCR의 Cashflow는 원래 [당기순이익 - 비지배순이익 + 감가상각비 + 무형자산상각비]를 통해 계산되나 이를 구하기는 지나치게 복잡하며, 기업의 현금흐름 중 가장 중요한 것은 영업활동현금흐름이기에 이를 대용치로 사용하도록 합니다.</p>
+</div>
 <p>위에서 구한 재무제표 항목에서 분모 부분에 해당하는 데이터만 선택해보겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1011,21 +1186,58 @@ commentsRunWhenDOMLoaded(addUtterances);
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data/KOR_value&#39;</span><span class="p">)</span>
     
 <span class="n">value_type</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;지배주주순이익&#39;</span><span class="p">,</span> <span class="s1">&#39;자본&#39;</span><span class="p">,</span> <span class="s1">&#39;영업활동으로인한현금흐름&#39;</span><span class="p">,</span> <span class="s1">&#39;매출액&#39;</span><span class="p">]</span>
-<span class="n">value_index</span> <span class="o">=</span> <span class="n">data_fs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">value_type</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">value_index</span><span class="p">)</span>
+<span class="n">value_index</span> <span class="o">=</span> <span class="n">data_fs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">value_type</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">value_index</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                2019/12
-IFRS(연결)               
-지배주주순이익        215051.0
-자본            2628804.0
-영업활동으로인한현금흐름   453829.0
-매출액           2304009.0
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2020/12</th>
+    </tr>
+    <tr>
+      <th>IFRS(연결)</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>지배주주순이익</th>
+      <td>260908.0</td>
+    </tr>
+    <tr>
+      <th>자본</th>
+      <td>2759480.0</td>
+    </tr>
+    <tr>
+      <th>영업활동으로인한현금흐름</th>
+      <td>652870.0</td>
+    </tr>
+    <tr>
+      <th>매출액</th>
+      <td>2368070.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <ol class="simple">
 <li><p>data 폴더 내에 KOR_value 폴더를 생성합니다.</p></li>
@@ -1041,7 +1253,7 @@ IFRS(연결)
 <p>위의 주소 역시 A 뒤의 6자리 티커만 변경하면 해당 종목의 스냅샷 페이지로 이동하게 됩니다.</p>
 <div class="figure align-default" id="crawl-practice-comp-price">
 <img alt="_images/05_crawl_practice_comp_price.png" src="_images/05_crawl_practice_comp_price.png" />
-<p class="caption"><span class="caption-text">Company Guide 스냅샷 화면</span><a class="headerlink" href="#crawl-practice-comp-price" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 48 </span><span class="caption-text">Company Guide 스냅샷 화면</span><a class="headerlink" href="#crawl-practice-comp-price" title="Permalink to this image">¶</a></p>
 </div>
 <p>시세현황표 내에 종가와 발행주식수가 있으므로, 이를 크롤링하겠습니다.</p>
 <div class="cell docutils container">
@@ -1082,35 +1294,35 @@ IFRS(연결)
     <tr>
       <th>0</th>
       <td>종가/ 전일대비</td>
-      <td>81,600/ -1,100</td>
+      <td>83,200/ -400</td>
       <td>거래량</td>
-      <td>23025766</td>
+      <td>12915282</td>
     </tr>
     <tr>
       <th>1</th>
       <td>52주.최고가/ 최저가</td>
-      <td>91,000/ 42,500</td>
+      <td>91,000/ 47,850</td>
       <td>거래대금(억원)</td>
-      <td>18886</td>
+      <td>10783</td>
     </tr>
     <tr>
       <th>2</th>
       <td>수익률(1M/ 3M/ 6M/ 1Y)</td>
-      <td>-8.11/ +35.55/ +41.18/ +36.68</td>
+      <td>+0.48/ -8.17/ +37.75/ +68.93</td>
       <td>외국인 보유비중</td>
-      <td>54.82</td>
+      <td>54.78</td>
     </tr>
     <tr>
       <th>3</th>
       <td>시가총액(상장예정포함,억원)</td>
-      <td>5482747</td>
+      <td>5584847</td>
       <td>베타(1년)</td>
-      <td>1.00569</td>
+      <td>1.11414</td>
     </tr>
     <tr>
       <th>4</th>
       <td>시가총액(보통주,억원)</td>
-      <td>4871343</td>
+      <td>4966859</td>
       <td>액면가</td>
       <td>100</td>
     </tr>
@@ -1126,7 +1338,7 @@ IFRS(연결)
       <td>발행주식수(보통주/ 우선주)</td>
       <td>5,969,782,550/ 822,886,700</td>
       <td>유동주식수/비율(보통주)</td>
-      <td>4,460,337,489 / 74.72</td>
+      <td>4,706,589,110 / 78.84</td>
     </tr>
   </tbody>
 </table>
@@ -1143,13 +1355,13 @@ IFRS(연결)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81600
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>83200
 </pre></div>
 </div>
 </div>
 </div>
 <ol class="simple">
-<li><p>[종가/전일대비]의 숫자에 해당하는 부분을 선택합니다. <code class="docutils literal notranslate"><span class="pre">split()</span></code> 함수를 통해 데이터를 나눈 후, 종가에 해당하는 첫번째 데이터를 선택합니다.</p></li>
+<li><p>[종가/ 전일대비]의 숫자에 해당하는 부분을 선택합니다. <code class="docutils literal notranslate"><span class="pre">split()</span></code> 함수를 통해 데이터를 나눈 후, 종가에 해당하는 첫번째 데이터를 선택합니다.</p></li>
 <li><p>쉼표(,)를 없애줍니다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">findall()</span></code> 함수 내부에 정규표현식을 통해 숫자 부분만을 선택하고, 이를 정수형으로 변경해줍니다.</p></li>
 </ol>
@@ -1175,9 +1387,10 @@ IFRS(연결)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">data_value</span> <span class="o">=</span> <span class="n">price</span> <span class="o">/</span> <span class="p">(</span><span class="n">value_index</span> <span class="o">*</span> <span class="mi">100000000</span> <span class="o">/</span> <span class="n">share</span><span class="p">)</span>
+<span class="n">data_value</span> <span class="o">=</span> <span class="n">price</span> <span class="o">/</span> <span class="p">(</span><span class="n">value_index</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">100000000</span> <span class="o">/</span> <span class="n">share</span><span class="p">)</span>
 <span class="n">data_value</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PER&#39;</span><span class="p">,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">,</span> <span class="s1">&#39;PCR&#39;</span><span class="p">,</span> <span class="s1">&#39;PSR&#39;</span><span class="p">]</span>
 <span class="n">data_value</span><span class="p">[</span><span class="n">data_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">data_value</span> <span class="o">=</span> <span class="n">data_value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 
 <span class="n">data_value</span>
 </pre></div>
@@ -1202,32 +1415,37 @@ IFRS(연결)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>2019/12</th>
+      <th>2020/12</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>PER</th>
-      <td>22.652034</td>
+      <td>19.036822</td>
     </tr>
     <tr>
       <th>PBR</th>
-      <td>1.853064</td>
+      <td>1.799926</td>
     </tr>
     <tr>
       <th>PCR</th>
-      <td>10.733872</td>
+      <td>7.607731</td>
     </tr>
     <tr>
       <th>PSR</th>
-      <td>2.114290</td>
+      <td>2.097429</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>분자에는 현재 주가를 입력하며, 분모에는 재무 데이터를 보통주 발행주식수로 나눈 값을 입력합니다. 단, 주가는 원 단위, 재무 데이터는 억 원 단위이므로, 둘 사이에 단위를 동일하게 맞춰주기 위해 분모에 억을 곱합니다. 또한 가치지표가 음수인 경우는 NA로 변경해줍니다.</p>
-<p>결과를 확인해보면 4가지 가치지표가 잘 계산되었습니다.<a class="footnote-reference brackets" href="#value" id="id8">1</a></p>
+<ol class="simple">
+<li><p>분자에는 현재 주가를 입력하며, 분모에는 재무 데이터를 보통주 발행주식수로 나눈 값을 입력합니다. 단, 주가는 원 단위, 재무 데이터는 억 원 단위이므로, 둘 사이에 단위를 동일하게 맞춰주기 위해 분모에 억을 곱합니다.</p></li>
+<li><p>인덱스를 가치지표로 변경합니다.</p></li>
+<li><p>가치지표가 음수인 경우는 NA로 변경해줍니다.</p></li>
+<li><p>일부 종목은 재무 데이터가 0으로 표기되어 가치지표가 Inf로 계산되는 경우가 있습니다. <code class="docutils literal notranslate"><span class="pre">replace()</span></code> 함수를 이용해 Inf 데이터를 NA로 변경합니다.</p></li>
+</ol>
+<p>결과를 확인해보면 4가지 가치지표가 잘 계산되었습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_value</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_value/005930_value.csv&#39;</span><span class="p">)</span>
@@ -1236,9 +1454,13 @@ IFRS(연결)
 </div>
 </div>
 <p>data 폴더의 KOR_value 폴더 내에 티커_value.csv 이름으로 저장합니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>분모에 사용되는 재무데이터의 구체적인 항목과 발행주식수를 계산하는 방법의 차이로 인해 여러 업체에서 제공하는 가치지표와 다소 차이가 발생할 수 있습니다.</p>
 </div>
-<div class="section" id="id9">
-<h3>6.2.3 전 종목 재무제표 및 가치지표 다운로드<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id8">
+<h3>6.2.3 전 종목 재무제표 및 가치지표 다운로드<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>위 코드에서 for loop 구문을 이용해 URL 중 6자리 티커에 해당하는 값만 변경해주면 모든 종목의 재무제표를 다운로드하고 이를 바탕으로 가치지표를 계산할 수 있습니다. 해당 코드는 다음과 같습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1247,6 +1469,7 @@ IFRS(연결)
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;data/KOR_fs&#39;</span><span class="p">):</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data/KOR_fs&#39;</span><span class="p">)</span>
@@ -1256,8 +1479,9 @@ IFRS(연결)
 
 <span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">error_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">)):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">))):</span>
     
     <span class="c1"># 빈 데이터프레임 생성</span>
     <span class="n">data_fs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]})</span>
@@ -1269,12 +1493,10 @@ IFRS(연결)
     <span class="c1"># 오류 발생 시 이를 무시하고 다음 루프로 진행</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># url 생성</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://comp.fnguide.com/SVO2/ASP/SVD_Finance.asp?pGB=1&amp;gicode=A&#39;</span><span class="o">+</span><span class="n">name</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">displayed_only</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://comp.fnguide.com/SVO2/ASP/SVD_Finance.asp?pGB=1&amp;gicode=A&#39;</span><span class="o">+</span><span class="n">name</span>        
         
-        <span class="c1"># 데이터 다운로드 후 테이블 추출</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-                
+        <span class="c1"># 데이터 다운로드 후 테이블 추출    </span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">displayed_only</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>        
         <span class="n">data_IS</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">data_BS</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">data_CF</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
@@ -1289,7 +1511,7 @@ IFRS(연결)
         
         <span class="c1"># 가치 지표 선택</span>
         <span class="n">value_type</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;지배주주순이익&#39;</span><span class="p">,</span> <span class="s1">&#39;자본&#39;</span><span class="p">,</span> <span class="s1">&#39;영업활동으로인한현금흐름&#39;</span><span class="p">,</span> <span class="s1">&#39;매출액&#39;</span><span class="p">]</span>            
-        <span class="n">value_index</span> <span class="o">=</span> <span class="n">data_fs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">value_type</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">:]</span>  
+        <span class="n">value_index</span> <span class="o">=</span> <span class="n">data_fs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">value_type</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
         
         <span class="c1"># 현재 주가</span>
         <span class="n">url_snap</span> <span class="o">=</span> <span class="s1">&#39;http://comp.fnguide.com/SVO2/ASP/SVD_Main.asp?pGB=1&amp;gicode=A&#39;</span><span class="o">+</span><span class="n">name</span>
@@ -1304,14 +1526,14 @@ IFRS(연결)
         <span class="n">share</span> <span class="o">=</span> <span class="n">share</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="n">share</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;[0-9]+&quot;</span><span class="p">,</span> <span class="n">share</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
         
-        <span class="n">data_value</span> <span class="o">=</span> <span class="n">price</span> <span class="o">/</span> <span class="p">(</span><span class="n">value_index</span> <span class="o">*</span> <span class="mi">100000000</span> <span class="o">/</span> <span class="n">share</span><span class="p">)</span>
+        <span class="n">data_value</span> <span class="o">=</span> <span class="n">price</span> <span class="o">/</span> <span class="p">(</span><span class="n">value_index</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">100000000</span> <span class="o">/</span> <span class="n">share</span><span class="p">)</span>
         <span class="n">data_value</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PER&#39;</span><span class="p">,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">,</span> <span class="s1">&#39;PCR&#39;</span><span class="p">,</span> <span class="s1">&#39;PSR&#39;</span><span class="p">]</span>
         <span class="n">data_value</span><span class="p">[</span><span class="n">data_value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>     
+        <span class="n">data_value</span> <span class="o">=</span> <span class="n">data_value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
         
     <span class="k">except</span><span class="p">:</span>
-        <span class="c1"># 오류 발생시 해당 종목명을 출력하고 다음 루프로 이동</span>
-        <span class="c1"># count_ticker에 오류발생 종목 저장, 마감 후 원인 파악</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in ticker &#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>        
+        <span class="c1"># 오류 발생시 해당 종목명을 저장하고 다음 루프로 이동        </span>
+        <span class="n">error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>     
     
     <span class="c1"># 다운로드 받은 파일을 생성한 폴더 내 csv 파일로 저장    </span>
     <span class="n">data_fs</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_fs/&#39;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;_fs.csv&#39;</span><span class="p">)</span>
@@ -1322,13 +1544,21 @@ IFRS(연결)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|█████████████████████████████▎                                               | 826/2173 [39:35&lt;1:03:03,  2.81s/it]
+</pre></div>
 </div>
-<hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="value"><span class="brackets"><a class="fn-backref" href="#id8">1</a></span></dt>
-<dd><p>분모에 사용되는 재무데이터의 구체적인 항목과 발행주식수를 계산하는 방법의 차이로 인해 여러 업체에서 제공하는 가치지표와 다소 차이가 발생할 수 있습니다.</p>
-</dd>
-</dl>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>재무제표 데이터 다운로드 시 에러가 발생하는 종목은 다음과 같습니다.</p>
+<ul class="simple">
+<li><p>금융주의 경우 매출액이 없어 PSR 계산 시 에러 발생</p></li>
+<li><p>지배주주순이익 없는 종목의 경우 PER 계산 시 에러 발생</p></li>
+<li><p>12월 결산 아닌 종목의 경우 필터링 과정시 에러 발생</p></li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1361,6 +1591,8 @@ IFRS(연결)
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="05_crawl_practice.html" title="previous page">5. 금융 데이터 수집하기 (기본)</a>
+    <a class='right-next' id="next-link" href="07_hts_api.html" title="next page">7. 증권사 API 연결 및 매매</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

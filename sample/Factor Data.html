@@ -1,0 +1,1553 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Low Volatility</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_backtest.html">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/sample/Factor Data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/sample/Factor Data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Low Volatility
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datareader">
+   datareader 에서 프렌치 리스트
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#short-term-reversal">
+   Short Term Reversal
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#momentum">
+   Momentum
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#long-term-reversal">
+   Long Term Reversal
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pbr">
+   PBR
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#per">
+   PER
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pcr">
+   PCR
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operating-profit">
+   Operating Profit
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pbr-op">
+   PBR &amp; OP
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="low-volatility">
+<h1>Low Volatility<a class="headerlink" href="#low-volatility" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">robeco</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">insights</span><span class="o">/</span><span class="mi">2019</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="n">data</span><span class="o">-</span><span class="n">sets</span><span class="o">-</span><span class="n">volatility</span><span class="o">-</span><span class="nb">sorted</span><span class="o">-</span><span class="n">portfolios</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.robeco.com/docm/docu-robeco-data-sets-volatility-sorted-portfolios.xlsx&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;Conservative Formula 2021&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">cut_row</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">cut_row</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Low volatility</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>High volatility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1929-01-31</th>
+      <td>0.049068</td>
+      <td>0.055891</td>
+      <td>0.028393</td>
+      <td>0.027992</td>
+      <td>0.028601</td>
+      <td>0.042569</td>
+      <td>0.019569</td>
+      <td>0.026325</td>
+      <td>0.068246</td>
+      <td>-0.015916</td>
+    </tr>
+    <tr>
+      <th>1929-02-28</th>
+      <td>0.001052</td>
+      <td>-0.004374</td>
+      <td>0.001483</td>
+      <td>0.010956</td>
+      <td>0.026740</td>
+      <td>-0.017976</td>
+      <td>0.020075</td>
+      <td>-0.012382</td>
+      <td>0.013717</td>
+      <td>0.057899</td>
+    </tr>
+    <tr>
+      <th>1929-03-29</th>
+      <td>-0.009444</td>
+      <td>-0.010437</td>
+      <td>-0.018429</td>
+      <td>-0.030655</td>
+      <td>-0.026962</td>
+      <td>-0.039162</td>
+      <td>-0.033466</td>
+      <td>-0.052638</td>
+      <td>-0.011746</td>
+      <td>-0.020680</td>
+    </tr>
+    <tr>
+      <th>1929-04-30</th>
+      <td>-0.001644</td>
+      <td>0.018043</td>
+      <td>0.010668</td>
+      <td>0.016756</td>
+      <td>-0.003668</td>
+      <td>0.045984</td>
+      <td>0.019777</td>
+      <td>-0.003291</td>
+      <td>0.029879</td>
+      <td>-0.021943</td>
+    </tr>
+    <tr>
+      <th>1929-05-31</th>
+      <td>0.003102</td>
+      <td>-0.058104</td>
+      <td>-0.052835</td>
+      <td>-0.050367</td>
+      <td>-0.096969</td>
+      <td>-0.066940</td>
+      <td>-0.109504</td>
+      <td>-0.170854</td>
+      <td>-0.142702</td>
+      <td>-0.144243</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">height</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Factor Data_4_0.png" src="../_images/Factor Data_4_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">data_cum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">data_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">colormap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Volatility&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Volatility&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../_images/Factor Data_5_1.png" src="../_images/Factor Data_5_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="datareader">
+<h1>datareader 에서 프렌치 리스트<a class="headerlink" href="#datareader" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>  <span class="c1"># module for reading datasets directly from the web</span>
+<span class="kn">from</span> <span class="nn">pandas_datareader.famafrench</span> <span class="kn">import</span> <span class="n">get_available_datasets</span>
+
+<span class="n">datasets</span> <span class="o">=</span> <span class="n">get_available_datasets</span><span class="p">()</span>
+<span class="n">datasets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;F-F_Research_Data_Factors&#39;,
+ &#39;F-F_Research_Data_Factors_weekly&#39;,
+ &#39;F-F_Research_Data_Factors_daily&#39;,
+ &#39;F-F_Research_Data_5_Factors_2x3&#39;,
+ &#39;F-F_Research_Data_5_Factors_2x3_daily&#39;,
+ &#39;Portfolios_Formed_on_ME&#39;,
+ &#39;Portfolios_Formed_on_ME_Wout_Div&#39;,
+ &#39;Portfolios_Formed_on_ME_Daily&#39;,
+ &#39;Portfolios_Formed_on_BE-ME&#39;,
+ &#39;Portfolios_Formed_on_BE-ME_Wout_Div&#39;,
+ &#39;Portfolios_Formed_on_BE-ME_Daily&#39;,
+ &#39;Portfolios_Formed_on_OP&#39;,
+ &#39;Portfolios_Formed_on_OP_Wout_Div&#39;,
+ &#39;Portfolios_Formed_on_OP_Daily&#39;,
+ &#39;Portfolios_Formed_on_INV&#39;,
+ &#39;Portfolios_Formed_on_INV_Wout_Div&#39;,
+ &#39;Portfolios_Formed_on_INV_Daily&#39;,
+ &#39;6_Portfolios_2x3&#39;,
+ &#39;6_Portfolios_2x3_Wout_Div&#39;,
+ &#39;6_Portfolios_2x3_weekly&#39;,
+ &#39;6_Portfolios_2x3_daily&#39;,
+ &#39;25_Portfolios_5x5&#39;,
+ &#39;25_Portfolios_5x5_Wout_Div&#39;,
+ &#39;25_Portfolios_5x5_Daily&#39;,
+ &#39;100_Portfolios_10x10&#39;,
+ &#39;100_Portfolios_10x10_Wout_Div&#39;,
+ &#39;100_Portfolios_10x10_Daily&#39;,
+ &#39;6_Portfolios_ME_OP_2x3&#39;,
+ &#39;6_Portfolios_ME_OP_2x3_Wout_Div&#39;,
+ &#39;6_Portfolios_ME_OP_2x3_daily&#39;,
+ &#39;25_Portfolios_ME_OP_5x5&#39;,
+ &#39;25_Portfolios_ME_OP_5x5_Wout_Div&#39;,
+ &#39;25_Portfolios_ME_OP_5x5_daily&#39;,
+ &#39;100_Portfolios_ME_OP_10x10&#39;,
+ &#39;100_Portfolios_10x10_ME_OP_Wout_Div&#39;,
+ &#39;100_Portfolios_ME_OP_10x10_daily&#39;,
+ &#39;6_Portfolios_ME_INV_2x3&#39;,
+ &#39;6_Portfolios_ME_INV_2x3_Wout_Div&#39;,
+ &#39;6_Portfolios_ME_INV_2x3_daily&#39;,
+ &#39;25_Portfolios_ME_INV_5x5&#39;,
+ &#39;25_Portfolios_ME_INV_5x5_Wout_Div&#39;,
+ &#39;25_Portfolios_ME_INV_5x5_daily&#39;,
+ &#39;100_Portfolios_ME_INV_10x10&#39;,
+ &#39;100_Portfolios_10x10_ME_INV_Wout_Div&#39;,
+ &#39;100_Portfolios_ME_INV_10x10_daily&#39;,
+ &#39;25_Portfolios_BEME_OP_5x5&#39;,
+ &#39;25_Portfolios_BEME_OP_5x5_Wout_Div&#39;,
+ &#39;25_Portfolios_BEME_OP_5x5_daily&#39;,
+ &#39;25_Portfolios_BEME_INV_5x5&#39;,
+ &#39;25_Portfolios_BEME_INV_5x5_Wout_Div&#39;,
+ &#39;25_Portfolios_BEME_INV_5x5_daily&#39;,
+ &#39;25_Portfolios_OP_INV_5x5&#39;,
+ &#39;25_Portfolios_OP_INV_5x5_Wout_Div&#39;,
+ &#39;25_Portfolios_OP_INV_5x5_daily&#39;,
+ &#39;32_Portfolios_ME_BEME_OP_2x4x4&#39;,
+ &#39;32_Portfolios_ME_BEME_OP_2x4x4_Wout_Div&#39;,
+ &#39;32_Portfolios_ME_BEME_INV_2x4x4&#39;,
+ &#39;32_Portfolios_ME_BEME_INV_2x4x4_Wout_Div&#39;,
+ &#39;32_Portfolios_ME_OP_INV_2x4x4&#39;,
+ &#39;32_Portfolios_ME_OP_INV_2x4x4_Wout_Div&#39;,
+ &#39;Portfolios_Formed_on_E-P&#39;,
+ &#39;Portfolios_Formed_on_E-P_Wout_Div&#39;,
+ &#39;Portfolios_Formed_on_CF-P&#39;,
+ &#39;Portfolios_Formed_on_CF-P_Wout_Div&#39;,
+ &#39;Portfolios_Formed_on_D-P&#39;,
+ &#39;Portfolios_Formed_on_D-P_Wout_Div&#39;,
+ &#39;6_Portfolios_ME_EP_2x3&#39;,
+ &#39;6_Portfolios_ME_EP_2x3_Wout_Div&#39;,
+ &#39;6_Portfolios_ME_CFP_2x3&#39;,
+ &#39;6_Portfolios_ME_CFP_2x3_Wout_Div&#39;,
+ &#39;6_Portfolios_ME_DP_2x3&#39;,
+ &#39;6_Portfolios_ME_DP_2x3_Wout_Div&#39;,
+ &#39;F-F_Momentum_Factor&#39;,
+ &#39;F-F_Momentum_Factor_daily&#39;,
+ &#39;6_Portfolios_ME_Prior_12_2&#39;,
+ &#39;6_Portfolios_ME_Prior_12_2_Daily&#39;,
+ &#39;25_Portfolios_ME_Prior_12_2&#39;,
+ &#39;25_Portfolios_ME_Prior_12_2_Daily&#39;,
+ &#39;10_Portfolios_Prior_12_2&#39;,
+ &#39;10_Portfolios_Prior_12_2_Daily&#39;,
+ &#39;F-F_ST_Reversal_Factor&#39;,
+ &#39;F-F_ST_Reversal_Factor_daily&#39;,
+ &#39;6_Portfolios_ME_Prior_1_0&#39;,
+ &#39;6_Portfolios_ME_Prior_1_0_Daily&#39;,
+ &#39;25_Portfolios_ME_Prior_1_0&#39;,
+ &#39;25_Portfolios_ME_Prior_1_0_Daily&#39;,
+ &#39;10_Portfolios_Prior_1_0&#39;,
+ &#39;10_Portfolios_Prior_1_0_Daily&#39;,
+ &#39;F-F_LT_Reversal_Factor&#39;,
+ &#39;F-F_LT_Reversal_Factor_daily&#39;,
+ &#39;6_Portfolios_ME_Prior_60_13&#39;,
+ &#39;6_Portfolios_ME_Prior_60_13_Daily&#39;,
+ &#39;25_Portfolios_ME_Prior_60_13&#39;,
+ &#39;25_Portfolios_ME_Prior_60_13_Daily&#39;,
+ &#39;10_Portfolios_Prior_60_13&#39;,
+ &#39;10_Portfolios_Prior_60_13_Daily&#39;,
+ &#39;Portfolios_Formed_on_AC&#39;,
+ &#39;25_Portfolios_ME_AC_5x5&#39;,
+ &#39;Portfolios_Formed_on_BETA&#39;,
+ &#39;25_Portfolios_ME_BETA_5x5&#39;,
+ &#39;Portfolios_Formed_on_NI&#39;,
+ &#39;25_Portfolios_ME_NI_5x5&#39;,
+ &#39;Portfolios_Formed_on_VAR&#39;,
+ &#39;25_Portfolios_ME_VAR_5x5&#39;,
+ &#39;Portfolios_Formed_on_RESVAR&#39;,
+ &#39;25_Portfolios_ME_RESVAR_5x5&#39;,
+ &#39;5_Industry_Portfolios&#39;,
+ &#39;5_Industry_Portfolios_Wout_Div&#39;,
+ &#39;5_Industry_Portfolios_daily&#39;,
+ &#39;10_Industry_Portfolios&#39;,
+ &#39;10_Industry_Portfolios_Wout_Div&#39;,
+ &#39;10_Industry_Portfolios_daily&#39;,
+ &#39;12_Industry_Portfolios&#39;,
+ &#39;12_Industry_Portfolios_Wout_Div&#39;,
+ &#39;12_Industry_Portfolios_daily&#39;,
+ &#39;17_Industry_Portfolios&#39;,
+ &#39;17_Industry_Portfolios_Wout_Div&#39;,
+ &#39;17_Industry_Portfolios_daily&#39;,
+ &#39;30_Industry_Portfolios&#39;,
+ &#39;30_Industry_Portfolios_Wout_Div&#39;,
+ &#39;30_Industry_Portfolios_daily&#39;,
+ &#39;38_Industry_Portfolios&#39;,
+ &#39;38_Industry_Portfolios_Wout_Div&#39;,
+ &#39;38_Industry_Portfolios_daily&#39;,
+ &#39;48_Industry_Portfolios&#39;,
+ &#39;48_Industry_Portfolios_Wout_Div&#39;,
+ &#39;48_Industry_Portfolios_daily&#39;,
+ &#39;49_Industry_Portfolios&#39;,
+ &#39;49_Industry_Portfolios_Wout_Div&#39;,
+ &#39;49_Industry_Portfolios_daily&#39;,
+ &#39;ME_Breakpoints&#39;,
+ &#39;BE-ME_Breakpoints&#39;,
+ &#39;OP_Breakpoints&#39;,
+ &#39;INV_Breakpoints&#39;,
+ &#39;E-P_Breakpoints&#39;,
+ &#39;CF-P_Breakpoints&#39;,
+ &#39;D-P_Breakpoints&#39;,
+ &#39;Prior_2-12_Breakpoints&#39;,
+ &#39;Developed_3_Factors&#39;,
+ &#39;Developed_3_Factors_Daily&#39;,
+ &#39;Developed_ex_US_3_Factors&#39;,
+ &#39;Developed_ex_US_3_Factors_Daily&#39;,
+ &#39;Europe_3_Factors&#39;,
+ &#39;Europe_3_Factors_Daily&#39;,
+ &#39;Japan_3_Factors&#39;,
+ &#39;Japan_3_Factors_Daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_3_Factors&#39;,
+ &#39;Asia_Pacific_ex_Japan_3_Factors_Daily&#39;,
+ &#39;North_America_3_Factors&#39;,
+ &#39;North_America_3_Factors_Daily&#39;,
+ &#39;Developed_5_Factors&#39;,
+ &#39;Developed_5_Factors_Daily&#39;,
+ &#39;Developed_ex_US_5_Factors&#39;,
+ &#39;Developed_ex_US_5_Factors_Daily&#39;,
+ &#39;Europe_5_Factors&#39;,
+ &#39;Europe_5_Factors_Daily&#39;,
+ &#39;Japan_5_Factors&#39;,
+ &#39;Japan_5_Factors_Daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_5_Factors&#39;,
+ &#39;Asia_Pacific_ex_Japan_5_Factors_Daily&#39;,
+ &#39;North_America_5_Factors&#39;,
+ &#39;North_America_5_Factors_Daily&#39;,
+ &#39;Developed_Mom_Factor&#39;,
+ &#39;Developed_Mom_Factor_Daily&#39;,
+ &#39;Developed_ex_US_Mom_Factor&#39;,
+ &#39;Developed_ex_US_Mom_Factor_Daily&#39;,
+ &#39;Europe_Mom_Factor&#39;,
+ &#39;Europe_Mom_Factor_Daily&#39;,
+ &#39;Japan_Mom_Factor&#39;,
+ &#39;Japan_Mom_Factor_Daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_MOM_Factor&#39;,
+ &#39;Asia_Pacific_ex_Japan_MOM_Factor_Daily&#39;,
+ &#39;North_America_Mom_Factor&#39;,
+ &#39;North_America_Mom_Factor_Daily&#39;,
+ &#39;Developed_6_Portfolios_ME_BE-ME&#39;,
+ &#39;Developed_6_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;Developed_ex_US_6_Portfolios_ME_BE-ME&#39;,
+ &#39;Developed_ex_US_6_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;Europe_6_Portfolios_ME_BE-ME&#39;,
+ &#39;Europe_6_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;Japan_6_Portfolios_ME_BE-ME&#39;,
+ &#39;Japan_6_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_6_Portfolios_ME_BE-ME&#39;,
+ &#39;Asia_Pacific_ex_Japan_6_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;North_America_6_Portfolios_ME_BE-ME&#39;,
+ &#39;North_America_6_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;Developed_25_Portfolios_ME_BE-ME&#39;,
+ &#39;Developed_25_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;Developed_ex_US_25_Portfolios_ME_BE-ME&#39;,
+ &#39;Developed_ex_US_25_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;Europe_25_Portfolios_ME_BE-ME&#39;,
+ &#39;Europe_25_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;Japan_25_Portfolios_ME_BE-ME&#39;,
+ &#39;Japan_25_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_25_Portfolios_ME_BE-ME&#39;,
+ &#39;Asia_Pacific_ex_Japan_25_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;North_America_25_Portfolios_ME_BE-ME&#39;,
+ &#39;North_America_25_Portfolios_ME_BE-ME_daily&#39;,
+ &#39;Developed_6_Portfolios_ME_OP&#39;,
+ &#39;Developed_6_Portfolios_ME_OP_Daily&#39;,
+ &#39;Developed_ex_US_6_Portfolios_ME_OP&#39;,
+ &#39;Developed_ex_US_6_Portfolios_ME_OP_Daily&#39;,
+ &#39;Europe_6_Portfolios_ME_OP&#39;,
+ &#39;Europe_6_Portfolios_ME_OP_Daily&#39;,
+ &#39;Japan_6_Portfolios_ME_OP&#39;,
+ &#39;Japan_6_Portfolios_ME_OP_Daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_6_Portfolios_ME_OP&#39;,
+ &#39;Asia_Pacific_ex_Japan_6_Portfolios_ME_OP_Daily&#39;,
+ &#39;North_America_6_Portfolios_ME_OP&#39;,
+ &#39;North_America_6_Portfolios_ME_OP_Daily&#39;,
+ &#39;Developed_25_Portfolios_ME_OP&#39;,
+ &#39;Developed_25_Portfolios_ME_OP_Daily&#39;,
+ &#39;Developed_ex_US_25_Portfolios_ME_OP&#39;,
+ &#39;Developed_ex_US_25_Portfolios_ME_OP_Daily&#39;,
+ &#39;Europe_25_Portfolios_ME_OP&#39;,
+ &#39;Europe_25_Portfolios_ME_OP_Daily&#39;,
+ &#39;Japan_25_Portfolios_ME_OP&#39;,
+ &#39;Japan_25_Portfolios_ME_OP_Daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_25_Portfolios_ME_OP&#39;,
+ &#39;Asia_Pacific_ex_Japan_25_Portfolios_ME_OP_Daily&#39;,
+ &#39;North_America_25_Portfolios_ME_OP&#39;,
+ &#39;North_America_25_Portfolios_ME_OP_Daily&#39;,
+ &#39;Developed_6_Portfolios_ME_INV&#39;,
+ &#39;Developed_6_Portfolios_ME_INV_Daily&#39;,
+ &#39;Developed_ex_US_6_Portfolios_ME_INV&#39;,
+ &#39;Developed_ex_US_6_Portfolios_ME_INV_Daily&#39;,
+ &#39;Europe_6_Portfolios_ME_INV&#39;,
+ &#39;Europe_6_Portfolios_ME_INV_Daily&#39;,
+ &#39;Japan_6_Portfolios_ME_INV&#39;,
+ &#39;Japan_6_Portfolios_ME_INV_Daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_6_Portfolios_ME_INV&#39;,
+ &#39;Asia_Pacific_ex_Japan_6_Portfolios_ME_INV_Daily&#39;,
+ &#39;North_America_6_Portfolios_ME_INV&#39;,
+ &#39;North_America_6_Portfolios_ME_INV_Daily&#39;,
+ &#39;Developed_25_Portfolios_ME_INV&#39;,
+ &#39;Developed_25_Portfolios_ME_INV_Daily&#39;,
+ &#39;Developed_ex_US_25_Portfolios_ME_INV&#39;,
+ &#39;Developed_ex_US_25_Portfolios_ME_INV_Daily&#39;,
+ &#39;Europe_25_Portfolios_ME_INV&#39;,
+ &#39;Europe_25_Portfolios_ME_INV_Daily&#39;,
+ &#39;Japan_25_Portfolios_ME_INV&#39;,
+ &#39;Japan_25_Portfolios_ME_INV_Daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_25_Portfolios_ME_INV&#39;,
+ &#39;Asia_Pacific_ex_Japan_25_Portfolios_ME_INV_Daily&#39;,
+ &#39;North_America_25_Portfolios_ME_INV&#39;,
+ &#39;North_America_25_Portfolios_ME_INV_Daily&#39;,
+ &#39;Developed_6_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Developed_6_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;Developed_ex_US_6_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Developed_ex_US_6_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;Europe_6_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Europe_6_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;Japan_6_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Japan_6_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_6_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Asia_Pacific_ex_Japan_6_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;North_America_6_Portfolios_ME_Prior_12_2&#39;,
+ &#39;North_America_6_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;Developed_25_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Developed_25_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;Developed_ex_US_25_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Developed_ex_US_25_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;Europe_25_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Europe_25_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;Japan_25_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Japan_25_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;Asia_Pacific_ex_Japan_25_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Asia_Pacific_ex_Japan_25_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;North_America_25_Portfolios_ME_Prior_12_2&#39;,
+ &#39;North_America_25_Portfolios_ME_Prior_250_20_daily&#39;,
+ &#39;Developed_32_Portfolios_ME_BE-ME_OP_2x4x4&#39;,
+ &#39;Developed_ex_US_32_Portfolios_ME_BE-ME_OP_2x4x4&#39;,
+ &#39;Europe_32_Portfolios_ME_BE-ME_OP_2x4x4&#39;,
+ &#39;Japan_32_Portfolios_ME_BE-ME_OP_2x4x4&#39;,
+ &#39;Asia_Pacific_ex_Japan_32_Portfolios_ME_BE-ME_OP_2x4x4&#39;,
+ &#39;North_America_32_Portfolios_ME_BE-ME_OP_2x4x4&#39;,
+ &#39;Developed_32_Portfolios_ME_BE-ME_INV(TA)_2x4x4&#39;,
+ &#39;Developed_ex_US_32_Portfolios_ME_BE-ME_INV(TA)_2x4x4&#39;,
+ &#39;Europe_32_Portfolios_ME_BE-ME_INV(TA)_2x4x4&#39;,
+ &#39;Japan_32_Portfolios_ME_BE-ME_INV(TA)_2x4x4&#39;,
+ &#39;Asia_Pacific_ex_Japan_32_Portfolios_ME_BE-ME_INV(TA)_2x4x4&#39;,
+ &#39;North_America_32_Portfolios_ME_BE-ME_INV(TA)_2x4x4&#39;,
+ &#39;Developed_32_Portfolios_ME_INV(TA)_OP_2x4x4&#39;,
+ &#39;Developed_ex_US_32_Portfolios_ME_INV(TA)_OP_2x4x4&#39;,
+ &#39;Europe_32_Portfolios_ME_INV(TA)_OP_2x4x4&#39;,
+ &#39;Japan_32_Portfolios_ME_INV(TA)_OP_2x4x4&#39;,
+ &#39;Asia_Pacific_ex_Japan_32_Portfolios_ME_INV(TA)_OP_2x4x4&#39;,
+ &#39;North_America_32_Portfolios_ME_INV(TA)_OP_2x4x4&#39;,
+ &#39;Emerging_5_Factors&#39;,
+ &#39;Emerging_MOM_Factor&#39;,
+ &#39;Emerging_Markets_6_Portfolios_ME_BE-ME&#39;,
+ &#39;Emerging_Markets_6_Portfolios_ME_OP&#39;,
+ &#39;Emerging_Markets_6_Portfolios_ME_INV&#39;,
+ &#39;Emerging_Markets_6_Portfolios_ME_Prior_12_2&#39;,
+ &#39;Emerging_Markets_4_Portfolios_BE-ME_OP&#39;,
+ &#39;Emerging_Markets_4_Portfolios_OP_INV&#39;,
+ &#39;Emerging_Markets_4_Portfolios_BE-ME_INV&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="short-term-reversal">
+<h1>Short Term Reversal<a class="headerlink" href="#short-term-reversal" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="n">df_short</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;10_Portfolios_Prior_1_0&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;1900-01-01&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_short</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Lo PRIOR</th>
+      <th>PRIOR 2</th>
+      <th>PRIOR 3</th>
+      <th>PRIOR 4</th>
+      <th>PRIOR 5</th>
+      <th>PRIOR 6</th>
+      <th>PRIOR 7</th>
+      <th>PRIOR 8</th>
+      <th>PRIOR 9</th>
+      <th>Hi PRIOR</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1926-02</th>
+      <td>-7.81</td>
+      <td>-5.00</td>
+      <td>-3.97</td>
+      <td>-3.74</td>
+      <td>-4.75</td>
+      <td>-1.32</td>
+      <td>-1.79</td>
+      <td>-1.51</td>
+      <td>-2.60</td>
+      <td>-5.29</td>
+    </tr>
+    <tr>
+      <th>1926-03</th>
+      <td>-17.24</td>
+      <td>-12.06</td>
+      <td>-12.10</td>
+      <td>-5.31</td>
+      <td>-8.53</td>
+      <td>-4.50</td>
+      <td>-4.73</td>
+      <td>-4.91</td>
+      <td>-3.29</td>
+      <td>-9.56</td>
+    </tr>
+    <tr>
+      <th>1926-04</th>
+      <td>1.28</td>
+      <td>1.90</td>
+      <td>2.13</td>
+      <td>5.14</td>
+      <td>4.05</td>
+      <td>3.64</td>
+      <td>4.57</td>
+      <td>3.42</td>
+      <td>4.24</td>
+      <td>3.39</td>
+    </tr>
+    <tr>
+      <th>1926-05</th>
+      <td>-3.28</td>
+      <td>0.90</td>
+      <td>-1.56</td>
+      <td>1.06</td>
+      <td>1.98</td>
+      <td>2.62</td>
+      <td>1.45</td>
+      <td>0.39</td>
+      <td>1.38</td>
+      <td>1.22</td>
+    </tr>
+    <tr>
+      <th>1926-06</th>
+      <td>7.43</td>
+      <td>8.25</td>
+      <td>11.65</td>
+      <td>5.72</td>
+      <td>7.86</td>
+      <td>4.71</td>
+      <td>4.00</td>
+      <td>4.06</td>
+      <td>3.55</td>
+      <td>3.10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">df_short_cum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">df_short</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">df_short_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">colormap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Short Term Return&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Short Term Return&#39;}, xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/Factor Data_10_1.png" src="../_images/Factor Data_10_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="momentum">
+<h1>Momentum<a class="headerlink" href="#momentum" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">df_mom</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;10_Portfolios_Prior_12_2&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;1900-01-01&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_mom_cum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">df_mom</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">df_mom_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">colormap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;12 Month Return&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;12 Month Return&#39;}, xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/Factor Data_12_1.png" src="../_images/Factor Data_12_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="long-term-reversal">
+<h1>Long Term Reversal<a class="headerlink" href="#long-term-reversal" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">df_long</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;10_Portfolios_Prior_60_13&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;1900-01-01&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_long_cum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">df_long</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">df_long_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">colormap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Long Term Return&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Long Term Return&#39;}, xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/Factor Data_14_1.png" src="../_images/Factor Data_14_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="pbr">
+<h1>PBR<a class="headerlink" href="#pbr" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">df_pbr</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;Portfolios_Formed_on_BE-ME&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;1900-01-01&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">df_pbr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>&lt;= 0</th>
+      <th>Lo 30</th>
+      <th>Med 40</th>
+      <th>Hi 30</th>
+      <th>Lo 20</th>
+      <th>Qnt 2</th>
+      <th>Qnt 3</th>
+      <th>Qnt 4</th>
+      <th>Hi 20</th>
+      <th>Lo 10</th>
+      <th>Dec 2</th>
+      <th>Dec 3</th>
+      <th>Dec 4</th>
+      <th>Dec 5</th>
+      <th>Dec 6</th>
+      <th>Dec 7</th>
+      <th>Dec 8</th>
+      <th>Dec 9</th>
+      <th>Hi 10</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1926-07</th>
+      <td>12.07</td>
+      <td>5.56</td>
+      <td>1.92</td>
+      <td>1.06</td>
+      <td>3.19</td>
+      <td>5.41</td>
+      <td>1.77</td>
+      <td>2.44</td>
+      <td>0.60</td>
+      <td>4.63</td>
+      <td>1.24</td>
+      <td>11.40</td>
+      <td>1.68</td>
+      <td>1.50</td>
+      <td>2.09</td>
+      <td>2.73</td>
+      <td>1.58</td>
+      <td>0.63</td>
+      <td>0.52</td>
+    </tr>
+    <tr>
+      <th>1926-08</th>
+      <td>-9.73</td>
+      <td>2.64</td>
+      <td>2.64</td>
+      <td>6.09</td>
+      <td>1.00</td>
+      <td>4.01</td>
+      <td>2.05</td>
+      <td>4.58</td>
+      <td>7.10</td>
+      <td>0.15</td>
+      <td>2.18</td>
+      <td>6.40</td>
+      <td>2.38</td>
+      <td>1.58</td>
+      <td>2.63</td>
+      <td>4.46</td>
+      <td>4.94</td>
+      <td>8.31</td>
+      <td>3.92</td>
+    </tr>
+    <tr>
+      <th>1926-09</th>
+      <td>-15.16</td>
+      <td>1.29</td>
+      <td>0.06</td>
+      <td>-0.71</td>
+      <td>-1.03</td>
+      <td>3.05</td>
+      <td>-0.30</td>
+      <td>-0.17</td>
+      <td>-1.46</td>
+      <td>-0.11</td>
+      <td>-2.30</td>
+      <td>6.32</td>
+      <td>0.73</td>
+      <td>-0.89</td>
+      <td>0.38</td>
+      <td>-0.28</td>
+      <td>0.17</td>
+      <td>-2.16</td>
+      <td>0.44</td>
+    </tr>
+    <tr>
+      <th>1926-10</th>
+      <td>-5.63</td>
+      <td>-3.59</td>
+      <td>-2.42</td>
+      <td>-3.59</td>
+      <td>-2.88</td>
+      <td>-2.96</td>
+      <td>-2.21</td>
+      <td>-4.18</td>
+      <td>-4.28</td>
+      <td>-3.78</td>
+      <td>-1.63</td>
+      <td>-5.01</td>
+      <td>-1.41</td>
+      <td>-2.31</td>
+      <td>-2.10</td>
+      <td>-4.65</td>
+      <td>-2.80</td>
+      <td>-5.46</td>
+      <td>-1.17</td>
+    </tr>
+    <tr>
+      <th>1926-11</th>
+      <td>5.58</td>
+      <td>3.13</td>
+      <td>2.92</td>
+      <td>3.13</td>
+      <td>4.11</td>
+      <td>2.57</td>
+      <td>1.89</td>
+      <td>3.96</td>
+      <td>2.48</td>
+      <td>6.03</td>
+      <td>1.49</td>
+      <td>1.11</td>
+      <td>3.63</td>
+      <td>1.97</td>
+      <td>1.80</td>
+      <td>4.00</td>
+      <td>3.85</td>
+      <td>2.77</td>
+      <td>1.76</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pbr</span> <span class="o">=</span> <span class="n">df_pbr</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;Lo 20&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 4&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi 20&#39;</span><span class="p">]]</span>
+<span class="n">df_pbr_cum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">df_pbr</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">df_pbr_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;PBR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;PBR&#39;}, xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/Factor Data_17_1.png" src="../_images/Factor Data_17_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="per">
+<h1>PER<a class="headerlink" href="#per" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">df_per</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;Portfolios_Formed_on_E-P&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;1900-01-01&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_per</span> <span class="o">=</span> <span class="n">df_per</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;Lo 20&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 4&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi 20&#39;</span><span class="p">]]</span>
+<span class="n">df_per_cum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">df_per</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">df_per_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;PER&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;PER&#39;}, xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/Factor Data_19_1.png" src="../_images/Factor Data_19_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="pcr">
+<h1>PCR<a class="headerlink" href="#pcr" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">df_pcr</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;Portfolios_Formed_on_CF-P&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;1900-01-01&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_pcr</span> <span class="o">=</span> <span class="n">df_pcr</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;Lo 20&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 4&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi 20&#39;</span><span class="p">]]</span>
+<span class="n">df_pcr_cum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">df_pcr</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">df_pcr_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;PCR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;PCR&#39;}, xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/Factor Data_21_1.png" src="../_images/Factor Data_21_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">df_op</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;Portfolios_Formed_on_OP&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;1900-01-01&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnicodeDecodeError</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">0628</span><span class="n">a59a4646</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">df_op</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;Portfolios_Formed_on_OP&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;1900-01-01&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">~\anaconda3\lib\site-packages\pandas\util\_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>                     <span class="n">kwargs</span><span class="p">[</span><span class="n">new_arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_arg_value</span>
+<span class="ne">--&gt; </span><span class="mi">199</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span> 
+<span class="g g-Whitespace">    </span><span class="mi">201</span>         <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">wrapper</span><span class="p">)</span>
+
+<span class="nn">~\anaconda3\lib\site-packages\pandas_datareader\data.py</span> in <span class="ni">DataReader</span><span class="nt">(name, data_source, start, end, retry_count, pause, session, api_key)</span>
+<span class="g g-Whitespace">    </span><span class="mi">463</span> 
+<span class="g g-Whitespace">    </span><span class="mi">464</span>     <span class="k">elif</span> <span class="n">data_source</span> <span class="o">==</span> <span class="s2">&quot;famafrench&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">465</span>         <span class="k">return</span> <span class="n">FamaFrenchReader</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">466</span>             <span class="n">symbols</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">467</span>             <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+
+<span class="nn">~\anaconda3\lib\site-packages\pandas_datareader\famafrench.py</span> in <span class="ni">read</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>             <span class="n">See</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DESCR&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="n">description</span> <span class="n">of</span> <span class="n">the</span> <span class="n">data</span> <span class="nb">set</span><span class="o">.</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">75</span><span class="sd">         return super(FamaFrenchReader, self).read()</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span><span class="sd">     def _read_one_data(self, url, params):</span>
+
+<span class="nn">~\anaconda3\lib\site-packages\pandas_datareader\base.py</span> in <span class="ni">read</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="sd">         &quot;&quot;&quot;</span><span class="n">Read</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">connector</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span><span class="s2">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">100</span><span class="s2">             return self._read_one_data(self.url, self.params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span><span class="s2">         finally:</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span><span class="s2">             self.close()</span>
+
+<span class="nn">~\anaconda3\lib\site-packages\pandas_datareader\famafrench.py</span> in <span class="ni">_read_one_data</span><span class="nt">(self, url, params)</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span><span class="s2">         doc_chunks, tables = [], []</span>
+<span class="ne">--&gt; </span><span class="mi">101</span><span class="s2">         data = self._read_zipfile(url)</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span><span class="s2">         for chunk in data.split(2 * &quot;</span><span class="se">\r\n</span><span class="s2">&quot;):</span>
+
+<span class="nn">~\anaconda3\lib\site-packages\pandas_datareader\famafrench.py</span> in <span class="ni">_read_zipfile</span><span class="nt">(self, url)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s2">             with ZipFile(tmpf, &quot;r&quot;) as zf:</span>
+<span class="ne">---&gt; </span><span class="mi">61</span><span class="s2">                 data = zf.open(zf.namelist()[0]).read().decode()</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="s2">         return data</span>
+
+<span class="ne">UnicodeDecodeError</span>: &#39;utf-8&#39; codec can&#39;t decode byte 0x92 in position 901: invalid start byte
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="operating-profit">
+<h1>Operating Profit<a class="headerlink" href="#operating-profit" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_OP_CSV.zip&#39;</span>
+
+<span class="n">raw</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">zip_file</span> <span class="o">=</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+
+<span class="n">df_op</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">zip_file</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">cut_row</span> <span class="o">=</span> <span class="n">df_op</span><span class="p">[</span><span class="n">df_op</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">df_op</span> <span class="o">=</span> <span class="n">df_op</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">cut_row</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Lo 20&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Qnt 4&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi 20&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df_op</span> <span class="o">=</span> <span class="n">df_op</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="mi">9</span><span class="n">aad004cbec0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">zip_file</span> <span class="o">=</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">zip_file</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\pandas\io\parsers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)</span>
+<span class="g g-Whitespace">    </span><span class="mi">684</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">685</span> 
+<span class="ne">--&gt; </span><span class="mi">686</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">687</span> 
+<span class="g g-Whitespace">    </span><span class="mi">688</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\pandas\io\parsers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span> 
+<span class="g g-Whitespace">    </span><span class="mi">451</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">452</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">fp_or_buf</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span> 
+<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\pandas\io\parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">944</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">945</span> 
+<span class="ne">--&gt; </span><span class="mi">946</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">947</span> 
+<span class="g g-Whitespace">    </span><span class="mi">948</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\pandas\io\parsers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1176</span>     <span class="k">def</span> <span class="nf">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1177</span>         <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1178</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="n">CParserWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1179</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1180</span>             <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\pandas\io\parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2006</span>         <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;usecols&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usecols</span>
+<span class="g g-Whitespace">   </span><span class="mi">2007</span> 
+<span class="ne">-&gt; </span><span class="mi">2008</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">TextReader</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2009</span>         <span class="bp">self</span><span class="o">.</span><span class="n">unnamed_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">unnamed_cols</span>
+<span class="g g-Whitespace">   </span><span class="mi">2010</span> 
+
+<span class="nn">pandas\_libs\parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
+
+<span class="nn">pandas\_libs\parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader._setup_parser_source</span><span class="nt">()</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;Portfolios_Formed_on_OP.CSV&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_op_cum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">df_op</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">df_op_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Operating Profitability&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Operating Profitability&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../_images/Factor Data_25_1.png" src="../_images/Factor Data_25_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="pbr-op">
+<h1>PBR &amp; OP<a class="headerlink" href="#pbr-op" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/25_Portfolios_BEME_OP_5x5_CSV.zip&#39;</span>
+
+<span class="n">raw</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">zip_file</span> <span class="o">=</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zip_file</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zipfile.ZipFile file=&lt;_io.BytesIO object at 0x00000249CE450400&gt; mode=&#39;r&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">zip_file</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="mi">3</span><span class="n">ab0d21387c9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">zip_file</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\pandas\io\parsers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)</span>
+<span class="g g-Whitespace">    </span><span class="mi">684</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">685</span> 
+<span class="ne">--&gt; </span><span class="mi">686</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">687</span> 
+<span class="g g-Whitespace">    </span><span class="mi">688</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\pandas\io\parsers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span> 
+<span class="g g-Whitespace">    </span><span class="mi">451</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">452</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">fp_or_buf</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span> 
+<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\pandas\io\parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">944</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">945</span> 
+<span class="ne">--&gt; </span><span class="mi">946</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">947</span> 
+<span class="g g-Whitespace">    </span><span class="mi">948</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\pandas\io\parsers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1176</span>     <span class="k">def</span> <span class="nf">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1177</span>         <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1178</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="n">CParserWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1179</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1180</span>             <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\pandas\io\parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2006</span>         <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;usecols&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usecols</span>
+<span class="g g-Whitespace">   </span><span class="mi">2007</span> 
+<span class="ne">-&gt; </span><span class="mi">2008</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">TextReader</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2009</span>         <span class="bp">self</span><span class="o">.</span><span class="n">unnamed_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">unnamed_cols</span>
+<span class="g g-Whitespace">   </span><span class="mi">2010</span> 
+
+<span class="nn">pandas\_libs\parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
+
+<span class="nn">pandas\_libs\parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader._setup_parser_source</span><span class="nt">()</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;25_Portfolios_BEME_OP_5x5.CSV&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./sample"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

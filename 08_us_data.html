@@ -1,0 +1,1017 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8. 미국 주식 데이터 수집하기</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. 투자 참고용 데이터 수집하기" href="09_other_data.html" />
+    <link rel="prev" title="7. 증권사 API 연결 및 매매" href="07_hts_api.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/08_us_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/08_us_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   8.1 티커 수집하기
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     8.1.1 티커 클렌징
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   8.2 주가 다운로드
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   8.3 재무제표 및 가치지표 크롤링
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     8.3.1 재무제표 다운로드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     8.3.2 가치지표 다운로드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     8.3.3 전 종목 재무제표 및 가치지표 다운로드
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>8. 미국 주식 데이터 수집하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>퀀트 투자의 장점은 데이터만 있다면 동일한 투자 전략을 전세계 모든 국가에 적용할 수 있다는 점입니다. 이번 장에서는 미국 전 종목의 티커 수집 및 주가, 재무제표, 가치지표를 다운로드 해보도록 하겠습니다.</p>
+<div class="section" id="id2">
+<h2>8.1 티커 수집하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>우리나라는 거래소가 ‘한국거래소’ 한 곳 뿐이지만, 미국은 매우 많은 거래소가 존재합니다. 따라서 동일한 종목이 여러 거래소에서 거래되는 일도 발생합니다. 그 중에서도 가장 규모가 큰 거래소는 뉴욕거래소(NYSE), 나스닥(NASDAQ), 아멕스(AMEX)이며, 해당 거래소에 상장된 종목들은 나스닥 홈페이지에서 제공됩니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nasdaq</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">market</span><span class="o">-</span><span class="n">activity</span><span class="o">/</span><span class="n">stocks</span><span class="o">/</span><span class="n">screener</span>
+</pre></div>
+</div>
+<p>위 사이트에 접속한 후, 하단의 [Download CSV] 버튼을 누르면, 해당 데이터를 받아오는 웹주소가 표시됩니다.</p>
+<div class="figure align-default" id="us-ticker">
+<img alt="_images/us_ticker.png" src="_images/us_ticker.png" />
+<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">미국의 상장종목 리스트</span><a class="headerlink" href="#us-ticker" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://api.nasdaq.com/api/screener/stocks?tableonly=true&amp;limit=25&amp;offset=0&amp;download=true
+</pre></div>
+</div>
+<p>해당 주소에 접속하면, 각 종목에 대한 정보가 JSON 형태로 제공됩니다. 이를 크롤링 해보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://api.nasdaq.com/api/screener/stocks?tableonly=true&amp;limit=25&amp;offset=0&amp;download=true&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36&quot;</span><span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">data_json</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data_json</span><span class="p">[</span><span class="s1">&#39;rows&#39;</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">data_json</span><span class="p">[</span><span class="s1">&#39;headers&#39;</span><span class="p">])</span>
+
+<span class="n">all_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>lastsale</th>
+      <th>netchange</th>
+      <th>pctchange</th>
+      <th>marketCap</th>
+      <th>country</th>
+      <th>ipoyear</th>
+      <th>volume</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>Agilent Technologies Inc. Common Stock</td>
+      <td>$131.91</td>
+      <td>1.22</td>
+      <td>0.934%</td>
+      <td>40192649204.00</td>
+      <td>United States</td>
+      <td>1999</td>
+      <td>1552194</td>
+      <td>Capital Goods</td>
+      <td>Biotechnology: Laboratory Analytical Instruments</td>
+      <td>/market-activity/stocks/a</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AA</td>
+      <td>Alcoa Corporation Common Stock</td>
+      <td>$31.36</td>
+      <td>-0.09</td>
+      <td>-0.286%</td>
+      <td>5843032424.00</td>
+      <td></td>
+      <td>2016</td>
+      <td>4315627</td>
+      <td>Basic Industries</td>
+      <td>Aluminum</td>
+      <td>/market-activity/stocks/aa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AAC</td>
+      <td>Ares Acquisition Corporation Class A Ordinary ...</td>
+      <td>$9.8752</td>
+      <td>-0.0148</td>
+      <td>-0.15%</td>
+      <td>1234523440.00</td>
+      <td></td>
+      <td>2021</td>
+      <td>18355</td>
+      <td>Finance</td>
+      <td>Business Services</td>
+      <td>/market-activity/stocks/aac</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AACG</td>
+      <td>ATA Creativity Global American Depositary Shares</td>
+      <td>$4.06</td>
+      <td>0.00</td>
+      <td>0.00%</td>
+      <td>127283034.00</td>
+      <td>China</td>
+      <td></td>
+      <td>82032</td>
+      <td>Consumer Services</td>
+      <td>Other Consumer Services</td>
+      <td>/market-activity/stocks/aacg</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AACQ</td>
+      <td>Artius Acquisition Inc. Class A Common Stock</td>
+      <td>$10.30</td>
+      <td>-0.09</td>
+      <td>-0.866%</td>
+      <td>932793750.00</td>
+      <td>United States</td>
+      <td>2020</td>
+      <td>1022952</td>
+      <td>Basic Industries</td>
+      <td>Major Chemicals</td>
+      <td>/market-activity/stocks/aacq</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>먼저 url과 헤더정보를 입력하며, 헤더의 User-Agent에는 웹브라우저 구별을 입력해줍니다. 해당 사이트는 크롤러와 같이 정체가 불분명한 웹브라우저를 통한 접속이 막혀 있어, 마치 모질라 혹은 크롬을 통해 접속한 것 처럼 데이터를 요청합니다. 다양한 웹브라우저 리스트는 다음 사이트에서 확인할 수 있습니다.
+http://www.useragentstring.com/pages/useragentstring.php</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수를 통해 페이지의 데이터를 불러옵니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">json()</span></code> 함수를 통해 json 형태로 불러온 후, data 부분을 선택합니다.</p></li>
+<li><p>json 형태를 데이터프레임 형태로 변경해줍니다. 데이터는 json의 ‘rows’에 해당하는 부분을, 열 이름은 ‘headers’에 해당하는 부분을 입력합니다.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7526
+</pre></div>
+</div>
+</div>
+</div>
+<p>총 종목수를 살펴보면 상당히 많은 종목이 존재합니다. 그러나 동일한 종목이 여러 거래소에 상장된 경우가 있으므로, 이를 먼저 제거해주도록 합니다. symbol과 name열 중 중복되는 종목이 있으면 첫번쨰 데이터만을 남기도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">all_data</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span> <span class="o">=</span> <span class="s1">&#39;first&#39;</span><span class="p">),</span> <span class="p">:]</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">all_data</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span> <span class="o">=</span> <span class="s1">&#39;first&#39;</span><span class="p">),</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>8.1.1 티커 클렌징<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>위에서 받은 데이터 중 모든 종목이 투자에 적합한 종목이 아니므로 클렌징 처리를 해주도록 합니다. 그 기준과 순서는 다음과 같습니다.</p>
+<ol class="simple">
+<li><p>marketCap이 0인 종목 제거 (스팩 주식)</p></li>
+<li><p>종목명에 ‘^’ 들어간 종목 제거 (우선주)</p></li>
+<li><p>Preferred가 들어간 종목 제거 (우선주)</p></li>
+<li><p>ETF 혹은 펀드 제거</p></li>
+<li><p>종목명에 ‘%’이 들어간 종목 제거 (우선주)</p></li>
+<li><p>종목명에 ‘/’를 ‘.’ 으로 변경</p></li>
+<li><p>티커 순으로 정렬</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;marketCap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;marketCap&#39;</span><span class="p">])</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;marketCap&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">^&#39;</span><span class="p">)]</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Preferred&#39;</span><span class="p">)]</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;preferred&#39;</span><span class="p">)]</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;ETF&#39;</span><span class="p">)]</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fund&#39;</span><span class="p">)]</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">)]</span>
+<span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">/&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;symbol&#39;</span><span class="p">)</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5554
+</pre></div>
+</div>
+</div>
+</div>
+<p>종목수가 현격하게 줄어들었습니다. 물론 해당 과정을 거쳐도 다중 클래스가 상장되어 있는 등 클렌징 처리를 할 종목이 많지만 그 수가 매우 적으므로, 효율성 측면에서 위의 과정 정도만으로도 충분합니다. 마지막으로 csv 파일로 저장해주도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/US_ticker.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>8.2 주가 다운로드<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>미국 주가의 경우 3장에서 살펴본 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 통한 야후 API를 통해 매우 손쉽게 다운로드 받을 수 있습니다. 전반적인 과정은 한국의 전 종목 주가 크롤링과 매우 유사합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="n">US_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/US_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;data/US_price&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data/US_price&#39;</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">US_ticker</span><span class="p">))):</span> 
+
+    <span class="c1"># 빈 데이터프레임 생성</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Price&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]})</span>
+    <span class="n">price</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)]</span>
+    
+    <span class="c1"># 티커 선택</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">US_ticker</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>  
+    
+    
+    <span class="c1"># 오류 발생 시 이를 무시하고 다음 루프로 진행</span>
+    <span class="k">try</span><span class="p">:</span>
+                
+        <span class="c1"># 데이터 다운로드</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">)</span>     
+        
+    
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># 오류 발생시 해당 종목명을 저장하고 다음 루프로 이동        </span>
+        <span class="n">error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>     
+    
+    <span class="c1"># 다운로드 받은 파일을 생성한 폴더 내 csv 파일로 저장</span>
+    <span class="n">price</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/US_price/&#39;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;_price.csv&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># 타임슬립 적용</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>8.3 재무제표 및 가치지표 크롤링<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>미국 주식의 재무제표를 구할 수 있는 사이트는 여러곳 있지만, 가장 유명한 곳은 야후 파이낸스 입니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">finance</span><span class="o">.</span><span class="n">yahoo</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>해당 사이트에는 종목에 대한 다양한 정보가 있기에 크롤링을 통해 데이터를 수집할 수 있습니다. 그러나 해당 페이지를 크롤링 하는 작업 역시 이미 여러 패키지들에 의해 개발되어 있으며, 책에서는 그 중에서 <code class="docutils literal notranslate"><span class="pre">yahoo_fin</span></code> 패키지를 사용하도록 하겠습니다. 해당 패키지의 자세한 설명은 아래 사이트에서 확인할 수 있습니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">theautomatic</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">yahoo_fin</span><span class="o">-</span><span class="n">documentation</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="section" id="id6">
+<h3>8.3.1 재무제표 다운로드<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>먼저 재무제표를 다운로드 받도록 하겠습니다. <code class="docutils literal notranslate"><span class="pre">get_financials()</span></code> 함수를 통해 손익계산서, 재무상태표, 현금흐름표를 한번에 다운로드 받을 수 있으며, 예시로 애플(AAPL) 종목의 연간 재무제표를 받아보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yahoo_fin.stock_info</span> <span class="k">as</span> <span class="nn">si</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">si</span><span class="o">.</span><span class="n">get_financials</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="n">yearly</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">quarterly</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;yearly_income_statement&#39;, &#39;yearly_balance_sheet&#39;, &#39;yearly_cash_flow&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>딕셔너리 형태로 세 종류의 재무제표가 다운로드 되었습니다. 이를 하나의 데이터프레임으로 바꿔주도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_fs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+
+<span class="n">data_fs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>endDate</th>
+      <th>2020-09-26</th>
+      <th>2019-09-28</th>
+      <th>2018-09-29</th>
+      <th>2017-09-30</th>
+    </tr>
+    <tr>
+      <th>Breakdown</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>researchDevelopment</th>
+      <td>18752000000</td>
+      <td>16217000000</td>
+      <td>14236000000</td>
+      <td>11581000000</td>
+    </tr>
+    <tr>
+      <th>effectOfAccountingCharges</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>incomeBeforeTax</th>
+      <td>67091000000</td>
+      <td>65737000000</td>
+      <td>72903000000</td>
+      <td>64089000000</td>
+    </tr>
+    <tr>
+      <th>minorityInterest</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>netIncome</th>
+      <td>57411000000</td>
+      <td>55256000000</td>
+      <td>59531000000</td>
+      <td>48351000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>재무제표의 계정명과 순서는 홈페이지와 다소 다르지만, 값들을 비교해보면 동일한 데이터임을 확인할 수 있습니다. 이처럼 패키지를 이용하여 미국 데이터도 매우 쉽게 다운로드 받을 수 있습니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>분기별 재무제표 데이터를 받고자 할 경우 다음과 같이 입력하면 됩니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">si.get_financials('AAPL',</span> <span class="pre">yearly</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">quarterly</span> <span class="pre">=</span> <span class="pre">True)</span></code></p>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>8.3.2 가치지표 다운로드<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>해당 패키지의 <code class="docutils literal notranslate"><span class="pre">get_stats_valuation()</span></code> 함수를 이용하면 홈페이지에 계산된 여러 가치지표 역시 손쉽게 다운로드 받을 수 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yahoo_fin.stock_info</span> <span class="k">as</span> <span class="nn">si</span>
+
+<span class="n">data_value</span> <span class="o">=</span> <span class="n">si</span><span class="o">.</span><span class="n">get_stats_valuation</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">)</span>
+<span class="n">data_value</span> <span class="o">=</span> <span class="n">data_value</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">data_value</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">data_value</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>0</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Market Cap (intraday) 5</th>
+      <td>2.23T</td>
+    </tr>
+    <tr>
+      <th>Enterprise Value 3</th>
+      <td>2.27T</td>
+    </tr>
+    <tr>
+      <th>Trailing P/E</th>
+      <td>36.07</td>
+    </tr>
+    <tr>
+      <th>Forward P/E 1</th>
+      <td>28.30</td>
+    </tr>
+    <tr>
+      <th>PEG Ratio (5 yr expected) 1</th>
+      <td>1.84</td>
+    </tr>
+    <tr>
+      <th>Price/Sales (ttm)</th>
+      <td>7.59</td>
+    </tr>
+    <tr>
+      <th>Price/Book (mrq)</th>
+      <td>33.79</td>
+    </tr>
+    <tr>
+      <th>Enterprise Value/Revenue 3</th>
+      <td>7.71</td>
+    </tr>
+    <tr>
+      <th>Enterprise Value/EBITDA 7</th>
+      <td>26.63</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>PER, PEG, PSR, PBR 등 다양한 가치지표가 계산되어 있습니다. 이 중 지표명 끝의 숫자는 홈페이지에서 각주에 해당하는 불필요한 데이터이므로, 모든 숫자를 제거해주도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_value</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data_value</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">data_value</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>0</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Market Cap (intraday)</th>
+      <td>2.23T</td>
+    </tr>
+    <tr>
+      <th>Enterprise Value</th>
+      <td>2.27T</td>
+    </tr>
+    <tr>
+      <th>Trailing P/E</th>
+      <td>36.07</td>
+    </tr>
+    <tr>
+      <th>Forward P/E</th>
+      <td>28.30</td>
+    </tr>
+    <tr>
+      <th>PEG Ratio ( yr expected)</th>
+      <td>1.84</td>
+    </tr>
+    <tr>
+      <th>Price/Sales (ttm)</th>
+      <td>7.59</td>
+    </tr>
+    <tr>
+      <th>Price/Book (mrq)</th>
+      <td>33.79</td>
+    </tr>
+    <tr>
+      <th>Enterprise Value/Revenue</th>
+      <td>7.71</td>
+    </tr>
+    <tr>
+      <th>Enterprise Value/EBITDA</th>
+      <td>26.63</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>8.3.3 전 종목 재무제표 및 가치지표 다운로드<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>위 코드에서 for loop 구문을 이용해 티커에 해당하는 값만 변경해주면 모든 종목의 재무제표와 가치지표를 다운로드 받을 수 있습니다. 해당 코드는 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">yahoo_fin.stock_info</span> <span class="k">as</span> <span class="nn">si</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36&quot;</span><span class="p">}</span>
+
+<span class="c1"># 폴더 만들기</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;data/US_fs&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data/US_fs&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;data/US_value&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data/US_value&#39;</span><span class="p">)</span>
+
+<span class="c1"># 티커 불러오기</span>
+<span class="n">US_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/US_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+<span class="c1"># for loop</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">US_ticker</span><span class="p">))):</span>   
+    
+    <span class="c1"># 빈 데이터프레임 생성</span>
+    <span class="n">data_fs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]})</span>    
+    <span class="n">data_value</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]})</span>    
+    
+    <span class="c1"># 티커 선택</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">US_ticker</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>    
+    
+    <span class="c1"># 오류 발생 시 이를 무시하고 다음 루프로 진행</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 재무제표 다운로드 </span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">si</span><span class="o">.</span><span class="n">get_financials</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">yearly</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">quarterly</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">data_fs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+        
+        <span class="c1"># 가치지표 다운로드</span>
+        <span class="n">data_value</span> <span class="o">=</span> <span class="n">si</span><span class="o">.</span><span class="n">get_stats_valuation</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">data_value</span> <span class="o">=</span> <span class="n">data_value</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">data_value</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">data_value</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data_value</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>          
+        
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># 오류 발생시 해당 종목명을 저장하고 다음 루프로 이동        </span>
+        <span class="n">error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>     
+         
+    
+    <span class="c1"># 다운로드 받은 파일을 생성한 폴더 내 csv 파일로 저장    </span>
+    <span class="n">data_fs</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/US_fs/&#39;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;_fs.csv&#39;</span><span class="p">)</span>    
+    <span class="n">data_value</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/US_value/&#39;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;_value.csv&#39;</span><span class="p">)</span>    
+    
+    <span class="c1"># 타임슬립 적용</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>미국 종목의 재무제표 및 가치지표를 크롤링 할 때는 finviz 역시 많이 사용됩니다. 책에서 배운 크롤링 지식을 토대로 해당 페이지의 데이터도 한번 크롤링 해 보시길 바랍니다.</p>
+<p>https://finviz.com/</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="07_hts_api.html" title="previous page">7. 증권사 API 연결 및 매매</a>
+    <a class='right-next' id="next-link" href="09_other_data.html" title="next page">9. 투자 참고용 데이터 수집하기</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

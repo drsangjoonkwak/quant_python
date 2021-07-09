@@ -1,0 +1,1194 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15. 성과 및 위험평가</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/17_evaluation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/17_evaluation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   15.1 결과 측정 지표
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     15.1.1 수익률 및 변동성
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     15.1.2 낙폭과 최대낙폭
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     15.1.3 연도별 수익률
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     15.1.4 승률 및 롤링 윈도우 값
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   15.2 팩터 회귀분석 및 테이블로 나타내기
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>15. 성과 및 위험평가<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>백테스트를 통해 포트폴리오 수익률을 구했다면, 이를 바탕으로 각종 성과 및 위험을 평가해야 합니다. 아무리 성과가 좋은 전략이라도 위험이 너무 크다면 투자를 하기 부담스럽습니다. 또한 전략의 수익률이 지속적으로 감소하는 추세라면 경쟁이 치열해져 더 이상 작동하지 않는 전략일 가능성도 있습니다.</p>
+<p>이번 장에서는 포트폴리오의 예시로 퀄리티 팩터를 종합적으로 고려한 QMJ(Quality Minus Junk) 팩터(Asness, Frazzini, and Pedersen 2019)의 수익률을 이용하겠습니다. QMJ 팩터란 우량성이 높은 종목들을 매수하고, 우량성이 낮은 종목들을 공매도하는 전략을 지수의 형태로 나타낸 것입니다. 해당 팩터의 수익률을 통해 성과 및 위험을 평가해보고, 회귀분석을 통해 다른 팩터와의 관계도 살펴보겠습니다.</p>
+<p>QMJ 팩터의 수익률은 AQR Capital Management의 Datasets<a class="footnote-reference brackets" href="#aqr" id="id2">1</a>에서 엑셀 파일을 다운로드 한 후 가공할 수도 있습니다. 그러나 해당 작업을 매번 하는 것은 지나치게 번거로우므로, 파이썬에서 엑셀 파일을 다운로드한 후 가공하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://images.aqr.com/-/media/AQR/Documents/Insights/Data-Sets/Quality-Minus-Junk-Factors-Monthly.xlsx&quot;</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/QMJ.xlsx&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<span class="n">output</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xls_QMJ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/QMJ.xlsx&#39;</span><span class="p">)</span>
+<span class="n">xls_QMJ</span><span class="o">.</span><span class="n">sheet_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;QMJ Factors&#39;,
+ &#39;Definition&#39;,
+ &#39;Data Sources&#39;,
+ &#39;--&gt; Additional Global Factors&#39;,
+ &#39;MKT&#39;,
+ &#39;SMB&#39;,
+ &#39;HML FF&#39;,
+ &#39;HML Devil&#39;,
+ &#39;UMD&#39;,
+ &#39;ME(t-1)&#39;,
+ &#39;RF&#39;,
+ &#39;Sources and Definitions&#39;,
+ &#39;Disclosures&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>해당 데이터의 엑셀 url을 저장합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수를 통해 페이지의 데이터를 불러옵니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">open()</span></code> 함수를 통해 엑셀 파일을 생성하고, <code class="docutils literal notranslate"><span class="pre">write()</span></code> 함수를 통해 읽어온 엑셀 내용을 저장합니다. 그 후 <code class="docutils literal notranslate"><span class="pre">close()</span></code> 함수를 통해 파일 객체를 닫아줍니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExcelFile()</span></code> 함수를 통해 엑셀 파일의 내용들을 불러옵니다.</p></li>
+<li><p>sheet_names을 통해 엑셀의 시트명들을 확인합니다.</p></li>
+</ol>
+<p>우리가 필요한 데이터는 수익률을 계산할 QMJ Factors, 회귀분석에 필요한 MKT, SMB, HML Devil, UMD, 무위험 이자율인 RF 시트의 데이터입니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_QMJ</span> <span class="o">=</span> <span class="n">xls_QMJ</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;QMJ Factors&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">df_QMJ</span> <span class="o">=</span> <span class="n">df_QMJ</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_QMJ</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">,</span> <span class="s1">&#39;Global&#39;</span><span class="p">]]</span>
+
+<span class="n">df_MKT</span> <span class="o">=</span> <span class="n">xls_QMJ</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;MKT&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">df_MKT</span> <span class="o">=</span> <span class="n">df_MKT</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_MKT</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">,</span> <span class="s1">&#39;Global&#39;</span><span class="p">]]</span>
+
+
+<span class="n">df_SMB</span> <span class="o">=</span> <span class="n">xls_QMJ</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">df_SMB</span> <span class="o">=</span> <span class="n">df_SMB</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_SMB</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">,</span> <span class="s1">&#39;Global&#39;</span><span class="p">]]</span>
+
+<span class="n">df_HML</span> <span class="o">=</span> <span class="n">xls_QMJ</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;HML Devil&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">df_HML</span> <span class="o">=</span> <span class="n">df_HML</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_HML</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">,</span> <span class="s1">&#39;Global&#39;</span><span class="p">]]</span>
+
+<span class="n">df_UMD</span> <span class="o">=</span> <span class="n">xls_QMJ</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;UMD&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">df_UMD</span> <span class="o">=</span> <span class="n">df_UMD</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_UMD</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">,</span> <span class="s1">&#39;Global&#39;</span><span class="p">]]</span>
+
+<span class="n">df_RF</span> <span class="o">=</span> <span class="n">xls_QMJ</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;RF&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>xls_QMJ에 엑셀 데이터가 불러와 있으므로, <code class="docutils literal notranslate"><span class="pre">parse()</span></code> 함수 내에 원하는 시트명들을 입력합니다. 또한 각 시트 내 18행까지는 데이터를 설명하는 텍스트이므로, skiprows 인자를 통해 해당 부분은 읽어오지 않도록 합니다. DATE가 null이 아닌 행 중에서 날짜에 해당하는 DATE와 수익률에 해당하는 Global 열만을 선택합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+
+<span class="n">df_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">df_QMJ</span><span class="p">,</span> <span class="n">df_MKT</span><span class="p">,</span> <span class="n">df_SMB</span><span class="p">,</span> <span class="n">df_HML</span><span class="p">,</span> <span class="n">df_UMD</span><span class="p">,</span> <span class="n">df_RF</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span>  <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">],</span>
+                                          <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">),</span> <span class="n">df_list</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">,</span> <span class="s1">&#39;QMJ&#39;</span><span class="p">,</span> <span class="s1">&#39;MKT&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;UMD&#39;</span><span class="p">,</span> <span class="s1">&#39;RF&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;R_excess&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mkt_excess&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MKT&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;DATE&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수를 통해 DATE 기준으로 데이터를 묶어주어야 합니다. <code class="docutils literal notranslate"><span class="pre">reduce()</span></code> 함수를 통해 모든 데이터를 한번에 묶어주도록 하며, NA 데이터는 제거합니다.</p></li>
+<li><p>열 이름을 입력합니다.</p></li>
+<li><p>QMJ 팩터 수익률에서 무위험 수익률을 차감해 초과수익률(R_excess)을 구해주며, 시장 수익률에서 무위험 수익률을 차감해 시장위험 프리미엄(Mkt_excess)을 계산해줍니다.</p></li>
+<li><p>DATE를 인덱스로 설정합니다.</p></li>
+<li><p>인덱스를 DatetimeIndex 형태로 변경해줍니다.</p></li>
+</ol>
+<p>위 과정을 통해 구한 데이터를 바탕으로 성과 및 위험을 평가하겠습니다.</p>
+<div class="section" id="id3">
+<h2>15.1 결과 측정 지표<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>포트폴리오의 평가에서 가장 중요한 지표는 수익률과 위험입니다. 수익률은 누적수익률과 연율화 수익률, 연도별 수익률이 주요 지표이며, 위험은 변동성과 낙폭이 주요 지표입니다. 이 외에도 승률, 롤링 윈도우 값 등 다양한 지표를 살펴보기도 합니다.</p>
+<div class="section" id="id4">
+<h3>15.1.1 수익률 및 변동성<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">ret_cum</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">ret_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/17_evaluation_12_0.png" src="_images/17_evaluation_12_0.png" />
+</div>
+</div>
+<p>먼저 QMJ 팩터의 누적수익률을 그래프로 나타내봅니다. 장기간동안 우상향하는 모습을 보이고 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># 누적수익률</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.641751479791373
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">12</span> <span class="c1"># 연율화 수익률(산술)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.05142507725480658
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span> <span class="o">**</span> <span class="p">(</span><span class="mi">12</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># 연율화 수익률(기하)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04980505888870268
+</pre></div>
+</div>
+</div>
+</div>
+<p>수익률 중 가장 많이보는 지표는 누적 수익률, 연율화 수익률(산술), 연율화 수익률(기하)입니다. 각 수익률을 구하는 법은 다음과 같습니다.</p>
+<ol class="simple">
+<li><p>누적 수익률: <span class="math notranslate nohighlight">\((1+r_1) \times (1+r_2) \times \dots \ \times (1+r_n) - 1 = \{\prod_{i=1}^n(1+r_i)\}-1\)</span></p></li>
+<li><p>연율화 수익률(산술): <span class="math notranslate nohighlight">\(\frac{(r_1 + r_2 + \dots + r_i)}{n} \times scale\)</span></p></li>
+<li><p>연율화 수익률(기하): <span class="math notranslate nohighlight">\(\{\prod_{i=1}^n(1+r_i)\}^{scale / Days} - 1\)</span></p></li>
+</ol>
+<p>먼저 누적수익률은 각 수익률에 1을 더한 값을 모두 곱한 후 1을 빼면 됩니다. 연율화 수익률(산술)은 단순히 수익률의 평균을 구한 후 연율화를 위한 조정값(<span class="math notranslate nohighlight">\(scale\)</span>)을 곱해주면 됩니다. 데이터가 일간일 경우 조정값은 252, 주간일 경우 52, 월간일 경우 12입니다. 현재 데이터는 월간 기준이므로 조정값은 12가 됩니다. 마지막으로 연율화 수익률(기하)은 각 수익률에 1을 더한 값의 곱을 구한 후 연율화를 위해 승수를 적용한 후 1을 빼주며, <span class="math notranslate nohighlight">\(Days\)</span>는 시계열의 관측 기간입니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># 연율화 변동성</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.07398877010868485
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;R_excess&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span> <span class="o">**</span> <span class="p">(</span><span class="mi">12</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">/</span><span class="n">v</span><span class="p">)</span> <span class="c1"># 샤프지수</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2941252156884136
+</pre></div>
+</div>
+</div>
+</div>
+<p>위험으로 가장 많이 사용되는 지표는 변동성입니다. 연율화 변동성은 <code class="docutils literal notranslate"><span class="pre">std()</span></code> 함수를 통해 변동성을 계산한 후 조정값(<span class="math notranslate nohighlight">\(\sqrt{Days}\)</span>)을 곱해 계산합니다.</p>
+<p>샤프 지수(Sharpe Ratio)는 수익을 위험으로 나누어 위험 조정 수익률입니다. 해당 지수는 <span class="math notranslate nohighlight">\(\frac {R_i - R_f}{\sigma_i}\)</span>로 계산되며, 분자에는 포트폴리오 수익률에서 무위험 수익률을 차감한 값, 분모에는 포트폴리오의 변동성을 사용합니다.</p>
+</div>
+<div class="section" id="id5">
+<h3>15.1.2 낙폭과 최대낙폭<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>먼저 낙폭(Drawdown)은 수익률이 하락한 후 반등하기 전까지 얼마나 하락했는지를 나타냅니다. 최대낙폭(Maximum Drawdown)은 이러한 낙폭 중 가장 값이 큰 값으로서, 최고점에서 최저점까지 얼마나 손실을 보는지를 나타냅니다. 투자를 함에 있어 수익률이 하락하는 것은 어쩔 수 없지만, 최대낙폭이 지나치게 큰 전략에 투자하는 것은 매우 위험한 선택이 될 수 있습니다.</p>
+<div class="figure align-default" id="drawdown">
+<img alt="_images/drawdown.png" src="_images/drawdown.png" />
+<p class="caption"><span class="caption-text">낙폭과 최대낙폭</span><a class="headerlink" href="#drawdown" title="Permalink to this image">¶</a></p>
+</div>
+<p>낙폭을 계산하는 법은 다음과 같으며, 전고점 대비 하락폭 만을 계산하게 됩니다.</p>
+<div class="math notranslate nohighlight">
+\[ 낙폭 = \frac{현재\ 누적\ 수익률 - 최고\ 누적\ 수익률}{최고\ 누적\ 수익률} = \frac{현재\ 누적\ 수익률}{최고\ 누적\ 수익률}- 1\]</div>
+<p>이를 계산하는 방법은 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">drawdown</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">Return_cumulative</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+    <span class="n">maxCumulativeReturn</span>  <span class="o">=</span> <span class="n">Return_cumulative</span><span class="o">.</span><span class="n">cummax</span><span class="p">()</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">Return_cumulative</span><span class="o">/</span><span class="n">maxCumulativeReturn</span> <span class="o">-</span> <span class="mi">1</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>
+
+<span class="n">drawdown</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATE
+1989-07-31    0.000000
+1989-08-31    0.000000
+1989-09-30    0.000000
+1989-10-31    0.000000
+1989-11-30    0.000000
+                ...   
+2020-09-30   -0.030402
+2020-10-31   -0.021389
+2020-11-30   -0.102006
+2020-12-31   -0.111877
+2021-01-31   -0.135515
+Name: QMJ, Length: 379, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>먼저 누적수익률을 계산합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cummax()</span></code> 함수를 통해 누적 최댓값을 계산합니다.</p></li>
+<li><p>낙폭의 수식에 맞게 둘 간의 차이를 계산합니다.</p></li>
+</ol>
+<p>QMJ 팩터의 초기에는 수익률이 계속해서 최고점을 기록해 낙폭이 0으로 계산되지만, 시간이 지남에 따라 하락을 하게되면 낙폭은 전고점 대비 얼마나 떨어졌는가를 나타냅니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>
+
+<span class="n">ret_cum</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">ret_dd</span> <span class="o">=</span> <span class="n">drawdown</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">])</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">nrows</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">ret_cum</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ret_dd</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/17_evaluation_25_0.png" src="_images/17_evaluation_25_0.png" />
+</div>
+</div>
+<p>누적수익률과 낙폭을 함께 그림으로 나타내보면 그 이해가 더 쉽습니다. 수익률이 전고점을 돌파하는 기간에서는 낙폭이 0으로 계산됩니다.</p>
+<p>최대낙폭은 낙폭이 가장 심한 경우, 즉 고점에서 투자해 가장 큰 손실을 볼 수 있는 최악의 경우를 나타냅니다. 이를 낙폭에서 <code class="docutils literal notranslate"><span class="pre">min()</span></code> 함수를 통해 계산이 가능합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drawdown</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.2133532229958336
+</pre></div>
+</div>
+</div>
+</div>
+<p>역대 낙폭이 가장 심했던 순서대로 낙폭의 정도, 하락기간과 상승 기간, 원금이 회복되는데 소요된 기간 등을 보는 것도 중요합니다. 아래 코드는 이를 함수 형태로 짠 것입니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tableDrawdown</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">Return_cumulative</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+    <span class="n">maxCumulativeReturn</span>  <span class="o">=</span> <span class="n">Return_cumulative</span><span class="o">.</span><span class="n">cummax</span><span class="p">()</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">Return_cumulative</span><span class="o">/</span><span class="n">maxCumulativeReturn</span>
+
+    <span class="n">df_bind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">R</span><span class="p">,</span> <span class="n">Return_cumulative</span><span class="p">,</span> <span class="n">maxCumulativeReturn</span><span class="p">,</span> <span class="n">dd</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_bind</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Return&#39;</span><span class="p">,</span> <span class="s1">&#39;Cum Ret&#39;</span><span class="p">,</span> <span class="s1">&#39;Max&#39;</span><span class="p">,</span> <span class="s1">&#39;Drawdown&#39;</span><span class="p">]</span>
+
+    <span class="n">groups</span> <span class="o">=</span> <span class="n">df_bind</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_bind</span><span class="p">[</span><span class="s1">&#39;Max&#39;</span><span class="p">])</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">groups</span><span class="p">[[</span><span class="s1">&#39;Drawdown&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Drawdown&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Drawdown&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Drawdown&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">drawdown_table</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">index_list</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">group_max</span><span class="p">,</span> <span class="n">date_max</span> <span class="o">=</span> <span class="n">index_list</span>
+        <span class="n">ddGroup</span> <span class="o">=</span> <span class="n">df_bind</span><span class="p">[</span><span class="n">df_bind</span><span class="p">[</span><span class="s1">&#39;Max&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">group_max</span><span class="p">]</span>
+
+        <span class="n">group_start</span> <span class="o">=</span> <span class="n">ddGroup</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    
+        <span class="n">group_end</span> <span class="o">=</span> <span class="n">ddGroup</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">group_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ddGroup</span><span class="p">)</span>
+        <span class="n">group_dd</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">ddGroup</span><span class="p">[</span><span class="s1">&#39;Drawdown&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">group_dd_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ddGroup</span><span class="p">[</span><span class="n">ddGroup</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;=</span> <span class="n">date_max</span><span class="p">])</span>
+
+        <span class="n">group_rec</span> <span class="o">=</span> <span class="n">group_length</span> <span class="o">-</span> <span class="n">group_dd_length</span>
+
+        <span class="k">return</span> <span class="n">group_start</span><span class="p">,</span> <span class="n">date_max</span><span class="p">,</span> <span class="n">group_end</span><span class="p">,</span> <span class="n">group_dd</span><span class="p">,</span> <span class="n">group_length</span><span class="p">,</span> <span class="n">group_dd_length</span><span class="p">,</span> <span class="n">group_rec</span>
+    
+    <span class="n">dd_col</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;From&#39;</span><span class="p">,</span><span class="s1">&#39;Through&#39;</span><span class="p">,</span><span class="s1">&#39;To&#39;</span><span class="p">,</span> <span class="s1">&#39;Depth&#39;</span><span class="p">,</span><span class="s1">&#39;Length&#39;</span><span class="p">,</span><span class="s1">&#39;Drop&#39;</span><span class="p">,</span><span class="s1">&#39;Recovery&#39;</span><span class="p">)</span>
+    <span class="n">df_dd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">dd_col</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">index_list</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">i</span><span class="p">],</span> <span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">df_dd</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">drawdown_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">index_list</span><span class="p">)</span>
+        
+    <span class="k">return</span><span class="p">(</span><span class="n">df_dd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tableDrawdown</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">],</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>From</th>
+      <th>Through</th>
+      <th>To</th>
+      <th>Depth</th>
+      <th>Length</th>
+      <th>Drop</th>
+      <th>Recovery</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2002-09-30</td>
+      <td>2004-01-31</td>
+      <td>2008-07-31</td>
+      <td>0.2134</td>
+      <td>71</td>
+      <td>17</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2009-02-28</td>
+      <td>2009-09-30</td>
+      <td>2012-04-30</td>
+      <td>0.1998</td>
+      <td>39</td>
+      <td>8</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1992-10-31</td>
+      <td>1993-08-31</td>
+      <td>1996-12-31</td>
+      <td>0.1408</td>
+      <td>51</td>
+      <td>11</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2020-03-31</td>
+      <td>2021-01-31</td>
+      <td>2021-01-31</td>
+      <td>0.1355</td>
+      <td>11</td>
+      <td>11</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1998-09-30</td>
+      <td>1999-04-30</td>
+      <td>2000-04-30</td>
+      <td>0.0869</td>
+      <td>20</td>
+      <td>8</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>From: 하락 시작 시점</p></li>
+<li><p>Through: 낙폭 최대 시점</p></li>
+<li><p>To: 전고점 회복 시점</p></li>
+<li><p>Depth: 낙폭 정도</p></li>
+<li><p>Length: 하락 이후 전고점 회복까지 기간</p></li>
+<li><p>Drop: 하락 기간</p></li>
+<li><p>Recovery: 회복 기간</p></li>
+</ul>
+<p>2002년 9월에 투자할 경우 2004년 1월까지 무려 17개월간 21.34%가 하락한 후, 54개월이 지난 후에야 전고점을 회복하게 됩니다. 즉 원금이 회복하는데 71개월이나 걸리게 됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;R_excess&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span> <span class="o">**</span> <span class="p">(</span><span class="mi">12</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">mdd</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">drawdown</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+
+<span class="n">r</span><span class="o">/</span><span class="n">mdd</span> <span class="c1"># 칼마 지수</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1019996916904431
+</pre></div>
+</div>
+</div>
+</div>
+<p>칼마 지수(Calmar Ratio)는 샤프 지수에서 분자를 최대 낙폭으로 변경한 것으로써, 초과 수익률을 최대낙폭으로 나눈 값입니다. 이는 특히나 안정적인 절대 수익률을 추구하는 헤지펀드에서 많이 참조하는 지표입니다.</p>
+</div>
+<div class="section" id="id6">
+<h3>15.1.3 연도별 수익률<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>연도별로 수익률을 계산하는 법은 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret_yr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ret_yr</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">ret_yr</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span>
+
+<span class="n">ret_yr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATE
+1989    0.076947
+1990    0.219906
+1991    0.010863
+1992    0.029826
+1993   -0.093064
+Name: QMJ, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">resample()</span></code> 함수를 통해 연도별로 묶어주며, <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 함수를 통해 누적수익률을 계산합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strftime()</span></code> 함수를 통해 연도에 해당하는 숫자만 인덱스에 남겨둡니다.</p></li>
+</ol>
+<p>이번에는 연도별 수익률을 그래프로 나타내보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">ret_yr</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ret_yr</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="n">totals</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="n">totals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">get_height</span><span class="p">())</span>
+<span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">totals</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>    
+    <span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mf">0.01</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">get_x</span><span class="p">(),</span> <span class="n">i</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">i</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dimgrey&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/17_evaluation_38_0.png" src="_images/17_evaluation_38_0.png" />
+</div>
+</div>
+<p>위에서 계산된 연도별 수익률을 막대 그래프와 텍스트로 나타내면, 포트폴리오의 수익률 추이가 더욱 쉽게 확인됩니다.</p>
+</div>
+<div class="section" id="id7">
+<h3>15.1.4 승률 및 롤링 윈도우 값<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>승률이란 포트폴리오가 벤치마크 대비 높은 성과를 기록한 비율을 의미하며 다음과 같이 계산됩니다.</p>
+<div class="math notranslate nohighlight">
+\[\frac { 포트폴리오\ 수익률 &gt; 벤치마크인\ 횟수}{전체\ 기간}\]</div>
+<p>벤치마크가 S&amp;P 500 지수, KOSPI 200 지수처럼 구체적으로 존재하는 경우도 있지만, 절대수익을 추구하는 경우에는 이러한 벤치마크가 0 혹은 무위험 수익률이 되기도 합니다. 승률을 계산하는 법은 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">UpsideFrequency</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">MAR</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">ratio</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span> <span class="o">&gt;</span> <span class="n">MAR</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">UpsideFrequency</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5884
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>NA 데이터를 제거합니다.</p></li>
+<li><p>수익률이 벤치마크(MAR) 대비 높았던 횟수를 합한 후, 이를 전체 기간으로 나눠줍니다.</p></li>
+</ol>
+<p>이를 통해 QMJ 팩터의 월간 기준 수익률이 플러스를 기록했던 비율이 계산됩니다.</p>
+<p>위에서 구한 각종 지표들은 투자자가 포트폴리오의 시작부터 현재까지 투자를 했다는 전제 하에 계산됩니다. 그러나 투자를 시작하는 시점은 사람마다 다르기에, 무작위 시점에 투자했을 때 향후 n개월 후 승률 혹은 연율화 수익률 등을 계산할 필요도 있습니다. 이러한 기법을 롤링 윈도우라고 합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roll_12</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">12</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">roll_12_ratio</span> <span class="o">=</span> <span class="n">UpsideFrequency</span><span class="p">(</span><span class="n">roll_12</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">roll_24</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">12</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">roll_24_ratio</span> <span class="o">=</span> <span class="n">UpsideFrequency</span><span class="p">(</span><span class="n">roll_24</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">roll_36</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;QMJ&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">12</span><span class="o">/</span><span class="mi">36</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">roll_36_ratio</span> <span class="o">=</span> <span class="n">UpsideFrequency</span><span class="p">(</span><span class="n">roll_36</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;12M:&quot;</span><span class="p">,</span> <span class="n">roll_12_ratio</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;24M:&quot;</span><span class="p">,</span> <span class="n">roll_24_ratio</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;36M:&quot;</span><span class="p">,</span> <span class="n">roll_36_ratio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12M: 0.7582 
+ 24M: 0.7978 
+ 36M: 0.8779
+</pre></div>
+</div>
+</div>
+</div>
+<p>롤링 윈도우 승률은 무작위 시점에 투자했을 시 미래 n개월 동안의 연율화 수익률을 구하고, 해당 값이 벤치마크 대비 수익이 높았던 비율을 계산합니다. 만일 12개월 롤링 윈도우 승률이 100%라면, 어떠한 시점에 투자해도 12개월 후에는 언제나 벤치마크를 이겼음을 의미합니다. 반면 아무리 연율화 수익률이 높은 전략도 이러한 롤링 윈도우 승률이 지나치게 낮다면, 단순히 한 번의 운으로 인해 수익률이 높은 것처럼 보일수 있습니다.</p>
+<p>함수를 이용해 해당 값을 구하는 과정은 다음과 같습니다.</p>
+<ol class="simple">
+<li><p>포트폴리오 수익률에 1을 더해준 후 원하는 <code class="docutils literal notranslate"><span class="pre">rolling()</span></code> 내부에 원하는 롤링 기간을 입력합니다. 그 후 롤링 기간에 해당하는 값들을 곱해준 뒤 승수를 취해 연율화를 해준 후, 1을 빼 롤링 연율화 수익률을 계산합니다.</p></li>
+<li><p>위에서 만든 <code class="docutils literal notranslate"><span class="pre">UpsideFrequency</span></code> 값을 통해 승률을 구합니다.</p></li>
+</ol>
+<p>해당 과정을 통해 12개월, 24개월, 36개월 롤링 승률이 계산되며, 투자 기간이 길어질수록 승률이 높아집니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">roll_12</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;12M Rolling Annualized Return&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">roll_24</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;24M Rolling Annualized Return&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">roll_36</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;36M Rolling Annualized Return&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/17_evaluation_46_0.png" src="_images/17_evaluation_46_0.png" />
+</div>
+</div>
+<p>롤링 윈도우 연율화 수익률 역시 매우 중요한 지표입니다. 해당 값이 지속적으로 하락할 경우 전략이 더 이상 동작하지 않는 것인지 혹은 가장 험난한 시기를 지났기에 인내심을 갖고 기다려야 할지 판단해야 합니다.</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>15.2 팩터 회귀분석 및 테이블로 나타내기<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>포트폴리오 수익률에 대한 성과 평가만큼 중요한 것이, 수익률이 어디에서 발생했는가에 대한 요인을 분석하는 것입니다. 베타를 통한 개별 주식과 주식시장과의 관계를 시작으로, 수익률을 설명하기 위한 여러 모형들이 개발되고 발표되었습니다. 그중 일반적으로 많이 사용되는 모형은 기존의 CAPM에 사이즈 팩터(SMB), 밸류 팩터(HML)를 추가한 파마-프렌치의 3팩터 모형(Fama and French 1993), 그리고 3팩터 모형에 모멘텀 팩터(UMD)를 추가한 카하트의 4팩터 모형(Carhart 1997)입니다.</p>
+<p>QMJ 팩터를 위 4개 팩터에 회귀분석한 결과를 토대로, 퀄리티 팩터의 수익률에 대한 요인 분석을 해보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+
+<span class="n">reg</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;R_excess  ~ Mkt_excess  + SMB + HML + UMD&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">reg</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>        <td>R_excess</td>     <th>  R-squared:         </th> <td>   0.639</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.635</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   165.4</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Sat, 27 Feb 2021</td> <th>  Prob (F-statistic):</th> <td>2.26e-81</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>12:32:03</td>     <th>  Log-Likelihood:    </th> <td>  1115.0</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   379</td>      <th>  AIC:               </th> <td>  -2220.</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   374</td>      <th>  BIC:               </th> <td>  -2200.</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     4</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+       <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>  <td>    0.0025</td> <td>    0.001</td> <td>    3.598</td> <td> 0.000</td> <td>    0.001</td> <td>    0.004</td>
+</tr>
+<tr>
+  <th>Mkt_excess</th> <td>   -0.2618</td> <td>    0.016</td> <td>  -16.097</td> <td> 0.000</td> <td>   -0.294</td> <td>   -0.230</td>
+</tr>
+<tr>
+  <th>SMB</th>        <td>   -0.3516</td> <td>    0.036</td> <td>   -9.790</td> <td> 0.000</td> <td>   -0.422</td> <td>   -0.281</td>
+</tr>
+<tr>
+  <th>HML</th>        <td>   -0.0979</td> <td>    0.033</td> <td>   -3.004</td> <td> 0.003</td> <td>   -0.162</td> <td>   -0.034</td>
+</tr>
+<tr>
+  <th>UMD</th>        <td>    0.0816</td> <td>    0.026</td> <td>    3.079</td> <td> 0.002</td> <td>    0.029</td> <td>    0.134</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>17.285</td> <th>  Durbin-Watson:     </th> <td>   1.862</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td> <th>  Jarque-Bera (JB):  </th> <td>  38.883</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.166</td> <th>  Prob(JB):          </th> <td>3.60e-09</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 4.534</td> <th>  Cond. No.          </th> <td>    60.1</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<p>먼저 우리가 구한 데이터를 통해 다음과 같은 회귀분석을 실시합니다. 즉 QMJ 팩터의 초과수익률을 시장위험 프리미엄, 사이즈 팩터, 밸류 팩터, 모멘텀 팩터에 회귀분석을 수행합니다.</p>
+<div class="math notranslate nohighlight">
+\[QMJ - R_f= \alpha + \beta_m \ [R_m - R_f] + \beta_{SMB} R_{SMB} + \beta_{HML} R_{HML} + \beta_{UMD} R_{UMD}\]</div>
+<p><code class="docutils literal notranslate"><span class="pre">ols()</span></code> 함수 내에서 R_excess는 <span class="math notranslate nohighlight">\(QMJ - R_f\)</span>와 동일하며, Mkt_excess는 <span class="math notranslate nohighlight">\(R_m - R_f\)</span>와 동일합니다. 베타의 절댓값이 크다는 의미는 QMJ 팩터의 수익률이 해당 팩터와의 관계가 높다는 의미이며, 양수일 경우에는 양의 관계가, 음수일 경우에는 음의 관계가 높다는 의미입니다. 또한 t값 혹은 P값을 통해 관계가 얼마나 유의한지도 확인할 수 있습니다.</p>
+<ol class="simple">
+<li><p>시장 베타에 해당하는 <span class="math notranslate nohighlight">\(\beta_m\)</span>은 로 음숫값을 보이며, 퀄리티 팩터의 경우 시장과 역의 관계에 있다고 볼 수 있습니다. 또한 t값이 2보다 훨씬 크므로 충분히 유의합니다.</p></li>
+<li><p>사이즈 베타에 해당하는 <span class="math notranslate nohighlight">\(\beta_{SMB}\)</span> 역시 음숫값을 보입니다. 즉 퀄리티 팩터는 소형주보다는 대형주 수익률과 관계가 있으며, t값 역시 충분히 유의합니다.</p></li>
+<li><p>밸류 베타에 해당하는 <span class="math notranslate nohighlight">\(\beta_{HML}\)</span> 역시 음숫값을 보입니다. 즉 퀄리티와 밸류 간의 관계에서 살펴본 것처럼, 두 팩터는 서로 역의 관계가 있습니다. t값 역시 유의합니다.</p></li>
+<li><p>모멘텀 베타에 해당하는 <span class="math notranslate nohighlight">\(\beta_{UMD}\)</span>는 양의 관계가 있으며, 모멘텀 팩터가 좋은 시기에 퀄리티 팩터도 좋을 수 있습니다. t값 또한 유의하다고 볼 수 있습니다.</p></li>
+<li><p>이러한 설명변수를 제외하고도 월간 초과수익률에 해당하는 <span class="math notranslate nohighlight">\(\alpha\)</span>(Intercept)는 양의 값이며, t값 역시 유의합니다. 즉, 퀄리티 팩터는 기존의 여러 팩터들로 설명되지 않는 새로운 팩터라고도 볼 수 있습니다.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">as_html</span><span class="p">(),</span><span class="n">header</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>0.0026</td>
+      <td>0.001</td>
+      <td>3.654</td>
+      <td>0.000</td>
+      <td>0.001</td>
+      <td>0.004</td>
+    </tr>
+    <tr>
+      <th>Mkt_excess</th>
+      <td>-0.2621</td>
+      <td>0.016</td>
+      <td>-16.110</td>
+      <td>0.000</td>
+      <td>-0.294</td>
+      <td>-0.230</td>
+    </tr>
+    <tr>
+      <th>SMB</th>
+      <td>-0.3464</td>
+      <td>0.036</td>
+      <td>-9.589</td>
+      <td>0.000</td>
+      <td>-0.417</td>
+      <td>-0.275</td>
+    </tr>
+    <tr>
+      <th>HML</th>
+      <td>-0.0977</td>
+      <td>0.033</td>
+      <td>-2.997</td>
+      <td>0.003</td>
+      <td>-0.162</td>
+      <td>-0.034</td>
+    </tr>
+    <tr>
+      <th>UMD</th>
+      <td>0.0814</td>
+      <td>0.026</td>
+      <td>3.072</td>
+      <td>0.002</td>
+      <td>0.029</td>
+      <td>0.134</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 사용하면 분석 결과 중 계수에 해당하는 값만을 요약해서 볼 수 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">stargazer.stargazer</span> <span class="kn">import</span> <span class="n">Stargazer</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="n">stargazer</span> <span class="o">=</span> <span class="n">Stargazer</span><span class="p">([</span><span class="n">reg</span><span class="p">])</span>
+<span class="n">HTML</span><span class="p">(</span><span class="n">stargazer</span><span class="o">.</span><span class="n">render_html</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="text-align:center"><tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="1"><em>Dependent variable:R_excess</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td></tr><tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">HML</td><td>-0.098<sup>***</sup></td></tr><tr><td style="text-align:left"></td><td>(0.033)</td></tr><tr><td style="text-align:left">Intercept</td><td>0.003<sup>***</sup></td></tr><tr><td style="text-align:left"></td><td>(0.001)</td></tr><tr><td style="text-align:left">Mkt_excess</td><td>-0.262<sup>***</sup></td></tr><tr><td style="text-align:left"></td><td>(0.016)</td></tr><tr><td style="text-align:left">SMB</td><td>-0.346<sup>***</sup></td></tr><tr><td style="text-align:left"></td><td>(0.036)</td></tr><tr><td style="text-align:left">UMD</td><td>0.081<sup>***</sup></td></tr><tr><td style="text-align:left"></td><td>(0.026)</td></tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Observations</td><td>378</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.638</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.634</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>0.013 (df=373)</td></tr><tr><td style="text-align: left">F Statistic</td><td>164.255<sup>***</sup> (df=4; 373)</td></tr><tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td>
+ <td colspan="1" style="text-align: right">
+  <sup>*</sup>p&lt;0.1;
+  <sup>**</sup>p&lt;0.05;
+  <sup>***</sup>p&lt;0.01
+ </td></tr></table></div></div>
+</div>
+<p>stargazer 패키지를 사용하면, 회귀분석 결과를 논문에서 많이 사용되는 테이블 형식으로 손쉽게 출력할 수 있으며, 이를 그대로 복사해 보고서에 사용할 수 있습니다.</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="aqr"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>https://www.aqr.com/Insights/Datasets/Quality-Minus-Junk-Factors-Monthly</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -40,6 +40,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -78,6 +79,7 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -91,8 +93,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기" href="08_other_data.html" />
-    <link rel="prev" title="3. API를 이용한 데이터 수집" href="03_api.html" />
+    <link rel="next" title="6. 금융 데이터 수집하기 (심화)" href="06_crawl_actual.html" />
+    <link rel="prev" title="4. 크롤링 이해하기" href="04_crawl.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -143,14 +145,69 @@ commentsRunWhenDOMLoaded(addUtterances);
    3. API를 이용한 데이터 수집
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    5. 금융 데이터 수집하기 (기본)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="08_other_data.html">
-   8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
   </a>
  </li>
 </ul>
@@ -242,7 +299,7 @@ commentsRunWhenDOMLoaded(addUtterances);
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   5.1 한국거래소의 산업별 현황 및 개별지표 크롤링
+   5.1 한국거래소의 업종분류 현황 및 개별지표 크롤링
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -272,6 +329,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    5.2 WICS 기준 섹터정보 크롤링
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cmd">
+   5.3 CMD 파일을 이용한 자동화
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -285,14 +347,14 @@ commentsRunWhenDOMLoaded(addUtterances);
                 
   <div class="section" id="id1">
 <h1>5. 금융 데이터 수집하기 (기본)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>API와 크롤링을 이용한다면 비용을 지불하지 않고 얼마든지 금융 데이터를 수집할 수있습니다. 이번 장에서는 금융 데이터를 구하기 위해 필요한 주식티커를 구하는 방법과 섹터별 구성종목을 크롤링하는 방법을 알아보겠습니다.</p>
+<p>이번 장에서는 금융 데이터를 구하기 위해 필요한 주식티커와 섹터별 구성종목을 크롤링하는 방법에 대해 알아보겠습니다.</p>
 <div class="section" id="id2">
-<h2>5.1 한국거래소의 산업별 현황 및 개별지표 크롤링<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>5.1 한국거래소의 업종분류 현황 및 개별지표 크롤링<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>앞 장의 예제를 통해 네이버 금융에서 주식티커를 크롤링하는 방법을 살펴보았습니다. 그러나 이 방법은 지나치게 복잡하고 시간이 오래 걸립니다. 반면 한국거래소에서 제공하는 업종분류 현황과 개별종목 지표 데이터를 이용하면 훨씬 간단하게 주식티커 데이터를 수집할 수 있습니다.</p>
 <ul class="simple">
 <li><p>KRX 정보데이터시스템 http://data.krx.co.kr/ 에서 [기본통계 → 주식 → 세부안내] 부분</p></li>
 <li><p>[12025] 업종분류 현황: http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020506</p></li>
-<li><p>[12021] 개별종목: http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020506</p></li>
+<li><p>[12021] 개별종목: http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020502</p></li>
 </ul>
 <p>해당 데이터들을 크롤링이 아닌 [Excel] 버튼을 클릭해 엑셀 파일로 받을 수도 있습니다. 그러나 매번 엑셀 파일을 다운로드하고 이를 불러오는 작업은 상당히 비효율적이며, 크롤링을 이용한다면 해당 데이터를 직접 불러올 수 있습니다.</p>
 <div class="section" id="id3">
@@ -305,13 +367,13 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>먼저 1번 단계를 살펴보겠습니다.</p>
 <div class="figure align-default" id="crawl-practice-krx-sector">
 <img alt="_images/05_crawl_practice_krx_sector.png" src="_images/05_crawl_practice_krx_sector.png" />
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">OTP 생성 부분</span><a class="headerlink" href="#crawl-practice-krx-sector" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">OTP 생성 부분</span><a class="headerlink" href="#crawl-practice-krx-sector" title="Permalink to this image">¶</a></p>
 </div>
 <p>General 항목의 Request URL의 앞부분이 원하는 항목을 제출할 주소입니다. Form Data에는 우리가 원하는 항목들이 적혀 있습니다. 이를 통해 POST 방식으로 데이터를 요청함을 알 수 있습니다.</p>
 <p>다음으로 2번 단계를 살펴보겠습니다.</p>
 <div class="figure align-default" id="crawl-practice-krx-sector2">
 <img alt="_images/05_crawl_practice_krx_sector2.png" src="_images/05_crawl_practice_krx_sector2.png" />
-<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">OTP 제출 부분</span><a class="headerlink" href="#crawl-practice-krx-sector2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text">OTP 제출 부분</span><a class="headerlink" href="#crawl-practice-krx-sector2" title="Permalink to this image">¶</a></p>
 </div>
 <p>General 항목의 Request URL은 OTP를 제출할 주소입니다. Form Data의 OTP는 1번 단계에서 부여받은 OTP에 해당합니다. 이 역시 POST 방식으로 데이터를 요청합니다.</p>
 <p>위 과정을 코드로 나타내면 다음과 같습니다.</p>
@@ -320,14 +382,8 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gen_otp_url</span> <span class="o">=</span> <span class="s1">&#39;http://data.krx.co.kr/comm/fileDn/GenerateOTP/generate.cmd&#39;</span>
 
+<span class="n">gen_otp_url</span> <span class="o">=</span> <span class="s1">&#39;http://data.krx.co.kr/comm/fileDn/GenerateOTP/generate.cmd&#39;</span>
 <span class="n">gen_otp_data</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;mktId&#39;</span><span class="p">:</span> <span class="s1">&#39;STK&#39;</span><span class="p">,</span>
   <span class="s1">&#39;trdDd&#39;</span><span class="p">:</span> <span class="s1">&#39;20210108&#39;</span><span class="p">,</span>
@@ -336,29 +392,22 @@ commentsRunWhenDOMLoaded(addUtterances);
   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;fileDown&#39;</span><span class="p">,</span>
   <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;dbms/MDC/STAT/standard/MDCSTAT03901&#39;</span>
 <span class="p">}</span>
-
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Referer&#39;</span><span class="p">:</span> <span class="s1">&#39;http://data.krx.co.kr/contents/MDC/MDI/mdiLoader&#39;</span><span class="p">}</span>
+<span class="n">otp</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">gen_otp_url</span><span class="p">,</span> <span class="n">gen_otp_data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 
-<span class="n">otp</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">gen_otp_url</span><span class="p">,</span> <span class="n">gen_otp_data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>           
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">otp</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">otp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;q5d/BKjLTdYmMPkFGWXDrNcgJ2tZxTxjc2B0QcmQOFIRtSksuLS7Bnxpl86F7dAOkunw9BBwugQaSjGAcH15eaZ8NA5R6MzhK2oIoU32nFwtBgM+EFJCxYg3zco1gIgRZqIo4cIzoURnTI8+MmkJ4m8vFLhSKmM794gFu+ThsO31lY4woqehX8j6OlXFDcfHdV4NbYo4+D2Rwcfj24VnU3Zpq3ik/Dyw3FdyOXhJkBI=&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i638upk45ZUhZAhVnc7yfoyoktkFbZQwhZTrLxeITMwRtSksuLS7Bnxpl86F7dAOkunw9BBwugQaSjGAcH15eaZ8NA5R6MzhK2oIoU32nFwtBgM+EFJCxYg3zco1gIgRZqIo4cIzoURnTI8+MmkJ4m8vFLhSKmM794gFu+ThsO31lY4woqehX8j6OlXFDcfHdV4NbYo4+D2Rwcfj24VnU3Zpq3ik/Dyw3FdyOXhJkBI=
 </pre></div>
 </div>
 </div>
 </div>
 <ol class="simple">
 <li><p>gen_otp_url에 원하는 항목을 제출할 URL을 입력합니다.</p></li>
-<li><p>개발자 도구 화면에 나타는 쿼리 내용들을 리스트 형태로 입력합니다. 이 중 mktId의 STK는 코스피에 해당하는 내용이며, 코스닥 데이터를 받고자 할 경우 KSQ를 입력해야 합니다.</p></li>
+<li><p>개발자 도구 화면에 나타는 쿼리 내용들을 딕셔너리 형태로 입력합니다. 이 중 mktId의 STK는 코스피에 해당하는 내용이며, 코스닥 데이터를 받고자 할 경우 KSQ를 입력해야 합니다.</p></li>
 <li><p>헤더 부분에 리퍼러(Referer)를 추가합니다. 리퍼러란 링크를 통해서 각각의 웹사이트로 방문할 때 남는 흔적입니다. 거래소 데이터를 다운로드하는 과정을 살펴보면 첫 번째 URL에서 OTP를 부여받고, 이를 다시 두번째 URL에 제출했습니다. 그런데 이러한 과정의 흔적이 없이 OTP를 바로 두번째 URL에 제출하면 서버는 이를 로봇으로 인식해 데이터를 반환하지 않습니다. 따라서 헤더 부분에 우리가 거쳐온 과정을 흔적으로 남겨야 데이터를 반환하게 됩니다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">post()</span></code> 함수를 통해 해당 URL에 쿼리를 전송하면 이에 해당하는 데이터를 받으며, 이중 텍스트에 해당하는 내용만 불러오도록 합니다.</p></li>
 </ol>
@@ -539,20 +588,17 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>917 rows × 8 columns</p>
 </div></div></div>
 </div>
-<p>위 과정을 통해 down_sector 변수에는 산업별 현황 데이터가 저장되었습니다. 코스닥 시장의 데이터도 다운로드 받도록 하겠습니다.</p>
+<p>위 과정을 통해 sector_KS 변수에는 산업별 현황 데이터가 저장되었습니다. 코스닥 시장의 데이터도 다운로드 받도록 하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 코스닥</span>
-
-<span class="n">gen_otp_data</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;mktId&#39;</span><span class="p">:</span> <span class="s1">&#39;KSQ&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gen_otp_data</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;mktId&#39;</span><span class="p">:</span> <span class="s1">&#39;KSQ&#39;</span><span class="p">,</span> <span class="c1"># 코스닥 입력</span>
   <span class="s1">&#39;trdDd&#39;</span><span class="p">:</span> <span class="s1">&#39;20210108&#39;</span><span class="p">,</span>
   <span class="s1">&#39;money&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
   <span class="s1">&#39;csvxls_isNo&#39;</span><span class="p">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span>
   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;fileDown&#39;</span><span class="p">,</span>
   <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;dbms/MDC/STAT/standard/MDCSTAT03901&#39;</span>
 <span class="p">}</span>
-
 <span class="n">otp</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">gen_otp_url</span><span class="p">,</span> <span class="n">gen_otp_data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>         
 
 <span class="n">down_sector_KQ</span>  <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">down_url</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;code&#39;</span><span class="p">:</span><span class="n">otp</span><span class="p">},</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
@@ -732,7 +778,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<p>이를 csv 파일로 저장하겠습니다.</p>
+<p>종목명에 공백에 있는 경우가 있으므로 <code class="docutils literal notranslate"><span class="pre">strip()</span></code> 함수를 이용해 이를 제거해줍니다. 합쳐진 데이터를 csv 파일로 저장하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -751,7 +797,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>개별종목 데이터를 크롤링하는 방법은 위와 매우 유사하며, 요청하는 쿼리 값에만 차이가 있습니다. 개발자 도구 화면을 열고 [CSV] 버튼을 클릭해 어떠한 쿼리를 요청하는지 확인합니다.</p>
 <div class="figure align-default" id="crawl-practice-krx-ind">
 <img alt="_images/05_crawl_practice_krx_ind.png" src="_images/05_crawl_practice_krx_ind.png" />
-<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">개별지표 OTP 생성 부분</span><a class="headerlink" href="#crawl-practice-krx-ind" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 37 </span><span class="caption-text">개별지표 OTP 생성 부분</span><a class="headerlink" href="#crawl-practice-krx-ind" title="Permalink to this image">¶</a></p>
 </div>
 <p>이 중 tboxisuCd_finder_stkisu0_6, isu_Cd, isu_Cd2 등의 항목은 조회 구분의 개별추이 탭에 해당하는 부분이므로 우리가 원하는 전체 데이터를 받을 때는 필요하지 않은 요청값입니다. 이를 제외한 요청값을 산업별 현황 예제에 적용하면 해당 데이터 역시 손쉽게 다운로드할 수 있습니다.</p>
 <div class="cell docutils container">
@@ -761,7 +807,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">gen_otp_url</span> <span class="o">=</span> <span class="s1">&#39;http://data.krx.co.kr/comm/fileDn/GenerateOTP/generate.cmd&#39;</span>
-
 <span class="n">gen_otp_data</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;searchType&#39;</span> <span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
   <span class="s1">&#39;mktId&#39;</span> <span class="p">:</span> <span class="s1">&#39;ALL&#39;</span><span class="p">,</span>
@@ -770,9 +815,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   <span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="s1">&#39;fileDown&#39;</span><span class="p">,</span>
   <span class="s1">&#39;url&#39;</span> <span class="p">:</span> <span class="s1">&#39;dbms/MDC/STAT/standard/MDCSTAT03501&#39;</span>
 <span class="p">}</span>
-
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Referer&#39;</span><span class="p">:</span> <span class="s1">&#39;http://data.krx.co.kr/contents/MDC/MDI/mdiLoader&#39;</span><span class="p">}</span>           
-
 <span class="n">otp</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">gen_otp_url</span><span class="p">,</span> <span class="n">gen_otp_data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>         
 
 <span class="n">down_url</span> <span class="o">=</span> <span class="s1">&#39;http://data.krx.co.kr/comm/fileDn/download_csv/download.cmd&#39;</span>
@@ -897,7 +940,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </table>
 </div></div></div>
 </div>
-<p>위 과정을 통해 down_ind 변수에는 개별종목 지표 데이터가 저장되었습니다. 개별지표의 종목명 끝에는 공백이 있는 경우가 있으므로, <code class="docutils literal notranslate"><span class="pre">strip()</span></code> 함수를 통해 이를 제거해주는 과정을 추가해줍니다. 해당 데이터 역시 csv 파일로 저장하겠습니다.</p>
+<p>위 과정을 통해 down_ind 변수에는 개별종목 지표 데이터가 저장되었습니다. 해당 데이터 역시 csv 파일로 저장하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">down_ind</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/krx_ind.csv&#39;</span><span class="p">)</span>
@@ -905,19 +948,28 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>다운로드 받은 csv 파일을 확인해보면 아래 그림과 같이 인코딩 오류가 발생할 수 있습니다. 이는 파이썬의 기본 인코딩이 UTF-8인 반면, 윈도우의 인코딩은 EUC-KR 이기 때문에 발생하는 문제입니다.</p>
+<p>해당 파일을 다시 파이썬으로 읽어오면 인코딩 문제가 발생하지 않습니다. 그러나 만일 윈도우에서 csv 파일 자체를 인코딩 오류 없이 사용하고 싶을 경우, <code class="docutils literal notranslate"><span class="pre">변수.to_csv('파일명.csv',</span> <span class="pre">encoding</span> <span class="pre">=</span> <span class="pre">'EUC-KR')</span></code>를 통해 인코딩을 EUC-KR로 설정해주면 한글이 깨지지 않습니다.</p>
+<div class="figure align-default" id="crawl-encoding-error">
+<img alt="_images/crawl_encoding_error.png" src="_images/crawl_encoding_error.png" />
+<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">저장된 csv 파일의 인코딩 오류</span><a class="headerlink" href="#crawl-encoding-error" title="Permalink to this image">¶</a></p>
+</div>
+</div>
 </div>
 <div class="section" id="id5">
 <h3>5.1.3 최근 영업일 기준 데이터 받기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>위 예제의 쿼리 항목 중 date와 schdate 부분을 원하는 일자로 입력하면(예: 20190104) 해당일의 데이터를 다운로드할 수 있으며, 전 영업일 날짜를 입력하면 가장 최근의 데이터를 받을 수 있습니다. 그러나 매번 해당 항목을 입력하기는 번거로우므로 자동으로 반영되게 할 필요가 있습니다.</p>
+<p>위 예제의 쿼리 항목 중 date와 schdate 부분을 원하는 일자로 입력하면(예: 20210104) 해당일의 데이터를 다운로드할 수 있으며, 최근 영업일 날짜를 입력하면 가장 최근의 데이터를 받을 수 있습니다. 그러나 매번 해당 항목을 입력하기는 번거로우므로 자동으로 반영되게 할 필요가 있습니다.</p>
 <p>네이버 금융의 [국내증시 → 증시자금동향]에는 이전 2영업일에 해당하는 날짜가 있으며, 자동으로 날짜가 업데이트되어 편리합니다. 따라서 해당 부분을 크롤링해 쿼리 항목에 사용할 수 있습니다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">finance</span><span class="o">.</span><span class="n">naver</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sise</span><span class="o">/</span><span class="n">sise_deposit</span><span class="o">.</span><span class="n">nhn</span>
 </pre></div>
 </div>
 <div class="figure align-default" id="crawl-practice-recentdate">
 <img alt="_images/05_crawl_practice_recentdate.png" src="_images/05_crawl_practice_recentdate.png" />
-<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">최근 영업일 부분</span><a class="headerlink" href="#crawl-practice-recentdate" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">최근 영업일 부분</span><a class="headerlink" href="#crawl-practice-recentdate" title="Permalink to this image">¶</a></p>
 </div>
-<p>개발자도구 화면을 이용해 해당 데이터가 있는 부분을 확인해보면 [subtop_sise_graph2 클래스의 div 태그 → subtop_chart_note 클래스의 ul 태그 → li 태그 → tah 클래스의 span 태그]에 위치해 있다는 걸 알 수 있습니다. 이를 이용해 해당 데이터를 크롤링하도록 하겠습니다.</p>
+<p>개발자도구 화면을 이용해 해당 데이터가 있는 부분을 확인해보면 [div 태그의 subtop_sise_graph2 클래스 → ul 태그의 subtop_chart_note 클래스  → li 태그 → span 태그의 tah 클래스]에 위치해 있다는 걸 알 수 있습니다. 이를 이용해 해당 데이터를 크롤링하도록 하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
@@ -927,18 +979,13 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">data_html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 <span class="n">parse_day</span> <span class="o">=</span> <span class="n">data_html</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;div.subtop_sise_graph2 &gt; ul.subtop_chart_note &gt; li &gt; span.tah&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">parse_day</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">parse_day</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  |  2021.02.08
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  |  2021.04.09
 </pre></div>
 </div>
 </div>
@@ -947,9 +994,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li><p>페이지의 url을 저장합니다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수를 통해 해당 페이지 내용을 받습니다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">BeautifulSoup()</span></code> 함수를 이용해 해당 페이지의 HTML 내용을 읽어옵니다.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">select_one()</span></code> 함수를 통해 해당 데이터를 추출하며, text를 이용해 텍스트 데이터만을 추출합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">select_one()</span></code> 함수를 통해 해당 태그의 데이터를 추출하며, text를 이용해 텍스트 데이터만을 추출합니다.</p></li>
 </ol>
-<p>위 과정을 통해 <code class="docutils literal notranslate"><span class="pre">|</span>&#160;&#160; <span class="pre">yyyy.mm.dd</span></code> 형식의 데이터가 선택됩니다. 이 중 숫자 부분만을 뽑아 yyyymmdd 형태로 만들어주도록 하겠습니다.</p>
+<p>위 과정을 통해 <strong>|  yyyy.mm.dd</strong> 형식의 데이터가 선택됩니다. 이 중 숫자 부분만을 뽑아 <strong>yyyymmdd</strong> 형태로 만들어주도록 하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
@@ -961,22 +1008,21 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20210208
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20210409
 </pre></div>
 </div>
 </div>
 </div>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">findall()</span></code> 함수 내에 정규표현식을 이용해 숫자에 해당하는 부분만을 추출합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">findall()</span></code> 함수 내에 정규표현식을 이용해 숫자에 해당하는 부분만을 추출합니다.**[0-9]+**는 모든 숫자를 의미하는 표현식입니다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">join()</span></code> 함수를 통해 숫자를 합쳐줍니다.</p></li>
 </ol>
-<p>이를 통해 우리가 원하는 yyyymmdd 형태의 날짜가 만들어졌습니다. 이를 위의 date와 schdate에 입력하면 산업별 현황과 개별종목 지표를 최근일자 기준으로 다운로드하게 됩니다. 전체 코드는 다음과 같습니다.</p>
+<p>이를 통해 우리가 원하는 yyyymmdd 형태의 날짜가 만들어졌습니다. 이를 쿼리의 trdDd에 입력하면 업종분류 현황과 개별종목 지표를 최근 영업일 기준으로 다운로드하게 됩니다. 전체 코드는 다음과 같습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -1016,7 +1062,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="c1"># 코스닥 업종분류 데이터 다운로드</span>
 <span class="n">gen_otp_data</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;mktId&#39;</span><span class="p">:</span> <span class="s1">&#39;KSQ&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;trdDd&#39;</span><span class="p">:</span> <span class="s1">&#39;20210108&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;trdDd&#39;</span><span class="p">:</span> <span class="n">biz_day</span><span class="p">,</span>
   <span class="s1">&#39;money&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
   <span class="s1">&#39;csvxls_isNo&#39;</span><span class="p">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span>
   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;fileDown&#39;</span><span class="p">,</span>
@@ -1041,7 +1087,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="n">gen_otp_data</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;searchType&#39;</span> <span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
   <span class="s1">&#39;mktId&#39;</span> <span class="p">:</span> <span class="s1">&#39;ALL&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;trdDd&#39;</span> <span class="p">:</span> <span class="s1">&#39;20210108&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;trdDd&#39;</span> <span class="p">:</span> <span class="n">biz_day</span><span class="p">,</span>
   <span class="s1">&#39;csvxls_isNo&#39;</span> <span class="p">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span>
   <span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="s1">&#39;fileDown&#39;</span><span class="p">,</span>
   <span class="s1">&#39;url&#39;</span> <span class="p">:</span> <span class="s1">&#39;dbms/MDC/STAT/standard/MDCSTAT03501&#39;</span>
@@ -1089,77 +1135,31 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>먼저 두 데이터 간 중복되는 열 이름을 살펴보면 종목코드와 종목명 등이 확인됩니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">down_sector</span><span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">down_ind</span><span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">set</span><span class="p">(</span><span class="n">down_sector</span><span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">down_ind</span><span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">]))</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;ESR켄달스퀘어리츠&#39;,
- &#39;GRT&#39;,
- &#39;JTC&#39;,
- &#39;NH프라임리츠&#39;,
- &#39;SBI핀테크솔루션즈&#39;,
- &#39;SNK&#39;,
- &#39;골든센츄리&#39;,
- &#39;글로벌에스엠&#39;,
- &#39;뉴프라이드&#39;,
- &#39;로스웰&#39;,
- &#39;롯데리츠&#39;,
- &#39;맥쿼리인프라&#39;,
- &#39;맵스리얼티1&#39;,
- &#39;모두투어리츠&#39;,
- &#39;미래에셋맵스리츠&#39;,
- &#39;미투젠&#39;,
- &#39;바다로19호&#39;,
- &#39;베트남개발1&#39;,
- &#39;소마젠(Reg.S)&#39;,
- &#39;신한알파리츠&#39;,
- &#39;씨케이에이치&#39;,
- &#39;에스앤씨엔진그룹&#39;,
- &#39;에이리츠&#39;,
- &#39;엑세스바이오&#39;,
- &#39;엘브이엠씨홀딩스&#39;,
- &#39;오가닉티코스메틱&#39;,
- &#39;윙입푸드&#39;,
- &#39;이리츠코크렙&#39;,
- &#39;이스트아시아홀딩스&#39;,
- &#39;이지스레지던스리츠&#39;,
- &#39;이지스밸류리츠&#39;,
- &#39;잉글우드랩&#39;,
- &#39;제이알글로벌리츠&#39;,
- &#39;컬러레이&#39;,
- &#39;케이탑리츠&#39;,
- &#39;코람코에너지리츠&#39;,
- &#39;코오롱티슈진&#39;,
- &#39;크리스탈신소재&#39;,
- &#39;하이골드12호&#39;,
- &#39;하이골드3호&#39;,
- &#39;한국ANKOR유전&#39;,
- &#39;한국패러랠&#39;,
- &#39;헝셩그룹&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;이스트아시아홀딩스&#39;, &#39;케이탑리츠&#39;, &#39;삼일제약&#39;, &#39;이리츠코크렙&#39;, &#39;신한알파리츠&#39;, &#39;SNK&#39;, &#39;이지스레지던스리츠&#39;, &#39;롯데리츠&#39;, &#39;하이골드12호&#39;, &#39;오가닉티코스메틱&#39;, &#39;윙입푸드&#39;, &#39;미래에셋맵스리츠&#39;, &#39;TS인베스트먼트&#39;, &#39;크리스탈신소재&#39;, &#39;글로벌에스엠&#39;, &#39;코오롱티슈진&#39;, &#39;한국ANKOR유전&#39;, &#39;판타지오&#39;, &#39;GRT&#39;, &#39;헝셩그룹&#39;, &#39;바다로19호&#39;, &#39;TS인베스트먼트 [락]&#39;, &#39;맥쿼리인프라&#39;, &#39;제이알글로벌리츠&#39;, &#39;엑세스바이오&#39;, &#39;컬러레이&#39;, &#39;로스웰&#39;, &#39;프레스티지바이오파마&#39;, &#39;코람코에너지리츠&#39;, &#39;NH프라임리츠&#39;, &#39;엘브이엠씨홀딩스&#39;, &#39;판타지오 (액)&#39;, &#39;미투젠&#39;, &#39;골든센츄리&#39;, &#39;SBI핀테크솔루션즈&#39;, &#39;에이리츠&#39;, &#39;삼일제약 (액)&#39;, &#39;소마젠(Reg.S)&#39;, &#39;한국패러랠&#39;, &#39;잉글우드랩&#39;, &#39;에스앤씨엔진그룹&#39;, &#39;이지스밸류리츠&#39;, &#39;ESR켄달스퀘어리츠&#39;, &#39;씨케이에이치&#39;, &#39;베트남개발1&#39;, &#39;모두투어리츠&#39;, &#39;JTC&#39;, &#39;하이골드3호&#39;, &#39;뉴프라이드&#39;, &#39;맵스리얼티1&#39;, &#39;네오이뮨텍(Reg.S)&#39;}
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">symmetric_difference()</span></code> 함수를 통해 두 데이터에 공통적으로 없는 종목명, 즉 하나의 데이터에만 있는 종목을 살펴보면 위와 같습니다. 해당 종목들은 선박펀드, 광물펀드, 해외종목 등 일반적이지 않은 종목들이므로 제외하는 것이 좋습니다. 따라서 둘 사이에 공통적으로 존재하는 종목을 기준으로 데이터를 합쳐주겠습니다</p>
+<p>두 데이터의 종목명 열을 세트 형태로 변경한 후 <code class="docutils literal notranslate"><span class="pre">symmetric_difference()</span></code> 함수를 통해 공통으로 없는 종목명, 즉 하나의 데이터에만 있는 종목을 살펴보면 위와 같습니다. 해당 종목들은 선박펀드, 광물펀드, 해외종목 등 일반적이지 않은 종목들이므로 제외하는 것이 좋습니다. 따라서 둘 사이에 공통적으로 존재하는 종목을 기준으로 데이터를 합쳐주겠습니다</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">down_sector</span><span class="p">,</span> <span class="n">down_ind</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="p">(</span><span class="n">down_sector</span><span class="o">.</span><span class="n">columns</span> <span class="o">&amp;</span> <span class="n">down_ind</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">down_sector</span><span class="p">,</span> <span class="n">down_ind</span><span class="p">,</span>
+                      <span class="n">on</span> <span class="o">=</span> <span class="p">(</span><span class="n">down_sector</span><span class="o">.</span><span class="n">columns</span> <span class="o">&amp;</span> <span class="n">down_ind</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;inner&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수는 on을 기준으로 두 데이터를 하나로 합치며, 공통으로 존재하는 종목코드, 종목명, 종가, 대비, 등락률을 기준으로 입력해줍니다. 또한 둘 사이에 공통적으로 존재하는 종목을 기준으로 데이터를 합쳐주어야 하므로, 방법(how)에 inner를 입력해 줍니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수는 on을 기준으로 두 데이터를 하나로 합치며, 공통으로 존재하는 <strong>종목코드, 종목명, 종가, 대비, 등락률</strong>을 기준으로 입력해줍니다. 또한 둘 사이에 공통적으로 존재하는 종목을 기준으로 데이터를 합쳐주어야 하므로, 방법(how)에 inner를 입력해 줍니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;시가총액&#39;</span><span class="p">],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">KOR_ticker</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1200,89 +1200,89 @@ commentsRunWhenDOMLoaded(addUtterances);
   </thead>
   <tbody>
     <tr>
-      <th>401</th>
+      <th>404</th>
       <td>005930</td>
       <td>삼성전자</td>
       <td>KOSPI</td>
       <td>전기전자</td>
-      <td>88800</td>
-      <td>5900</td>
-      <td>7.12</td>
-      <td>530116690440000</td>
+      <td>83200</td>
+      <td>-400</td>
+      <td>-0.48</td>
+      <td>496685908160000</td>
       <td>3166.0</td>
-      <td>28.05</td>
+      <td>26.28</td>
       <td>37528.0</td>
-      <td>2.37</td>
+      <td>2.22</td>
       <td>1416</td>
-      <td>1.59</td>
+      <td>1.70</td>
     </tr>
     <tr>
-      <th>132</th>
+      <th>134</th>
       <td>000660</td>
       <td>SK하이닉스</td>
       <td>KOSPI</td>
       <td>전기전자</td>
-      <td>138000</td>
-      <td>3500</td>
-      <td>2.60</td>
-      <td>100464326370000</td>
+      <td>137500</td>
+      <td>-2500</td>
+      <td>-1.79</td>
+      <td>100100325187500</td>
       <td>2943.0</td>
-      <td>46.89</td>
+      <td>46.72</td>
       <td>65836.0</td>
-      <td>2.10</td>
+      <td>2.09</td>
       <td>1000</td>
-      <td>0.72</td>
+      <td>0.73</td>
     </tr>
     <tr>
-      <th>81</th>
-      <td>051910</td>
-      <td>LG화학</td>
+      <th>94</th>
+      <td>035420</td>
+      <td>NAVER</td>
       <td>KOSPI</td>
-      <td>화학</td>
-      <td>999000</td>
-      <td>37000</td>
-      <td>3.85</td>
-      <td>70521750657000</td>
-      <td>4085.0</td>
-      <td>244.55</td>
-      <td>217230.0</td>
-      <td>4.60</td>
+      <td>서비스업</td>
+      <td>385500</td>
       <td>2000</td>
-      <td>0.20</td>
+      <td>0.52</td>
+      <td>63323538772500</td>
+      <td>4006.0</td>
+      <td>96.23</td>
+      <td>35223.0</td>
+      <td>10.94</td>
+      <td>376</td>
+      <td>0.10</td>
     </tr>
     <tr>
-      <th>402</th>
+      <th>405</th>
       <td>005935</td>
       <td>삼성전자우</td>
       <td>KOSPI</td>
       <td>전기전자</td>
-      <td>77800</td>
-      <td>3500</td>
-      <td>4.71</td>
-      <td>64020585260000</td>
+      <td>75100</td>
+      <td>100</td>
+      <td>0.13</td>
+      <td>61798791170000</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>1417</td>
-      <td>1.82</td>
+      <td>1.89</td>
     </tr>
     <tr>
-      <th>395</th>
-      <td>207940</td>
-      <td>삼성바이오로직스</td>
+      <th>86</th>
+      <td>051910</td>
+      <td>LG화학</td>
       <td>KOSPI</td>
-      <td>의약품</td>
-      <td>837000</td>
-      <td>18000</td>
-      <td>2.20</td>
-      <td>55380105000000</td>
-      <td>3067.0</td>
-      <td>272.91</td>
-      <td>65812.0</td>
-      <td>12.72</td>
-      <td>0</td>
-      <td>0.00</td>
+      <td>화학</td>
+      <td>817000</td>
+      <td>5000</td>
+      <td>0.62</td>
+      <td>57673944231000</td>
+      <td>4085.0</td>
+      <td>200.00</td>
+      <td>217230.0</td>
+      <td>3.76</td>
+      <td>2000</td>
+      <td>0.24</td>
     </tr>
   </tbody>
 </table>
@@ -1292,100 +1292,92 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>마지막으로 스팩, 우선주 종목 역시 제외해야 합니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span><span class="p">[</span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;스팩&#39;</span><span class="p">)][</span><span class="s1">&#39;종목명&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;스팩&#39;</span><span class="p">)][</span><span class="s1">&#39;종목명&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1693      엔에이치스팩14호
-1006         교보8호스팩
-1844       유안타제3호스팩
-2044      케이비제18호스팩
-1360         삼성스팩2호
-1695      엔에이치스팩17호
-1847       유안타제6호스팩
-1283     미래에셋대우스팩3호
-2046      케이비제20호스팩
-905        DB금융스팩8호
-1846       유안타제5호스팩
-1103     대신밸런스제8호스팩
-963          SK6호스팩
-2043       케이비17호스팩
-1848       유안타제7호스팩
-1102     대신밸런스제7호스팩
-1005        교보10호스팩
-2306      한화에스비아이스팩
-918      IBKS제13호스팩
-1282    미래에셋대우스팩 5호
-2256        하이제5호스팩
-961          SK4호스팩
-2276        한국제7호스팩
-1656     에이치엠씨제5호스팩
-1491        신한제6호스팩
-2244      하나금융15호스팩
-2248     하나머스트제6호스팩
-1845       유안타제4호스팩
-1377      상상인이안1호스팩
-2307     한화플러스제1호스팩
-1696      엔에이치스팩18호
-919      IBKS제14호스팩
-2243      하나금융14호스팩
-1284     미래에셋대우스팩4호
-1694      엔에이치스팩16호
-962          SK5호스팩
-2045      케이비제19호스팩
-1486         신영스팩6호
-1104     대신밸런스제9호스팩
-1655     에이치엠씨제4호스팩
-2245      하나금융16호스팩
-1854         유진스팩5호
-1007         교보9호스팩
-1692      엔에이치스팩13호
-1378     상상인이안제2호스팩
-2125        키움제5호스팩
-1882       이베스트스팩5호
-1485         신영스팩5호
-1853         유진스팩4호
-2277        한국제8호스팩
-917      IBKS제12호스팩
-1883     이베스트이안스팩1호
-Name: 종목명, dtype: object
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;유안타제6호스팩&#39; &#39;삼성스팩2호&#39; &#39;케이비제18호스팩&#39; &#39;미래에셋대우스팩4호&#39; &#39;엔에이치스팩17호&#39; &#39;하나금융17호스팩&#39;
+ &#39;미래에셋대우스팩3호&#39; &#39;케이비제20호스팩&#39; &#39;유안타제8호스팩&#39; &#39;엔에이치스팩16호&#39; &#39;DB금융스팩8호&#39; &#39;유안타제5호스팩&#39;
+ &#39;한화에스비아이스팩&#39; &#39;SK6호스팩&#39; &#39;대신밸런스제8호스팩&#39; &#39;유안타제7호스팩&#39; &#39;케이비17호스팩&#39; &#39;교보10호스팩&#39;
+ &#39;IBKS제13호스팩&#39; &#39;대신밸런스제7호스팩&#39; &#39;미래에셋대우스팩 5호&#39; &#39;SK4호스팩&#39; &#39;신한제6호스팩&#39; &#39;하이제5호스팩&#39;
+ &#39;에이치엠씨제5호스팩&#39; &#39;상상인이안1호스팩&#39; &#39;하나머스트제6호스팩&#39; &#39;DB금융스팩9호&#39; &#39;하나금융15호스팩&#39; &#39;한국9호스팩&#39;
+ &#39;유안타제4호스팩&#39; &#39;한화플러스제1호스팩&#39; &#39;엔에이치스팩18호&#39; &#39;신한제7호스팩&#39; &#39;하나금융14호스팩&#39; &#39;IBKS제14호스팩&#39;
+ &#39;에이치엠씨제4호스팩&#39; &#39;신영스팩6호&#39; &#39;SK5호스팩&#39; &#39;하나머스트7호스팩&#39; &#39;케이비제19호스팩&#39; &#39;대신밸런스제9호스팩&#39;
+ &#39;유진스팩5호&#39; &#39;하나금융16호스팩&#39; &#39;교보9호스팩&#39; &#39;상상인이안제2호스팩&#39; &#39;키움제5호스팩&#39; &#39;이베스트스팩5호&#39;
+ &#39;IBKS제15호스팩&#39; &#39;유진스팩4호&#39; &#39;신영스팩5호&#39; &#39;한국제8호스팩&#39; &#39;엔에이치스팩13호&#39; &#39;IBKS제12호스팩&#39;
+ &#39;이베스트이안스팩1호&#39; &#39;유진스팩6호&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span><span class="p">[</span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">!=</span> <span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;종목명&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;[0-9]+호&#39;</span><span class="p">)][</span><span class="s1">&#39;종목명&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>402      삼성전자우
-856     현대차2우B
-82       LG화학우
-858       현대차우
-72     LG생활건강우
-        ...   
-665    진흥기업2우B
-500        신원우
-204     노루홀딩스우
-892    흥국화재2우B
-288      동양3우B
-Name: 종목명, Length: 120, dtype: object
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;유안타제6호스팩&#39; &#39;삼성스팩2호&#39; &#39;케이비제18호스팩&#39; &#39;미래에셋대우스팩4호&#39; &#39;엔에이치스팩17호&#39; &#39;하나금융17호스팩&#39;
+ &#39;미래에셋대우스팩3호&#39; &#39;케이비제20호스팩&#39; &#39;유안타제8호스팩&#39; &#39;엔에이치스팩16호&#39; &#39;DB금융스팩8호&#39; &#39;유안타제5호스팩&#39;
+ &#39;SK6호스팩&#39; &#39;대신밸런스제8호스팩&#39; &#39;유안타제7호스팩&#39; &#39;케이비17호스팩&#39; &#39;교보10호스팩&#39; &#39;IBKS제13호스팩&#39;
+ &#39;대신밸런스제7호스팩&#39; &#39;미래에셋대우스팩 5호&#39; &#39;SK4호스팩&#39; &#39;신한제6호스팩&#39; &#39;하이제5호스팩&#39; &#39;에이치엠씨제5호스팩&#39;
+ &#39;상상인이안1호스팩&#39; &#39;하나머스트제6호스팩&#39; &#39;DB금융스팩9호&#39; &#39;하나금융15호스팩&#39; &#39;한국9호스팩&#39; &#39;유안타제4호스팩&#39;
+ &#39;한화플러스제1호스팩&#39; &#39;엔에이치스팩18호&#39; &#39;신한제7호스팩&#39; &#39;하나금융14호스팩&#39; &#39;IBKS제14호스팩&#39; &#39;에이치엠씨제4호스팩&#39;
+ &#39;신영스팩6호&#39; &#39;SK5호스팩&#39; &#39;하나머스트7호스팩&#39; &#39;케이비제19호스팩&#39; &#39;대신밸런스제9호스팩&#39; &#39;유진스팩5호&#39;
+ &#39;하나금융16호스팩&#39; &#39;교보9호스팩&#39; &#39;상상인이안제2호스팩&#39; &#39;키움제5호스팩&#39; &#39;이베스트스팩5호&#39; &#39;IBKS제15호스팩&#39;
+ &#39;유진스팩4호&#39; &#39;신영스팩5호&#39; &#39;한국제8호스팩&#39; &#39;엔에이치스팩13호&#39; &#39;IBKS제12호스팩&#39; &#39;이베스트이안스팩1호&#39;
+ &#39;케이프이에스제4호&#39; &#39;유진스팩6호&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">contains()</span></code> 함수를 통해 종목명에 ‘스팩’이 들어가는 종목을 찾고, 종목코드 끝이 0이 아닌 우선주 종목을 찾을 수 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">!=</span> <span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;종목명&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;삼성전자우&#39; &#39;현대차2우B&#39; &#39;LG화학우&#39; &#39;현대차우&#39; &#39;LG생활건강우&#39; &#39;LG전자우&#39; &#39;아모레퍼시픽우&#39; &#39;삼성SDI우&#39;
+ &#39;미래에셋증권2우B&#39; &#39;한국금융지주우&#39; &#39;삼성화재우&#39; &#39;신영증권우&#39; &#39;대신증권우&#39; &#39;삼성전기우&#39; &#39;한화3우B&#39; &#39;금호석유우&#39;
+ &#39;CJ4우(전환)&#39; &#39;아모레G3우(전환)&#39; &#39;CJ제일제당 우&#39; &#39;SK이노베이션우&#39; &#39;현대차3우B&#39; &#39;LG우&#39; &#39;두산퓨얼셀1우&#39;
+ &#39;삼성물산우B&#39; &#39;신풍제약우&#39; &#39;NH투자증권우&#39; &#39;S-Oil우&#39; &#39;SK케미칼우&#39; &#39;DL이앤씨우&#39; &#39;두산우&#39; &#39;SK우&#39; &#39;아모레G우&#39;
+ &#39;한화투자증권우&#39; &#39;대신증권2우B&#39; &#39;CJ우&#39; &#39;솔루스첨단소재1우&#39; &#39;코오롱인더우&#39; &#39;미래에셋증권우&#39; &#39;녹십자홀딩스2우&#39;
+ &#39;유한양행우&#39; &#39;DL우&#39; &#39;한화솔루션우&#39; &#39;호텔신라우&#39; &#39;부국증권우&#39; &#39;유안타증권우&#39; &#39;롯데지주우&#39; &#39;GS우&#39; &#39;덕성우&#39;
+ &#39;SK디스커버리우&#39; &#39;두산퓨얼셀2우B&#39; &#39;대교우B&#39; &#39;롯데칠성우&#39; &#39;두산2우B&#39; &#39;유화증권우&#39; &#39;대한항공우&#39; &#39;솔루스첨단소재2우B&#39;
+ &#39;LG하우시스우&#39; &#39;삼성중공우&#39; &#39;BYC우&#39; &#39;티와이홀딩스우&#39; &#39;코오롱우&#39; &#39;남양유업우&#39; &#39;세방우&#39; &#39;대상우&#39; &#39;하이트진로2우B&#39;
+ &#39;대덕전자1우&#39; &#39;SK증권우&#39; &#39;대한제당우&#39; &#39;한진칼우&#39; &#39;태영건설우&#39; &#39;한화우&#39; &#39;넥센타이어1우B&#39; &#39;삼양홀딩스우&#39; &#39;코리아써우&#39;
+ &#39;현대건설우&#39; &#39;삼양사우&#39; &#39;일양약품우&#39; &#39;SK네트웍스우&#39; &#39;NPC우&#39; &#39;한양증권우&#39; &#39;DB하이텍1우&#39; &#39;깨끗한나라우&#39;
+ &#39;유유제약1우&#39; &#39;크라운제과우&#39; &#39;넥센우&#39; &#39;서울식품우&#39; &#39;성신양회우&#39; &#39;대덕1우&#39; &#39;대상홀딩스우&#39; &#39;남선알미우&#39; &#39;태양금속우&#39;
+ &#39;크라운해태홀딩스우&#39; &#39;계양전기우&#39; &#39;동원시스템즈우&#39; &#39;금호산업우&#39; &#39;코오롱글로벌우&#39; &#39;현대비앤지스틸우&#39; &#39;금강공업우&#39;
+ &#39;루트로닉3우C&#39; &#39;CJ씨푸드1우&#39; &#39;하이트진로홀딩스우&#39; &#39;노루페인트우&#39; &#39;흥국화재우&#39; &#39;대원전선우&#39; &#39;JW중외제약우&#39;
+ &#39;KG동부제철우&#39; &#39;대호특수강우&#39; &#39;JW중외제약2우B&#39; &#39;동부건설우&#39; &#39;진흥기업우B&#39; &#39;코리아써키트2우B&#39; &#39;성문전자우&#39;
+ &#39;유유제약2우B&#39; &#39;동양우&#39; &#39;소프트센우&#39; &#39;진흥기업2우B&#39; &#39;동양2우B&#39; &#39;신원우&#39; &#39;노루홀딩스우&#39; &#39;흥국화재2우B&#39;
+ &#39;동양3우B&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">contains()</span></code> 함수를 통해 종목명에 ‘스팩’이 들어가는 종목을 찾을 수 있습니다</p></li>
+<li><p>간혹 스팩이지만 ‘스팩’이라는 단어가 들어가지 않은 종목이 있습니다. 이는 정규표현식을 통해 ‘n호’라는 형태의 종목명으로 찾을 수 있습니다.</p></li>
+<li><p>종목코드 끝이 0이 아닌 종목을 통해 우선주 종목을 찾을 수 있습니다.</p></li>
+</ol>
+<p>해당 종목을 제외한 데이터만 선택해주도록 하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="o">~</span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;스팩&#39;</span><span class="p">)]</span>
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="o">~</span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;[0-9]+호&#39;</span><span class="p">)]</span>
 <span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<ol class="simple">
+<li><p>종목명에 ‘스팩’이 포함되지 않은 종목을 선택합니다.</p></li>
+<li><p>종목코드 끝이 0인 종목, 즉 보통주만을 선택합니다.</p></li>
+</ol>
 <p>마지막으로 행 이름을 초기화한 후 정리된 데이터를 csv 파일로 저장합니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1406,14 +1398,17 @@ Name: 종목명, Length: 120, dtype: object
 <p>먼저 웹페이지에 접속해 왼쪽에서 [WISE SECTOR INDEX → WICS → 에너지]를 클릭합니다. 그 후 [Components] 탭을 클릭하면 해당 섹터의 구성종목을 확인할 수 있습니다.</p>
 <div class="figure align-default" id="wise">
 <img alt="_images/05_wise.png" src="_images/05_wise.png" />
-<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">WICS 기준 구성종목</span><a class="headerlink" href="#wise" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">WICS 기준 구성종목</span><a class="headerlink" href="#wise" title="Permalink to this image">¶</a></p>
 </div>
-<p>개발자도구 화면(<a class="reference internal" href="#wics2"><span class="std std-numref">Fig. 27</span></a>)을 통해 해당 페이지의 데이터전송 과정을 살펴보도록 하겠습니다.</p>
+<p>개발자도구 화면(<a class="reference internal" href="#wics2"><span class="std std-numref">Fig. 41</span></a>)을 통해 해당 페이지의 데이터전송 과정을 살펴보도록 하겠습니다.</p>
 <div class="figure align-default" id="wics2">
 <img alt="_images/05_wics2.png" src="_images/05_wics2.png" />
-<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">WICS 페이지 개발자도구 화면</span><a class="headerlink" href="#wics2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">WICS 페이지 개발자도구 화면</span><a class="headerlink" href="#wics2" title="Permalink to this image">¶</a></p>
 </div>
-<p>일자를 선택하면 [Network] 탭의 GetIndexComponets 항목을 통해 데이터 전송 과정이 나타납니다. Request URL의 주소를 살펴보면 다음과 같습니다.</p>
+<p>일자를 선택하면 [Network] 탭의 GetIndexComponets 항목을 통해 데이터 전송 과정이 나타납니다. Request URL은 데이터를 가져오는 주소이며, 이를 분석하면 다음과 같습니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://www.wiseindex.com/Index/GetIndexComponets?ceil_yn=0&amp;dt=20210210&amp;sec_cd=G10
+</pre></div>
+</div>
 <ol class="simple">
 <li><p>http://www.wiseindex.com/Index/GetIndexComponets: 데이터를 요청하는 url 입니다.</p></li>
 <li><p>ceil_yn = 0: 실링 여부를 나타내며, 0은 비실링을 의미합니다.</p></li>
@@ -1423,15 +1418,15 @@ Name: 종목명, Length: 120, dtype: object
 <p>이번엔 위 주소의 페이지를 열어보겠습니다.</p>
 <div class="figure align-default" id="wics3">
 <img alt="_images/05_wics3.png" src="_images/05_wics3.png" />
-<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">WICS 데이터 페이지</span><a class="headerlink" href="#wics3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">WICS 데이터 페이지</span><a class="headerlink" href="#wics3" title="Permalink to this image">¶</a></p>
 </div>
-<p>글자들은 페이지에 출력된 내용이지만 매우 특이한 형태로 구성되어 있는데 이것은 JSON 형식의 데이터입니다. 기존에 우리가 살펴보았던 대부분의 웹페이지는 XML 형식으로 표현되어 있습니다. XML 형식은 문법이 복잡하고 표현 규칙이 엄격해 데이터의 용량이 커지는 단점이 있습니다. 반면 JSON 형식은 문법이 단순하고 데이터의 용량이 작아 빠른 속도로 데이터를 교환할 수 있습니다. 파이썬에서는 json 패키지를 사용해 매우 손쉽게 JSON 형식의 데이터를 크롤링할 수 있습니다.</p>
+<p>글자들은 페이지에 출력된 내용이지만 매우 특이한 형태로 구성되어 있는데 이것은 JSON 형식의 데이터입니다. 기존에 우리가 살펴보았던 대부분의 웹페이지는 HTML 형식으로 표현되어 있습니다. HTML 형식은 문법이 복잡하고 표현 규칙이 엄격해 데이터의 용량이 커지는 단점이 있습니다. 반면 JSON 형식은 문법이 단순하고 데이터의 용량이 작아 빠른 속도로 데이터를 교환할 수 있습니다. 파이썬에서는 json 패키지를 사용해 매우 손쉽게 JSON 형식의 데이터를 크롤링할 수 있습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.wiseindex.com/Index/GetIndexComponets?ceil_yn=0&amp;dt=20190607&amp;sec_cd=G10&#39;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.wiseindex.com/Index/GetIndexComponets?ceil_yn=0&amp;dt=20210210&amp;sec_cd=G10&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1498,29 +1493,29 @@ Name: 종목명, Length: 120, dtype: object
       <th>0</th>
       <td>G10</td>
       <td>WICS 에너지</td>
-      <td>19850082</td>
+      <td>25711965</td>
       <td>096770</td>
       <td>SK이노베이션</td>
-      <td>9052841</td>
-      <td>45.61</td>
-      <td>45.61</td>
+      <td>15352982</td>
+      <td>59.71</td>
+      <td>59.71</td>
       <td>1.0</td>
       <td>G10</td>
       <td>에너지</td>
       <td>1</td>
       <td>2</td>
-      <td>56403994</td>
+      <td>51780716</td>
     </tr>
     <tr>
       <th>1</th>
       <td>G10</td>
       <td>WICS 에너지</td>
-      <td>19850082</td>
+      <td>25711965</td>
       <td>010950</td>
       <td>S-Oil</td>
-      <td>3403265</td>
-      <td>17.14</td>
-      <td>62.75</td>
+      <td>3444921</td>
+      <td>13.40</td>
+      <td>73.11</td>
       <td>1.0</td>
       <td>G10</td>
       <td>에너지</td>
@@ -1532,29 +1527,29 @@ Name: 종목명, Length: 120, dtype: object
       <th>2</th>
       <td>G10</td>
       <td>WICS 에너지</td>
-      <td>19850082</td>
+      <td>25711965</td>
       <td>267250</td>
       <td>현대중공업지주</td>
-      <td>2873204</td>
-      <td>14.47</td>
-      <td>77.23</td>
+      <td>2353362</td>
+      <td>9.15</td>
+      <td>82.26</td>
       <td>1.0</td>
       <td>G10</td>
       <td>에너지</td>
       <td>3</td>
       <td>2</td>
-      <td>9283372</td>
+      <td>8847226</td>
     </tr>
     <tr>
       <th>3</th>
       <td>G10</td>
       <td>WICS 에너지</td>
-      <td>19850082</td>
+      <td>25711965</td>
       <td>078930</td>
       <td>GS</td>
-      <td>2491805</td>
-      <td>12.55</td>
-      <td>89.78</td>
+      <td>1910712</td>
+      <td>7.43</td>
+      <td>89.69</td>
       <td>1.0</td>
       <td>G10</td>
       <td>에너지</td>
@@ -1566,18 +1561,18 @@ Name: 종목명, Length: 120, dtype: object
       <th>4</th>
       <td>G10</td>
       <td>WICS 에너지</td>
-      <td>19850082</td>
-      <td>067630</td>
-      <td>에이치엘비생명과학</td>
-      <td>624986</td>
-      <td>3.15</td>
-      <td>92.93</td>
+      <td>25711965</td>
+      <td>006120</td>
+      <td>SK디스커버리</td>
+      <td>701545</td>
+      <td>2.73</td>
+      <td>92.42</td>
       <td>1.0</td>
       <td>G10</td>
       <td>에너지</td>
       <td>5</td>
       <td>2</td>
-      <td>39307272</td>
+      <td>10470820</td>
     </tr>
   </tbody>
 </table>
@@ -1591,12 +1586,13 @@ Name: 종목명, Length: 120, dtype: object
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="n">sector_code</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G25&#39;</span><span class="p">,</span> <span class="s1">&#39;G35&#39;</span><span class="p">,</span> <span class="s1">&#39;G50&#39;</span><span class="p">,</span> <span class="s1">&#39;G40&#39;</span><span class="p">,</span> <span class="s1">&#39;G10&#39;</span><span class="p">,</span> <span class="s1">&#39;G20&#39;</span><span class="p">,</span> <span class="s1">&#39;G55&#39;</span><span class="p">,</span> <span class="s1">&#39;G30&#39;</span><span class="p">,</span> <span class="s1">&#39;G15&#39;</span><span class="p">,</span> <span class="s1">&#39;G45&#39;</span><span class="p">]</span>
 
 <span class="n">data_sector</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sector_code</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">sector_code</span><span class="p">):</span>
   <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.wiseindex.com/Index/GetIndexComponets?ceil_yn=0&amp;dt=&#39;</span><span class="o">+</span><span class="n">biz_day</span><span class="o">+</span><span class="s1">&#39;&amp;sec_cd=&#39;</span><span class="o">+</span><span class="n">i</span>
   <span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
   <span class="n">data_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
@@ -1612,13 +1608,88 @@ Name: 종목명, Length: 120, dtype: object
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████| 10/10 [00:26&lt;00:00,  2.62s/it]
+</pre></div>
+</div>
+</div>
 </div>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> 구문을 이용해 모든 섹터의 구성종목을 다운로드 받습니다.</p></li>
-<li><p>딕셔너리의 items에 해당하는 부분만 선택해 sector_list에 저장합니다.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수를 이용해 데이터를 합쳐준 후, index를 초기화 합니다.</p></li>
+<li><p>for loop 구문을 이용해 모든 섹터의 구성종목을 다운로드 받으며, tqdm() 함수를 통해 진행상황을 출력합니다.</p></li>
+<li><p>딕셔너리 중 values에 해당하는 부분만 선택해 sector_list에 저장합니다. (k는 key, v는 value를 의미합니다.)</p></li>
+<li><p>concat() 함수를 이용해 데이터를 합쳐준 후, index를 초기화 합니다.</p></li>
 <li><p>해당 데이터를 csv 파일로 저장해주도록 합니다.</p></li>
 </ol>
+</div>
+<div class="section" id="cmd">
+<h2>5.3 CMD 파일을 이용한 자동화<a class="headerlink" href="#cmd" title="Permalink to this headline">¶</a></h2>
+<p>매번 데이터를 다운로드 받을 때 마다 파이썬을 연 후 코드를 실행하는 것은 번거롭습니다. 윈도우 내에서는 명령어 스크립트(cmd) 파일을 이용해 이러한 작업을 클릭만으로 해결할 수 있습니다.</p>
+<p>먼저 위에서 살펴본 최근 영업일 및 WICS 기준 섹터정보 크롤링을 하나의 코드로 작성한 후 파이썬 스크립트 파일인 <strong>down_data.py</strong> 로 저장합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+
+<span class="c1"># 최근 영업일 구하기</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://finance.naver.com/sise/sise_deposit.nhn&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data_html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html5lib&quot;</span><span class="p">)</span>
+<span class="n">parse_day</span> <span class="o">=</span> <span class="n">data_html</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;div.subtop_sise_graph2 &gt; ul.subtop_chart_note &gt; li &gt; span.tah&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">biz_day</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;[0-9]+&quot;</span><span class="p">,</span> <span class="n">parse_day</span><span class="p">)</span>
+<span class="n">biz_day</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">biz_day</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;최근 영업일:&#39;</span> <span class="o">+</span> <span class="n">biz_day</span><span class="p">)</span>
+
+<span class="c1"># 섹터정보 다운로드</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;섹터 정보를 다운로드 합니다.&#39;</span><span class="p">)</span>
+
+<span class="n">sector_code</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G25&#39;</span><span class="p">,</span> <span class="s1">&#39;G35&#39;</span><span class="p">,</span> <span class="s1">&#39;G50&#39;</span><span class="p">,</span> <span class="s1">&#39;G40&#39;</span><span class="p">,</span> <span class="s1">&#39;G10&#39;</span><span class="p">,</span> <span class="s1">&#39;G20&#39;</span><span class="p">,</span> <span class="s1">&#39;G55&#39;</span><span class="p">,</span> <span class="s1">&#39;G30&#39;</span><span class="p">,</span> <span class="s1">&#39;G15&#39;</span><span class="p">,</span> <span class="s1">&#39;G45&#39;</span><span class="p">]</span>
+
+<span class="n">data_sector</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">sector_code</span><span class="p">):</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.wiseindex.com/Index/GetIndexComponets?ceil_yn=0&amp;dt=&#39;</span><span class="o">+</span><span class="n">biz_day</span><span class="o">+</span><span class="s1">&#39;&amp;sec_cd=&#39;</span><span class="o">+</span><span class="n">i</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+  <span class="n">data_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+
+  <span class="n">data_sector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_pd</span>
+
+  <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sector_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">data_sector</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span> 
+<span class="n">KOR_sector</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">sector_list</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">KOR_sector</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_sector.csv&#39;</span><span class="p">)</span>
+<span class="nb">input</span><span class="p">(</span><span class="s2">&quot;다운로드를 완료하였습니다. 엔터를 누르면 프로그램이 종료됩니다.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>먼저 해당 스크립트를 실행해 코드가 정상적으로 작동되는지 확인해 봅니다.</p>
+<p>윈도우의 명령 프롬프트에서 <code class="docutils literal notranslate"><span class="pre">pyhon</span> <span class="pre">스크립트.py</span></code>를 입력하면 해당 파이썬 스크립트가 실행됩니다. 이러한 작업을 클릭만으로 해결하기 위해, 메모장에 <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">down_data.py</span></code> 를 입력한 후 <strong>down_data_cmd.cmd</strong> 로 저장합니다.</p>
+<div class="figure align-default" id="crawl-cmd">
+<img alt="_images/crawl_cmd.png" src="_images/crawl_cmd.png" />
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">명령어 스크립트 작성</span><a class="headerlink" href="#crawl-cmd" title="Permalink to this image">¶</a></p>
+</div>
+<p>폴더에는 파이썬 스크립트와 명령어 스크립트 파일이 저장되어 있습니다. 명렁어 스크립트를 실행해 보면 위에서 작성한 파이썬 스크립트가 실행되어, 최근 영업일 기준 섹터 정보가 다운로드 됩니다.</p>
+<div class="figure align-default" id="crawl-cmd2">
+<img alt="_images/crawl_cmd2.png" src="_images/crawl_cmd2.png" />
+<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">파이썬 스크립트 및 명령어 스크립트 파일</span><a class="headerlink" href="#crawl-cmd2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="crawl-cmd3">
+<img alt="_images/crawl_cmd3.png" src="_images/crawl_cmd3.png" />
+<p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">명령어 스크립트 실행</span><a class="headerlink" href="#crawl-cmd3" title="Permalink to this image">¶</a></p>
+</div>
+<p>이 외에도 위에서 살펴본 한국거래소 데이터 다운로드 및 정리, 다음 장에서 살펴볼 주가와 재무제표 다운로드 및 정리 등 모든 작업을 파이썬 스크립트 저장 및 이를 실행하는 명령어 스크립트 작성을 통해, 파이썬을 열지 않고도 클릭만으로 해결할 수 있습니다.</p>
 </div>
 </div>
 
@@ -1650,8 +1721,8 @@ Name: 종목명, Length: 120, dtype: object
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="03_api.html" title="previous page">3. API를 이용한 데이터 수집</a>
-    <a class='right-next' id="next-link" href="08_other_data.html" title="next page">8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기</a>
+    <a class='left-prev' id="prev-link" href="04_crawl.html" title="previous page">4. 크롤링 이해하기</a>
+    <a class='right-next' id="next-link" href="06_crawl_actual.html" title="next page">6. 금융 데이터 수집하기 (심화)</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

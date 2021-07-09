@@ -1,0 +1,2078 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. 개요</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/bt_test.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/bt_test.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   1. 개요
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2. 6대 4 포트폴리오
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2.1 올웨더 포트폴리오
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   3. 트레이딩 전략
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   동적자산배분
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>1. 개요<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bt</span>
+
+<span class="c1"># 1. 가격 데이터의 수집</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SPY, TLT&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>spy</th>
+      <th>tlt</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2016-04-25</th>
+      <td>189.760254</td>
+      <td>114.352341</td>
+    </tr>
+    <tr>
+      <th>2016-04-26</th>
+      <td>190.042282</td>
+      <td>113.833504</td>
+    </tr>
+    <tr>
+      <th>2016-04-27</th>
+      <td>190.433411</td>
+      <td>114.969589</td>
+    </tr>
+    <tr>
+      <th>2016-04-28</th>
+      <td>188.705063</td>
+      <td>115.443703</td>
+    </tr>
+    <tr>
+      <th>2016-04-29</th>
+      <td>187.686279</td>
+      <td>115.738945</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 앞서 저장한 데이터 불러오기</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/asset_data.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">prices</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">prices</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. 전략의 정의</span>
+<span class="c1"># 전체 자산 동일비중, 매월 말 리밸런싱</span>
+<span class="n">bt_strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s2">&quot;Asset_EW&quot;</span><span class="p">,</span>
+                          <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                           <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                           <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunMonthly</span><span class="p">(),</span>
+                           <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()</span>
+                          <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3. 백테스트</span>
+
+<span class="c1"># 백테스트 생성</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">bt_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_strategy</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># 백테스트 실행</span>
+<span class="n">bt_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_backtest</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. 결과에 대한 평가</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">bt_result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bt_test_5_0.png" src="_images/bt_test_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bt_result</span><span class="o">.</span><span class="n">plot_weights</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bt_test_6_0.png" src="_images/bt_test_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bt_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-04-12</th>
+      <td>0.102115</td>
+      <td>0.100785</td>
+      <td>0.099616</td>
+      <td>0.098304</td>
+      <td>0.099428</td>
+      <td>0.099601</td>
+      <td>0.100404</td>
+      <td>0.100940</td>
+      <td>0.099643</td>
+      <td>0.098897</td>
+    </tr>
+    <tr>
+      <th>2021-04-13</th>
+      <td>0.101777</td>
+      <td>0.100717</td>
+      <td>0.099622</td>
+      <td>0.098093</td>
+      <td>0.099546</td>
+      <td>0.099388</td>
+      <td>0.100378</td>
+      <td>0.101162</td>
+      <td>0.099721</td>
+      <td>0.099332</td>
+    </tr>
+    <tr>
+      <th>2021-04-14</th>
+      <td>0.101284</td>
+      <td>0.100476</td>
+      <td>0.099294</td>
+      <td>0.098448</td>
+      <td>0.099088</td>
+      <td>0.099124</td>
+      <td>0.099623</td>
+      <td>0.101784</td>
+      <td>0.099146</td>
+      <td>0.101469</td>
+    </tr>
+    <tr>
+      <th>2021-04-15</th>
+      <td>0.101337</td>
+      <td>0.100342</td>
+      <td>0.098756</td>
+      <td>0.098341</td>
+      <td>0.099728</td>
+      <td>0.098751</td>
+      <td>0.100359</td>
+      <td>0.101317</td>
+      <td>0.099729</td>
+      <td>0.101079</td>
+    </tr>
+    <tr>
+      <th>2021-04-16</th>
+      <td>0.101397</td>
+      <td>0.100979</td>
+      <td>0.098625</td>
+      <td>0.098416</td>
+      <td>0.098879</td>
+      <td>0.098433</td>
+      <td>0.100096</td>
+      <td>0.101786</td>
+      <td>0.100371</td>
+      <td>0.100757</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">bt_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">handles</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.15</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bt_test_8_0.png" src="_images/bt_test_8_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bt_result</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Asset_EW</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>start</th>
+      <td>2006-12-18 00:00:00</td>
+    </tr>
+    <tr>
+      <th>end</th>
+      <td>2021-04-16 00:00:00</td>
+    </tr>
+    <tr>
+      <th>rf</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>total_return</th>
+      <td>1.15357</td>
+    </tr>
+    <tr>
+      <th>cagr</th>
+      <td>0.0550029</td>
+    </tr>
+    <tr>
+      <th>max_drawdown</th>
+      <td>-0.423533</td>
+    </tr>
+    <tr>
+      <th>calmar</th>
+      <td>0.129867</td>
+    </tr>
+    <tr>
+      <th>mtd</th>
+      <td>0.0372992</td>
+    </tr>
+    <tr>
+      <th>three_month</th>
+      <td>0.0430328</td>
+    </tr>
+    <tr>
+      <th>six_month</th>
+      <td>0.12863</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#bt_result.prices.head()</span>
+<span class="c1">#bt_result.prices.to_returns()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>2. 6대 4 포트폴리오<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OrderedWeights</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">Algo</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_weights</span> <span class="o">=</span> <span class="n">weights</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="n">target</span><span class="o">.</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;weights&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;selected&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_weights</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">bt_6040</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;6040&#39;</span><span class="p">,</span>
+                      <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                       <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighSpecified</span><span class="p">(</span><span class="n">SPY</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">TLT</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">),</span>
+                       <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunYearly</span><span class="p">(),</span>
+                       <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+<span class="n">bt_6040_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_6040</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">bt_6040_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_6040_backtest</span><span class="p">)</span>
+
+<span class="n">bt_6040_result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bt_test_13_0.png" src="_images/bt_test_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">buy_and_hold</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">delay</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    
+    <span class="c1"># Define the benchmark strategy</span>
+    <span class="n">bt_strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> 
+                              <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunAfterDays</span><span class="p">(</span><span class="n">delay</span><span class="p">),</span>
+                               <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunOnce</span><span class="p">(),</span>
+                               <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                               <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                               <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+    <span class="c1"># Return the backtest</span>
+    <span class="k">return</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_strategy</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Create benchmark strategy backtest</span>
+<span class="n">Stock</span> <span class="o">=</span> <span class="n">buy_and_hold</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Stock&#39;</span><span class="p">)</span>
+<span class="n">Bond</span> <span class="o">=</span> <span class="n">buy_and_hold</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;TLT&#39;</span><span class="p">]],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Bond&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run all backtests and plot the resutls</span>
+<span class="n">bt_results</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_6040_backtest</span><span class="p">,</span> <span class="n">Stock</span><span class="p">,</span> <span class="n">Bond</span><span class="p">)</span>
+<span class="n">bt_results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Strategy benchmarking&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bt_test_15_0.png" src="_images/bt_test_15_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">bt_6040_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">handles</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bt_test_16_0.png" src="_images/bt_test_16_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>2.1 올웨더 포트폴리오<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;IEF&#39;</span><span class="p">,</span> <span class="s1">&#39;GLD&#39;</span><span class="p">,</span> <span class="s1">&#39;DBC&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">bt_aw</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;All_Weather&#39;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                     <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighSpecified</span><span class="p">(</span><span class="n">SPY</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">TLT</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">IEF</span> <span class="o">=</span> <span class="mf">0.15</span><span class="p">,</span> <span class="n">GLD</span> <span class="o">=</span> <span class="mf">0.075</span><span class="p">,</span> <span class="n">DBC</span> <span class="o">=</span> <span class="mf">0.075</span><span class="p">),</span>
+                     <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunQuarterly</span><span class="p">(),</span>
+                     <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+<span class="n">bt_aw_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_aw</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">bt_aw_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_aw_backtest</span><span class="p">)</span>
+
+<span class="n">bt_aw_result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;All Weather&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bt_test_18_0.png" src="_images/bt_test_18_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">bt_aw_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">handles</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bt_test_19_0.png" src="_images/bt_test_19_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>3. 트레이딩 전략<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SMA</span>
+<span class="kn">import</span> <span class="nn">talib</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">sma</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">],</span> <span class="n">timeperiod</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">sma</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]</span>
+
+<span class="n">bt_sma</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;Timing&#39;</span><span class="p">,</span> 
+                     <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunAfterDays</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+                      <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectWhere</span><span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="n">sma</span><span class="p">),</span>
+                      <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                      <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+<span class="n">bt_sma_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_sma</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="n">Stock</span> <span class="o">=</span> <span class="n">buy_and_hold</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Stock&#39;</span><span class="p">,</span> <span class="n">delay</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="n">bt_sma_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_sma_backtest</span><span class="p">,</span> <span class="n">Stock</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">sma</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">bt_sma_result</span><span class="o">.</span><span class="n">prices</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/bt_test_22_1.png" src="_images/bt_test_22_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bt</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">bt_sma_result</span><span class="o">.</span><span class="n">backtests</span><span class="p">[</span><span class="s1">&#39;Stock&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">drawdown</span><span class="p">,</span>
+    <span class="n">bt_sma_result</span><span class="o">.</span><span class="n">backtests</span><span class="p">[</span><span class="s1">&#39;Timing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">drawdown</span>
+<span class="p">)[</span><span class="n">start</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/bt_test_23_1.png" src="_images/bt_test_23_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bt_sma_result</span><span class="o">.</span><span class="n">backtests</span><span class="p">[</span><span class="s1">&#39;Timing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">drawdown_details</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;drawdown&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Length</th>
+      <th>drawdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>50</th>
+      <td>2007-07-20 00:00:00</td>
+      <td>2009-11-16 00:00:00</td>
+      <td>850</td>
+      <td>-0.206761</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>2010-04-26 00:00:00</td>
+      <td>2013-02-19 00:00:00</td>
+      <td>1030</td>
+      <td>-0.204955</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>2020-02-20 00:00:00</td>
+      <td>2020-11-16 00:00:00</td>
+      <td>270</td>
+      <td>-0.174243</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2002-01-07 00:00:00</td>
+      <td>2003-06-11 00:00:00</td>
+      <td>520</td>
+      <td>-0.119693</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>2018-09-21 00:00:00</td>
+      <td>2019-11-15 00:00:00</td>
+      <td>420</td>
+      <td>-0.111054</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bt_sma_result</span><span class="o">.</span><span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Timing</th>
+      <th>Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>start</th>
+      <td>1999-12-30 00:00:00</td>
+      <td>1999-12-30 00:00:00</td>
+    </tr>
+    <tr>
+      <th>end</th>
+      <td>2021-04-16 00:00:00</td>
+      <td>2021-04-16 00:00:00</td>
+    </tr>
+    <tr>
+      <th>rf</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>total_return</th>
+      <td>2.87561</td>
+      <td>3.45028</td>
+    </tr>
+    <tr>
+      <th>cagr</th>
+      <td>0.0656831</td>
+      <td>0.0726249</td>
+    </tr>
+    <tr>
+      <th>max_drawdown</th>
+      <td>-0.206761</td>
+      <td>-0.551884</td>
+    </tr>
+    <tr>
+      <th>calmar</th>
+      <td>0.317677</td>
+      <td>0.131595</td>
+    </tr>
+    <tr>
+      <th>mtd</th>
+      <td>0.0514721</td>
+      <td>0.051472</td>
+    </tr>
+    <tr>
+      <th>three_month</th>
+      <td>0.112842</td>
+      <td>0.112842</td>
+    </tr>
+    <tr>
+      <th>six_month</th>
+      <td>0.209009</td>
+      <td>0.209009</td>
+    </tr>
+    <tr>
+      <th>ytd</th>
+      <td>0.118259</td>
+      <td>0.118259</td>
+    </tr>
+    <tr>
+      <th>one_year</th>
+      <td>0.415716</td>
+      <td>0.517061</td>
+    </tr>
+    <tr>
+      <th>three_year</th>
+      <td>0.12259</td>
+      <td>0.181041</td>
+    </tr>
+    <tr>
+      <th>five_year</th>
+      <td>0.13071</td>
+      <td>0.169907</td>
+    </tr>
+    <tr>
+      <th>ten_year</th>
+      <td>0.103454</td>
+      <td>0.145582</td>
+    </tr>
+    <tr>
+      <th>incep</th>
+      <td>0.0656831</td>
+      <td>0.0726249</td>
+    </tr>
+    <tr>
+      <th>daily_sharpe</th>
+      <td>0.645103</td>
+      <td>0.460267</td>
+    </tr>
+    <tr>
+      <th>daily_sortino</th>
+      <td>0.948541</td>
+      <td>0.716947</td>
+    </tr>
+    <tr>
+      <th>daily_mean</th>
+      <td>0.0695704</td>
+      <td>0.0889127</td>
+    </tr>
+    <tr>
+      <th>daily_vol</th>
+      <td>0.107844</td>
+      <td>0.193177</td>
+    </tr>
+    <tr>
+      <th>daily_skew</th>
+      <td>-0.831697</td>
+      <td>-0.0102927</td>
+    </tr>
+    <tr>
+      <th>daily_kurt</th>
+      <td>5.91109</td>
+      <td>13.5291</td>
+    </tr>
+    <tr>
+      <th>best_day</th>
+      <td>0.0440401</td>
+      <td>0.145193</td>
+    </tr>
+    <tr>
+      <th>worst_day</th>
+      <td>-0.0576485</td>
+      <td>-0.109423</td>
+    </tr>
+    <tr>
+      <th>monthly_sharpe</th>
+      <td>0.688334</td>
+      <td>0.549788</td>
+    </tr>
+    <tr>
+      <th>monthly_sortino</th>
+      <td>1.20034</td>
+      <td>0.894244</td>
+    </tr>
+    <tr>
+      <th>monthly_mean</th>
+      <td>0.0686274</td>
+      <td>0.0811839</td>
+    </tr>
+    <tr>
+      <th>monthly_vol</th>
+      <td>0.0997007</td>
+      <td>0.147664</td>
+    </tr>
+    <tr>
+      <th>monthly_skew</th>
+      <td>-0.291327</td>
+      <td>-0.566885</td>
+    </tr>
+    <tr>
+      <th>monthly_kurt</th>
+      <td>1.31079</td>
+      <td>1.31388</td>
+    </tr>
+    <tr>
+      <th>best_month</th>
+      <td>0.108776</td>
+      <td>0.126982</td>
+    </tr>
+    <tr>
+      <th>worst_month</th>
+      <td>-0.106214</td>
+      <td>-0.165183</td>
+    </tr>
+    <tr>
+      <th>yearly_sharpe</th>
+      <td>0.614343</td>
+      <td>0.497611</td>
+    </tr>
+    <tr>
+      <th>yearly_sortino</th>
+      <td>2.62888</td>
+      <td>0.938704</td>
+    </tr>
+    <tr>
+      <th>yearly_mean</th>
+      <td>0.0690108</td>
+      <td>0.0848173</td>
+    </tr>
+    <tr>
+      <th>yearly_vol</th>
+      <td>0.112333</td>
+      <td>0.170449</td>
+    </tr>
+    <tr>
+      <th>yearly_skew</th>
+      <td>0.514043</td>
+      <td>-0.955794</td>
+    </tr>
+    <tr>
+      <th>yearly_kurt</th>
+      <td>-0.542607</td>
+      <td>1.13324</td>
+    </tr>
+    <tr>
+      <th>best_year</th>
+      <td>0.323068</td>
+      <td>0.323072</td>
+    </tr>
+    <tr>
+      <th>worst_year</th>
+      <td>-0.0911411</td>
+      <td>-0.367943</td>
+    </tr>
+    <tr>
+      <th>avg_drawdown</th>
+      <td>-0.0170089</td>
+      <td>-0.019241</td>
+    </tr>
+    <tr>
+      <th>avg_drawdown_days</th>
+      <td>32.9385</td>
+      <td>31.4676</td>
+    </tr>
+    <tr>
+      <th>avg_up_month</th>
+      <td>0.0273301</td>
+      <td>0.0314213</td>
+    </tr>
+    <tr>
+      <th>avg_down_month</th>
+      <td>-0.0152272</td>
+      <td>-0.0343279</td>
+    </tr>
+    <tr>
+      <th>win_year_perc</th>
+      <td>0.545455</td>
+      <td>0.772727</td>
+    </tr>
+    <tr>
+      <th>twelve_month_win_perc</th>
+      <td>0.617886</td>
+      <td>0.760163</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>동적자산배분<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">talib</span>
+<span class="kn">import</span> <span class="nn">bt</span>
+
+<span class="n">prices_gdaa</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">bt_gdaa</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;Dynamic Asset Allocation&#39;</span><span class="p">,</span> 
+                      <span class="p">[</span>
+                       <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                       <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectMomentum</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span><span class="n">lookback</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">years</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)),</span>
+                       <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunMonthly</span><span class="p">(),</span>
+                       <span class="c1">#bt.algos.WeighEqually(),</span>
+                       <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighMeanVar</span><span class="p">(</span><span class="n">lookback</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">years</span> <span class="o">=</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">covar_method</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">),</span>
+                       <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()</span>
+                      <span class="p">])</span>                      
+
+<span class="n">bt_aw_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_gdaa</span><span class="p">,</span> <span class="n">prices_gdaa</span><span class="p">)</span>
+<span class="n">bt_aw_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_aw_backtest</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">bt_aw_result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Equity Progression&#39;}&gt;
+</pre></div>
+</div>
+<img alt="_images/bt_test_28_1.png" src="_images/bt_test_28_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">bt_aw_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">handles</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="mi">00</span><span class="n">d19bf5fedb</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">bt_aw_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">handles</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
+</pre></div>
+</div>
+<img alt="_images/bt_test_29_1.png" src="_images/bt_test_29_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bt_aw_result</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()[</span><span class="s2">&quot;2010&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DBC</th>
+      <th>GLD</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEV</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>EWJ</th>
+      <th>SPY</th>
+      <th>RWX</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2010-01-04</th>
+      <td>0.0</td>
+      <td>0.299968</td>
+      <td>0.299998</td>
+      <td>0.0</td>
+      <td>0.099985</td>
+      <td>0.0</td>
+      <td>0.099999</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.199992</td>
+    </tr>
+    <tr>
+      <th>2010-01-05</th>
+      <td>0.0</td>
+      <td>0.298406</td>
+      <td>0.300875</td>
+      <td>0.0</td>
+      <td>0.099654</td>
+      <td>0.0</td>
+      <td>0.099808</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.201199</td>
+    </tr>
+    <tr>
+      <th>2010-01-06</th>
+      <td>0.0</td>
+      <td>0.301949</td>
+      <td>0.300132</td>
+      <td>0.0</td>
+      <td>0.099324</td>
+      <td>0.0</td>
+      <td>0.099311</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.199227</td>
+    </tr>
+    <tr>
+      <th>2010-01-07</th>
+      <td>0.0</td>
+      <td>0.301400</td>
+      <td>0.299704</td>
+      <td>0.0</td>
+      <td>0.099438</td>
+      <td>0.0</td>
+      <td>0.100638</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.198762</td>
+    </tr>
+    <tr>
+      <th>2010-01-08</th>
+      <td>0.0</td>
+      <td>0.301372</td>
+      <td>0.300561</td>
+      <td>0.0</td>
+      <td>0.099730</td>
+      <td>0.0</td>
+      <td>0.099462</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.198818</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2010-12-27</th>
+      <td>0.0</td>
+      <td>0.292209</td>
+      <td>0.099317</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.301624</td>
+      <td>0.0</td>
+      <td>0.203921</td>
+      <td>0.102778</td>
+    </tr>
+    <tr>
+      <th>2010-12-28</th>
+      <td>0.0</td>
+      <td>0.295117</td>
+      <td>0.098782</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.300930</td>
+      <td>0.0</td>
+      <td>0.202938</td>
+      <td>0.102083</td>
+    </tr>
+    <tr>
+      <th>2010-12-29</th>
+      <td>0.0</td>
+      <td>0.294756</td>
+      <td>0.099569</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.300836</td>
+      <td>0.0</td>
+      <td>0.202113</td>
+      <td>0.102578</td>
+    </tr>
+    <tr>
+      <th>2010-12-30</th>
+      <td>0.0</td>
+      <td>0.293539</td>
+      <td>0.100158</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.301458</td>
+      <td>0.0</td>
+      <td>0.201956</td>
+      <td>0.102741</td>
+    </tr>
+    <tr>
+      <th>2010-12-31</th>
+      <td>0.0</td>
+      <td>0.295774</td>
+      <td>0.100387</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.299678</td>
+      <td>0.0</td>
+      <td>0.201063</td>
+      <td>0.102950</td>
+    </tr>
+  </tbody>
+</table>
+<p>252 rows × 10 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bt_aw_result</span><span class="o">.</span><span class="n">prices</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret_yr</span> <span class="o">=</span> <span class="n">bt_aw_result</span><span class="o">.</span><span class="n">prices</span><span class="o">.</span><span class="n">to_returns</span><span class="p">()</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ret_yr</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">ret_yr</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rets</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">rets</span><span class="p">[</span><span class="s2">&quot;2008-12-31&quot;</span> <span class="p">:</span> <span class="s2">&quot;2009-12-31&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2008-12-31</th>
+      <td>0.014275</td>
+      <td>0.010711</td>
+      <td>0.008421</td>
+      <td>0.013393</td>
+      <td>-0.020919</td>
+      <td>-0.011040</td>
+      <td>0.047552</td>
+      <td>0.008942</td>
+      <td>0.007218</td>
+      <td>0.041790</td>
+    </tr>
+    <tr>
+      <th>2009-01-02</th>
+      <td>0.030142</td>
+      <td>0.010597</td>
+      <td>0.005219</td>
+      <td>0.047657</td>
+      <td>-0.025137</td>
+      <td>-0.014311</td>
+      <td>-0.027397</td>
+      <td>0.034712</td>
+      <td>-0.003352</td>
+      <td>0.034922</td>
+    </tr>
+    <tr>
+      <th>2009-01-05</th>
+      <td>-0.001184</td>
+      <td>-0.009533</td>
+      <td>-0.024922</td>
+      <td>0.012997</td>
+      <td>-0.025784</td>
+      <td>-0.001751</td>
+      <td>-0.019608</td>
+      <td>-0.007138</td>
+      <td>-0.020295</td>
+      <td>0.010488</td>
+    </tr>
+    <tr>
+      <th>2009-01-06</th>
+      <td>0.006678</td>
+      <td>0.012191</td>
+      <td>-0.009585</td>
+      <td>0.022642</td>
+      <td>-0.010058</td>
+      <td>-0.000618</td>
+      <td>0.049577</td>
+      <td>0.027319</td>
+      <td>0.007694</td>
+      <td>0.026173</td>
+    </tr>
+    <tr>
+      <th>2009-01-07</th>
+      <td>-0.029956</td>
+      <td>-0.011728</td>
+      <td>-0.009677</td>
+      <td>-0.057565</td>
+      <td>0.003921</td>
+      <td>0.000206</td>
+      <td>-0.033817</td>
+      <td>-0.012946</td>
+      <td>-0.027957</td>
+      <td>-0.051011</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cum</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">cum</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">5</span>
+<span class="n">covmat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">rets</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">K</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SPY    0.281554
+IEV    0.302851
+EWJ    0.040125
+EEM    0.712172
+TLT   -0.234420
+IEF   -0.076245
+IYR    0.367880
+RWX    0.376575
+GLD    0.249243
+DBC    0.210423
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cum</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SPY     5.0
+IEV     4.0
+EWJ     8.0
+EEM     1.0
+TLT    10.0
+IEF     9.0
+IYR     3.0
+RWX     2.0
+GLD     6.0
+DBC     7.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covmat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EEM</th>
+      <th>IYR</th>
+      <th>RWX</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SPY</th>
+      <td>0.000167</td>
+      <td>0.000178</td>
+      <td>0.000213</td>
+      <td>0.000200</td>
+      <td>0.000142</td>
+    </tr>
+    <tr>
+      <th>IEV</th>
+      <td>0.000178</td>
+      <td>0.000242</td>
+      <td>0.000258</td>
+      <td>0.000216</td>
+      <td>0.000183</td>
+    </tr>
+    <tr>
+      <th>EEM</th>
+      <td>0.000213</td>
+      <td>0.000258</td>
+      <td>0.000370</td>
+      <td>0.000267</td>
+      <td>0.000212</td>
+    </tr>
+    <tr>
+      <th>IYR</th>
+      <td>0.000200</td>
+      <td>0.000216</td>
+      <td>0.000267</td>
+      <td>0.000392</td>
+      <td>0.000186</td>
+    </tr>
+    <tr>
+      <th>RWX</th>
+      <td>0.000142</td>
+      <td>0.000183</td>
+      <td>0.000212</td>
+      <td>0.000186</td>
+      <td>0.000194</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">matrix</span>
+<span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">solvers</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">covmat</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 분산-공분산 행렬</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 0 행렬</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))))</span> <span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 부등식 제약조건의 좌변</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span> <span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 부등식 제약조건의 우변</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="c1"># 등식 제약조건의 좌변</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="c1"># 등식 제약조건의 우변</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="o">.</span><span class="n">qp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">h</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     pcost       dcost       gap    pres   dres
+ 0:  1.0956e-04 -9.9991e-01  1e+00  0e+00  2e-16
+ 1:  1.0956e-04 -9.9130e-03  1e-02  9e-17  3e-16
+ 2:  1.0950e-04 -1.2908e-05  1e-04  6e-17  6e-18
+ 3:  1.0561e-04  8.9741e-05  2e-05  8e-17  8e-19
+ 4:  9.6307e-05  9.5104e-05  1e-06  8e-17  6e-20
+ 5:  9.5876e-05  9.5851e-05  3e-08  1e-16  4e-20
+Optimal solution found.
+[0.3 0.2 0.1 0.1 0.3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">ffn</span>
+<span class="kn">import</span> <span class="nn">bt</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="mf">0.04</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">rf</span>
+<span class="n">sigmas</span> <span class="o">=</span> <span class="p">(</span><span class="n">mus</span> <span class="o">-</span> <span class="n">rf</span><span class="p">)</span><span class="o">/</span><span class="mf">0.3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">num_years</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">num_months_per_year</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">num_days_per_month</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">num_days_per_year</span> <span class="o">=</span> <span class="n">num_months_per_year</span><span class="o">*</span><span class="n">num_days_per_month</span>
+
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
+        <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2008-01-02&quot;</span><span class="p">,</span>
+        <span class="n">periods</span><span class="o">=</span><span class="n">num_years</span><span class="o">*</span><span class="n">num_months_per_year</span><span class="o">*</span><span class="n">num_days_per_month</span><span class="p">,</span>
+        <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;B&quot;</span>
+    <span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="s1">&#39;baz&#39;</span><span class="p">,</span><span class="s1">&#39;fake1&#39;</span><span class="p">,</span><span class="s1">&#39;fake2&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">mu</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mus</span><span class="p">):</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigmas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">rdf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span>
+        <span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="o">/</span><span class="n">num_days_per_year</span><span class="p">,</span>
+        <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">num_days_per_year</span><span class="p">),</span>
+        <span class="n">size</span><span class="o">=</span><span class="n">rdf</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumprod</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">rdf</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="n">pdf</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sma</span>  <span class="o">=</span> <span class="n">pdf</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">num_days_per_month</span><span class="o">*</span><span class="mi">12</span><span class="p">,</span><span class="n">center</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pdf</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">pdf</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sma</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">sma</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-2-fa2c632b9abb&gt;:4: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+  plt.show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tsmom_ew_strat</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span>
+    <span class="s1">&#39;tsmom_ew&#39;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunDaily</span><span class="p">(),</span>
+        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectWhere</span><span class="p">(</span><span class="n">pdf</span> <span class="o">&gt;</span> <span class="n">sma</span><span class="p">),</span>
+        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">LimitWeights</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
+        <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># (pdf &gt; sma).tail()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tsmom_ew_bt</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span>
+    <span class="n">tsmom_ew_strat</span><span class="p">,</span>
+    <span class="n">pdf</span><span class="p">,</span>
+    
+    <span class="n">initial_capital</span><span class="o">=</span><span class="mf">50000000.0</span><span class="p">,</span>
+    <span class="n">commissions</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">q</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.0021</span><span class="p">),</span>
+    <span class="n">integer_positions</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">tsmom_ew_res</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tsmom_ew_bt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tsmom_ew
+0% [############################# ] 100% | ETA: 00:00:00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">tsmom_ew_res</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/bt_test_45_1.png" src="_images/bt_test_45_1.png" />
+</div>
+</div>
+<p>Parent, Children</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bt</span>
+<span class="n">tickers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;equity&#39;</span><span class="p">:[</span><span class="s1">&#39;ITOT&#39;</span><span class="p">,</span> <span class="s1">&#39;IVV&#39;</span><span class="p">,</span> <span class="s1">&#39;IJH&#39;</span><span class="p">,</span> <span class="s1">&#39;IJR&#39;</span><span class="p">,</span> <span class="s1">&#39;IUSG&#39;</span><span class="p">,</span> <span class="s1">&#39;IUSV&#39;</span><span class="p">,</span> <span class="s1">&#39;IJK&#39;</span><span class="p">,</span> <span class="s1">&#39;IJJ&#39;</span><span class="p">,</span> <span class="s1">&#39;IJS&#39;</span><span class="p">,</span> <span class="s1">&#39;IJT&#39;</span><span class="p">,</span> <span class="s1">&#39;OEF&#39;</span><span class="p">,</span> <span class="s1">&#39;IWC&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;bond&#39;</span><span class="p">:[</span><span class="s1">&#39;AGG&#39;</span><span class="p">,</span> <span class="s1">&#39;LQD&#39;</span><span class="p">,</span> <span class="s1">&#39;GOVT&#39;</span><span class="p">,</span> <span class="s1">&#39;MBB&#39;</span><span class="p">,</span> <span class="s1">&#39;MUB&#39;</span><span class="p">,</span> <span class="s1">&#39;TIP&#39;</span><span class="p">,</span> <span class="s1">&#39;SHY&#39;</span><span class="p">,</span> <span class="s1">&#39;IEF&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;HYG&#39;</span><span class="p">,</span> <span class="s1">&#39;FLOT&#39;</span><span class="p">,</span> <span class="s1">&#39;CMBS&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tickers</span><span class="p">[</span><span class="s1">&#39;equity&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">tickers</span><span class="p">[</span><span class="s1">&#39;bond&#39;</span><span class="p">],</span> <span class="n">clean_tickers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">equity</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;t1&#39;</span><span class="p">,</span>
+ <span class="n">algos</span> <span class="o">=</span> <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunQuarterly</span><span class="p">(),</span> 
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectMomentum</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">lookback</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">3</span><span class="p">)),</span>
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighInvVol</span><span class="p">(</span><span class="n">lookback</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mi">1</span><span class="p">),),</span>
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()],</span>
+ <span class="n">children</span> <span class="o">=</span> <span class="n">tickers</span><span class="p">[</span><span class="s1">&#39;equity&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">bond</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;t2&#39;</span><span class="p">,</span>
+ <span class="n">algos</span> <span class="o">=</span> <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunQuarterly</span><span class="p">(),</span> 
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectMomentum</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">lookback</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">6</span><span class="p">)),</span>
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()],</span>
+ <span class="n">children</span> <span class="o">=</span> <span class="n">tickers</span><span class="p">[</span><span class="s1">&#39;equity&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">pooled</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;pooled&#39;</span><span class="p">,</span> 
+ <span class="n">algos</span> <span class="o">=</span> <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunQuarterly</span><span class="p">(),</span>
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighSpecified</span><span class="p">(</span><span class="n">t1</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">t2</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
+ <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()],</span> 
+ <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">equity</span><span class="p">,</span><span class="n">bond</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">backtest_pooled</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">pooled</span><span class="p">,</span><span class="n">prices</span><span class="p">)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">backtest_pooled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">report</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/bt_test_49_1.png" src="_images/bt_test_49_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;aapl,msft,c,gs,ge&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;2010-01-01&#39;</span><span class="p">)</span>
+
+<span class="c1"># calculate moving average DataFrame using pandas&#39; rolling_mean</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># a rolling mean is a moving average, right?</span>
+<span class="n">sma</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># first we create the Strategy</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;above50sma&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectWhere</span><span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="n">sma</span><span class="p">),</span>
+                               <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                               <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">LimitWeights</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
+                               <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+
+<span class="c1"># now we create the Backtest</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># and let&#39;s run it!</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;11.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;1.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SPY, TLT&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">talib</span>
+<span class="n">sma</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mom_a</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;mom_a&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectWhere</span><span class="p">(</span><span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;spy&#39;</span><span class="p">]]</span> <span class="o">&gt;</span> <span class="n">sma</span><span class="p">[[</span><span class="s1">&#39;spy&#39;</span><span class="p">]]),</span>                              
+                              <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunMonthly</span><span class="p">(),</span>
+                              <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                              <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()],</span>
+                   <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;spy&#39;</span><span class="p">])</span>
+
+<span class="n">mom_b</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;mom_b&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectWhere</span><span class="p">(</span><span class="n">prices</span><span class="p">[[</span><span class="s1">&#39;tlt&#39;</span><span class="p">]]</span> <span class="o">&gt;</span> <span class="n">sma</span><span class="p">[[</span><span class="s1">&#39;tlt&#39;</span><span class="p">]]),</span>                              
+                              <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunMonthly</span><span class="p">(),</span>
+                              <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                              <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()],</span>
+                   <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tlt&#39;</span><span class="p">])</span>
+
+<span class="n">parent</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;parent&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunMonthly</span><span class="p">(),</span>
+                                <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>                                
+                                <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                                <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()],</span>
+                    <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">mom_a</span><span class="p">,</span> <span class="n">mom_b</span><span class="p">])</span>
+
+<span class="c1"># create the backtest and run it</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">prices</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">get_security_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/bt_test_57_1.png" src="_images/bt_test_57_1.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

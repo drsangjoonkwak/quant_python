@@ -1,0 +1,1870 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13. 퀀트 전략을 이용한 종목선정 (심화)</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="14. 포트폴리오 구성 전략" href="14_portfolio.html" />
+    <link rel="prev" title="12. 퀀트 전략을 이용한 종목선정 (기본)" href="12_factor_basic.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/13_factor_advanced.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/13_factor_advanced.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   13.1 섹터 중립 포트폴리오
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   13.2 마법공식
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     13.2.1 퀄리티와 밸류 간의 관계
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     13.2.2 마법공식 이해하기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     13.2.3 마법공식 구성하기
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   13.3 이상치 데이터 제거 및 팩터의 결합
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trim">
+     10.3.1 트림(Trim): 이상치 데이터 삭제
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#winsorizing">
+     13.3.2 윈저라이징(Winsorizing): 이상치 데이터 대체
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     13.3.3 팩터의 결합 방법
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   13.4 멀티팩터 포트폴리오
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>13. 퀀트 전략을 이용한 종목선정 (심화)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>지난 장에서는 팩터를 이용한 투자 전략의 기본이 되는 저변동성, 모멘텀, 밸류, 퀄리티 전략에 대해 알아보았습니다. 물론 이러한 단일 팩터를 이용한 투자도 장기적으로 우수한 성과를 보이지만, 여러 팩터를 결합하거나 정밀하게 전략을 만든다면 더욱 우수한 성과를 거둘 수 있습니다.</p>
+<p>이번 장에서는 섹터별 효과를 없앤 후 포트폴리오를 구성하는 방법, 이상치 데이터 제거 및 팩터 결합 방법, 그리고 멀티팩터 구성 방법을 알아보겠습니다.</p>
+<div class="section" id="id2">
+<h2>13.1 섹터 중립 포트폴리오<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>팩터 전략의 단점 중 하나는 선택된 종목들이 특정 섹터로 쏠리는 경우가 있다는 점입니다. 특히 과거 수익률을 토대로 종목을 선정하는 모멘텀 전략은 특정 섹터의 호황기에 동일한 섹터의 모든 종목이 함께 움직이는 경향이 있어 이러한 쏠림이 심할 수 있습니다.</p>
+<p>먼저 지난 장에서 배운 12개월 모멘텀을 이용한 포트폴리오 구성 방법을 다시 살펴보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">stdev</span> 
+
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">KOR_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_price.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">ret</span> <span class="o">=</span> <span class="n">KOR_price</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+<span class="n">ret_12m</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">252</span><span class="p">:</span> <span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">invest_mom</span> <span class="o">=</span> <span class="p">(</span><span class="n">ret_12m</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>기존의 코드와 동일하게, 티커 및 주식 가격 데이터를 불러온 후 최근 12개월 수익률을 구해 상위 30종목을 선택합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_sector</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_sector.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_sector</span><span class="p">[</span><span class="s1">&#39;CMP_CD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_sector</span><span class="p">[</span><span class="s1">&#39;CMP_CD&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">data_market</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">,</span> <span class="n">KOR_sector</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">,</span><span class="s1">&#39;종목명&#39;</span><span class="p">],</span> <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CMP_CD&#39;</span><span class="p">,</span><span class="s1">&#39;CMP_KOR&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>해당 종목들의 섹터 정보를 추가로 살펴보기 위해, 섹터 데이터를 불러온 후 merge() 함수를 이용해 티커와 결합해 data_market에 저장합니다. 섹터별 종목수를 확인해보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">mom_sector</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_market</span><span class="p">[</span><span class="n">invest_mom</span><span class="p">][</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="s1">&#39;Malgun Gothic&#39;</span><span class="p">)</span>
+<span class="n">mom_sector</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mom_sector</span><span class="p">[</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_8_0.png" src="_images/13_factor_advanced_8_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> 함수를 통해 섹터별 종목수를 계산해준 후 이를 그림으로 나타내보면, 특정 섹터에 대부분의 종목이 몰려 있음이 확인됩니다. 따라서 여러 종목으로 포트폴리오를 구성했지만, 이를 분해해보면 특정 섹터에 쏠림이 심하다는 것을 알 수 있습니다. 이러한 섹터 쏠림 현상을 제거한 <strong>섹터 중립 포트폴리오</strong>를 구성해보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_market</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ret_12m</span><span class="o">.</span><span class="n">values</span>
+<span class="n">data_select</span> <span class="o">=</span> <span class="n">data_market</span><span class="p">[[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">,</span> <span class="s1">&#39;종목명&#39;</span><span class="p">,</span> <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">,</span> <span class="s1">&#39;ret&#39;</span><span class="p">]]</span>
+
+<span class="n">sector_neutral</span> <span class="o">=</span> <span class="n">data_select</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>data_market의 ret 열에 미리 계산한 12개월 수익률 정보를 입력합니다.</p></li>
+<li><p>data_market에서 종목코드, 종목명, 섹터 정보, 12개월 수익률을 선택합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 함수를 통해 섹터별 그룹을 만들어 준 후, <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 함수를 이용해 그룹별 수익률의 Z-Score를 구합니다. Z-Score는 <span class="math notranslate nohighlight">\(\frac{x-\mu}{\sigma}\)</span>로 계산됩니다.</p></li>
+</ol>
+<p>위의 정규화 과정을 살펴보면, 전체 종목에서 12개월 수익률을 비교하는 것이 아닌 각 섹터별로 수익률의 강도를 비교하게 됩니다. 따라서 특정 종목의 과거 수익률이 전체 종목과 비교해서 높았더라도 해당 섹터 내에서의 순위가 낮다면, Z-Score 값은 낮아집니다.</p>
+<p>따라서 섹터별 정규화 과정을 거친 값으로 비교 분석을 한다면, 섹터 효과가 제거된 포트폴리오를 구성할 수 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">invest_mom_neutral</span>  <span class="o">=</span> <span class="p">(</span><span class="n">sector_neutral</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="n">mom_sector_neutral</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_market</span><span class="p">[</span><span class="n">invest_mom_neutral</span><span class="p">][</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="s1">&#39;Malgun Gothic&#39;</span><span class="p">)</span>
+<span class="n">mom_sector_neutral</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mom_sector_neutral</span><span class="p">[</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_12_0.png" src="_images/13_factor_advanced_12_0.png" />
+</div>
+</div>
+<p>정규화된 값의 랭킹이 높은 상위 30종목을 선택하며, 내림차순으로 계산합니다.. 해당 포트폴리오의 섹터별 구성종목을 확인해보면, 단순하게 포트폴리오를 구성한 것에 대비하여 여러 섹터에 종목이 분산되어 있습니다.</p>
+<p>이처럼 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 함수를 통해 손쉽게 그룹별 중립화를 할 수 있으며, 글로벌 투자를 하는 경우에는 지역, 국가, 섹터별로도 중립화된 포트폴리오를 구성하기도 합니다.</p>
+</div>
+<div class="section" id="id3">
+<h2>13.2 마법공식<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>하나의 팩터만을 보고 투자하는 것보다, 둘 혹은 그 이상의 팩터를 결합해 투자해야 훨씬 좋은 포트폴리오를 구성할 수 있으며, 이러한 방법을 멀티팩터라고 합니다. 그중에서도 밸류와 퀄리티의 조합은 전통적으로 많이 사용된 방법이며, 대표적인 예가 조엘 그린블라트의 마법공식입니다. 이에 앞서, 퀄리티와 밸류 간의 관계, 마법공식의 정의와 구성 방법을 알아보겠습니다.</p>
+<div class="section" id="id4">
+<h3>13.2.1 퀄리티와 밸류 간의 관계<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>투자의 정석 중 하나는 <strong>좋은 기업을 싸게 사는 것</strong>입니다. 이를 팩터의 관점에서 이해하면 퀄리티 팩터와 밸류 팩터로 이해할 수도 있습니다.</p>
+<p>여러 논문에 따르면 흔히 밸류 팩터와 퀄리티 팩터는 반대의 관계에 있습니다. 먼저 가치주들은 위험이 크기 때문에 시장에서 소외를 받아 저평가가 이루어지는 것이며, 이러한 위험에 대한 대가로 밸류 팩터의 수익률이 높게 됩니다. 반대로 사람들은 우량주에 기꺼이 프리미엄을 지불하려 하기 때문에 퀄리티 팩터의 수익률이 높기도 합니다. 이는 마치 동전의 양면과 같지만, 장기적으로 가치주와 우량주 모두 우수한 성과를 기록합니다. 먼저 퀄리티의 지표인 매출총이익과 밸류 지표인 PBR을 통해 둘 사이의 관계를 확인해 보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">KOR_value</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_value.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_value</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/KOR_fs.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">KOR_fs</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># PBR</span>
+<span class="n">data_pbr</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">]</span>    
+
+<span class="c1"># GPA</span>
+<span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">month</span> <span class="ow">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">num_col</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">num_col</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    
+<span class="n">data_gpa</span> <span class="o">=</span> <span class="p">(</span><span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출총이익&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;자산&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span>    
+
+<span class="c1"># Bind &amp; Rank</span>
+<span class="n">data_bind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data_pbr</span><span class="p">,</span> <span class="n">data_gpa</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">data_bind</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">,</span> <span class="s1">&#39;GPA&#39;</span><span class="p">]</span>
+<span class="n">data_bind_rank</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(),</span> <span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;GPA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># correlation</span>
+<span class="n">data_bind_rank</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PBR</th>
+      <th>GPA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PBR</th>
+      <td>1.000000</td>
+      <td>-0.203685</td>
+    </tr>
+    <tr>
+      <th>GPA</th>
+      <td>-0.203685</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>티커와 밸류, 재무제표 데이터를 불러옵니다.</p></li>
+<li><p>밸류 데이터에서 PBR 지표만 선택합니다.</p></li>
+<li><p>재무제표 데이터에서 GPA(매출총이익/자산)을 구합니다.</p></li>
+<li><p>두 데이터를 합쳐준 후 PBR은 오름차순, GPA는 내림차순으로 랭킹을 구합니다.</p></li>
+<li><p>랭킹의 상관관계를 구합니다.</p></li>
+</ol>
+<p>PBR과 GPA 간에는 음의 상관관계가 있음이 확인됩니다. 이번에는 PBR의 분위수별 GPA 평균값을 구하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;PBR_quantile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">],</span> <span class="n">q</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">data_bind_group</span> <span class="o">=</span> <span class="n">data_bind</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;PBR_quantile&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;GPA&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="s1">&#39;Malgun Gothic&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">height</span> <span class="o">=</span> <span class="n">data_bind_group</span><span class="p">[</span><span class="s1">&#39;GPA&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PBR&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;GPA&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_20_0.png" src="_images/13_factor_advanced_20_0.png" />
+</div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">qcut()</span></code> 함수를 이용해 PBR을 5분위수로 나누어줍니다.</p></li>
+<li><p>NA가 있는 데이터는 제외하며, <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 함수를 통해 PBR의 분위수별 그룹을 묶어줍니다. 그 후, 각 PBR 그룹별 GPA의 평균값을 구합니다.</p></li>
+<li><p>위 데이터를 그림으로 나타냅니다.</p></li>
+</ol>
+<p>그림에서 알 수 있듯이 PBR이 낮을수록 GPA도 낮으며, 즉 가치주일수록 우량성은 떨어집니다. 반면에 PBR이 높을수록 GPA도 높으며, 이는 주식의 가격이 비쌀수록 우량성도 높다는 뜻입니다. 이를 이용해 밸류 팩터와 퀄리티 팩터 간의 관계를 나타내면 다음과 같습니다.</p>
+<div class="figure align-default" id="tableqv">
+<img alt="_images/tableqv.png" src="_images/tableqv.png" />
+<p class="caption"><span class="caption-number">Fig. 68 </span><span class="caption-text">밸류 팩터와 퀄리티 팩터간의 관계</span><a class="headerlink" href="#tableqv" title="Permalink to this image">¶</a></p>
+</div>
+<p>주가가 쌀수록 기업의 우량성은 떨어지며(①번), 반대로 기업의 우량성이 좋으면 주식은 비싼 경향(③번)이 있습니다. 물론 우량성도 떨어지고 비싸기만한 주식(②번)을 사려는 사람들 아마 없을 겁니다. 결과적으로 우리가 원하는 최고의 주식은 우량성이 있으면서도 가격은 싼 주식(④번)입니다.</p>
+</div>
+<div class="section" id="id5">
+<h3>13.2.2 마법공식 이해하기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>마법공식이란 고담 캐피탈의 설립자이자 전설적인 투자자 조엘 그린블라트에 의해 알려진 투자 방법입니다. 그는 본인의 책 《주식 시장을 이기는 작은 책》에서 투자를 하는데 있어 중요한 두 가지 지표가 있으며, 이를 혼합하면 뛰어난 성과를 기록할 수 있다고 했습니다.</p>
+<p>첫 번째 지표는 <strong>이율(Earnings Yield)</strong> 로서 기업의 수익을 기업의 가치로 나는 값입니다. 이는 PER의 역수와 비슷하며, 밸류 지표 중 하나입니다. 두 번째 지표는 <strong>투하자본 수익률(Return on Capital)</strong> 로서 기업의 수익을 투자한 자본으로 나눈 값입니다. 이는 ROE와도 비슷하며, 퀄리티 지표 중 하나입니다. 마법공식은 이 두 가지 지표의 랭킹을 각각 구한 후 랭킹의 합 기준 상위 30개 종목을 1년간 보유한 후 매도하는 전략입니다.</p>
+<p>해당 전략은 국내 투자자들에게도 많이 사랑받는 전략이지만 두 지표를 계산하기 위한 데이터를 수집하기 어려워 많은 투자자들이 이율 대신 PER를 사용하고, 투하자본 수익률 대신 ROE를 사용합니다. 그러나 우리가 수집한 데이터를 통해 충분히 원래의 마법공식을 구현할 수 있습니다.</p>
+<table class="colwidths-auto table" id="magic-formula">
+<caption><span class="caption-number">Table 11 </span><span class="caption-text">마법공식의 구성 요소</span><a class="headerlink" href="#magic-formula" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>팩터</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Quality</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>지표</p></td>
+<td><p>이율 (Earnings Yield)</p></td>
+<td><p>투하자본 수익률 (Return On Capital)</p></td>
+</tr>
+<tr class="row-odd"><td><p>계산</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{이자\ 및\ 법인세\ 차감전이익}{기업\ 가치}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{이자\ 및\ 법인세\ 차감전이익}{투하\ 자본}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h3>13.2.3 마법공식 구성하기<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>재무제표 항목을 통해 이율과 투하자본 수익률을 계산하고, 이를 통해 마법공식 포트폴리오를 구성하겠습니다. 먼저 밸류 지표에 해당하는 이익수익률을 계산해보겠습니다. 이익수익률은 이자 및 법인세 차감전이익(EBIT)을 기업가치(시가총액 + 순차입금)로 나눈 값입니다. 이를 분해하면 다음과 같습니다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align} 이익수익률 &amp;= \frac{이자\ 및\ 법인세\ 차감전이익}{기업\ 가치} \\ &amp;= \frac{이자\ 및\ 법인세\ 차감전이익}{시가총액 + 순차입금} 
+\\ &amp;= \frac{당기순이익 + 법인세 + 이자비용}{시가총액 + 총부채 - 여유자금}
+\\ &amp;= \frac{당기순이익 + 법인세 + 이자비용}{시가총액 + 총부채 - (현금 - max(0, 유동부채 - 유동자산 + 현금))} \end{align} \end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">KOR_value</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_value.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_value</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/KOR_fs.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">KOR_fs</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    
+<span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">month</span> <span class="ow">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">num_col</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">num_col</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    
+<span class="c1"># 분자</span>
+<span class="n">magic_ebit</span> <span class="o">=</span> <span class="p">(</span><span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;지배주주순이익&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;법인세비용&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;이자비용&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span>    
+
+<span class="c1"># 분모</span>
+<span class="n">magic_cap</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="p">[</span><span class="s1">&#39;PER&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;지배주주순이익&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span>
+<span class="n">magic_debt</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;부채&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span>
+<span class="n">magic_excess_cash_1</span>  <span class="o">=</span> <span class="p">(</span><span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;유동부채&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;유동자산&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;현금및현금성자산&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span>
+<span class="n">magic_excess_cash_1</span><span class="p">[</span><span class="n">magic_excess_cash_1</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">magic_excess_cash_2</span>  <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;현금및현금성자산&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span> <span class="o">-</span> <span class="n">magic_excess_cash_1</span>
+<span class="n">magic_ev</span>  <span class="o">=</span> <span class="n">magic_cap</span> <span class="o">+</span> <span class="n">magic_debt</span> <span class="o">-</span> <span class="n">magic_excess_cash_2</span>
+
+<span class="c1"># 이익수익률</span>
+<span class="n">magic_ey</span> <span class="o">=</span> <span class="n">magic_ebit</span> <span class="o">/</span> <span class="n">magic_ev</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>가치지표, 재무제표, 티커 데이터를 불러온 후 재무제표 열 개수를 구합니다. 그후 분자와 분모 항목에 해당하는 부분을 하나씩 계산합니다. 먼저 분자 부분인 이자및 법인세 차감전이익은 지배주주 순이익에 법인세비용과 이자비용을 더해준 후 최근년도 데이터를 선택합니다.</p>
+<p>분모 부분은 시가총액, 총 부채, 여유자금 총 세 가지로 구성되어 있습니다.</p>
+<ol class="simple">
+<li><p>우리가 가지고 있는 밸류 데이터와 재무제표 데이터를 통해 시가총액을 역산할 수 있습니다. PER 값에 Earnings를 곱해주면 시가총액이 계산됩니다. 이를 통해 계산된 시가총액을 HTS나 금융 웹사이트의 값과 비교하면 거의 비슷함이 확인됩니다.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+PER \times Earnings &amp; = \frac{Price}{Earnings/Shares} \times Earnings \\
+&amp; = \frac{Price \times Shares}{Earnings} \times Earnings \\
+&amp; = Price \times Shares = Market\,Cap
+\end{align} \end{split}\]</div>
+<ol class="simple">
+<li><p>총 부채는 부채 항목을 사용합니다.</p></li>
+<li><p>여유자금은 두 단계에 걸쳐 계산합니다. 먼저 <strong>유동부채 - 유동자산 + 현금</strong> 값을 구해준 후 0보다 작은 값은 모두 0으로 바꿔줍니다. 이 값을 현금 및 현금성자산 항목에서 차감해 최종적인 여유자금을 구합니다.</p></li>
+</ol>
+<p>분자와 분모 부분을 나누어주면 이익수익률을 계산할 수 있습니다.</p>
+<p>다음으로 퀄리티 지표에 해당하는 투하자본 수익률을 계산하겠습니다. 해당 값은 이자 및 법인세 차감전이익(EBIT)를 투하자본(IC)으로 나누어 계산되며, 이를 분해하면 다음과 같습니다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+투하자본\ 수익률 &amp; = \frac{이자\ 및\ 법인세\ 차감전이익}{투하자본} \\
+&amp; = \frac{당기순이익 + 법인세 + 이자비용}{(유동자산 - 유동부채) + (비유동자산 - 감가상각비)}
+\end{align} \end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">magic_ic</span> <span class="o">=</span> <span class="p">((</span><span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;유동자산&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;유동부채&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;비유동자산&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;감가상각비&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span>
+<span class="n">magic_roc</span> <span class="o">=</span> <span class="n">magic_ebit</span> <span class="o">/</span> <span class="n">magic_ic</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>투하자본 수익률은 비교적 쉽게 계산할 수 있습니다. 분모에 해당하는 투하자본의 경우 재무제표 항목을 그대로 사용하면 되며, 분자인 이자 및 법인세 차감전이익은 위에서 이미 구해둔 값을 사용하면 됩니다.</p>
+<p>이제 두 지표를 활용해 마법공식 포트폴리오를 구성하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">invest_magic</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_ey</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">+</span> <span class="n">magic_roc</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">30</span>
+
+<span class="n">invest_magic_df</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">invest_magic</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">,</span> <span class="s1">&#39;종목명&#39;</span><span class="p">]]</span>
+<span class="n">invest_magic_df</span><span class="p">[</span><span class="s1">&#39;이익수익률&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">magic_ey</span><span class="p">[</span><span class="n">invest_magic</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">invest_magic_df</span><span class="p">[</span><span class="s1">&#39;투하자본수익률&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">magic_roc</span><span class="p">[</span><span class="n">invest_magic</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">invest_magic_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목코드</th>
+      <th>종목명</th>
+      <th>이익수익률</th>
+      <th>투하자본수익률</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>68</th>
+      <td>096530</td>
+      <td>씨젠</td>
+      <td>0.139</td>
+      <td>0.951</td>
+    </tr>
+    <tr>
+      <th>282</th>
+      <td>036830</td>
+      <td>솔브레인홀딩스</td>
+      <td>1.251</td>
+      <td>1.282</td>
+    </tr>
+    <tr>
+      <th>413</th>
+      <td>024720</td>
+      <td>한국콜마홀딩스</td>
+      <td>0.217</td>
+      <td>0.246</td>
+    </tr>
+    <tr>
+      <th>416</th>
+      <td>033290</td>
+      <td>코웰패션</td>
+      <td>0.131</td>
+      <td>0.272</td>
+    </tr>
+    <tr>
+      <th>440</th>
+      <td>206640</td>
+      <td>바디텍메드</td>
+      <td>0.109</td>
+      <td>0.461</td>
+    </tr>
+    <tr>
+      <th>456</th>
+      <td>068290</td>
+      <td>삼성출판사</td>
+      <td>0.121</td>
+      <td>0.357</td>
+    </tr>
+    <tr>
+      <th>472</th>
+      <td>009410</td>
+      <td>태영건설</td>
+      <td>0.195</td>
+      <td>0.355</td>
+    </tr>
+    <tr>
+      <th>477</th>
+      <td>064550</td>
+      <td>바이오니아</td>
+      <td>0.116</td>
+      <td>0.370</td>
+    </tr>
+    <tr>
+      <th>498</th>
+      <td>035890</td>
+      <td>서희건설</td>
+      <td>0.185</td>
+      <td>0.276</td>
+    </tr>
+    <tr>
+      <th>518</th>
+      <td>034810</td>
+      <td>해성산업</td>
+      <td>0.369</td>
+      <td>0.369</td>
+    </tr>
+    <tr>
+      <th>548</th>
+      <td>298540</td>
+      <td>더네이쳐홀딩스</td>
+      <td>0.136</td>
+      <td>0.289</td>
+    </tr>
+    <tr>
+      <th>604</th>
+      <td>038290</td>
+      <td>마크로젠</td>
+      <td>0.211</td>
+      <td>0.418</td>
+    </tr>
+    <tr>
+      <th>803</th>
+      <td>084650</td>
+      <td>랩지노믹스</td>
+      <td>0.208</td>
+      <td>0.635</td>
+    </tr>
+    <tr>
+      <th>885</th>
+      <td>352700</td>
+      <td>씨앤투스성진</td>
+      <td>0.152</td>
+      <td>0.588</td>
+    </tr>
+    <tr>
+      <th>938</th>
+      <td>031980</td>
+      <td>피에스케이홀딩스</td>
+      <td>0.251</td>
+      <td>0.263</td>
+    </tr>
+    <tr>
+      <th>1040</th>
+      <td>000700</td>
+      <td>유수홀딩스</td>
+      <td>0.639</td>
+      <td>0.276</td>
+    </tr>
+    <tr>
+      <th>1136</th>
+      <td>263690</td>
+      <td>디알젬</td>
+      <td>0.132</td>
+      <td>0.408</td>
+    </tr>
+    <tr>
+      <th>1199</th>
+      <td>238490</td>
+      <td>힘스</td>
+      <td>0.143</td>
+      <td>0.249</td>
+    </tr>
+    <tr>
+      <th>1279</th>
+      <td>002870</td>
+      <td>신풍제지</td>
+      <td>0.330</td>
+      <td>0.457</td>
+    </tr>
+    <tr>
+      <th>1331</th>
+      <td>053980</td>
+      <td>오상자이엘</td>
+      <td>0.146</td>
+      <td>0.390</td>
+    </tr>
+    <tr>
+      <th>1376</th>
+      <td>046940</td>
+      <td>우원개발</td>
+      <td>0.160</td>
+      <td>0.265</td>
+    </tr>
+    <tr>
+      <th>1419</th>
+      <td>083550</td>
+      <td>케이엠</td>
+      <td>0.266</td>
+      <td>0.361</td>
+    </tr>
+    <tr>
+      <th>1466</th>
+      <td>090710</td>
+      <td>휴림로봇</td>
+      <td>0.271</td>
+      <td>0.582</td>
+    </tr>
+    <tr>
+      <th>1507</th>
+      <td>105840</td>
+      <td>우진</td>
+      <td>0.267</td>
+      <td>0.229</td>
+    </tr>
+    <tr>
+      <th>1509</th>
+      <td>137940</td>
+      <td>넥스트아이</td>
+      <td>0.509</td>
+      <td>0.436</td>
+    </tr>
+    <tr>
+      <th>1512</th>
+      <td>016250</td>
+      <td>SGC이테크건설</td>
+      <td>0.326</td>
+      <td>1.655</td>
+    </tr>
+    <tr>
+      <th>1585</th>
+      <td>037350</td>
+      <td>성도이엔지</td>
+      <td>0.521</td>
+      <td>0.473</td>
+    </tr>
+    <tr>
+      <th>1605</th>
+      <td>032940</td>
+      <td>원익</td>
+      <td>0.485</td>
+      <td>0.448</td>
+    </tr>
+    <tr>
+      <th>1869</th>
+      <td>007120</td>
+      <td>미래아이앤지</td>
+      <td>1.029</td>
+      <td>0.271</td>
+    </tr>
+    <tr>
+      <th>1875</th>
+      <td>016100</td>
+      <td>리더스코스메틱</td>
+      <td>0.142</td>
+      <td>0.313</td>
+    </tr>
+    <tr>
+      <th>1912</th>
+      <td>000440</td>
+      <td>중앙에너비스</td>
+      <td>0.365</td>
+      <td>0.396</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이익수익률과 투하자본 수익률의 랭킹을 내림차순으로 각각 구해주며, 두 값의 합의 랭킹 기준 상위 30종목을 선택한 후 종목코드, 종목명과 각 지표를 확인합니다. 마법공식을 통해 선택된 종목은 상대적으로 퀄리티와 밸류가 우수한 종목이라 볼 수 있습니다.</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>13.3 이상치 데이터 제거 및 팩터의 결합<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>모든 데이터 분석에서 중요한 문제 중 하나가 이상치(극단치, Outlier) 데이터를 어떻게 처리할 것인가입니다. 과거 12개월 수익률이 10배인 주식이 과연 모멘텀 관점에서 좋기만 한 주식인지, ROE가 100% 넘는 주식이 과연 퀄리티 관점에서 좋기만 한 주식인지 고민이 되기 마련입니다.</p>
+<p>따라서 이러한 이상치를 제외하고 분석할지, 포함해서 분석할지를 판단해야 합니다. 만일 이상치를 포함한다면 그대로 사용할 것인지, 보정해 사용할 것인지도 판단해야 합니다.</p>
+<p>우리가 가지고 있는 데이터에서 이상치 데이터를 탐색해보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">KOR_value</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_value.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">PBR_max</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">PBR_max</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>64.08200046969698
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KOR_value</span><span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_35_0.png" src="_images/13_factor_advanced_35_0.png" />
+</div>
+</div>
+<p>국내 종목들의 PBR 히스토그램을 그려보면 오른쪽으로 꼬리가 매우 긴 분포를 보이고 있습니다. 이는 PBR이 무려 수백대인 이상치 데이터가 있기 때문입니다. 이처럼 모든 팩터 지표에는 극단치 데이터가 있기 마련이며, 이를 처리하는 방법을 알아보겠습니다.</p>
+<div class="section" id="trim">
+<h3>10.3.1 트림(Trim): 이상치 데이터 삭제<a class="headerlink" href="#trim" title="Permalink to this headline">¶</a></h3>
+<p>트림은 이상치 데이터를 삭제하는 방법입니다. 위의 예제에서 이상치에 해당하는 상하위 1% 데이터를 삭제하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q_low</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">q_hi</span>  <span class="o">=</span> <span class="n">KOR_value</span><span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.99</span><span class="p">)</span>
+
+<span class="n">value_trim</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">KOR_value</span><span class="p">[</span><span class="s2">&quot;PBR&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q_low</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">KOR_value</span><span class="p">[</span><span class="s2">&quot;PBR&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">q_hi</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">value_trim</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_39_0.png" src="_images/13_factor_advanced_39_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">quantile()</span></code> 함수를 통해 백분위를 구한 후 상하위 1%에 해당하는 데이터를 제외한 데이터만 선택했습니다. 결과적으로 지나치게 PBR이 낮은 종목과 높은 종목은 제거되어 x축의 스케일이 많이 줄어든 모습입니다.</p>
+<p>평균이나 분산같이 통곗값을 구하는 과정에서는 이상치 데이터를 제거하는 것이 바람직할 수 있습니다. 그러나 팩터를 이용해 포트폴리오를 구하는 과정에서 해당 방법은 조심스럽게 사용되어야 합니다. 데이터의 손실이 발생하게 되며, 제거된 종목 중 정말로 좋은 종목이 있을 수도 있기 때문입니다.</p>
+</div>
+<div class="section" id="winsorizing">
+<h3>13.3.2 윈저라이징(Winsorizing): 이상치 데이터 대체<a class="headerlink" href="#winsorizing" title="Permalink to this headline">¶</a></h3>
+<p>포트폴리오 구성에서는 일반적으로 이상치 데이터를 다른 데이터로 대체하는 윈저라이징 방법이 사용됩니다. 예를 들어 상위 1%를 초과하는 데이터는 1% 값으로 대체하며, 하위 1% 미만의 데이터는 1% 데이터로 대체합니다. 즉, 좌우로 울타리를 쳐놓고 해당 범위를 넘어가는 값을 강제로 울타리에 맞춰줍니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value_winsor</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="p">[[</span><span class="s1">&#39;PBR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">value_winsor</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">value_winsor</span><span class="p">[</span><span class="s2">&quot;PBR&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">q_low</span> <span class="p">,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_low</span>
+<span class="n">value_winsor</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">value_winsor</span><span class="p">[</span><span class="s2">&quot;PBR&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q_hi</span> <span class="p">,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_hi</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span>  <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">value_winsor</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">patches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_fc</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">patches</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_fc</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_43_0.png" src="_images/13_factor_advanced_43_0.png" />
+</div>
+</div>
+<p>먼저 PBR 데이터를 카피해준 후, 상하위 1%를 초과하는 값들은 해당 기준으로 변경해줍니다. 그림을 살펴보면 x축 양 끝부분의 막대가 길어진 것으 확인할 수 있습니다.</p>
+</div>
+<div class="section" id="id8">
+<h3>13.3.3 팩터의 결합 방법<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>밸류 지표의 결합, 퀄리티 지표의 결합, 마법공식 포트폴리오를 구성할 때 단순히 랭킹을 더하는 방법을 사용했습니다. 물론 투자 종목수가 얼마 되지 않거나, 개인 투자자의 입장에서는 이러한 방법이 가장 단순하면서도 효과적일수 있습니다. 그러나 전문투자자의 입장이거나 팩터를 분석하는 업무를 할 경우 이처럼 단순히 랭킹을 더하는 방법은 여러 가지 문제를 안고 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value_rank</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">value_rank</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">n</span><span class="p">])</span>                   
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">value_rank</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_47_0.png" src="_images/13_factor_advanced_47_0.png" />
+</div>
+</div>
+<p>앞의 그림은 각 밸류 지표의 랭킹을 구한 후 히스토그램으로 나타낸 것입니다. 랭킹을 구하는 것의 가장 큰 장점은 극단치로 인한 효과가 사라진다는 점과 균등한 분포를 가진다는 점입니다.</p>
+<p>그러나 각 지표의 x축을 보면 최댓값이 서로 다릅니다. 이는 지표별 결측치로 인해 유효 데이터의 개수가 달라 나타나는 현상이며, 서로 다른 범위의 분포를 단순히 합치는 것은 좋은 방법이 아닙니다. 예를 들어 A, B, C, D 팩터에 각각 비중을 40%, 30%, 20%, 10% 부여해 포트폴리오를 구성한다고 가정해봅시다. 각 랭킹은 분포의 범위가 다르므로, 랭킹과 비중의 가중평균을 통해 포트폴리오를 구성하면 왜곡된 결과를 발생시킵니다.</p>
+<p>이러한 문제를 해결하는 가장 좋은 방법은 랭킹을 구한 후 이를 Z-Score로 정규화하는 것입니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="s1">&#39;Malgun Gothic&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">zscore</span>
+
+<span class="n">value_rank</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">value_rank_z</span> <span class="o">=</span> <span class="n">value_rank</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">zscore</span><span class="p">,</span> <span class="n">nan_policy</span><span class="o">=</span><span class="s1">&#39;omit&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">value_rank_z</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">n</span><span class="p">])</span>                   
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">value_rank</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_49_0.png" src="_images/13_factor_advanced_49_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">rank()</span></code> 함수를 통해 랭킹을 구한 후, <code class="docutils literal notranslate"><span class="pre">apply(zscore)</span></code> 함수를 통해 정규화를 해주었습니다. 기본적으로 랭킹의 분포가 가진 극단치 효과가 사라지는 점과 균등 분포의 장점을 유지하고 있으며, 분포의 범위 역시 거의 동일하게 바뀌었습니다.</p>
+<p>이처럼 여러 팩터를 결합해 포트폴리오를 구성하고자 하는 경우, 먼저 각 팩터(지표)별 랭킹을 정규화한 뒤 더해야 왜곡 효과가 제거되어 안정적입니다.</p>
+<div class="math notranslate nohighlight">
+\[Z - Score(Rank(Factor\ A)) + Z - Score(Rank(Factor\ B)) +\dots + Z - Score(Rank(Factor\ N))\]</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>13.4 멀티팩터 포트폴리오<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>앞에서 배웠던 팩터 이론들과 결합 방법들을 응용해 멀티팩터 포트폴리오를 구성해보겠습니다. 각 팩터에 사용되는 지표는 다음과 같습니다.</p>
+<ul class="simple">
+<li><p>퀄리티: 자기자본이익률, 매출총이익, 영업활동현금흐름</p></li>
+<li><p>밸류: PER, PBR, PSR, PCR</p></li>
+<li><p>모멘텀: 3개월 수익률, 6개월 수익률, 12개월 수익률</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">stdev</span> 
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">zscore</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">KOR_value</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_value.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_value</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">KOR_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_price.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/KOR_fs.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">KOR_fs</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>먼저 재무제표, 가치지표, 주가 데이터를 불러옵니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">month</span> <span class="ow">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">num_col</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">num_col</span> <span class="o">=</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출액&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    
+<span class="n">q_roe</span> <span class="o">=</span> <span class="p">(</span><span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;지배주주순이익&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;자본&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span>
+<span class="n">q_gpa</span> <span class="o">=</span> <span class="p">(</span><span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;매출총이익&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;자산&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span>
+<span class="n">q_cfo</span> <span class="o">=</span> <span class="p">(</span><span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;영업활동으로인한현금흐름&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">KOR_fs</span><span class="p">[</span><span class="s1">&#39;자산&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">num_col</span><span class="p">]</span>
+
+<span class="n">q_profit</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">q_roe</span><span class="p">,</span> <span class="n">q_gpa</span><span class="p">,</span> <span class="n">q_cfo</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">q_profit</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ROE&#39;</span><span class="p">,</span> <span class="s1">&#39;GPA&#39;</span><span class="p">,</span> <span class="s1">&#39;CFO&#39;</span><span class="p">]</span>    
+
+<span class="n">factor_quality</span> <span class="o">=</span> <span class="n">q_profit</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">zscore</span><span class="p">,</span> <span class="n">nan_policy</span><span class="o">=</span><span class="s1">&#39;omit&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">factor_quality</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_55_0.png" src="_images/13_factor_advanced_55_0.png" />
+</div>
+</div>
+<p>첫 번째로 퀄리티 지표를 계산해줍니다. 먼저 자기자본이익률, 매출총이익, 영업활동현금흐름을 계산해줍니다. 지표를 하나의 데이터프레임으로 합친 후, 각 지표별 랭킹을 구합니다. 그 후 표준화를 위해 Z-Score를 계산한 후 종목별로 합쳐줍니다. Z-Score의 히스토그램을 살펴보면 이상치가 없이 중앙에 데이터가 많이 분포되어 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor_value</span> <span class="o">=</span> <span class="n">KOR_value</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">zscore</span><span class="p">,</span> <span class="n">nan_policy</span><span class="o">=</span><span class="s1">&#39;omit&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">factor_value</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_57_0.png" src="_images/13_factor_advanced_57_0.png" />
+</div>
+</div>
+<p>두 번째로 밸류 지표를 계산해줍니다. 밸류 지표는 이미 테이블 형태로 들어와 있으며, 랭킹과 표준화를 거쳐 합을 구해줍니다. 역시나 이상치가 없이 중앙에 데이터가 많이 분포되어 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span> <span class="o">=</span> <span class="n">KOR_price</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+
+<span class="n">ret_3m</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">60</span><span class="p">:</span> <span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ret_6m</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">120</span><span class="p">:</span> <span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ret_12m</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">252</span><span class="p">:</span> <span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ret_bind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ret_3m</span><span class="p">,</span> <span class="n">ret_6m</span><span class="p">,</span> <span class="n">ret_12m</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ret_bind</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;3M&#39;</span><span class="p">,</span> <span class="s1">&#39;6M&#39;</span><span class="p">,</span> <span class="s1">&#39;12M&#39;</span><span class="p">]</span>
+<span class="n">factor_mom</span> <span class="o">=</span> <span class="n">ret_bind</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">zscore</span><span class="p">,</span> <span class="n">nan_policy</span><span class="o">=</span><span class="s1">&#39;omit&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">factor_mom</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_59_0.png" src="_images/13_factor_advanced_59_0.png" />
+</div>
+</div>
+<p>마지막으로 모멘텀 지표를 계산해줍니다. 최근 60일, 120일, 252일 주가를 통해 3개월, 6개월, 12개월 수익률을 구해준 후 하나의 데이터프레임으로 묶어줍니다. 그 후 내림차순 기준 랭킹과 표준화를 거쳐 합을 구합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor_bind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">factor_quality</span><span class="p">,</span> <span class="n">factor_value</span><span class="p">,</span> <span class="n">factor_mom</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">factor_bind</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Quality&#39;</span><span class="p">,</span> <span class="s1">&#39;Value&#39;</span><span class="p">,</span> <span class="s1">&#39;Momentum&#39;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">factor_bind</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">annot_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;size&quot;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">},</span>
+            <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">square</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_61_0.png" src="_images/13_factor_advanced_61_0.png" />
+</div>
+</div>
+<p>퀄리티, 밸류, 모멘텀 팩터 간의 랭크의 서로 간 상관관계가 매우 낮으며, 여러 팩터를 동시에 고려함으로서 분산효과를 기대할 수 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor_allocation</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">]</span>
+
+<span class="n">factor_qvm</span> <span class="o">=</span> <span class="p">(</span><span class="n">factor_bind</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">zscore</span><span class="p">,</span> <span class="n">nan_policy</span><span class="o">=</span><span class="s1">&#39;omit&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor_allocation</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">invest_qvm</span> <span class="o">=</span> <span class="p">(</span><span class="n">factor_qvm</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>계산된 팩터들을 토대로 최종 포트폴리오를 구성해보겠습니다. 각 팩터의 분포가 역시나 다르기 때문에 다시 한번 Z-Score로 정규화해주며, 각 팩터에 동일한 비중인 0.33을 곱한 후 이를 더합니다. 물론 팩터별 비중을 [0.2, 0.4, 0.4]와 같이 다르게 줄 수도 있으며, 이는 어떠한 팩터를 더욱 중요하게 생각하는지 혹은 더욱 좋게 보는지에 따라 조정이 가능합니다. 최종적으로 해당 값의 랭킹 기준 상위 30종목을 선택합니다.</p>
+<p>선택된 종목들의 분포를 확인해보기 이전에, 이상치 데이터로 인해 히스토그램이 잘 보이지 않는 문제 해결을 위해 앞서 이상치 데이터를 삭제하는(트림) 함수를 만들도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remove_outlier</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cutoff</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">):</span>
+    <span class="n">q_low</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">cutoff</span><span class="p">)</span>
+    <span class="n">q_hi</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cutoff</span><span class="p">)</span>
+    
+    <span class="n">df_trim</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span> <span class="o">&gt;</span> <span class="n">q_low</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span> <span class="o">&lt;</span> <span class="n">q_hi</span><span class="p">)]</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">df_trim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>상하위 cutoff에 해당하는 데이터는 삭제해주도록 합니다. 이제 멀티팩터 기준 선정된 포트폴리오가 퀄리티, 밸류, 모멘텀 기준 어느 정도에 위치해 있는지 확인해보도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">q_profit</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">df_mod</span> <span class="o">=</span> <span class="n">remove_outlier</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>    
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_mod</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span>  <span class="n">bins</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>             
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">invest_qvm</span><span class="p">],</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;QVM&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>    
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\Anaconda3\lib\site-packages\matplotlib\backends\backend_agg.py:238: RuntimeWarning: Glyph 8722 missing from current font.
+  font.set_text(s, 0.0, flags=flags)
+C:\Users\leebi\Anaconda3\lib\site-packages\matplotlib\backends\backend_agg.py:201: RuntimeWarning: Glyph 8722 missing from current font.
+  font.set_text(s, 0, flags=flags)
+</pre></div>
+</div>
+<img alt="_images/13_factor_advanced_67_1.png" src="_images/13_factor_advanced_67_1.png" />
+</div>
+</div>
+<p>파란색은 전종목의 각 퀄리티 지표 별 히스토그램이며, 붉은색은 선택된 종목의 퀄리티 지표 별 히스토그램입니다. <span class="math notranslate nohighlight">\(y\)</span>축은 비교의 편의를 위해 로그로 치환했습니다. 대부분 종목의 퀄리티가 상위권에 위치하고 있음이 확인됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">KOR_value</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">df_mod</span> <span class="o">=</span> <span class="n">remove_outlier</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>    
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_mod</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span>  <span class="n">bins</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>             
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">invest_qvm</span><span class="p">],</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;QVM&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>    
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_factor_advanced_69_0.png" src="_images/13_factor_advanced_69_0.png" />
+</div>
+</div>
+<p>이번에는 밸류 지표의 분포입니다. 대부분 종목이 좌측에 분포하여 밸류가 낮음이 확인됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">ret_bind</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">df_mod</span> <span class="o">=</span> <span class="n">remove_outlier</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> 
+    <span class="n">df_mod</span> <span class="o">=</span> <span class="n">df_mod</span><span class="p">[</span><span class="n">df_mod</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_mod</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span>  <span class="n">bins</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>             
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">invest_qvm</span><span class="p">],</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;QVM&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>    
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\Anaconda3\lib\site-packages\matplotlib\backends\backend_agg.py:238: RuntimeWarning: Glyph 8722 missing from current font.
+  font.set_text(s, 0.0, flags=flags)
+C:\Users\leebi\Anaconda3\lib\site-packages\matplotlib\backends\backend_agg.py:201: RuntimeWarning: Glyph 8722 missing from current font.
+  font.set_text(s, 0, flags=flags)
+</pre></div>
+</div>
+<img alt="_images/13_factor_advanced_71_1.png" src="_images/13_factor_advanced_71_1.png" />
+</div>
+</div>
+<p>마지막으로 모멘텀 지표의 분포에서는 거래정지로 인해 수익률이 0인 데이터 제외해줍니다. 역시나 대부분의 종목들이 우측에 분포하여 최근 수익률이 높은 종목임이 확인됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+
+<span class="n">invest_qvm_df</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="n">invest_qvm</span><span class="p">][[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">,</span> <span class="s1">&#39;종목명&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;종목코드&#39;</span><span class="p">)</span>
+<span class="n">df_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">invest_qvm_df</span><span class="p">,</span> <span class="c1"># 티커</span>
+           <span class="n">q_profit</span><span class="p">[</span><span class="n">invest_qvm</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="c1"># 퀄리티</span>
+           <span class="n">KOR_value</span><span class="p">[</span><span class="n">invest_qvm</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="c1"># 밸류</span>
+           <span class="n">ret_bind</span><span class="p">[</span><span class="n">invest_qvm</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span> <span class="c1"># 모멘텀</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">left_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">),</span> <span class="n">df_list</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>종목명</th>
+      <th>ROE</th>
+      <th>GPA</th>
+      <th>CFO</th>
+      <th>PER</th>
+      <th>PBR</th>
+      <th>PCR</th>
+      <th>PSR</th>
+      <th>3M</th>
+      <th>6M</th>
+      <th>12M</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>066570</th>
+      <td>LG전자</td>
+      <td>0.11</td>
+      <td>0.34</td>
+      <td>0.10</td>
+      <td>13.09</td>
+      <td>1.47</td>
+      <td>5.57</td>
+      <td>0.41</td>
+      <td>0.14</td>
+      <td>0.76</td>
+      <td>2.13</td>
+    </tr>
+    <tr>
+      <th>298020</th>
+      <td>효성티앤씨</td>
+      <td>0.19</td>
+      <td>0.18</td>
+      <td>0.20</td>
+      <td>18.10</td>
+      <td>3.46</td>
+      <td>4.38</td>
+      <td>0.48</td>
+      <td>1.29</td>
+      <td>2.88</td>
+      <td>4.20</td>
+    </tr>
+    <tr>
+      <th>120110</th>
+      <td>코오롱인더</td>
+      <td>0.09</td>
+      <td>0.21</td>
+      <td>0.10</td>
+      <td>8.22</td>
+      <td>0.73</td>
+      <td>3.35</td>
+      <td>0.41</td>
+      <td>0.45</td>
+      <td>0.65</td>
+      <td>1.11</td>
+    </tr>
+    <tr>
+      <th>001120</th>
+      <td>LG상사</td>
+      <td>0.17</td>
+      <td>0.14</td>
+      <td>0.05</td>
+      <td>4.00</td>
+      <td>0.68</td>
+      <td>4.68</td>
+      <td>0.11</td>
+      <td>0.17</td>
+      <td>1.02</td>
+      <td>1.63</td>
+    </tr>
+    <tr>
+      <th>014830</th>
+      <td>유니드</td>
+      <td>0.10</td>
+      <td>0.18</td>
+      <td>0.14</td>
+      <td>8.02</td>
+      <td>0.79</td>
+      <td>3.91</td>
+      <td>0.69</td>
+      <td>0.43</td>
+      <td>0.55</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>003070</th>
+      <td>코오롱글로벌</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.12</td>
+      <td>6.52</td>
+      <td>1.11</td>
+      <td>1.78</td>
+      <td>0.14</td>
+      <td>0.12</td>
+      <td>0.13</td>
+      <td>1.99</td>
+    </tr>
+    <tr>
+      <th>035890</th>
+      <td>서희건설</td>
+      <td>0.23</td>
+      <td>0.19</td>
+      <td>0.19</td>
+      <td>3.51</td>
+      <td>0.81</td>
+      <td>1.85</td>
+      <td>0.34</td>
+      <td>0.13</td>
+      <td>0.58</td>
+      <td>1.05</td>
+    </tr>
+    <tr>
+      <th>084010</th>
+      <td>대한제강</td>
+      <td>0.09</td>
+      <td>0.14</td>
+      <td>0.21</td>
+      <td>8.98</td>
+      <td>0.80</td>
+      <td>2.21</td>
+      <td>0.40</td>
+      <td>0.62</td>
+      <td>1.55</td>
+      <td>2.52</td>
+    </tr>
+    <tr>
+      <th>002310</th>
+      <td>아세아제지</td>
+      <td>0.09</td>
+      <td>0.17</td>
+      <td>0.12</td>
+      <td>8.66</td>
+      <td>0.74</td>
+      <td>4.43</td>
+      <td>0.64</td>
+      <td>0.35</td>
+      <td>0.72</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <th>002020</th>
+      <td>코오롱</td>
+      <td>0.17</td>
+      <td>0.16</td>
+      <td>0.09</td>
+      <td>2.74</td>
+      <td>0.48</td>
+      <td>1.23</td>
+      <td>0.08</td>
+      <td>0.47</td>
+      <td>0.56</td>
+      <td>1.58</td>
+    </tr>
+    <tr>
+      <th>136490</th>
+      <td>선진</td>
+      <td>0.22</td>
+      <td>0.23</td>
+      <td>0.10</td>
+      <td>4.89</td>
+      <td>1.07</td>
+      <td>3.61</td>
+      <td>0.30</td>
+      <td>0.28</td>
+      <td>0.74</td>
+      <td>1.53</td>
+    </tr>
+    <tr>
+      <th>079980</th>
+      <td>휴비스</td>
+      <td>0.17</td>
+      <td>0.14</td>
+      <td>0.10</td>
+      <td>4.85</td>
+      <td>0.84</td>
+      <td>4.46</td>
+      <td>0.43</td>
+      <td>0.39</td>
+      <td>0.33</td>
+      <td>1.19</td>
+    </tr>
+    <tr>
+      <th>042420</th>
+      <td>네오위즈홀딩스</td>
+      <td>0.08</td>
+      <td>0.39</td>
+      <td>0.10</td>
+      <td>7.11</td>
+      <td>0.58</td>
+      <td>5.16</td>
+      <td>1.27</td>
+      <td>1.48</td>
+      <td>1.56</td>
+      <td>1.95</td>
+    </tr>
+    <tr>
+      <th>016450</th>
+      <td>한세예스24홀딩스</td>
+      <td>0.07</td>
+      <td>0.32</td>
+      <td>0.06</td>
+      <td>7.18</td>
+      <td>0.52</td>
+      <td>3.55</td>
+      <td>0.14</td>
+      <td>0.35</td>
+      <td>0.66</td>
+      <td>1.08</td>
+    </tr>
+    <tr>
+      <th>045100</th>
+      <td>한양이엔지</td>
+      <td>0.13</td>
+      <td>0.17</td>
+      <td>0.14</td>
+      <td>7.75</td>
+      <td>1.01</td>
+      <td>5.01</td>
+      <td>0.49</td>
+      <td>0.23</td>
+      <td>0.80</td>
+      <td>1.31</td>
+    </tr>
+    <tr>
+      <th>025000</th>
+      <td>KPX케미칼</td>
+      <td>0.12</td>
+      <td>0.19</td>
+      <td>0.17</td>
+      <td>5.08</td>
+      <td>0.60</td>
+      <td>3.01</td>
+      <td>0.43</td>
+      <td>0.20</td>
+      <td>0.36</td>
+      <td>0.47</td>
+    </tr>
+    <tr>
+      <th>013580</th>
+      <td>계룡건설</td>
+      <td>0.16</td>
+      <td>0.13</td>
+      <td>0.09</td>
+      <td>3.16</td>
+      <td>0.49</td>
+      <td>1.53</td>
+      <td>0.13</td>
+      <td>0.07</td>
+      <td>0.53</td>
+      <td>1.48</td>
+    </tr>
+    <tr>
+      <th>004960</th>
+      <td>한신공영</td>
+      <td>0.17</td>
+      <td>0.11</td>
+      <td>0.12</td>
+      <td>2.62</td>
+      <td>0.45</td>
+      <td>1.31</td>
+      <td>0.18</td>
+      <td>0.29</td>
+      <td>0.76</td>
+      <td>0.93</td>
+    </tr>
+    <tr>
+      <th>004540</th>
+      <td>깨끗한나라</td>
+      <td>0.18</td>
+      <td>0.23</td>
+      <td>0.11</td>
+      <td>7.32</td>
+      <td>1.29</td>
+      <td>4.48</td>
+      <td>0.47</td>
+      <td>0.75</td>
+      <td>0.61</td>
+      <td>1.03</td>
+    </tr>
+    <tr>
+      <th>000490</th>
+      <td>대동공업</td>
+      <td>0.06</td>
+      <td>0.19</td>
+      <td>0.08</td>
+      <td>12.91</td>
+      <td>0.80</td>
+      <td>3.71</td>
+      <td>0.29</td>
+      <td>0.38</td>
+      <td>0.59</td>
+      <td>1.64</td>
+    </tr>
+    <tr>
+      <th>023600</th>
+      <td>삼보판지</td>
+      <td>0.08</td>
+      <td>0.16</td>
+      <td>0.10</td>
+      <td>7.01</td>
+      <td>0.58</td>
+      <td>4.37</td>
+      <td>0.63</td>
+      <td>0.33</td>
+      <td>0.91</td>
+      <td>1.21</td>
+    </tr>
+    <tr>
+      <th>066620</th>
+      <td>국보디자인</td>
+      <td>0.11</td>
+      <td>0.17</td>
+      <td>0.16</td>
+      <td>10.86</td>
+      <td>1.20</td>
+      <td>4.66</td>
+      <td>0.69</td>
+      <td>0.51</td>
+      <td>0.63</td>
+      <td>0.97</td>
+    </tr>
+    <tr>
+      <th>058430</th>
+      <td>포스코강판</td>
+      <td>0.03</td>
+      <td>0.12</td>
+      <td>0.20</td>
+      <td>28.76</td>
+      <td>0.80</td>
+      <td>1.82</td>
+      <td>0.20</td>
+      <td>0.66</td>
+      <td>0.98</td>
+      <td>1.99</td>
+    </tr>
+    <tr>
+      <th>071460</th>
+      <td>위니아딤채</td>
+      <td>0.11</td>
+      <td>0.35</td>
+      <td>0.13</td>
+      <td>11.52</td>
+      <td>1.25</td>
+      <td>2.12</td>
+      <td>0.16</td>
+      <td>0.49</td>
+      <td>0.57</td>
+      <td>0.67</td>
+    </tr>
+    <tr>
+      <th>058850</th>
+      <td>KTcs</td>
+      <td>0.06</td>
+      <td>2.42</td>
+      <td>0.13</td>
+      <td>11.91</td>
+      <td>0.75</td>
+      <td>2.53</td>
+      <td>0.14</td>
+      <td>0.26</td>
+      <td>0.53</td>
+      <td>0.92</td>
+    </tr>
+    <tr>
+      <th>036710</th>
+      <td>심텍홀딩스</td>
+      <td>0.07</td>
+      <td>0.24</td>
+      <td>0.26</td>
+      <td>4.85</td>
+      <td>0.35</td>
+      <td>0.53</td>
+      <td>0.09</td>
+      <td>-0.00</td>
+      <td>0.23</td>
+      <td>1.44</td>
+    </tr>
+    <tr>
+      <th>037400</th>
+      <td>우리조명</td>
+      <td>0.03</td>
+      <td>0.15</td>
+      <td>0.10</td>
+      <td>18.34</td>
+      <td>0.57</td>
+      <td>1.49</td>
+      <td>0.06</td>
+      <td>0.73</td>
+      <td>1.34</td>
+      <td>3.56</td>
+    </tr>
+    <tr>
+      <th>049800</th>
+      <td>우진플라임</td>
+      <td>0.13</td>
+      <td>0.20</td>
+      <td>0.11</td>
+      <td>12.00</td>
+      <td>1.54</td>
+      <td>3.23</td>
+      <td>0.46</td>
+      <td>0.60</td>
+      <td>1.17</td>
+      <td>2.44</td>
+    </tr>
+    <tr>
+      <th>009180</th>
+      <td>한솔로지스틱스</td>
+      <td>0.16</td>
+      <td>0.22</td>
+      <td>0.20</td>
+      <td>10.47</td>
+      <td>1.67</td>
+      <td>2.37</td>
+      <td>0.18</td>
+      <td>0.15</td>
+      <td>0.71</td>
+      <td>1.90</td>
+    </tr>
+    <tr>
+      <th>060380</th>
+      <td>동양에스텍</td>
+      <td>0.09</td>
+      <td>0.13</td>
+      <td>0.10</td>
+      <td>10.54</td>
+      <td>0.96</td>
+      <td>4.50</td>
+      <td>0.30</td>
+      <td>0.75</td>
+      <td>1.05</td>
+      <td>1.38</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>포트폴리오 내 종목들을 대상으로 팩터별 지표를 나타냈습니다. 전반적으로 퀄리티는 높고 밸류는 낮으며, 모멘텀은 높은 모습을 보입니다. 물론 특정 팩터의 강도가 약하더라도 나머지 팩터의 강도가 충분히 강하다면, 포트폴리오에 편입되는 모습을 보이기도 합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROE    0.110
+GPA    0.180
+CFO    0.115
+PER    7.885
+PBR    0.800
+PCR    3.450
+PSR    0.320
+3M     0.365
+6M     0.685
+12M    1.410
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>마지막으로 포트폴리오 내 종목들의 지표별 평균을 확인해 봅니다.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="12_factor_basic.html" title="previous page">12. 퀀트 전략을 이용한 종목선정 (기본)</a>
+    <a class='right-next' id="next-link" href="14_portfolio.html" title="next page">14. 포트폴리오 구성 전략</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

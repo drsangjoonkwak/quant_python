@@ -1,0 +1,1318 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10. 데이터 정리하기</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="11. 데이터 분석 및 시각화하기" href="11_data_analysis.html" />
+    <link rel="prev" title="9. 투자 참고용 데이터 수집하기" href="09_other_data.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/10_bind_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/10_bind_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   10.1 주가 정리하기
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   10.2 재무제표 정리하기
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   10.3 가치지표 정리하기
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>10. 데이터 정리하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>지금까지 API와 크롤링을 통해 여러 금융 데이터를 수집하는 방법을 배웠습니다. 이번 장에서는 각각 csv 파일로 저장된 주가, 재무제표, 가치지표 데이터들을 하나로 합친 후 저장하는 과정을 살펴보겠습니다.</p>
+<div class="section" id="id2">
+<h2>10.1 주가 정리하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>주가는 data/KOR_price 폴더 내에 티커_price.csv 파일로 저장되어 있습니다. 해당 파일들을 불러온 후 데이터를 묶는 작업을 통해 하나의 파일로 합치는 방법을 알아보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">price_list</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">))):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">price_list</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_price/&#39;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;_price.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+<span class="n">price_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">tic</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">tic</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">price_list</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+<span class="n">price_list</span> <span class="o">=</span> <span class="n">price_list</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████| 2196/2196 [00:08&lt;00:00, 267.97it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price_list</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>005930</th>
+      <th>000660</th>
+      <th>035420</th>
+      <th>051910</th>
+      <th>207940</th>
+      <th>035720</th>
+      <th>005380</th>
+      <th>006400</th>
+      <th>068270</th>
+      <th>000270</th>
+      <th>...</th>
+      <th>038160</th>
+      <th>033600</th>
+      <th>195440</th>
+      <th>058420</th>
+      <th>121890</th>
+      <th>114570</th>
+      <th>080440</th>
+      <th>347140</th>
+      <th>158310</th>
+      <th>028040</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2016-04-14</th>
+      <td>26000</td>
+      <td>27250</td>
+      <td>134791</td>
+      <td>338500</td>
+      <td>NaN</td>
+      <td>100300</td>
+      <td>152000</td>
+      <td>104000</td>
+      <td>102783</td>
+      <td>48050</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>1910</td>
+      <td>NaN</td>
+      <td>30125</td>
+      <td>7812</td>
+      <td>66222</td>
+      <td>8153</td>
+      <td>NaN</td>
+      <td>10800</td>
+      <td>4485.0</td>
+    </tr>
+    <tr>
+      <th>2016-04-15</th>
+      <td>26000</td>
+      <td>27650</td>
+      <td>134791</td>
+      <td>335000</td>
+      <td>NaN</td>
+      <td>101200</td>
+      <td>151500</td>
+      <td>106500</td>
+      <td>101102</td>
+      <td>48150</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>1930</td>
+      <td>NaN</td>
+      <td>29091</td>
+      <td>7841</td>
+      <td>67052</td>
+      <td>8153</td>
+      <td>NaN</td>
+      <td>10000</td>
+      <td>4590.0</td>
+    </tr>
+    <tr>
+      <th>2016-04-18</th>
+      <td>25980</td>
+      <td>27200</td>
+      <td>132388</td>
+      <td>337000</td>
+      <td>NaN</td>
+      <td>102200</td>
+      <td>154000</td>
+      <td>107500</td>
+      <td>98018</td>
+      <td>49050</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>1865</td>
+      <td>NaN</td>
+      <td>33419</td>
+      <td>7694</td>
+      <td>68579</td>
+      <td>8153</td>
+      <td>NaN</td>
+      <td>9530</td>
+      <td>4695.0</td>
+    </tr>
+    <tr>
+      <th>2016-04-19</th>
+      <td>25760</td>
+      <td>27450</td>
+      <td>133990</td>
+      <td>326500</td>
+      <td>NaN</td>
+      <td>102500</td>
+      <td>153000</td>
+      <td>106500</td>
+      <td>99046</td>
+      <td>48950</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>1900</td>
+      <td>NaN</td>
+      <td>38296</td>
+      <td>7664</td>
+      <td>68108</td>
+      <td>8153</td>
+      <td>NaN</td>
+      <td>10500</td>
+      <td>5630.0</td>
+    </tr>
+    <tr>
+      <th>2016-04-20</th>
+      <td>25980</td>
+      <td>27550</td>
+      <td>130986</td>
+      <td>322000</td>
+      <td>NaN</td>
+      <td>103100</td>
+      <td>151500</td>
+      <td>107000</td>
+      <td>96710</td>
+      <td>48350</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>1905</td>
+      <td>NaN</td>
+      <td>38643</td>
+      <td>7694</td>
+      <td>69050</td>
+      <td>8153</td>
+      <td>NaN</td>
+      <td>11050</td>
+      <td>5250.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 2197 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price_list</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>005930</th>
+      <th>000660</th>
+      <th>035420</th>
+      <th>051910</th>
+      <th>207940</th>
+      <th>035720</th>
+      <th>005380</th>
+      <th>006400</th>
+      <th>068270</th>
+      <th>000270</th>
+      <th>...</th>
+      <th>038160</th>
+      <th>033600</th>
+      <th>195440</th>
+      <th>058420</th>
+      <th>121890</th>
+      <th>114570</th>
+      <th>080440</th>
+      <th>347140</th>
+      <th>158310</th>
+      <th>028040</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-04-08</th>
+      <td>84700</td>
+      <td>144000</td>
+      <td>381500</td>
+      <td>810000</td>
+      <td>763000.0</td>
+      <td>548000</td>
+      <td>231500</td>
+      <td>657000</td>
+      <td>311500</td>
+      <td>87100</td>
+      <td>...</td>
+      <td>862.0</td>
+      <td>179</td>
+      <td>2075.0</td>
+      <td>2160</td>
+      <td>739</td>
+      <td>620</td>
+      <td>498</td>
+      <td>2080.0</td>
+      <td>505</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>2021-04-09</th>
+      <td>83600</td>
+      <td>140000</td>
+      <td>383500</td>
+      <td>812000</td>
+      <td>770000.0</td>
+      <td>558000</td>
+      <td>228500</td>
+      <td>663000</td>
+      <td>309500</td>
+      <td>84600</td>
+      <td>...</td>
+      <td>862.0</td>
+      <td>179</td>
+      <td>2075.0</td>
+      <td>2160</td>
+      <td>739</td>
+      <td>620</td>
+      <td>498</td>
+      <td>2080.0</td>
+      <td>505</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>2021-04-12</th>
+      <td>83200</td>
+      <td>137500</td>
+      <td>385500</td>
+      <td>817000</td>
+      <td>782000.0</td>
+      <td>558000</td>
+      <td>226000</td>
+      <td>655000</td>
+      <td>310500</td>
+      <td>84300</td>
+      <td>...</td>
+      <td>862.0</td>
+      <td>179</td>
+      <td>2075.0</td>
+      <td>2160</td>
+      <td>739</td>
+      <td>620</td>
+      <td>498</td>
+      <td>2080.0</td>
+      <td>505</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>2021-04-13</th>
+      <td>84000</td>
+      <td>139500</td>
+      <td>388500</td>
+      <td>868000</td>
+      <td>784000.0</td>
+      <td>558000</td>
+      <td>230000</td>
+      <td>690000</td>
+      <td>316000</td>
+      <td>85500</td>
+      <td>...</td>
+      <td>862.0</td>
+      <td>179</td>
+      <td>2075.0</td>
+      <td>2160</td>
+      <td>739</td>
+      <td>620</td>
+      <td>498</td>
+      <td>2080.0</td>
+      <td>505</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>2021-04-14</th>
+      <td>83600</td>
+      <td>137000</td>
+      <td>393500</td>
+      <td>891000</td>
+      <td>789000.0</td>
+      <td>558000</td>
+      <td>234000</td>
+      <td>695000</td>
+      <td>313500</td>
+      <td>86700</td>
+      <td>...</td>
+      <td>862.0</td>
+      <td>179</td>
+      <td>2075.0</td>
+      <td>2160</td>
+      <td>739</td>
+      <td>620</td>
+      <td>498</td>
+      <td>2080.0</td>
+      <td>505</td>
+      <td>6.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 2197 columns</p>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>티커가 저장된 csv 파일을 불러온 후 티커를 6자리로 맞춰줍니다.</p></li>
+<li><p>빈 딕셔너리인 price_list를 생성합니다.</p></li>
+<li><p>for loop 구문을 이용해 종목별 주가 데이터를 불러옵니다.</p></li>
+<li><p>종가에 해당하는 Close만을 선택한 후, 데이터프레임 형태로 만듭니다.</p></li>
+<li><p>간혹 결측치가 발생할 수 있으므로, <code class="docutils literal notranslate"><span class="pre">fillna()</span></code> 함수를 통해 결측치에는 전일 데이터를 사용합니다.</p></li>
+</ol>
+<p>해당 작업을 통해 개별 csv 파일로 흩어져 있던 가격 데이터가 하나의 데이터로 묶이게 됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price_list</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_price.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>마지막으로 해당 데이터를 data 폴더에 KOR_price.csv 파일로 저장합니다.</p>
+</div>
+<div class="section" id="id3">
+<h2>10.2 재무제표 정리하기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>재무제표는 data/KOR_fs 폴더 내 티커_fs.csv 파일로 저장되어 있습니다. 주가는 하나의 열로 이루어져 있어 데이터를 정리하는 것이 간단했지만, 재무제표는 각 종목별 재무 항목이 모두 달라 정리하기 번거롭습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">data_fs</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">))):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">data_fs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_fs/&#39;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;_fs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████| 2196/2196 [00:04&lt;00:00, 531.47it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<p>주가와 동일하게 먼저 티커 데이터를 읽어온 후, 이를 바탕으로 종목별 재무제표 데이터를 읽어와 딕셔너리에 저장합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fs_item</span> <span class="o">=</span> <span class="n">data_fs</span><span class="p">[</span><span class="s1">&#39;005930&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">fs_item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>237
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fs_item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;매출액&#39;, &#39;매출원가&#39;, &#39;매출총이익&#39;, &#39;판매비와관리비&#39;, &#39;인건비&#39;, &#39;유무형자산상각비&#39;, &#39;연구개발비&#39;, &#39;광고선전비&#39;,
+       &#39;판매비&#39;, &#39;관리비&#39;,
+       ...
+       &#39;자기주식의취득&#39;, &#39;자본구성항목의감소&#39;, &#39;기타재무활동으로인한현금유출액&#39;, &#39;기타재무활동으로인한현금흐름&#39;,
+       &#39;영업투자재무활동기타현금흐름&#39;, &#39;연결범위변동으로인한현금의증가&#39;, &#39;환율변동효과&#39;, &#39;현금및현금성자산의증가&#39;,
+       &#39;기초현금및현금성자산&#39;, &#39;기말현금및현금성자산&#39;],
+      dtype=&#39;object&#39;, name=&#39;IFRS(연결)&#39;, length=237)
+</pre></div>
+</div>
+</div>
+</div>
+<p>다음으로 재무제표 항목의 기준을 정해줄 필요가 있습니다. 재무제표 작성 항목은 각 업종별로 상이하므로, 이를 모두 고려하면 지나치게 데이터가 커지게 됩니다. 또한 퀀트 투자에는 일반적이고 공통적인 항목을 주로 사용하므로 대표적인 재무 항목을 정해 이를 기준으로 데이터를 정리해도 충분합니다.</p>
+<p>따라서 기준점으로 첫 번째 리스트, 즉 삼성전자의 재무 항목을 선택합니다. 해당 기준을 바탕으로 재무제표 데이터를 정리하며, 전체 항목에 대한 정리 이전에 간단한 예시로 첫 번째 항목인 매출액 기준 데이터 정리를 살펴보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_fs</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data_fs</span><span class="p">:</span>
+    <span class="c1"># 해당 항목이 있을시 데이터를 선택</span>
+    <span class="k">if</span> <span class="s1">&#39;매출액&#39;</span> <span class="ow">in</span> <span class="n">data_fs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="n">select_fs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_fs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;매출액&#39;</span><span class="p">],</span> <span class="p">:]</span>
+    <span class="c1"># 해당 항목이 존재하지 않을 시, NA로 된 데이터프레임 생성    </span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">select_fs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Blank&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]})</span>
+        
+<span class="n">select_fs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">select_fs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>      
+
+<span class="n">select_fs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>2017/12</th>
+      <th>2018/12</th>
+      <th>2019/12</th>
+      <th>2020/12</th>
+      <th>Blank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>005930</th>
+      <th>매출액</th>
+      <td>2395754.0</td>
+      <td>2437714.0</td>
+      <td>2304009.0</td>
+      <td>2368070.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>000660</th>
+      <th>매출액</th>
+      <td>301094.0</td>
+      <td>404451.0</td>
+      <td>269907.0</td>
+      <td>319004.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>035420</th>
+      <th>매출액</th>
+      <td>46785.0</td>
+      <td>55869.0</td>
+      <td>43562.0</td>
+      <td>53041.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>051910</th>
+      <th>매출액</th>
+      <td>256980.0</td>
+      <td>281830.0</td>
+      <td>273531.0</td>
+      <td>300765.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>207940</th>
+      <th>매출액</th>
+      <td>4646.0</td>
+      <td>5358.0</td>
+      <td>7016.0</td>
+      <td>11648.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>select_fs의 빈 딕셔너리를 만들어 줍니다.</p></li>
+<li><p>각 종목들의 재무제표 중(data_fs) 매출액이 존재한다면 해당 행을 저장하고, 그렇지 않으면 NA로 이루어진 빈 데이터프레임을 저장합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수를 통해 행의 형태로 저장합니다.</p></li>
+</ol>
+<p>합쳐진 데이터를 살펴보면 Blank 열이 존재하며, 이는 매출액 항목이 없는 종목의 경우 NA 데이터 프레임을 저장해 생긴 결과입니다. 이를 고려해 데이터를 클렌징합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_fs</span> <span class="o">=</span> <span class="n">select_fs</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Blank&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">select_fs</span> <span class="o">=</span> <span class="n">select_fs</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">select_fs</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span>
+
+<span class="n">select_fs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2017/12</th>
+      <th>2018/12</th>
+      <th>2019/12</th>
+      <th>2020/12</th>
+    </tr>
+    <tr>
+      <th>종목코드</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>005930</th>
+      <td>2395754.0</td>
+      <td>2437714.0</td>
+      <td>2304009.0</td>
+      <td>2368070.0</td>
+    </tr>
+    <tr>
+      <th>000660</th>
+      <td>301094.0</td>
+      <td>404451.0</td>
+      <td>269907.0</td>
+      <td>319004.0</td>
+    </tr>
+    <tr>
+      <th>035420</th>
+      <td>46785.0</td>
+      <td>55869.0</td>
+      <td>43562.0</td>
+      <td>53041.0</td>
+    </tr>
+    <tr>
+      <th>051910</th>
+      <td>256980.0</td>
+      <td>281830.0</td>
+      <td>273531.0</td>
+      <td>300765.0</td>
+    </tr>
+    <tr>
+      <th>207940</th>
+      <td>4646.0</td>
+      <td>5358.0</td>
+      <td>7016.0</td>
+      <td>11648.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">drop()</span></code> 함수를 통해 Blank 열을 삭제합니다.</p></li>
+<li><p>열을 날짜 순서대로 정리합니다.</p></li>
+<li><p>인덱스가 티커와 재무제표 항목 두개로 이루어져 있으므로, 티커만으로 변경합니다.</p></li>
+</ol>
+<p>해당 과정을 통해 전 종목의 매출액 데이터가 연도별로 정리되었습니다. for loop 구문을 이용해 모든 재무 항목에 대한 데이터를 정리하는 방법은 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="c1"># 기준이 되는 재무제표 항목</span>
+<span class="n">fs_item</span> <span class="o">=</span> <span class="n">data_fs</span><span class="p">[</span><span class="s1">&#39;005930&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+
+<span class="n">fs_list</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">fs_item</span><span class="p">):</span>    
+    
+    <span class="n">select_fs</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">data_fs</span><span class="p">:</span>        
+        
+        <span class="c1"># 해당 항목이 있으면 데이터 선택</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data_fs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+            <span class="n">select_fs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_fs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">i</span><span class="p">],</span> <span class="p">:]</span>
+        <span class="c1"># 해당 항목 없으면 NA 데이터프레임 생성</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">select_fs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Blank&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]})</span>
+    
+    <span class="c1"># 데이터 프레임으로 합쳐주기</span>
+    <span class="n">select_fs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">select_fs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># 빈 컬럼 삭제 후 클렌징</span>
+    <span class="n">select_fs</span> <span class="o">=</span> <span class="n">select_fs</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="o">~</span><span class="n">select_fs</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Blank&#39;</span><span class="p">])]</span>
+    <span class="n">select_fs</span> <span class="o">=</span> <span class="n">select_fs</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">select_fs</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span>
+    
+    <span class="n">fs_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">select_fs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████| 237/237 [08:06&lt;00:00,  2.05s/it]
+</pre></div>
+</div>
+</div>
+</div>
+<p>위 과정을 거치면 각 재무 항목에 대한 전 종목의 연도별 데이터가 정리되어 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/KOR_fs.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">fs_list</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>마지막으로 해당 데이터를 data 폴더 내에 저장합니다. 딕셔너리 형태를 그대로 저장하기 위해 피클 형태로 저장합니다.</p>
+</div>
+<div class="section" id="id4">
+<h2>10.3 가치지표 정리하기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>가치지표는 data/KOR_value 폴더 내 티커_value.csv 파일로 저장되어 있습니다. 재무제표를 정리하는 방법과 거의 동일합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">KOR_ticker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_ticker.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="n">data_value</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">KOR_ticker</span><span class="p">))):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">read_value</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_value/&#39;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;_value.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>     
+        
+    <span class="n">data_value</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">read_value</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████| 2196/2196 [00:08&lt;00:00, 271.12it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<p>먼저 티커에 해당하는 파일을 불러온 후 <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> 구문을 통해 가치지표 데이터를 data_value 리스트에 저장합니다. 단, csv 내에 데이터가 <a class="reference internal" href="#value-form"><span class="std std-numref">Table 6</span></a>와 같이 행의 형태로 저장되어 있으므로, <code class="docutils literal notranslate"><span class="pre">transpose()</span></code> 함수를 이용해 형태를 바꿔줍니다.</p>
+<table class="colwidths-auto table" id="value-form">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">가치지표의 저장 예시</span><a class="headerlink" href="#value-form" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>밸류</p></th>
+<th class="head"><p>내용</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PER</p></td>
+<td><p>Number 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>PBR</p></td>
+<td><p>Number 2</p></td>
+</tr>
+<tr class="row-even"><td><p>PCR</p></td>
+<td><p>Number 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>PSR</p></td>
+<td><p>Number 4</p></td>
+</tr>
+</tbody>
+</table>
+<p>또한 가치지표가 없어 빈 데이터의 경우 NA로 채워주도록 합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">data_value</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">value_list</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>0</th>
+      <th>PBR</th>
+      <th>PCR</th>
+      <th>PER</th>
+      <th>PSR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>005930</th>
+      <th>2020/12</th>
+      <td>NaN</td>
+      <td>1.817233</td>
+      <td>7.680882</td>
+      <td>19.219868</td>
+      <td>2.117597</td>
+    </tr>
+    <tr>
+      <th>000660</th>
+      <th>2020/12</th>
+      <td>NaN</td>
+      <td>1.956426</td>
+      <td>8.246823</td>
+      <td>21.357349</td>
+      <td>3.183544</td>
+    </tr>
+    <tr>
+      <th>035420</th>
+      <th>2020/12</th>
+      <td>NaN</td>
+      <td>7.730534</td>
+      <td>44.096413</td>
+      <td>63.682596</td>
+      <td>12.031509</td>
+    </tr>
+    <tr>
+      <th>051910</th>
+      <th>2020/12</th>
+      <td>NaN</td>
+      <td>3.260929</td>
+      <td>10.490713</td>
+      <td>119.536000</td>
+      <td>2.037277</td>
+    </tr>
+    <tr>
+      <th>207940</th>
+      <th>2020/12</th>
+      <td>NaN</td>
+      <td>11.279760</td>
+      <td>256.671747</td>
+      <td>215.242158</td>
+      <td>44.534135</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수를 통해 딕셔너리의 데이터들을 데이터프레임 형태로 묶어줍니다. 데이터를 확인해보면 PER, PBR, PCR, PSR 열 외에 불필요한 NA로 이루어진 열이 존재합니다. 해당 열을 삭제한 후 정리 작업을 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value_list</span> <span class="o">=</span> <span class="n">value_list</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;PER&#39;</span><span class="p">,</span> <span class="s1">&#39;PBR&#39;</span><span class="p">,</span> <span class="s1">&#39;PCR&#39;</span><span class="p">,</span> <span class="s1">&#39;PSR&#39;</span><span class="p">]]</span>
+<span class="n">value_list</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">KOR_ticker</span><span class="p">[</span><span class="s1">&#39;종목코드&#39;</span><span class="p">]</span>
+
+<span class="n">value_list</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PER</th>
+      <th>PBR</th>
+      <th>PCR</th>
+      <th>PSR</th>
+    </tr>
+    <tr>
+      <th>종목코드</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>005930</th>
+      <td>19.219868</td>
+      <td>1.817233</td>
+      <td>7.680882</td>
+      <td>2.117597</td>
+    </tr>
+    <tr>
+      <th>000660</th>
+      <td>21.357349</td>
+      <td>1.956426</td>
+      <td>8.246823</td>
+      <td>3.183544</td>
+    </tr>
+    <tr>
+      <th>035420</th>
+      <td>63.682596</td>
+      <td>7.730534</td>
+      <td>44.096413</td>
+      <td>12.031509</td>
+    </tr>
+    <tr>
+      <th>051910</th>
+      <td>119.536000</td>
+      <td>3.260929</td>
+      <td>10.490713</td>
+      <td>2.037277</td>
+    </tr>
+    <tr>
+      <th>207940</th>
+      <td>215.242158</td>
+      <td>11.279760</td>
+      <td>256.671747</td>
+      <td>44.534135</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>열 이름이 가치지표에 해당하는 부분만 선택합니다.</p></li>
+<li><p>인덱스를 티커로 변경합니다.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value_list</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/KOR_value.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>마지막으로 data 폴더 내에 KOR_value.csv 파일로 저장합니다.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="09_other_data.html" title="previous page">9. 투자 참고용 데이터 수집하기</a>
+    <a class='right-next' id="next-link" href="11_data_analysis.html" title="next page">11. 데이터 분석 및 시각화하기</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

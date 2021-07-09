@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt;</title>
+    <title>4. 크롤링 이해하기</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -40,6 +40,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -78,6 +79,7 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -91,6 +93,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. 금융 데이터 수집하기 (기본)" href="05_crawl_practice.html" />
+    <link rel="prev" title="3. API를 이용한 데이터 수집" href="03_api.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -125,7 +129,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="01_data_programming.html">
    1. 퀀트 투자의 심장: 데이터와 프로그래밍
@@ -141,14 +145,69 @@ commentsRunWhenDOMLoaded(addUtterances);
    3. API를 이용한 데이터 수집
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. 크롤링 이해하기
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_crawl_practice.html">
    5. 금융 데이터 수집하기 (기본)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="08_other_data.html">
-   8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
   </a>
  </li>
 </ul>
@@ -237,7 +296,51 @@ commentsRunWhenDOMLoaded(addUtterances);
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-post">
+   4.1 GET과 POST 방식 이해하기
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get">
+     4.1.1 GET 방식
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#post">
+     4.1.2 POST 방식
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.2 크롤링 예제
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     4.2.1 명언 크롤링하기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     4.2.2 금융 속보 크롤링
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     4.2.3 기업공시채널에서 오늘의 공시 불러오기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     4.2.4 네이버 금융에서 주식티커 크롤링
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
         </nav>
@@ -249,9 +352,319 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="id1">
+<h1>4. 크롤링 이해하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>API를 이용하면 데이터를 매우 쉽게 수집할 수 있지만, 국내 주식 데이터를 다운로드 하기에는 한계가 있으며, 원하는 데이터가 API의 형태로 제공된다는 보장도 없습니다. 따라서 우리는 필요한 데이터를 얻기 위해 직접 찾아 나서야 합니다.</p>
+<p>각종 금융 웹사이트에는 주가, 재무정보 등 우리가 원하는 대부분의 주식 정보가 제공되고 있으며, API를 활용할 수 없는 경우에도 크롤링을 통해 이러한 데이터를 수집할 수 있습니다. 크롤링 혹은 스크래핑이란 웹사이트에서 원하는 정보를 수집하는 기술입니다. 대부분의 금융 웹사이트는 간단한 형태로 작성되어 있어, 몇 가지 기술만 익히면 어렵지 않게 데이터를 크롤링할 수 있습니다. 이번 장에서는 크롤링에 대한 간단한 설명과 예제를 살펴보겠습니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>크롤링을 할 때 주의해야 할 점이 있습니다. 특정 웹사이트의 페이지를 쉬지 않고 크롤링하는 행위를 무한 크롤링이라고 합니다. 무한 크롤링은 해당 웹사이트의 자원을 독점하게 되어 타인의 사용을 막게 되며 웹사이트에 부하를 주게 됩니다. 일부 웹사이트에서는 동일한 IP로 쉬지 않고 크롤링을 할 경우 접속을 막아버리는 경우도 있습니다. 따라서 하나의 페이지를 크롤링한 후 1~2초 가량 정지하고 다시 다음 페이지를 크롤링하는 것이 좋습니다.</p>
+<p>또한 신문기사나 책, 논문, 사진 등 저작권이 있는 자료를 통해 부당이득을 얻는다는 등의 행위를 할 경우 법적 제재를 받을 수 있습니다.</p>
+<p>이 책에서 설명하는 크롤링을 통해, 상업적 가치가 있는 데이터에 접근을 시도하여 발생할 수 있는 어떠한 상황에 대해서도 책임을 질 수 없다는 점을 명심하시기 바랍니다.</p>
+</div>
+<div class="section" id="get-post">
+<h2>4.1 GET과 POST 방식 이해하기<a class="headerlink" href="#get-post" title="Permalink to this headline">¶</a></h2>
+<p>우리가 인터넷에 접속해 서버에 파일을 요청(Request)하면, 서버는 이에 해당하는 파일을 우리에게 보내줍니다(Response). 크롬과 같은 웹 브라우저는 이러한 과정을 사람이 수행하기 편하고 시각적으로 보기 편하도록 만들어진 것이며, 인터넷 주소는 서버의 주소를 기억하기 쉽게 만든 것입니다. 우리가 서버에 데이터를 요청하는 형태는 다양하지만 크롤링에서는 주로 GET과 POST 방식을 사용합니다.</p>
+<div class="figure align-default" id="crawl-flow">
+<img alt="_images/crawl_flow.png" src="_images/crawl_flow.png" />
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">클라이언트와 서버 간의 요청/응답 과정</span><a class="headerlink" href="#crawl-flow" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="get">
+<h3>4.1.1 GET 방식<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h3>
+<p>GET 방식은 인터넷 주소를 기준으로 이에 해당하는 데이터나 파일을 요청하는 것입니다. 주로 클라이언트가 요청하는 쿼리를 앰퍼샌드(&amp;) 혹은 물음표(?) 형식으로 결합해 서버에 전달합니다.</p>
+<p>네이버 홈페이지에 접속한 후 [퀀트]를 검색하면, 주소 끝부분에 [&amp;query=퀀트]가 추가되며 이에 해당하는 페이지의 내용을 보여줍니다. 즉, 해당 페이지는 GET 방식을 사용하고 있으며 입력 종류는 query, 입력값은 퀀트임을 알 수 있습니다.</p>
+<div class="figure align-default" id="naver-search1">
+<img alt="_images/04_naver_search1.png" src="_images/04_naver_search1.png" />
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">네이버 검색 결과</span><a class="headerlink" href="#naver-search1" title="Permalink to this image">¶</a></p>
+</div>
+<p>이번에는 [헤지펀드]를 검색하면, 주소 끝부분이 [&amp;query=헤지펀드&amp;oquery=퀀트…]로 변경됩니다. 현재 입력값은 헤지펀드, 기존 입력값은 퀀트이며 이러한 과정을 통해 연관검색어가 생성됨도 유추해볼 수 있습니다.</p>
+<div class="figure align-default" id="naver-search2">
+<img alt="_images/04_naver_search2.png" src="_images/04_naver_search2.png" />
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">네이버 재검색 결과</span><a class="headerlink" href="#naver-search2" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="post">
+<h3>4.1.2 POST 방식<a class="headerlink" href="#post" title="Permalink to this headline">¶</a></h3>
+<p>POST 방식은 사용자가 필요한 값을 추가해서 요청하는 방법입니다. GET 방식과 달리 클라이언트가 요청하는 쿼리를 body에 넣어서 전송하므로 요청 내역을 직접 볼 수 없습니다.</p>
+<p>동행복권 홈페이지에 접속해 [당첨결과] 메뉴를 확인해보겠습니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.dhlottery.co.kr/gameResult.do?method=byWin
+</pre></div>
+</div>
+<div class="figure align-default" id="crawl-lotto">
+<img alt="_images/crawl_lotto.png" src="_images/crawl_lotto.png" />
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">회차별 당첨번호</span><a class="headerlink" href="#crawl-lotto" title="Permalink to this image">¶</a></p>
+</div>
+<p>이번엔 회차 바로가기를 변경한 후 [조회]를 클릭합니다. 페이지의 내용은 선택일 기준으로 변경되었지만, 주소는 변경되지 않고 그대로 남아 있습니다. GET 방식에서는 입력 항목에 따라 웹페이지 주소가 변경되었지만, POST 방식을 사용해 서버에 데이터를 요청하는 해당 웹사이트는 그렇지 않은 것을 알 수 있습니다.</p>
+<p>POST 방식의 데이터 요청 과정을 살펴보려면 개발자 도구를 이용해야 하며, 크롬에서는 [F12]키를 눌러 개발자 도구 화면을 열 수 있습니다. 개발자 도구 화면을 연 상태에서 다시 한번 [조회]를 클릭해봅니다. [Network] 탭을 클릭하면, [조회]을 클릭함과 동시에 브라우저와 서버 간의 통신 과정을 살펴볼 수 있습니다. 이 중 상단의 gameResult.do?method=byWin 이라는 항목이 POST 형태임을 알 수 있습니다.</p>
+<div class="figure align-default" id="crawl-lotto-post">
+<img alt="_images/crawl_lotto_post.png" src="_images/crawl_lotto_post.png" />
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">크롬 개발자도구의 Network 화면</span><a class="headerlink" href="#crawl-lotto-post" title="Permalink to this image">¶</a></p>
+</div>
+<p>해당 메뉴를 클릭하면 통신 과정을 좀 더 자세히 알 수 있습니다. 가장 하단의 Form Data에는 서버에 데이터를 요청하는 내역이 있습니다. drwNo에는와 dwrNoList에는 선택한 회차의 숫자가 들어가있습니다.</p>
+<div class="figure align-default" id="crawl-lotto-query">
+<img alt="_images/crawl_lotto_query.png" src="_images/crawl_lotto_query.png" />
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">POST 방식의 서버 요청 내역</span><a class="headerlink" href="#crawl-lotto-query" title="Permalink to this image">¶</a></p>
+</div>
+<p>이처럼 POST 방식은 요청하는 데이터에 대한 쿼리가 GET 방식처럼 URL을 통해 전송되는 것이 아닌 body를 통해 전송되므로, 이에 대한 정보는 웹 브라우저를 통해 확인할 수 없습니다</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>4.2 크롤링 예제<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>일반적으로 크롤링은 <a class="reference internal" href="#crawl-flowchart"><span class="std std-numref">Fig. 27</span></a>의 과정을 따릅니다. 먼저, request 패키지의 <code class="docutils literal notranslate"><span class="pre">get()</span></code> 혹은 <code class="docutils literal notranslate"><span class="pre">post()</span></code> 함수를 이용해 데이터를 다운로드한 후 bs4 패키지의 함수들을 이용해 원하는 데이터를 찾는 과정으로 이루어집니다. 기본적인 크롤링을 시작으로 GET 방식과 POST 방식으로 데이터를 받는 예제를 학습해 보겠습니다.</p>
+<div class="figure align-default" id="crawl-flowchart">
+<img alt="_images/crawl_flowchart.png" src="_images/crawl_flowchart.png" />
+<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">일반적인 크롤링 과정</span><a class="headerlink" href="#crawl-flowchart" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="id3">
+<h3>4.2.1 명언 크롤링하기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>크롤링의 간단한 예제로 ‘Quotes to Scrape’ 사이트에 있는 명언을 수집하겠습니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">quotes</span><span class="o">.</span><span class="n">toscrape</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>먼저 해당사이트에 접속한 후, 명언에 해당하는 부분에 마우스 커서를 올려둔 후 마우스 오른쪽 버튼을 클릭하고 [검사]를 선택하면 개발자 도구 화면이 나타납니다. 여기서 해당 글자가 HTML 내에서 어떤 부분에 위치하는지 확인할 수 있습니다. 각 네모에 해당하는 부분은 [div 태그의 quote 클래스]에 위치하고 있으며, 명언은 [div 태그 → span 태그의 text 클래스]에, 말한 사람은 [div 태그 → span 태그 → small 태그의 author 클래스]에 위치하고 있습니다.</p>
+<div class="figure align-default" id="crawl-quote">
+<img alt="_images/crawl_quote.png" src="_images/crawl_quote.png" />
+<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">Quotes to Scrape의 명언부분 HTML</span><a class="headerlink" href="#crawl-quote" title="Permalink to this image">¶</a></p>
+</div>
+<p>먼저 해당 페이지의 내용을 불러옵니다.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://quotes.toscrape.com/&#39;</span>
+<span class="n">quote</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">quote</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>먼저 url에 해당 주소를 입력한 후 <code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수를 이용해 해당 페이지의 내용을 받았습니다. 이를 확인해보면 Response가 200, 즉 데이터가 이상 없이 받아졌음이 확인됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quote</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n\t&lt;meta charset=&quot;UTF-8&quot;&gt;\n\t&lt;title&gt;Quotes to Scrape&lt;/title&gt;\n    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/bootstrap.min.css&quot;&gt;\n    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/main.css&quot;&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;div class=&quot;container&quot;&gt;\n        &lt;div class=&quot;row header-box&quot;&gt;\n            &lt;div class=&quot;col-md-8&quot;&gt;\n                &lt;h1&gt;\n                    &lt;a href=&quot;/&quot; style=&quot;text-decoration: none&quot;&gt;Quotes to Scrape&lt;/a&gt;\n                &lt;/h1&gt;\n            &lt;/div&gt;\n            &lt;div class=&quot;col-md-4&quot;&gt;\n                &lt;p&gt;\n                \n                    &lt;a href=&quot;/login&quot;&gt;Login&lt;/a&gt;\n                \n                &lt;/p&gt;\n            &lt;/div&gt;\n        &lt;/div&gt;\n    \n\n&lt;div class=&quot;row&quot;&gt;\n    &lt;div class=&quot;col-md-8&quot;&gt;\n\n    &lt;div class=&quot;quote&quot; itemscope itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;\n        &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;\xe2\x80\x9cThe world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.\xe2\x80\x9d&lt;/span&gt;\n        &lt;span&gt;by &lt;small class=&quot;author&quot; it&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>content를 통해 함수를 통해 받아온 내용을 확인할 수 있지만, 텍스트 형태로 되어있습니다. <code class="docutils literal notranslate"><span class="pre">BeautifulSoup()</span></code> 함수를 이용해 원하는 HTML 요소에 접근하기 쉬운 형태로 변경합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">quote_html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">quote</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">quote_html</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;meta charset=&quot;utf-8&quot;/&gt;,
+ &lt;title&gt;Quotes to Scrape&lt;/title&gt;,
+ &lt;link href=&quot;/static/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;/&gt;,
+ &lt;link href=&quot;/static/main.css&quot; rel=&quot;stylesheet&quot;/&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">BeautifulSoup()</span></code> 함수 내에 HTML 정보에 해당하는 quote.content와 파싱 방법에 해당하는 html.parser를 입력하면 개발자 도구 화면에서 보던 것과 비슷한 형태로 변경되며, 이를 통해 원하는 요소의 데이터를 읽어올 수 있습니다.</p>
+<p>우리는 개발자 도구 화면에서 명언에 해당하는 부분이 [div 태그의 quote 클래스 → span 태그의 text 클래스]에 위치하고 있음을 살펴보았습니다. 이를 활용해 명언만을 추출하는 방법은 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quote_div</span> <span class="o">=</span> <span class="n">quote_html</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;quote&#39;</span><span class="p">})</span>
+<span class="n">quote_div</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;
+&lt;a href=&quot;/author/Albert-Einstein&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;change,deep-thoughts,thinking,world&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/change/page/1/&quot;&gt;change&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/deep-thoughts/page/1/&quot;&gt;deep-thoughts&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/thinking/page/1/&quot;&gt;thinking&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/world/page/1/&quot;&gt;world&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">find_all()</span></code> 함수를 이용할 경우 원하는 태그의 값들을 찾아올 수 있습니다. 먼저 태그에 해당하는 div를 입력하고, class에 해당하는 quote는 딕셔너리 형태로 입력합니다. 해당 내역을 출력해보면 원하는 내용을 찾아왔으며, 이제 여기서 span 태그의 text 클래스에 해당하는 내용을 추가로 찾겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quote_div</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;text&#39;</span><span class="p">})[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>다시 한번 <code class="docutils literal notranslate"><span class="pre">find_all()</span></code> 함수를 이용해 원하는 부분을 입력하면 우리가 원하던 명언에 해당하는 내용이 찾아지며, <code class="docutils literal notranslate"><span class="pre">.text</span></code>를 통해 텍스트 데이터만을 출력할 수 있습니다. <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> 구문을 이용하면 명언에 해당하는 부분을 한번에 추출할 수 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quote_div</span> <span class="o">=</span> <span class="n">quote_html</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;quote&#39;</span><span class="p">})</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">quote_div</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;text&#39;</span><span class="p">})[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”
+“It is our choices, Harry, that show what we truly are, far more than our abilities.”
+“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”
+“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”
+“Imperfection is beauty, madness is genius and it&#39;s better to be absolutely ridiculous than absolutely boring.”
+“Try not to become a man of success. Rather become a man of value.”
+“It is better to be hated for what you are than to be loved for what you are not.”
+“I have not failed. I&#39;ve just found 10,000 ways that won&#39;t work.”
+“A woman is like a tea bag; you never know how strong it is until it&#39;s in hot water.”
+“A day without sunshine is like, you know, night.”
+</pre></div>
+</div>
+</div>
+</div>
+<p>위 예제에서는 간단하게 원하는 데이터를 찾았지만, 태그를 여러번 찾아 내려가야 할 경우 <code class="docutils literal notranslate"><span class="pre">find_all()</span></code> 함수를 이용하는 방법은 매우 번거롭습니다. <code class="docutils literal notranslate"><span class="pre">select()</span></code> 함수의 경우 좀더 쉬운 방법으로 원하는 데이터를 찾을 수 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quote_text</span> <span class="o">=</span> <span class="n">quote_html</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.quote &gt; span.text&#39;</span><span class="p">)</span>
+
+<span class="n">quote_text</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“It is our choices, Harry, that show what we truly are, far more than our abilities.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“Imperfection is beauty, madness is genius and it&#39;s better to be absolutely ridiculous than absolutely boring.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“Try not to become a man of success. Rather become a man of value.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“It is better to be hated for what you are than to be loved for what you are not.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“I have not failed. I&#39;ve just found 10,000 ways that won&#39;t work.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“A woman is like a tea bag; you never know how strong it is until it&#39;s in hot water.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“A day without sunshine is like, you know, night.”&lt;/span&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">select()</span></code> 함수는 찾고자 하는 태그를 입력하며, 클래스명이 존재할 경우 점(.)을 붙여줍니다. 또한 여러 태그를 찾아 내려가야할 경우 화살표를 이용해 순서대로 입력해주면 됩니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">quote_text</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&#39;,
+ &#39;“It is our choices, Harry, that show what we truly are, far more than our abilities.”&#39;,
+ &#39;“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”&#39;,
+ &#39;“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”&#39;,
+ &quot;“Imperfection is beauty, madness is genius and it&#39;s better to be absolutely ridiculous than absolutely boring.”&quot;,
+ &#39;“Try not to become a man of success. Rather become a man of value.”&#39;,
+ &#39;“It is better to be hated for what you are than to be loved for what you are not.”&#39;,
+ &quot;“I have not failed. I&#39;ve just found 10,000 ways that won&#39;t work.”&quot;,
+ &quot;“A woman is like a tea bag; you never know how strong it is until it&#39;s in hot water.”&quot;,
+ &#39;“A day without sunshine is like, you know, night.”&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>리스트 내에서 <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code>를 이용할 경우 코드가 더욱 깔끔해집니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quote_author</span> <span class="o">=</span> <span class="n">quote_html</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.quote &gt; span &gt; small.author&#39;</span><span class="p">)</span>
+
+<span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">quote_author</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Albert Einstein&#39;,
+ &#39;J.K. Rowling&#39;,
+ &#39;Albert Einstein&#39;,
+ &#39;Jane Austen&#39;,
+ &#39;Marilyn Monroe&#39;,
+ &#39;Albert Einstein&#39;,
+ &#39;André Gide&#39;,
+ &#39;Thomas A. Edison&#39;,
+ &#39;Eleanor Roosevelt&#39;,
+ &#39;Steve Martin&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>동일한 방법을 이용해 말한 사람 역시 손쉽게 추출이 가능합니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">BeautifulSoup()</span></code> 함수 내 파싱 방법으로 html.parser를 이용했습니다. 해당 함수에는 이 외에도 다양한 파서를 지원하며, 그 내용은 다음과 같습니다.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parser</p></th>
+<th class="head"><p>선언방법</p></th>
+<th class="head"><p>장점</p></th>
+<th class="head"><p>단점</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>html.parser</p></td>
+<td><p>BeautifulSoup(내용, ‘html.parser’)</p></td>
+<td><p>설치할 필요 없음 <br> 적당한 속도</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>lxml HTML parser</p></td>
+<td><p>BeautifulSoup(내용, ‘lxml’)</p></td>
+<td><p>매우 빠름</p></td>
+<td><p>lxml 추가 설치 필요</p></td>
+</tr>
+<tr class="row-even"><td><p>lxml XML parser</p></td>
+<td><p>BeautifulSoup(내용, ‘xml’)</p></td>
+<td><p>매우 빠름 <br> 유일하게 XML 파싱</p></td>
+<td><p>lxml 추가 설치 필요</p></td>
+</tr>
+<tr class="row-odd"><td><p>html5lib</p></td>
+<td><p>BeautifulSoup(내용, ‘html5lib’)</p></td>
+<td><p>웹 브라우저와 같은 방식으로 페이지 파싱. <br> 유효한 HTML5 생성</p></td>
+<td><p>html5lib 추가 설치 필요 <br> 매우 느림</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>4.2.2 금융 속보 크롤링<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>이번에는 금융 속보의 제목을 추출해보겠습니다. 먼저 네이버 금융에 접속한 후 [뉴스 → 실시간 속보]를 선택합니다. 이 중 뉴스의 제목에 해당하는 텍스트만 추출하고자 합니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://finance.naver.com/news/news_list.nhn?mode=LSS2D&amp;section_id=101&amp;section_id2=258
+</pre></div>
+</div>
+<p>개발자 도구 화면을 통헤 제목에 해당하는 부분은 [dl 태그 → dd 태그의 articleSubject 클래스 → a 태그 중 title 속성]에 위치하고 있음을 확인할 수 있습니다. 태그와 속성의 차이가 이해되지 않은 분은 2장을 다시 살펴보기 바랍니다.</p>
+<div class="figure align-default" id="crawl-naver-news">
+<img alt="_images/crawl_naver_news.png" src="_images/crawl_naver_news.png" />
+<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">실시간 속보의 제목 부분 HTML</span><a class="headerlink" href="#crawl-naver-news" title="Permalink to this image">¶</a></p>
+</div>
+<p>먼저 해당 페이지의 내용을 불러옵니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://finance.naver.com/news/news_list.nhn?mode=LSS2D&amp;section_id=101&amp;section_id2=258&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -259,81 +672,707 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
+<p>먼저 url에 해당 주소를 입력한 후 <code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수를 이용해 해당 페이지의 내용을 받아 저장합니다.</p>
+<p>우리는 개발자 도구 화면을 통해 제목에 해당하는 부분이 [dl 태그 → dd 태그의 articleSubject 클래스 → a 태그 중 title 속성]에 위치하고 있음을 살펴보았습니다. 이를 활용해 제목 부분만을 추출하는 방법은 다음과 같습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">text</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\n\n\n\n\n\n\n\n&lt;!--  global include --&gt;\n\n\t\n\t\n\t\n\t\n&lt;html lang=\&#39;ko\&#39;&gt;\n&lt;head&gt;\n\n\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t&lt;title&gt;네이버 금융&lt;/title&gt;\n\t\t\t\n\t\t\t\n\t\t\n\t\n\n\n\n\n\n\t\n\t\n\t\t&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;\n\t\n\n\n&lt;meta http-equiv=&quot;Content-Script-Type&quot; content=&quot;text/javascript&quot;&gt;\n&lt;meta http-equiv=&quot;Content-Style-Type&quot; content=&quot;text/css&quot;&gt;\n\n\n\n\n\n\t\n    \n        &lt;meta property=&quot;og:url&quot; content=&quot;http://finance.naver.com/news/news_list.nhn?mode=LSS2D&amp;section_id=101&amp;section_id2=258&amp;type=0&quot;/&gt;\n        \n\t\t\t\n\t\t    \n\t\t    \t&lt;meta property=&quot;og:title&quot; content=&quot;실시간 속보 : 네이버 금융&quot;/&gt;\n\t\t     \n\t\t\n\t\t\n\t\t\t\n\t\t\t   &lt;meta property=&quot;og:description&quot; content=&quot;관심종목의 실시간 주가를 가장 빠르게 확인하는 곳&quot;/&gt;\n\t\t    \n\t\t    \n\t\t\n\t\t \n\t\t\t\n\t\t\t    &lt;meta property=&quot;og:image&quot; content=&quot;https://ssl.pstatic.net/static/m/stock/im/2016/08/og_stock-200.png&quot;/&gt;\n\t\t    \n\t\t    \n\t\t\n    \n\n&lt;meta property=&quot;og:type&quot; content=&quot;article&quot;/&gt;\n&lt;meta property=&quot;og:article:thumbnailUrl&quot; content=&quot;&quot;/&gt;\n&lt;meta property=&quot;og:article:author&quot; content=&quot;네이버금융&quot;/&gt;\n&lt;meta property=&quot;og:article:author:url&quot; content=&quot;http://FINANCE.NAVER.COM&quot;/&gt;\n\n\n\n\n&lt;link rel=\&#39;stylesheet\&#39; type=\&#39;text/css\&#39; href=\&#39;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/css/finance_header.css\&#39;&gt;\n\n\t\n\t\n\t\n\t\n\t\t\n\t\t&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/css/newstock.css&quot;&gt;\n\t\t&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/css/common.css&quot;&gt;\n\t\t&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/css/layout.css&quot;&gt;\n\t\t&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/css/main.css&quot;&gt;\n\t\t&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/css/newstock2.css&quot;&gt;\n\t\t&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/css/newstock3.css&quot;&gt;\n\t\t&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/css/world.css&quot;&gt;\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t&lt;script type=&quot;text/javascript&quot; src=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/js/jindo.min.ns.1.5.3.euckr.js&quot;&gt;&lt;/script&gt;\n\t\t\t\t&lt;script type=&quot;text/javascript&quot; src=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/js/release/common.js&quot;&gt;&lt;/script&gt;\n\t\t\t\t&lt;script type=&quot;text/javascript&quot; src=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/js/jindoComponent/jindo.Component.1.0.3.js&quot;&gt;&lt;/script&gt;\n\t\t\t\t&lt;script type=&quot;text/javascript&quot; src=&quot;https://ssl.pstatic.net/imgstock/static.pc/20210130095334/js/nhn.autocomplete.stock.js&quot;&gt;&lt;/script&gt;\n\t\t\t\n\t\t\n\n\t\t\n\t\n\n\n\t&lt;link rel=&quot;shortcut icon&quot; href=&quot;https://www.naver.com/favicon.ico&quot; type=&quot;image/x-icon&quot;&gt;\n\t\n\t&lt;script type=&quot;text/javascript&quot;&gt;\n    (function(){\n        var sUserAgent = navigator.userAgent;\n        if(/iPhone|iPad/.test(sUserAgent)){\n            document.write(\n                [\n\t\t\t\t\t\&#39;&lt;link rel=&quot;apple-touch-icon-precomposed&quot; sizes=&quot;120x120&quot; href=&quot;https://ssl.pstatic.net/static/nfinance/ico/2018_ios_120X120_iphone.png&quot; /&gt;\&#39;,\n\t\t\t\t\t\&#39;&lt;link rel=&quot;apple-touch-icon-precomposed&quot; sizes=&quot;152x152&quot; href=&quot;https://ssl.pstatic.net/static/nfinance/ico/2018_ios_152x152_ipad.png&quot; /&gt;\&#39;,\n\t\t\t\t\t\&#39;&lt;link rel=&quot;apple-touch-icon-precomposed&quot; sizes=&quot;167x167&quot; href=&quot;https://ssl.pstatic.net/static/nfinance/ico/2018_ios_167x167_ipad_pro.png&quot; /&gt;\&#39;,\n\t\t\t\t\t\&#39;&lt;link rel=&quot;apple-touch-icon-precomposed&quot; sizes=&quot;180x180&quot; href=&quot;https://ssl.pstatic.net/static/nfinance/ico/2018_ios_180x180_iphone.png&quot; /&gt;\&#39;\n                ]\n                .join(\&#39;\\n\&#39;)\n            );\n        }\n\n        if(/Android/.test(sUserAgent)){\n            document.write(\n                [\n                    \&#39;&lt;link rel=&quot;apple-touch-icon-precomposed&quot; sizes=&quot;72x72&quot; href=&quot;https://ssl.pstatic.net/static/nfinance/ico/2018_android_72x72_xxxhpdi.png&quot; /&gt;\&#39;,\n                    \&#39;&lt;link rel=&quot;apple-touch-icon-precomposed&quot; sizes=&quot;96x96&quot; href=&quot;https://ssl.pstatic.net/static/nfinance/ico/2018_android_96x96_xxxhpdi.png&quot; /&gt;\&#39;,\n                    \&#39;&lt;link rel=&quot;apple-touch-icon-precomposed&quot; sizes=&quot;144x144&quot; href=&quot;https://ssl.pstatic.net/static/nfinance/ico/2018_android_144x144_xxxhpdi.png&quot; /&gt;\&#39;,\n                    \&#39;&lt;link rel=&quot;apple-touch-icon-precomposed&quot; sizes=&quot;192x192&quot; href=&quot;https://ssl.pstatic.net/static/nfinance/ico/2018_android_192x192_xxxhpdi.png&quot; /&gt;\&#39;\n\t\t\t\t]\n\t\t\t\t.join(\&#39;\\n\&#39;)\n\t\t\t);\n        }\n    })();\n    &lt;/script&gt;\n&lt;/head&gt;\n\n\n\n\n&lt;body onload=\&#39;getGNB();\&#39;&gt;\n\n\n\n&lt;script type=&quot;text/javascript&quot;&gt;\n\tdocument.domain = \&#39;naver.com\&#39;;\n\tvar nclk_evt = 3;\n\tnclk_do();\n&lt;/script&gt;\n\n\n&lt;script type=&quot;text/javascript&quot;&gt;\n\n\n\n\n\n\n\nvar nsc=&quot;finance.news&quot;;\n\n\nvar ccsrv=&quot;cc.naver.com&quot;;\n\n\n\t\n\t\n\tvar gnb_service=\&#39;finance\&#39;;\n\t\n\n\nvar gnb_logout=document.URL; //GNB에서 로그아웃 후 redirect 될 URL\nvar gnb_searchbox=\&#39;off\&#39;; //미니 검색창을 on 할지 off 할지. default는 off\nvar gnb_shortnick=\&#39;off\&#39;; //닉네임 말줄임(10자)을 on할지 off 할지. default는 off.\n\n\nvar gnb_naverme_layer_open_callback = function(){\n\t   var naverLayerSize = gnbNaverMeLayer.getLayerSize();\n\t\t\n\t\tvar me_layers = document.getElementById(&quot;me_layers&quot;);\n\t\tme_layers.width=naverLayerSize.width;\n\t\tme_layers.height=naverLayerSize.height;};\n\nvar gnb_naverme_layer_close_callback = function(){\n\t\t\n\t\t\tvar me_layers = document.getElementById(&quot;me_layers&quot;);\n\t\t\tme_layers.width=&quot;0&quot;;\n\t\t\tme_layers.height=&quot;0&quot;;};\n&lt;/script&gt;\n\n\n&lt;div id=&quot;u_skip&quot;&gt;\n\t&lt;a href=&quot;#menu&quot; tabindex=&quot;1&quot;&gt;&lt;span&gt;메인 메뉴로 바로가기&lt;/span&gt;&lt;/a&gt;\n\n\t\n\t\n\t\t&lt;a href=&quot;#start&quot; tabindex=&quot;2&quot;&gt;&lt;span&gt;본문으로 바로가기&lt;/span&gt;&lt;/a&gt;\n\t\n\n&lt;/div&gt;\n\n\n&lt;div id=&quot;header&quot;&gt;\n\t&lt;div class=&quot;snb_area&quot;&gt;\n\t\t&lt;div class=&quot;snb_inner&quot;&gt;\n\t\t\t&lt;div id=&quot;gnb_area&quot;&gt;\n\t\t\t\t&lt;div id=&quot;gnb&quot;&gt;\n\t\t\t\t\t&lt;script charset=&quot;EUC-KR&quot; type=&quot;text/javascript&quot;&gt;\n\t\t\t\t\tvar gnb_service = &quot;gnbtest&quot;;\n                    var gnb_template = location.protocol == &quot;http:&quot; ? &quot;gnb_quirks_euckr&quot; : &quot;gnb_utf8&quot; ;\n\t\t\t\t\tvar gnb_dark = false;\n\t\t\t\t\tvar gnb_brightness = 1;\n\t\t\t\t\tvar gnb_logout=encodeURIComponent(location.href);\n\t\t\t\t\tvar gnb_one_naver = 1;\n\t\t\t\t\t&lt;/script&gt;\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;https://ssl.pstatic.net/static.gn/templates/gnb_utf8.nhn?20210204&quot;&gt;\n                    \t\t&lt;/script&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\n\t\t\t&lt;div class=&quot;sta&quot;&gt;\n\t\t\t\t&lt;h1 class=&quot;logo&quot;&gt; &lt;a href=&quot;https://www.naver.com/&quot; class=&quot;logo_naver&quot; onClick=&quot;clickcr(this, \&#39;STA.naver\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;&lt;span class=&quot;blind&quot;&gt;네이버&lt;/span&gt;&lt;/a&gt;\n\t\t\t\t&lt;a href=&quot;/&quot; class=&quot;logo_service&quot; onClick=&quot;clickcr(this, \&#39;STA.finance\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;&lt;span class=&quot;blind&quot;&gt;금융&lt;/span&gt;&lt;/a&gt; &lt;/h1&gt;\n\t\t\t\t&lt;form name=&quot;search&quot; action=&quot;/search/search.nhn&quot;  method=&quot;get&quot;\n\t\t\t\t\tonsubmit=&quot;return delayed_submit(this)&quot; style=&quot;margin:0; padding:0;&quot;&gt;\n\t\t\t\t&lt;fieldset&gt;\n\t\t\t\t\t&lt;legend&gt;검색&lt;/legend&gt;\n\t\t\t\t\t&lt;div class=&quot;snb_search_box&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;snb_search_box_sub&quot;&gt;\n\t\t\t\t\t\t\t&lt;input id=&quot;stock_items&quot; type=&quot;text&quot; title=&quot;검색&quot; name=&quot;query&quot; value=&quot;종목명&amp;middot;지수명&amp;middot;펀드명&amp;middot;환율명&amp;middot;원자재명 입력&quot; accesskey=&quot;s&quot; class=&quot;snb_search_text snb_default&quot; autocomplete=&quot;off&quot;&gt;\n\t\t\t\t\t\t\t&lt;a id=&quot;nautocomplete&quot; href=&quot;#&quot; onclick=&quot;return false&quot; class=&quot;btn_arrow&quot;&gt;&lt;span class=&quot;blind&quot;&gt;자동완성 펼치기&lt;/span&gt;&lt;/a&gt;\n\t\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\t&lt;div class=&quot;auto_area&quot;&gt;\n\t\t\t\t\t\t\t&lt;h2 class=&quot;blind&quot;&gt;자동완성&lt;/h2&gt;\n\t\t\t\t\t\t\t&lt;iframe id=&quot;autoFrame&quot; src=&quot;/ac/reatcmp.nhn?menu=news&amp;submenu=&quot; scrolling=&quot;no&quot; height=&quot;0&quot; frameborder=&quot;0&quot; width=&quot;400&quot; style=&quot;display: none;&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; title=&quot;자동완성&quot;&gt;&lt;/iframe&gt;\n\t\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\t&lt;button type=&quot;submit&quot; class=&quot;snb_search_btn&quot; onclick=&quot;clickcr(this, \&#39;STA.search\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot; alt=&quot;검색&quot;&gt;&lt;span class=&quot;blind&quot;&gt;검색&lt;/span&gt;&lt;/button&gt;\n\t\t\t\t\t\t&lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;snb_search_btn-total&quot; onclick=&quot;itegrationSearch();clickcr(this, \&#39;STA.nx\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);return false;&quot;&gt;통합검색&lt;/a&gt;\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;/fieldset&gt;\n\t\t\t\t&lt;/form&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\t&lt;/div&gt;\n\t&lt;div class=&quot;lnb_area &quot;&gt;\n\t\t&lt;div class=&quot;lnb_inner&quot;&gt;\n\t\t\t&lt;div id=&quot;menu&quot;&gt;\n\t\t\t\t&lt;ul class=&quot;menu&quot;&gt;\n\t\t\t\t\t&lt;li class=&quot;m1 first &quot;&gt;&lt;a href=&quot;/&quot; onClick=&quot;clickcr(this, \&#39;LNB.home\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;&lt;span class=&quot;tx&quot;&gt;금융 홈&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n\t\t\t\t\t&lt;li class=&quot;m2 &quot;&gt;&lt;a href=&quot;/sise/&quot; onClick=&quot;clickcr(this, \&#39;LNB.sise\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;&lt;span class=&quot;tx&quot;&gt;국내증시&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n\t\t\t\t\t&lt;li class=&quot;m3 &quot;&gt;&lt;a href=&quot;/world/&quot; onClick=&quot;clickcr(this, \&#39;LNB.world\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;&lt;span class=&quot;tx&quot;&gt;해외증시&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n\t\t\t\t\t&lt;li class=&quot;m4 &quot;&gt;&lt;a href=&quot;/marketindex/&quot; onClick=&quot;clickcr(this, \&#39;LNB.market\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;&lt;span class=&quot;tx&quot;&gt;시장지표&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n\t\t\t\t\t&lt;li class=&quot;m5 &quot;&gt;&lt;a href=&quot;/fund/&quot; onClick=&quot;clickcr(this, \&#39;LNB.fund\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;&lt;span class=&quot;tx&quot;&gt;펀드&lt;/span&gt;&lt;/a&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/li&gt;\n\t\t\t\t\t&lt;li class=&quot;m6 &quot;&gt;&lt;a href=&quot;/research/&quot; onClick=&quot;clickcr(this, \&#39;LNB.research\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;&lt;span class=&quot;tx&quot;&gt;리서치&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n\t\t\t\t\t&lt;li class=&quot;m7 on&quot;&gt;&lt;a href=&quot;/news/&quot;&gt;&lt;span class=&quot;tx&quot;&gt;뉴스&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n\t\t\t\t\t&lt;li class=&quot;m8 &quot;&gt;&lt;a href=&quot;/mystock/&quot; onClick=&quot;clickcr(this, \&#39;LNB.mystock\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;&lt;span class=&quot;tx&quot;&gt;MY&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n\t\t\t\t&lt;/ul&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\t&lt;/div&gt;\n\t\n\t\n\t\n\t\n\n\t\n\t&lt;script type=&quot;text/JavaScript&quot;&gt;\n\t\t/* lcs 집계 */\n        ;(function(){\n            var eventType = &quot;onpageshow&quot; in window ? &quot;pageshow&quot; : &quot;load&quot;;\n            jindo.$Fn(function(){\n                lcs_do();\n            }).attach(window, eventType);\n        })();\n\n\t\t/* 검색 자동완성 [ 인자1 : 검색input의 ID, 인자2 : iframe 태그 ID ]   */\n\t\t// AutoComplete 생성\n\t\tvar acDomain = &quot;ac.finance.naver.com&quot;;\n        if (location.hostname.indexOf(&quot;staging-&quot;) &gt; -1) {\n            acDomain = &quot;staging-&quot; + acDomain;\n        } else if (location.hostname.indexOf(&quot;dev-&quot;) &gt; -1 || location.hostname.indexOf(&quot;localhost&quot;) &gt; -1 || location.hostname.indexOf(&quot;local-&quot;) &gt; -1) {\n\t\t\tacDomain = &quot;dev-&quot; + acDomain;\n\t\t}\n\n        var acUrl = &quot;https://&quot; + acDomain + &quot;/ac&quot;;\n\n\t\tsmartSearch = new nhn.Autocomplete(\n\t\t\t// InputManager 생성\n\t\t\tnew nhn.AcInputManager(jindo.$(&quot;stock_items&quot;)),\n\t\t\t// DataManager 생성\n\t\t\tnew nhn.AcDataManager(acUrl, &quot;jsonp&quot;, &quot;get&quot;, {\n                    st: &quot;111&quot;,\n                    r_lt : &quot;111&quot;,\n                    q_enc : &quot;euc-kr&quot;,\n                    r_enc : &quot;euc-kr&quot;,\n                    frm: &quot;stock&quot;}),\n\t\t\t// ViewManager 생성\n\t\t\tnew nhn.AcStockViewManager(jindo.$(&quot;autoFrame&quot;), jindo.$(&quot;nautocomplete&quot;), {\n                                        strMax: 200,\n                                        listMax: [7, 2, 2],\n                                        aRedirectUrl : [\n                            \t\t\t&quot;https://finance.naver.com&quot;,\n                            \t\t\t&quot;https://finance.naver.com&quot;,\n                            \t\t\t&quot;https://finance.naver.com&quot;]}),\n\t\t\t// Autocomplete Option\n            {formId:&quot;search&quot;, cookieDomain:location.hostname, cookieName:&quot;NaverCommonStock&quot;});\n\n\t\t\tsmartSearch.attach({\n\t            onFocus: function () {\n\t                var weInput = jindo.$Element(\&#39;stock_items\&#39;);\n\t                if (weInput &amp;&amp; weInput.hasClass(&quot;snb_default&quot;)) {\n\t                        weInput.text(&quot;&quot;);\n\t                        weInput.removeClass(\&#39;snb_default\&#39;);\n\t                }\n\t            }\n\t        });\n\n\t\t/* 통합검색  start -----&gt;  */\n\t\tdocument.domain = \&#39;naver.com\&#39;;\n\t\tvar sSearchHintText = \&#39;종목명·지수명·펀드명·환율명·원자재명 입력\&#39;;\n\t\tfunction itegrationSearch() {\n\t\t\tvar query = jindo.$(\&#39;stock_items\&#39;).value;\n\n\t\t\tif ( query == \&#39;\&#39;  || encodeURIComponent(query) == encodeURIComponent(sSearchHintText))\n\t\t\t{\n\t\t\t\talert ( \&#39;검색어를 입력해 주세요.\&#39; );\n\t\t\t\treturn;\n\t\t\t}\n\n            var url = location.protocol + &quot;//search.naver.com/search.naver?sm=sta_hty.finance&amp;where=nexearch&amp;ie=UTF8&amp;query=&quot; + encodeURIComponent(query);\n            window.open(url, &quot;_blank&quot;);\n\n\t\t\treturn false;\n\t\t}\n\n\t\tfunction delayed_submit(object) {\n\t\t\tif (navigator.userAgent.indexOf(\&#39;MSIE\&#39;) == -1) {\n\t\t\t\twindow.setTimeout(function() {stock_search(object)}, 300);\n\t\t\t} else {\n\t\t\t\tstock_search(object);\n\t\t\t}\n\t\t\treturn false;\n\t\t}\n\n\t\tfunction stock_search (object)\n\t\t{\n\t\t\tquery = object.query.value.replace(/^\\s*/,\&#39;\&#39;).replace(/\\s*$/,\&#39;\&#39;);\t// trim\n\t\t\tobject.query.value=query;\n\n\t\t\tif ( query == \&#39;\&#39; || query == sSearchHintText.replace(/^\\s*/,\&#39;\&#39;).replace(/\\s*$/,\&#39;\&#39;))\n\t\t\t{\n\t\t\t\talert ( \&#39;검색어를 입력해 주세요.\&#39; );\n\t\t\t\treturn;\n\t\t\t}\n\t\t\telse {\n\t\t\t\tobject.submit();\n\t\t\t}\n\t\t}\n\t\t/* &lt;---------- 통합검색  end */\n\n\t\tfunction popup()\n\t\t{\n\t\t\twin = window.open(\&#39;/template/group_limit_pop.jsp\&#39;,\&#39;finan_popup\&#39;,\&#39;width=569 height=278 scrollbars=no status=no\&#39;);\n\t\t\twin.focus();\n\t\t}\n\t&lt;/script&gt;\n\n\t&lt;iframe id=&quot;me_layers&quot; name=&quot;test&quot; title=&quot;네이버미 영역&quot; width=&quot;0&quot; height=&quot;0&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; style=&quot;display:block;top: 22px; right: 209px; position: absolute; z-index: 15;&quot;&gt;&lt;/iframe&gt;\n&lt;/div&gt;\n&lt;div id=&quot;wrap&quot;  &gt;\n\n&lt;!-- //  global include --&gt;\n\n\t&lt;div id=&quot;newarea&quot;&gt;\n\t\t&lt;!-- leftmenu --&gt;\n\t\t\t\n\n\n\t\t&lt;div class=&quot;snb snb2 snb3&quot;&gt;\n\t\t\t&lt;h2 class=&quot;h_news&quot;&gt;&lt;a href=&quot;/news/&quot; onClick=&quot;clickcr(this, \&#39;new.news\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot;&gt;&lt;span class=&quot;blind&quot;&gt;뉴스&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;\n\t\t\t&lt;ul class=&quot;nav1&quot;&gt;\n\t\t\t&lt;li class=&quot;frst&quot;&gt;&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;section_id=101&amp;section_id2=258&quot; onClick=&quot;clickcr(this, \&#39;new.real\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot;&gt;&lt;strong class=&quot;other2 lst_news&quot;&gt;&lt;span class=&quot;blind&quot;&gt;실시간속보&lt;/span&gt;&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt; \n            &lt;li&gt;&lt;a href=&quot;/news/mainnews.nhn&quot; onClick=&quot;clickcr(this, \&#39;new.main\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot;&gt;&lt;strong class=&quot;other2 lst_news2&quot;&gt;&lt;span class=&quot;blind&quot;&gt;주요뉴스&lt;/span&gt;&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;\n             \n            &lt;li class=&quot;another&quot;&gt;&lt;strong class=&quot;news_focus&quot;&gt;&lt;span class=&quot;blind&quot;&gt;뉴스 포커스&lt;/span&gt;&lt;/strong&gt; \n\t\t\t\t&lt;ul class=&quot;sub&quot;&gt;\n\t\t\t\t &lt;li class=&quot;lst3_1&quot;&gt;&lt;a href=&quot;/news/news_list.nhn?mode=LSS3D&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; onClick=&quot;clickcr(this, \&#39;new.fore\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot; class=&quot;off&quot;&gt;&lt;span class=&quot;blind&quot;&gt;시황·전망&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; \n                 &lt;li class=&quot;lst3_2&quot; &gt;&lt;a href=&quot;/news/news_list.nhn?mode=LSS3D&amp;section_id=101&amp;section_id2=258&amp;section_id3=402&quot; onClick=&quot;clickcr(this, \&#39;new.firm\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot; class=&quot;off&quot;&gt;&lt;span class=&quot;blind&quot;&gt;기업·종목분석&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; \n                 &lt;li class=&quot;lst3_3&quot;&gt;&lt;a href=&quot;/news/news_list.nhn?mode=LSS3D&amp;section_id=101&amp;section_id2=258&amp;section_id3=403&quot; onClick=&quot;clickcr(this, \&#39;new.aboard\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot; class=&quot;off&quot;&gt;&lt;span class=&quot;blind&quot;&gt;해외증시&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; \n                 &lt;li class=&quot;lst3_4&quot;&gt;&lt;a href=&quot;/news/news_list.nhn?mode=LSS3D&amp;section_id=101&amp;section_id2=258&amp;section_id3=404&quot; onClick=&quot;clickcr(this, \&#39;new.bond\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot; class=&quot;off&quot;&gt;&lt;span class=&quot;blind&quot;&gt;채권·선물&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; \n                 &lt;li class=&quot;lst3_5&quot;&gt;&lt;a href=&quot;/news/news_list.nhn?mode=LSS3D&amp;section_id=101&amp;section_id2=258&amp;section_id3=406&quot; onClick=&quot;clickcr(this, \&#39;new.memo\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot; class=&quot;off&quot;&gt;&lt;span class=&quot;blind&quot;&gt;공시·메모&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; \n                 &lt;li class=&quot;lst3_6&quot;&gt;&lt;a href=&quot;/news/news_list.nhn?mode=LSS3D&amp;section_id=101&amp;section_id2=258&amp;section_id3=429&quot; onClick=&quot;clickcr(this, \&#39;new.currency\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot; class=&quot;off&quot;&gt;&lt;span class=&quot;blind&quot;&gt;환율&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; \n\t\t\t\t&lt;/ul&gt;\n\t\t\t&lt;/li&gt;\n\t\t\t\n\t\t\t&lt;li&gt;&lt;a href=&quot;/news/news_list.nhn?mode=RANK&quot; onClick=&quot;clickcr(this, \&#39;new.best\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot;&gt;&lt;strong class=&quot;other2 lst_news5&quot;&gt;&lt;span class=&quot;blind&quot;&gt;많이 본 뉴스&lt;/span&gt;&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt; \n            &lt;li&gt;&lt;a href=&quot;/news/news_list.nhn?mode=LSTD&amp;section_id=101&amp;section_id2=258&amp;type=1&quot; onClick=&quot;clickcr(this, \&#39;new.photo\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot;&gt;&lt;strong class=&quot;other2 lst_news6&quot;&gt;&lt;span class=&quot;blind&quot;&gt;포토뉴스&lt;/span&gt;&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt; \n            &lt;li&gt;&lt;a href=&quot;/news/news_list.nhn?mode=TV&amp;section_id=tv&quot; onClick=&quot;clickcr(this, \&#39;new.tv\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot;&gt;&lt;strong class=&quot;other2 lst_news7&quot;&gt;&lt;span class=&quot;blind&quot;&gt;TV뉴스&lt;/span&gt;&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt; \n            &lt;li class=&quot;another&quot;&gt;&lt;strong class=&quot;invest_info&quot;&gt;&lt;span class=&quot;blind&quot;&gt;투자정보&lt;/span&gt;&lt;/strong&gt; \n\t\t\t\t&lt;ul class=&quot;sub&quot;&gt;\n\t\t\t\t&lt;li class=&quot;lst3_7&quot;&gt;&lt;a href=&quot;/news/market_notice.nhn&quot; onClick=&quot;clickcr(this, \&#39;new.info\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot; class=&quot;off&quot;&gt;&lt;span class=&quot;blind&quot;&gt;공시정보&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; \n                &lt;li class=&quot;lst3_8&quot;&gt;&lt;a href=&quot;/news/market_special.nhn&quot; onClick=&quot;clickcr(this, \&#39;new.spe\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot; class=&quot;off&quot;&gt;&lt;span class=&quot;blind&quot;&gt;장중특징주&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; \n\t\t\t\t&lt;/ul&gt;\n\t\t\t&lt;/li&gt;\n            &lt;li&gt;&lt;a href=&quot;http://www.seibro.or.kr/websquare/control.jsp?w2xPath=/IPORTAL/user/company/BIP_CNTS01020V.xml&amp;menuNo=273&quot; onClick=&quot;clickcr(this, \&#39;new.sch\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot; target=&quot;_blank&quot;&gt;&lt;strong class=&quot;other2 lst_news8&quot;&gt;&lt;span class=&quot;blind&quot;&gt;증시일정&lt;/span&gt;&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;\n            &lt;li&gt;&lt;a href=&quot;/news/news_search.nhn&quot; onClick=&quot;clickcr(this, \&#39;new.search\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot;&gt;&lt;strong class=&quot;other2 lst_news9&quot;&gt;&lt;span class=&quot;blind&quot;&gt;뉴스검색&lt;/span&gt;&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;\n\t\t\t&lt;/ul&gt;\n\t\t\t&lt;span class=&quot;nav1_blank&quot;&gt;&lt;/span&gt;\n\t\t\t\n\t\t\t&lt;!-- 끼워넣기 --&gt;\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\n\n\n\n\t&lt;!--  여러개가 뉴스홈 배너로 등록되었을 경우에는 하나의 경우만 뿌려주게 한다. --&gt;\n\t\n\t\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\n\n\t\n\t\n\n\n\n&lt;div class=&quot;section_news&quot;&gt;\n\t&lt;h4 class=&quot;subtlt&quot;&gt;\n\t\t\n\t\t\t&lt;a href=&quot;https://finance.naver.com/news/news_search.nhn?rcdate=&amp;q=%BF%C0%B4%C3%C0%C7+%C1%F5%BD%C3%C0%CF%C1%A4&amp;sm=title.basic&amp;pd=1&amp;stDateStart=&quot;  onclick=&quot;clickcr(this, \&#39;new.todaytit\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot;&gt;뉴스로 보는 증시일정&lt;/a&gt;\n\t\t\t\n\t\t\n\t&lt;/h4&gt;\n\t\t&lt;ul class=&quot;sub1&quot;&gt;\n\t\t\n\t\t\t&lt;li&gt;\n\t\t\t\n\t\t\t&lt;a href=&quot;https://finance.naver.com/news/news_search.nhn?rcdate=&amp;q=%BF%C0%B4%C3%C0%C7+%C1%F5%BD%C3%C0%CF%C1%A4&amp;sm=title.basic&amp;pd=1&amp;stDateStart=&quot;  onclick=&quot;clickcr(this, \&#39;new.today\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot;&gt;오늘의 증시일정&lt;/a&gt;\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t&lt;/li&gt;\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\t\t&lt;/ul&gt;\n\t\t\t&lt;/div&gt;\n\n\t\t\n\t\t\n\n\n\t\n\t\n\t\n\n\n\t\t\t&lt;!-- //끼워넣기 --&gt;\n\t\t&lt;/div&gt;\n\t\n\t\t\n\n\t\t&lt;!-- //leftmenu --&gt;\n\t\t&lt;div id=&quot;contentarea&quot;&gt;\n\t\t\t&lt;!-- 컨텐츠 --&gt;\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t&lt;div id=&quot;contentarea_left&quot;&gt;\n\t\t\t\t&lt;!-- 로케이터 --&gt;\n\t\t\t\t&lt;div class=&quot;sub_location tlt_bottom_line&quot;&gt;\n\t\t\t\t\t&lt;a href=&quot;/&quot;&gt;금융홈&lt;/a&gt; &amp;gt; &lt;a href=&quot;/news/&quot;&gt;뉴스&lt;/a&gt; &amp;gt; 실시간 속보\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;!-- //로케이터 --&gt;\n\t\t\t\t&lt;h3 class=&quot;sub_tlt&quot;&gt;실시간 속보&lt;/h3&gt;\n\t\t\t\t&lt;!-- 타이틀 우측 티커 영역 --&gt;\n\t\t\t\t\n\n\n\n&lt;script type=\&#39;text/javascript\&#39;&gt;\n\tvar newsflash_rcnt_gno = newsflash_rcnt_gno_max = 10;\n\tvar newsflash_rolling_tag = 1;\n\tfunction view_newsflash(mode)\n\t{\n\t\tvar total = 10;\n\t\tvar gcnt = 1;\n\t\tvar li_name;\n\t\tvar start, end;\n\n\t\tif (mode == \&#39;next\&#39;) \t\t\tnewsflash_rcnt_gno++;\n\t\telse if (mode == \&#39;prev\&#39;) \tnewsflash_rcnt_gno--;\n\t\tnewsflash_rcnt_gno = (newsflash_rcnt_gno + newsflash_rcnt_gno_max) % newsflash_rcnt_gno_max;\n\n\t\tstart = newsflash_rcnt_gno * gcnt;\n\t\tend = start + gcnt;\n\n\t\tfor (i=0; i&lt;total; i++)\n\t\t{\n\t\t\tli_name = \&#39;newsflash_\&#39; + i;\n\t\t\ts_display = \&#39;none\&#39;;\n\t\t\tif (i&gt;=start &amp;&amp; i&lt;end) s_display = \&#39;\&#39;;\n\n\t\t\tdocument.getElementById(li_name).style.display = s_display;\n\t\t}\n\t}\n\t\n\tfunction view_newsflash_pause() \n\t{\n\t\tnewsflash_rolling_tag = 0;\n\t}\n\t\n\tfunction view_newsflash_start() \n\t{\n\t\tnewsflash_rolling_tag = 1;\n\t}\n\n\tfunction view_newsflash_rolling()\n\t{\n\t\tif(newsflash_rolling_tag == 1)\n\t\t\tview_newsflash(\&#39;next\&#39;);\n\t}\n\t\n\tfunction view_newsflash_move(mode) {\n\t\tif(newsflash_rolling_tag == 1) {\n\t\t\tview_newsflash(mode);\n\t\t}\n\t\tclearInterval(newsInterval);\n\t\tnewsInterval = setInterval(\&#39;view_newsflash_rolling()\&#39;, 3000);\n\t}\n\t\n\tvar newsInterval = setInterval(\&#39;view_newsflash_rolling()\&#39;, 3000);\n&lt;/script&gt;\n\t\t\t\t&lt;dl class=&quot;sub_tit_ticker&quot;&gt;\n\t\t\t\t\t&lt;dt&gt;속보&lt;/dt&gt;\n\t\t\t\t\t&lt;dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;span id=\&#39;newsflash_0\&#39; onmouseover=&quot;view_newsflash_pause()&quot; onmouseout=&quot;view_newsflash_start()&quot; style=\&#39;\&#39;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004842182&amp;office_id=277&amp;mode=LSS3D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; title=&quot;푸른저축은행, 보통주당 550원 현금배당 결정&quot;&gt;푸른저축은행, 보통주당 550원 현금. .&lt;/a&gt;&lt;/span&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;span id=\&#39;newsflash_1\&#39; onmouseover=&quot;view_newsflash_pause()&quot; onmouseout=&quot;view_newsflash_start()&quot; style=\&#39;display:none\&#39;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0010330671&amp;office_id=003&amp;mode=LSS3D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; title=&quot;[올댓차이나] 대만 증시, 고가 경계 매물에 나흘 만에 반락  마감...0.41%&amp;darr;&quot;&gt;[올댓차이나] 대만 증시, 고가 경계 . .&lt;/a&gt;&lt;/span&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;span id=\&#39;newsflash_2\&#39; onmouseover=&quot;view_newsflash_pause()&quot; onmouseout=&quot;view_newsflash_start()&quot; style=\&#39;display:none\&#39;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004579016&amp;office_id=014&amp;mode=LSS3D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; title=&quot;[공시]현대중공업지주, 주식분할 결정..5000&amp;rarr;1000원&quot;&gt;[공시]현대중공업지주, 주식분할 결. .&lt;/a&gt;&lt;/span&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;span id=\&#39;newsflash_3\&#39; onmouseover=&quot;view_newsflash_pause()&quot; onmouseout=&quot;view_newsflash_start()&quot; style=\&#39;display:none\&#39;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004539231&amp;office_id=008&amp;mode=LSS3D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; title=&quot;&amp;quot;글로벌 위험선호 연장&amp;quot;&amp;hellip;원/달러 환율 하락세&quot;&gt;&amp;quot;글로벌 위험선호 연장&amp;quot;&amp;hellip;원/달러 환. .&lt;/a&gt;&lt;/span&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;span id=\&#39;newsflash_4\&#39; onmouseover=&quot;view_newsflash_pause()&quot; onmouseout=&quot;view_newsflash_start()&quot; style=\&#39;display:none\&#39;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004579010&amp;office_id=014&amp;mode=LSS3D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; title=&quot;[공시]애경산업, 지난해 영업익 224억..전년비 63.1%&amp;darr;&quot;&gt;[공시]애경산업, 지난해 영업익 224. .&lt;/a&gt;&lt;/span&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;span id=\&#39;newsflash_5\&#39; onmouseover=&quot;view_newsflash_pause()&quot; onmouseout=&quot;view_newsflash_start()&quot; style=\&#39;display:none\&#39;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004494898&amp;office_id=015&amp;mode=LSS3D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; title=&quot;딸 가수 데뷔에 \&#39;아빠찬스\&#39; 런정페이 화웨이 창업자 결국 사과[강현우의 트렌딩 차이나]&quot;&gt;딸 가수 데뷔에 \&#39;아빠찬스\&#39; 런정페이. .&lt;/a&gt;&lt;/span&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;span id=\&#39;newsflash_6\&#39; onmouseover=&quot;view_newsflash_pause()&quot; onmouseout=&quot;view_newsflash_start()&quot; style=\&#39;display:none\&#39;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004842178&amp;office_id=277&amp;mode=LSS3D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; title=&quot;현대중공업지주, 주식분할 결정...5000원&amp;rarr;1000원&quot;&gt;현대중공업지주, 주식분할 결정...50. .&lt;/a&gt;&lt;/span&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;span id=\&#39;newsflash_7\&#39; onmouseover=&quot;view_newsflash_pause()&quot; onmouseout=&quot;view_newsflash_start()&quot; style=\&#39;display:none\&#39;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0001789847&amp;office_id=016&amp;mode=LSS3D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; title=&quot;스페코, 지난해 영업익 121억&amp;hellip;전년비 82.2%&amp;uarr;&quot;&gt;스페코, 지난해 영업익 121억&amp;hellip;전년. .&lt;/a&gt;&lt;/span&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;span id=\&#39;newsflash_8\&#39; onmouseover=&quot;view_newsflash_pause()&quot; onmouseout=&quot;view_newsflash_start()&quot; style=\&#39;display:none\&#39;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0001789846&amp;office_id=016&amp;mode=LSS3D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; title=&quot;한양디지텍, 지난해 영업익 69억&amp;hellip;흑자전환&quot;&gt;한양디지텍, 지난해 영업익 69억&amp;hellip;흑. .&lt;/a&gt;&lt;/span&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;span id=\&#39;newsflash_9\&#39; onmouseover=&quot;view_newsflash_pause()&quot; onmouseout=&quot;view_newsflash_start()&quot; style=\&#39;display:none\&#39;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0003867356&amp;office_id=011&amp;mode=LSS3D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=401&quot; title=&quot;한국FPSB,&amp;ldquo;뉴노멀시대, 재무설계업 성장가능성 높아질 것&amp;rdquo;&quot;&gt;한국FPSB,&amp;ldquo;뉴노멀시대, 재무설계업 . .&lt;/a&gt;&lt;/span&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;span class=&quot;btn&quot;&gt;\n\t\t\t\t\t\t\t&lt;a href=&quot;javascript:view_newsflash_move(\&#39;prev\&#39;);&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/static/nfinance/2015/news_ticker_arrow_prev.png&quot; width=&quot;17&quot; height=&quot;17&quot; alt=&quot;이전 뉴스보기&quot;&gt;&lt;/a&gt;\n\t\t\t\t\t\t\t&lt;a href=&quot;javascript:view_newsflash_move(\&#39;next\&#39;);&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/static/nfinance/2015/news_ticker_arrow_next.png&quot; width=&quot;17&quot; height=&quot;17&quot; alt=&quot;다음 뉴스보기&quot;&gt;&lt;/a&gt;\n\t\t\t\t\t\t&lt;/span&gt;\t\n\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t&lt;/dl&gt;\n\t\t\t\t&lt;ul class=&quot;realtimeNewsList&quot;&gt;\n\t\t\t\t\t&lt;li class=&quot;newsList top&quot;&gt;\n\t\t\t\t\t\t&lt;!-- 상단 10개의 기사 --&gt;\n\t\t\t\t\t\t&lt;dl&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0001789847&amp;office_id=016&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;스페코, 지난해 영업익 121억…전년비 82.2%↑&quot;&gt;스페코, 지난해 영업익 121억&amp;hellip;전년비 82.2%&amp;uarr;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[헤럴드경제=증권부] 스페코는 지난해 연결기준 영업이익이 120억9201만원으로 전년대비 82.23% 증가했다고 4일 공시했다. 같은 기간 매출액은 787억7005만원으로...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;헤럴드경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:21&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0001789846&amp;office_id=016&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;한양디지텍, 지난해 영업익 69억…흑자전환&quot;&gt;한양디지텍, 지난해 영업익 69억&amp;hellip;흑자전환&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[헤럴드경제=증권부] 한양디지텍은 지난해 연결기준 영업이익이 69억2550만원으로 전년대비 흑자전환했다고 4일 공시했다. 같은 기간 매출액은 1549억4730만원으로 12...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;헤럴드경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:21&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;thumb&quot;&gt;\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0003867356&amp;office_id=011&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot;&gt;&lt;img src=&quot;https://imgnews.pstatic.net/image/thumb70/011/2021/02/04/3867356.jpg&quot; alt=&quot;&quot; onerror=&quot;this.src=\&#39;https://ssl.pstatic.net/static/nfinance/2017/02/27/thumb_72x54.gif\&#39;&quot;&gt;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dd class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0003867356&amp;office_id=011&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;한국FPSB,&amp;ldquo;뉴노멀시대, 재무설계업 성장가능성 높아질 것&amp;rdquo;&quot;&gt;한국FPSB,&amp;ldquo;뉴노멀시대, 재무설계업 성장가능성 높아질 것&amp;rdquo;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[서울경제] 코로나19 장기화로 전세계 많은 사람들이 급격한 라이프스타일 및 경제상황 변화로 인해 극심한 스트레스에 시달리고 있다. 이에 경제위...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;서울경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:18&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;thumb&quot;&gt;\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004494891&amp;office_id=015&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot;&gt;&lt;img src=&quot;https://imgnews.pstatic.net/image/thumb70/015/2021/02/04/4494891.jpg&quot; alt=&quot;&quot; onerror=&quot;this.src=\&#39;https://ssl.pstatic.net/static/nfinance/2017/02/27/thumb_72x54.gif\&#39;&quot;&gt;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dd class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004494891&amp;office_id=015&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;UBS &amp;quot;전기차 시대 본격화&amp;hellip;LG화학, SK이노 30% 추가 상승&amp;quot;&quot;&gt;UBS &amp;quot;전기차 시대 본격화&amp;hellip;LG화학, SK이노 30% 추가 상승&amp;quot;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t세계가 빠르게 전기차 시대로 진입하고 있는 가운데, 테슬라 등 전기차 주식뿐 아니라 배터리 등 관련주 폭등세가 이어지고 있다. 스위스의 투자은행...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;한국경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:16&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004744630&amp;office_id=009&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;한미약품, 작년 영업이익 487억원…전년 대비 53.1%↓&quot;&gt;한미약품, 작년 영업이익 487억원&amp;hellip;전년 대비 53.1%&amp;darr;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t한미약품은 작년 연결 기준 매출 1조759억원, 영업이익 487억원의 실적을 기록했다고 4일 밝혔다. 전년 동기 대비 매출과 영업이익이 각각 3.4%와 53.1% 줄었다....\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;매일경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:16&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004579001&amp;office_id=014&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;[공시]한국조선해양, 지난해 영업익 744억…전년비 74.4%↓&quot;&gt;[공시]한국조선해양, 지난해 영업익 744억&amp;hellip;전년비 74.4%&amp;darr;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[파이낸셜뉴스] 한국조선해양은 연결 기준 지난해 영업이익이 744억원으로 전년보다 74.4% 감소한 것으로 잠정 집계됐다고 4일 공시했다. 매출은 14조9037억원으로 전...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;파이낸셜뉴스&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:16&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;thumb&quot;&gt;\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004846080&amp;office_id=018&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot;&gt;&lt;img src=&quot;https://imgnews.pstatic.net/image/thumb70/018/2021/02/04/4846080.jpg&quot; alt=&quot;&quot; onerror=&quot;this.src=\&#39;https://ssl.pstatic.net/static/nfinance/2017/02/27/thumb_72x54.gif\&#39;&quot;&gt;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dd class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004846080&amp;office_id=018&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;하이투자증권, 미래산업 전망 책 잇달아 선보여&quot;&gt;하이투자증권, 미래산업 전망 책 잇달아 선보여&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[이데일리 유준하 기자] 하이투자증권 리서치본부 애널리스트들이 코로나19 이후 미래산업을 전망한 투자전략 도서를 출간했다. 사진=하이투자증권 하...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;이데일리&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:15&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;thumb&quot;&gt;\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0012184898&amp;office_id=001&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot;&gt;&lt;img src=&quot;https://imgnews.pstatic.net/image/thumb70/001/2021/02/04/12184898.jpg&quot; alt=&quot;&quot; onerror=&quot;this.src=\&#39;https://ssl.pstatic.net/static/nfinance/2017/02/27/thumb_72x54.gif\&#39;&quot;&gt;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dd class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0012184898&amp;office_id=001&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;애경산업 작년 영업이익 224억원&amp;hellip;전년 대비 63.1%&amp;darr;&quot;&gt;애경산업 작년 영업이익 224억원&amp;hellip;전년 대비 63.1%&amp;darr;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t(서울=연합뉴스) 코스피 상장사 애경산업은 연결 기준 지난해 영업이익이 224억 원으로 전년보다 63.1% 감소한 것으로 잠정 집계됐다고 4일 ...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;연합뉴스&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:15&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0001789842&amp;office_id=016&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;한양이엔지, 주당 500원 현금배당 결정&quot;&gt;한양이엔지, 주당 500원 현금배당 결정&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[헤럴드경제=증권부] 한양이엔지는 보통주 1주당 500원의 현금 결산배당을 결정했다고 4일 공시했다. 시가배당율은 3%이며 배당금총액은 86억9871만원이다. 배당금지급 ...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;헤럴드경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:13&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0001789841&amp;office_id=016&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;한양이엔지, 지난해 영업익 533억…전년비 59.8%↑&quot;&gt;한양이엔지, 지난해 영업익 533억&amp;hellip;전년비 59.8%&amp;uarr;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[헤럴드경제=증권부] 한양이엔지는 지난해 연결기준 영업이익이 533억3444만원으로 전년대비 59.8% 증가했다고 4일 공시했다. 같은 기간 매출액은 7584억5856만원...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;헤럴드경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:13&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;/dl&gt;\n\t\t\t\t\t\t&lt;!-- 상단 10개의 기사 끝 --&gt;\n\t\t\t\t\t&lt;/li&gt;\n\t\t\t\t\t&lt;li class=&quot;newsList&quot;&gt;\n\t\t\t\t\t\t&lt;!-- 하단 10개의 기사 --&gt;\n\t\t\t\t\t\t&lt;dl&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004578995&amp;office_id=014&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;[공시]현대오일뱅크, 지난해 영업손실 5933억..적자 전환&quot;&gt;[공시]현대오일뱅크, 지난해 영업손실 5933억..적자 전환&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[파이낸셜뉴스] 현대중공업지주는 자회사 현대오일뱅크가 연결 기준 지난해 영업손실 5933억원으로 전년(영업이익 5220억원)과 비교해 적자전환한 것으로 잠정 집계됐다고 4...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;파이낸셜뉴스&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:13&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004846078&amp;office_id=018&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;와이아이케이, 삼성전자에 673억원 규모 반도체 검사장비 공급&quot;&gt;와이아이케이, 삼성전자에 673억원 규모 반도체 검사장비 공급&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[이데일리 유준하 기자] 와이아이케이(232140)는 삼성전자(005930)에 673억9200만원 규모의 반도체 검사장비 공급 계약을 체결했다고 4일 공시했다. 이는 지난...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;이데일리&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:12&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004578993&amp;office_id=014&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;[공시]한라, 지난해 영업익 968억&amp;hellip;전년비 43.1%&amp;uarr;&quot;&gt;[공시]한라, 지난해 영업익 968억&amp;hellip;전년비 43.1%&amp;uarr;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[파이낸셜뉴스] 한라는 지난해 연결기준 영업이익이 968억4245만원으로 전년대비 43.1% 증가했다고 4일 공시했다. 같은 기간 매출액은 1조5653억994만원으로 20...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;파이낸셜뉴스&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:11&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004846075&amp;office_id=018&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;달러-엔 105.170엔(15시09분 현재)&quot;&gt;달러-엔 105.170엔(15시09분 현재)&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[이데일리 글로벌마켓부] 04일 15시09분 현재 아시아 외환시장에서 거래되고 있는 환율동향 입니다. --------------------------------------...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;이데일리&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:10&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;thumb&quot;&gt;\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004744627&amp;office_id=009&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot;&gt;&lt;img src=&quot;https://imgnews.pstatic.net/image/thumb70/009/2021/02/04/4744627.jpg&quot; alt=&quot;&quot; onerror=&quot;this.src=\&#39;https://ssl.pstatic.net/static/nfinance/2017/02/27/thumb_72x54.gif\&#39;&quot;&gt;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dd class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004744627&amp;office_id=009&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;넷게임즈, 신작 &amp;lsquo;블루 아카이브&amp;rsquo; 日 출격&quot;&gt;넷게임즈, 신작 &amp;lsquo;블루 아카이브&amp;rsquo; 日 출격&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t넷게임즈(대표 박용현)의 신작 모바일게임 &amp;lsquo;블루 아카이브&amp;rsquo;가 일본 시장에 진출했다. 일본향 서브컬처 게임 전문가로 알려진 김용하 PD의 신작으로...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;매일경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:10&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004578991&amp;office_id=014&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;[공시]농심, 지난해 영업익 1603억&amp;hellip;전년비 103.4%&amp;uarr;&quot;&gt;[공시]농심, 지난해 영업익 1603억&amp;hellip;전년비 103.4%&amp;uarr;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[파이낸셜뉴스] 농심은 지난해 연결기준 영업이익이 1602억9749만원으로 전년대비 103.4% 증가했다고 4일 공시했다. 같은 기간 매출액은 2조6397억9563만원으로...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;파이낸셜뉴스&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:10&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004578989&amp;office_id=014&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;[공시]현대중공업지주, 주당 1만8500원 현금배당 결정&quot;&gt;[공시]현대중공업지주, 주당 1만8500원 현금배당 결정&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[파이낸셜뉴스] 현대중공업지주는 보통주 1주당 1만8500원의 현금 결산배당을 결정했다고 4일 공시했다. 시가배당율은 5.93%이며 배당금총액은 2614억7319만원이다....\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;파이낸셜뉴스&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:10&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0001789840&amp;office_id=016&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;농심, 지난해 영업익 1603억&amp;hellip;전년비 103.4%&amp;uarr;&quot;&gt;농심, 지난해 영업익 1603억&amp;hellip;전년비 103.4%&amp;uarr;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[헤럴드경제=증권부] 농심은 지난해 연결기준 영업이익이 1602억9749만원으로 전년대비 103.4% 증가했다고 4일 공시했다. 같은 기간 매출액은 2조6397억9563만...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;헤럴드경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:07&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0001789839&amp;office_id=016&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;네오크레마, 지난해 영업익 13억&amp;hellip;전년비 89.3%&amp;uarr;&quot;&gt;네오크레마, 지난해 영업익 13억&amp;hellip;전년비 89.3%&amp;uarr;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t[헤럴드경제=증권부] 네오크레마는 지난해 연결기준 영업이익이 12억5912만원으로 전년대비 89.3% 증가했다고 4일 공시했다. 같은 기간 매출액은 298억2110만원으로...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;헤럴드경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:07&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dt class=&quot;thumb&quot;&gt;\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004494881&amp;office_id=015&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot;&gt;&lt;img src=&quot;https://imgnews.pstatic.net/image/thumb70/015/2021/02/04/4494881.jpg&quot; alt=&quot;&quot; onerror=&quot;this.src=\&#39;https://ssl.pstatic.net/static/nfinance/2017/02/27/thumb_72x54.gif\&#39;&quot;&gt;&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dt&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;dd class=&quot;articleSubject&quot;&gt;\n\t\t\t\t\t\t\t\t\t&lt;a href=&quot;/news/news_read.nhn?article_id=0004494881&amp;office_id=015&amp;mode=LSS2D&amp;type=0&amp;section_id=101&amp;section_id2=258&amp;section_id3=&amp;date=20210204&amp;page=1&quot; title=&quot;글로벌 연료전지 1위 기업 후보 블룸에너지(Bloom Energy)&quot;&gt;글로벌 연료전지 1위 기업 후보 블룸에너지(Bloom Energy)&lt;/a&gt;\n\t\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t&lt;dd class=&quot;articleSummary&quot;&gt;\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t파리기후협약이 적용되는 첫해인 2021년 파리기후협약 참가국들은 온실가스 감축을 위한 실제적인 노력을 시작했다. 한국을 포함한 다수 국가들이 탄...\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t&lt;span class=&quot;press&quot;&gt;한국경제&lt;/span&gt;\n\t\t\t\t\t\t\t\t&lt;span class=&quot;bar&quot;&gt;|&lt;/span&gt; \n\t\t\t\t\t\t\t\t&lt;span class=&quot;wdate&quot;&gt;2021-02-04 15:04&lt;/span&gt;\n\t\t\t\t\t\t\t&lt;/dd&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;/dl&gt;\n\t\t\t\t\t\t&lt;!-- 하단 10개의 기사 끝 --&gt;\n\t\t\t\t\t&lt;/li&gt;\n\t\t\t\t&lt;/ul&gt;\n\t\t\t\t\n\t\t\t\t&lt;!-- paging --&gt;\n\t\t\t\t&lt;table summary=&quot;페이지 네비게이션 리스트&quot; class=&quot;Nnavi&quot; align=&quot;center&quot;&gt;\n\t\t\t\t&lt;caption&gt;페이지 네비게이션&lt;/caption&gt;\n\t\t\t\t&lt;tr&gt;\n\t\t\t\t&lt;td &gt;\n\t\t\t\t\t&lt;table cellspacing=0 cellpadding=0 border=0&gt;\n\t\t\t\t\t&lt;tr align=center&gt;\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t&lt;td class=&quot;on&quot;&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=1&quot;  &gt;1&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n&lt;td&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=2&quot;  &gt;2&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n&lt;td&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=3&quot;  &gt;3&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n&lt;td&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=4&quot;  &gt;4&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n&lt;td&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=5&quot;  &gt;5&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n&lt;td&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=6&quot;  &gt;6&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n&lt;td&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=7&quot;  &gt;7&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n&lt;td&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=8&quot;  &gt;8&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n&lt;td&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=9&quot;  &gt;9&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n&lt;td&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=10&quot;  &gt;10&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n\n\t\t\t\t\t&lt;td class=&quot;pgR&quot;&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=11&quot;  &gt;\n\t\t\t\t다음&lt;img src=&quot;https://ssl.pstatic.net/static/n/cmn/bu_pgarR.gif&quot; width=&quot;3&quot; height=&quot;5&quot; alt=&quot;&quot; border=&quot;0&quot;&gt;\n\t\t\t\t&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n\n\t\t\t\t\t&lt;td class=&quot;pgRR&quot;&gt;\n\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;page=32&quot;  &gt;맨뒤\n\t\t\t\t&lt;img src=&quot;https://ssl.pstatic.net/static/n/cmn/bu_pgarRR.gif&quot; width=&quot;8&quot; height=&quot;5&quot; alt=&quot;&quot; border=&quot;0&quot;&gt;\n\t\t\t\t&lt;/a&gt;\n\t\t\t\t&lt;/td&gt;\n\n\t\t\t\t\t\n\t\t\t\t\t&lt;/tr&gt;\n\t\t\t\t\t&lt;/table&gt;\n\t\t\t\t&lt;/td&gt;\n\t\t\t\t&lt;/tr&gt;\n\t\t\t\t&lt;/table&gt;\n\t\t\t\t&lt;!-- //paging --&gt;\n\t\t\t\t&lt;div class=&quot;pagenavi_day&quot;&gt;\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t&lt;span class=&quot;viewday&quot;&gt;02월04일(목)&lt;/span&gt;\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t&lt;span class=&quot;devidebar&quot;&gt;&amp;middot;&lt;/span&gt;\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;section_id=101&amp;section_id2=258&amp;date=20210203&quot;&gt;02월03일(수)&lt;/a&gt;\n\t\t\t\t\n\t\t\t\t&lt;span class=&quot;devidebar&quot;&gt;&amp;middot;&lt;/span&gt;\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;section_id=101&amp;section_id2=258&amp;date=20210202&quot;&gt;02월02일(화)&lt;/a&gt;\n\t\t\t\t\n\t\t\t\t&lt;span class=&quot;devidebar&quot;&gt;&amp;middot;&lt;/span&gt;\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;section_id=101&amp;section_id2=258&amp;date=20210201&quot;&gt;02월01일(월)&lt;/a&gt;\n\t\t\t\t\n\t\t\t\t&lt;span class=&quot;devidebar&quot;&gt;&amp;middot;&lt;/span&gt;\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t&lt;a href=&quot;/news/news_list.nhn?mode=LSS2D&amp;section_id=101&amp;section_id2=258&amp;date=20210131&quot;&gt;01월31일(일)&lt;/a&gt;\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;!--// 날짜별 페이징 --&gt;\n\t\t\t\t&lt;!-- //페이징 영역 --&gt;\n\t\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;!-- //컨텐츠 --&gt;\n\t\t\t&lt;!--  right area --&gt;\n\t\t\t&lt;div id=&quot;contentarea_right2&quot;&gt;\n\t\t\t\t\n\n\n\t\n\n\t\n\t\t&lt;script&gt;document.domain=\&#39;naver.com\&#39;;&lt;/script&gt;\n\t\n\n\n\t\t\t\t&lt;!-- 우측메뉴 끼워넣기 --&gt;\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\n\n\n\n\t&lt;!--  여러개가 뉴스홈 배너로 등록되었을 경우에는 하나의 경우만 뿌려주게 한다. --&gt;\n\t\n\t\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\n\n\n\n\t\t\t\t&lt;!-- 가장 많이 본 뉴스 --&gt;\n\t\t\t\t&lt;div class=&quot;box_type_r&quot;&gt;&lt;div class=&quot;box_type_r_top&quot;&gt;\n\t\t\t\t\t&lt;h2 class=&quot;r_subtlt tlt_bottom_line&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/imgstock/images5/news/rtlt_best_news.gif&quot; alt=&quot;가장 많이 본 뉴스&quot; width=&quot;86&quot; height=&quot;11&quot;&gt;&lt;span class=&quot;tlt_more&quot;&gt;&lt;a href=&quot;/news/news_list.nhn?mode=RANK&quot; onClick=&quot;clickcr(this, \&#39;rnw.more\&#39;, \&#39;\&#39;, \&#39;\&#39;, event)&quot;&gt;더보기&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;\n\t\t\t\t\t&lt;ul class=&quot;right_list_1_2&quot;&gt;\n\n\t\t\t\t\t\t&lt;li&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0012182892&amp;office_id=001&amp;mode=RANK&amp;typ=0&quot; title=&quot;게임스톱 반란 \&#39;삼일천하\&#39;&amp;hellip;대장개미 하루만에 145억원 날려&quot; onClick=&quot;clickcr(this, \&#39;rnw.list\&#39;, \&#39;0012182892\&#39;, \&#39;1\&#39;, event)&quot;&gt;게임스톱 반란 \&#39;삼일천하\&#39;…대장개미 하루만에 145억원 날려&lt;/a&gt;&lt;/li&gt;\n\t\n\n\t\t\t\t\t\t&lt;li&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004538734&amp;office_id=008&amp;mode=RANK&amp;typ=0&quot; title=&quot;전기차 투자, 부품주에 주목하라&amp;hellip;추천 종목은?[부꾸미TALK]&quot; onClick=&quot;clickcr(this, \&#39;rnw.list\&#39;, \&#39;0004538734\&#39;, \&#39;2\&#39;, event)&quot;&gt;전기차 투자, 부품주에 주목하라…추천 종목은?[부꾸미TALK]&lt;/a&gt;&lt;/li&gt;\n\t\n\n\t\t\t\t\t\t&lt;li&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004538792&amp;office_id=008&amp;mode=RANK&amp;typ=0&quot; title=&quot;백신 도착 임박&amp;hellip;&amp;quot;억눌렸던 수요 늘 것&amp;quot;, 증시 영향은?&quot; onClick=&quot;clickcr(this, \&#39;rnw.list\&#39;, \&#39;0004538792\&#39;, \&#39;3\&#39;, event)&quot;&gt;백신 도착 임박…&quot;억눌렸던 수요 늘 것&quot;, 증시 영향은?&lt;/a&gt;&lt;/li&gt;\n\t\n\n\t\t\t\t\t\t&lt;li&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004539085&amp;office_id=008&amp;mode=RANK&amp;typ=0&quot; title=&quot;[Asia오전]시장 혼조세&amp;hellip;호실적 소니는 \&#39;급등\&#39;&quot; onClick=&quot;clickcr(this, \&#39;rnw.list\&#39;, \&#39;0004539085\&#39;, \&#39;4\&#39;, event)&quot;&gt;[Asia오전]시장 혼조세…호실적 소니는 \&#39;급등\&#39;&lt;/a&gt;&lt;/li&gt;\n\t\n\t\t\t\t\t\t&lt;li class=&quot;division&quot;&gt;&lt;/li&gt;\n\t\n\n\t\t\t\t\t\t&lt;li&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0003867072&amp;office_id=011&amp;mode=RANK&amp;typ=0&quot; title=&quot;[오전시황]코스피, 차익 매물 출회에 소폭 하락 출발&quot; onClick=&quot;clickcr(this, \&#39;rnw.list\&#39;, \&#39;0003867072\&#39;, \&#39;5\&#39;, event)&quot;&gt;[오전시황]코스피, 차익 매물 출회에 소폭 하락 출발&lt;/a&gt;&lt;/li&gt;\n\t\n\n\t\t\t\t\t\t&lt;li&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004845322&amp;office_id=018&amp;mode=RANK&amp;typ=0&quot; title=&quot;반도체 품귀현상에 장비 몸값도 껑충&amp;hellip;중고 장비株 &amp;lsquo;쑥&amp;rsquo;&quot; onClick=&quot;clickcr(this, \&#39;rnw.list\&#39;, \&#39;0004845322\&#39;, \&#39;6\&#39;, event)&quot;&gt;반도체 품귀현상에 장비 몸값도 껑충…중고 장비株 ‘쑥’&lt;/a&gt;&lt;/li&gt;\n\t\n\n\t\t\t\t\t\t&lt;li&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004841588&amp;office_id=277&amp;mode=RANK&amp;typ=0&quot; title=&quot;[굿모닝 증시] 美상원 운영 합의.. 韓증시에 \&#39;긍정적\&#39;&quot; onClick=&quot;clickcr(this, \&#39;rnw.list\&#39;, \&#39;0004841588\&#39;, \&#39;7\&#39;, event)&quot;&gt;[굿모닝 증시] 美상원 운영 합의.. 韓증시에 \&#39;긍정적\&#39;&lt;/a&gt;&lt;/li&gt;\n\t\n\n\t\t\t\t\t\t&lt;li&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004578850&amp;office_id=014&amp;mode=RANK&amp;typ=0&quot; title=&quot;[fn마켓워치]개미 2조 매수에도 코스피 3080선 붕괴&quot; onClick=&quot;clickcr(this, \&#39;rnw.list\&#39;, \&#39;0004578850\&#39;, \&#39;8\&#39;, event)&quot;&gt;[fn마켓워치]개미 2조 매수에도 코스피 3080선 붕괴&lt;/a&gt;&lt;/li&gt;\n\t\n\n\t\t\t\t\t&lt;/ul&gt;\n\t\t\t\t&lt;/div&gt;&lt;/div&gt;\n\t\t\t\t&lt;!-- //가장 많이 본 뉴스 --&gt;\n\n\t\t\n\t\t\n\n\n\t\n\t\n\t\n\n\n\t&lt;!--  여러개가 뉴스홈 배너로 등록되었을 경우에는 하나의 경우만 뿌려주게 한다. --&gt;\n\t\n\t\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\n\n\n\n\t\t\t\t&lt;!-- 인기검색어 --&gt;\n\t\t\t\t&lt;div class=&quot;box_type_r&quot;&gt;&lt;div class=&quot;box_type_r_top&quot;&gt;\n\t\t\t\t\t&lt;h2 class=&quot;r_subtlt tlt_bottom_line&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/imgstock/images5/news/rtlt_best_keyword.gif&quot; alt=&quot;인기검색어&quot; width=&quot;51&quot; height=&quot;11&quot;&gt;&lt;span class=&quot;tlt_more&quot;&gt;&lt;a href=&quot;/sise/lastsearch2.nhn&quot;&gt;더보기&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;\n\t\t\t\t\t&lt;table summary=&quot;인기검색어 리스트&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;type_r1&quot;&gt;\n\t\t\t\t\t&lt;caption&gt;인기검색어&lt;/caption&gt;\n\t\t\t\t\t&lt;col width=&quot;11%&quot;&gt;&lt;col width=&quot;*&quot;&gt;&lt;col width=&quot;30%&quot;&gt;&lt;col width=&quot;13%&quot;&gt;\n\n\t\t\t\t\t&lt;tr&gt;\n\t\t\t\t\t\t&lt;td class=&quot;tr&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/imgstock/images5/news/ico_n01.gif&quot; alt=&quot;01&quot; width=&quot;11&quot; height=&quot;11&quot;&gt;&lt;/td&gt;\n\t\t\t\t\t\t&lt;td&gt;&lt;a href=&quot;/item/main.nhn?code=005930&quot; class=&quot;company&quot;&gt;삼성전자&lt;/a&gt;&lt;/td&gt;\n\t\t\t\t\t\t&lt;td class=&quot;number&quot;&gt;82,500&lt;/td&gt;\n\t\t\t\t\t\t&lt;td class=&quot;tc&quot;&gt;&lt;img src=\&#39;https://ssl.pstatic.net/imgstock/images/images4/ico_down.gif\&#39; width=\&#39;7\&#39; height=\&#39;6\&#39; alt=\&#39;하락\&#39; class=\&#39;updown\&#39;&gt;&lt;/td&gt;\n\t\t\t\t\t&lt;/tr&gt;\n\n\t\t\t\t\t&lt;tr&gt;\n\t\t\t\t\t\t&lt;td class=&quot;tr&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/imgstock/images5/news/ico_n02.gif&quot; alt=&quot;01&quot; width=&quot;11&quot; height=&quot;11&quot;&gt;&lt;/td&gt;\n\t\t\t\t\t\t&lt;td&gt;&lt;a href=&quot;/item/main.nhn?code=047810&quot; class=&quot;company&quot;&gt;한국항공우주&lt;/a&gt;&lt;/td&gt;\n\t\t\t\t\t\t&lt;td class=&quot;number&quot;&gt;39,200&lt;/td&gt;\n\t\t\t\t\t\t&lt;td class=&quot;tc&quot;&gt;&lt;img src=\&#39;https://ssl.pstatic.net/imgstock/images/images4/ico_up.gif\&#39; width=\&#39;7\&#39; height=\&#39;6\&#39; alt=\&#39;상승\&#39; class=\&#39;updown\&#39;&gt;&lt;/td&gt;\n\t\t\t\t\t&lt;/tr&gt;\n\n\t\t\t\t\t&lt;tr&gt;\n\t\t\t\t\t\t&lt;td class=&quot;tr&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/imgstock/images5/news/ico_n03.gif&quot; alt=&quot;01&quot; width=&quot;11&quot; height=&quot;11&quot;&gt;&lt;/td&gt;\n\t\t\t\t\t\t&lt;td&gt;&lt;a href=&quot;/item/main.nhn?code=000270&quot; class=&quot;company&quot;&gt;기아차&lt;/a&gt;&lt;/td&gt;\n\t\t\t\t\t\t&lt;td class=&quot;number&quot;&gt;98,300&lt;/td&gt;\n\t\t\t\t\t\t&lt;td class=&quot;tc&quot;&gt;&lt;img src=\&#39;https://ssl.pstatic.net/imgstock/images/images4/ico_up.gif\&#39; width=\&#39;7\&#39; height=\&#39;6\&#39; alt=\&#39;상승\&#39; class=\&#39;updown\&#39;&gt;&lt;/td&gt;\n\t\t\t\t\t&lt;/tr&gt;\n\n\t\t\t\t\t&lt;tr&gt;\n\t\t\t\t\t\t&lt;td class=&quot;tr&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/imgstock/images5/news/ico_n04.gif&quot; alt=&quot;01&quot; width=&quot;11&quot; height=&quot;11&quot;&gt;&lt;/td&gt;\n\t\t\t\t\t\t&lt;td&gt;&lt;a href=&quot;/item/main.nhn?code=033180&quot; class=&quot;company&quot;&gt;필룩스&lt;/a&gt;&lt;/td&gt;\n\t\t\t\t\t\t&lt;td class=&quot;number&quot;&gt;5,440&lt;/td&gt;\n\t\t\t\t\t\t&lt;td class=&quot;tc&quot;&gt;&lt;img src=\&#39;https://ssl.pstatic.net/imgstock/images/images4/ico_up.gif\&#39; width=\&#39;7\&#39; height=\&#39;6\&#39; alt=\&#39;상승\&#39; class=\&#39;updown\&#39;&gt;&lt;/td&gt;\n\t\t\t\t\t&lt;/tr&gt;\n\n\t\t\t\t\t&lt;tr&gt;\n\t\t\t\t\t\t&lt;td class=&quot;tr&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/imgstock/images5/news/ico_n05.gif&quot; alt=&quot;01&quot; width=&quot;11&quot; height=&quot;11&quot;&gt;&lt;/td&gt;\n\t\t\t\t\t\t&lt;td&gt;&lt;a href=&quot;/item/main.nhn?code=064350&quot; class=&quot;company&quot;&gt;현대로템&lt;/a&gt;&lt;/td&gt;\n\t\t\t\t\t\t&lt;td class=&quot;number&quot;&gt;21,050&lt;/td&gt;\n\t\t\t\t\t\t&lt;td class=&quot;tc&quot;&gt;&lt;img src=\&#39;https://ssl.pstatic.net/imgstock/images/images4/ico_up.gif\&#39; width=\&#39;7\&#39; height=\&#39;6\&#39; alt=\&#39;상승\&#39; class=\&#39;updown\&#39;&gt;&lt;/td&gt;\n\t\t\t\t\t&lt;/tr&gt;\n\n\n\t\t\t\t\t&lt;/table&gt;\n\t\t\t\t&lt;/div&gt;&lt;/div&gt;\n\t\t\t\t&lt;!-- //인기검색어 --&gt;\n\n\t\t\n\t\t\n\n\n\t\n\t\n\t\n\n\n\t\t\t\t&lt;!-- //우측메뉴 끼워넣기 --&gt;\n\t\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;!-- // right area --&gt;\n\n\t\t\t&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;\n\t\t&lt;/div&gt;\n\t&lt;/div&gt;\n\n\n\n\n\n\n\t\n\n\n\n\n\n\n\t&lt;div id=&quot;footer&quot;&gt;\n\t\t&lt;ul&gt;\n\t\t\t&lt;li class=&quot;first&quot;&gt;\n\t\t\t\t&lt;a href=&quot;https://www.naver.com/rules/service.html&quot; onClick=&quot;clickcr(this, \&#39;fot.service\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot; target=&quot;_blank&quot;&gt;이용약관&lt;/a&gt;\n\t\t\t&lt;/li&gt;\n\t\t\t&lt;li&gt;\n\t\t\t\t&lt;a href=&quot;https://finance.naver.com/rules.nhn&quot; onClick=&quot;clickcr(this, \&#39;fot.policy\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot; target=&quot;_blank&quot;&gt;금융게시판 운영원칙&lt;/a&gt;\n\t\t\t&lt;/li&gt;\n\t\t\t&lt;li&gt;\n\t\t\t\t&lt;a href=&quot;https://www.naver.com/rules/privacy.html&quot; onClick=&quot;clickcr(this, \&#39;fot.privacy\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;개인정보처리방침&lt;/strong&gt;&lt;/a&gt;\n\t\t\t&lt;/li&gt;\n\t\t\t&lt;li&gt;\n\t\t\t\t&lt;a href=&quot;https://www.naver.com/rules/disclaimer.html&quot; onClick=&quot;clickcr(this, \&#39;fot.limit\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot; target=&quot;_blank&quot;&gt;책임의 한계와 법적고지&lt;/a&gt;\n\t\t\t&lt;/li&gt;\n\t\t\t&lt;li&gt;\n\t\t\t\t&lt;a href=&quot;https://help.naver.com/support/alias/contents2/finance/finance_1.naver&quot; onclick=&quot;clickcr(this, \&#39;fot.help\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot; target=&quot;_blank&quot;&gt;금융 고객센터&lt;/a&gt;\n\t\t\t&lt;/li&gt;\n\t\t&lt;/ul&gt;\n\t\t&lt;p class=&quot;desc&quot;&gt;네이버(주)가 제공하는 금융 정보는 각 콘텐츠 제공업체&lt;a href=&quot;javascript:;&quot; onclick=&quot;togglePanelFooter(\&#39;footerPanel0\&#39;);&quot; class=&quot;desc_help&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/static/nfinance/2018/06/29/btn_help.png&quot; width=&quot;17&quot; height=&quot;17&quot; alt=&quot;제공업체 상세설명&quot;&gt;&lt;/a&gt;로부터 받는 투자 참고사항이며, 오류가 발생하거나 지연될 수 있습니다.&lt;br&gt;네이버(주)와 콘텐츠 제공업체는 제공된 정보에 의한 투자 결과에 법적인 책임을 지지 않습니다. 게시된 정보는 무단으로 배포할 수 없습니다.&lt;/p&gt;\n\t\t&lt;div id=&quot;footerPanel0&quot; class=&quot;provider_layer&quot; style=&quot;display:none&quot; tabindex=&quot;0&quot; onblur=&quot;hidePannel(\&#39;footerPanel0\&#39;)&quot;&gt;\n\t\t\t&lt;strong class=&quot;provider_layer__tit&quot;&gt;컨텐츠 제공업체&lt;/strong&gt;\n\t\t\t&lt;div class=&quot;provider_layer__txt&quot;&gt;\n\t\t\t\t&lt;p&gt;&lt;span&gt;코스콤 : &lt;/span&gt;실시간 주가정보 및 국내시세정보&lt;/p&gt;\n\t\t\t\t&lt;p&gt;&lt;span&gt;에프앤가이드 : &lt;/span&gt;기업 및 재무정보&lt;/p&gt;\n\t\t\t\t&lt;p&gt;&lt;span&gt;이데일리 : &lt;/span&gt;해외 시세 및 시장지표 정보&lt;/p&gt;\n\t\t\t\t&lt;p&gt;&lt;span&gt;제로인 : &lt;/span&gt;펀드정보&lt;/p&gt;\n\t\t\t\t&lt;p&gt;&lt;span&gt;한국예탁결제원 : &lt;/span&gt;주주총회일 및 전자투표 정보&lt;/p&gt;\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;span class=&quot;arrow&quot;&gt;&lt;/span&gt;\n\t\t&lt;/div&gt;\n\t\t&lt;address&gt;\n\t\t\t&lt;a href=&quot;https://www.navercorp.com/&quot; target=&quot;_blank&quot; class=&quot;logo&quot; onClick=&quot;clickcr(this, \&#39;fot.nhn\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;&lt;img src=&quot;https://ssl.pstatic.net/static/nfinance/2019/02/22/ci_naver.png&quot; width=&quot;58&quot; height=&quot;11&quot; alt=&quot;NAVER&quot; /&gt;&lt;/a&gt;\n\t\t\t&lt;em&gt;Copyright &amp;copy;&lt;/em&gt;\n\t\t\t&lt;a href=&quot;https://www.navercorp.com/&quot; target=&quot;_blank&quot; onClick=&quot;clickcr(this, \&#39;fot.nhn\&#39;, \&#39;\&#39;, \&#39;\&#39;, event);&quot;&gt;NAVER Corp.&lt;/a&gt;\n\t\t\t&lt;span&gt;All Rights Reserved.&lt;/span&gt;\n\t\t&lt;/address&gt;\n\t\t\n\t\t\n\t\t\n\t&lt;/div&gt;\n\n\n\n&lt;script type=&quot;text/javascript&quot;&gt;\nfunction isVisible(obj) {\n    if (obj == document) return true\n \n    if (!obj) return false\n    if (!obj.parentNode) return false\n    if (obj.style) {\n        if (obj.style.display == \&#39;none\&#39;) return false\n        if (obj.style.visibility == \&#39;hidden\&#39;) return false\n    }\n \n    if (window.getComputedStyle) {\n        var style = window.getComputedStyle(obj, &quot;&quot;)\n        if (style.display == \&#39;none\&#39;) return false\n        if (style.visibility == \&#39;hidden\&#39;) return false\n    }\n \n    var style = obj.currentStyle\n    if (style) {\n        if (style[\&#39;display\&#39;] == \&#39;none\&#39;) return false\n        if (style[\&#39;visibility\&#39;] == \&#39;hidden\&#39;) return false\n    }\n \n    return isVisible(obj.parentNode)\n}\n\nfunction isChildOf(myobj, containerObj) {\n\twhile(myobj != undefined) {\n\t\tif (myobj == document.body) {\n\t\t\tbreak;\n\t\t} \n\t\tif (myobj == containerObj) {\n\t\t\treturn true;\n\t\t}\n\t\tmyobj = myobj.parentElement;\n\t}\n\treturn false;\t\n}\n\nfunction gnbLayerClose(e){\n\tvar target = e.target ? e.target : e.srcElement;\n\tif (isVisible(document.getElementById(\&#39;gnb_service_lyr\&#39;)) || isVisible(document.getElementById(\&#39;gnb_notice_lyr\&#39;)) ||isVisible(document.getElementById(\&#39;gnb_my_lyr\&#39;)) ) {\n\t\tif (!isChildOf(target, document.getElementById(\&#39;gnb\&#39;))) {\n\t\t\tgnbAllLayerClose();\n\t\t}\n\t}\t\n}\n\nvar isIE = (navigator.userAgent.toLowerCase().indexOf(&quot;msie&quot;)!=-1 &amp;&amp; window.document.all) ? true:false;\nif (isIE) {\n\tdocument.attachEvent(\&#39;onmousedown\&#39;, gnbLayerClose);\n} else {\n\twindow.addEventListener(\&#39;mousedown\&#39;, gnbLayerClose);\n}\n\nfunction showPannel(layerId){\n    var layer = jindo.$(layerId);\n    layer.style.display=\&#39;block\&#39;;\n\n    if (layerId == &quot;summary_lyr&quot;) {\n        var layerHeight = jindo.$Element(layer).height();\n        jindo.$Element(&quot;summary_ifr&quot;).height(layerHeight);\n    }\n}\n\nfunction hidePannel(layerId){\n    var layer = jindo.$(layerId);\n    layer.style.display=\&#39;none\&#39;;\n}\n\nfunction togglePanelFooter(layerId) {\n    var elTargetLayer = jindo.$Element(jindo.$$.getSingle(&quot;#&quot; + layerId));\n\n    if (elTargetLayer != null) {\n        if (elTargetLayer.visible()) {\n            hidePannel(layerId);\n        } else {\n            showPannel(layerId);\n        }\n    }\n}\n\n// add data-useragent\ndocument.documentElement.setAttribute(\&#39;data-useragent\&#39;,navigator.userAgent);\n&lt;/script&gt;\n&lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">5</span><span class="n">ce134087a8c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">html_select</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;dl &gt; dd.articleSubject &gt; a&#39;</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;BeautifulSoup&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html</span><span class="o">.</span><span class="n">dl</span>
+<span class="n">html_select</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dl class=&quot;sub_tit_ticker&quot;&gt;
-&lt;dt&gt;속보&lt;/dt&gt;
-&lt;dd&gt;
-&lt;span id=&quot;newsflash_0&quot; onmouseout=&quot;view_newsflash_start()&quot; onmouseover=&quot;view_newsflash_pause()&quot; style=&quot;&quot;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004842182&amp;amp;office_id=277&amp;amp;mode=LSS3D&amp;amp;type=0&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;section_id3=401&quot; title=&quot;푸른저축은행, 보통주당 550원 현금배당 결정&quot;&gt;푸른저축은행, 보통주당 550원 현금. .&lt;/a&gt;&lt;/span&gt;
-&lt;span id=&quot;newsflash_1&quot; onmouseout=&quot;view_newsflash_start()&quot; onmouseover=&quot;view_newsflash_pause()&quot; style=&quot;display:none&quot;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0010330671&amp;amp;office_id=003&amp;amp;mode=LSS3D&amp;amp;type=0&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;section_id3=401&quot; title=&quot;[올댓차이나] 대만 증시, 고가 경계 매물에 나흘 만에 반락  마감...0.41%↓&quot;&gt;[올댓차이나] 대만 증시, 고가 경계 . .&lt;/a&gt;&lt;/span&gt;
-&lt;span id=&quot;newsflash_2&quot; onmouseout=&quot;view_newsflash_start()&quot; onmouseover=&quot;view_newsflash_pause()&quot; style=&quot;display:none&quot;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004579016&amp;amp;office_id=014&amp;amp;mode=LSS3D&amp;amp;type=0&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;section_id3=401&quot; title=&quot;[공시]현대중공업지주, 주식분할 결정..5000→1000원&quot;&gt;[공시]현대중공업지주, 주식분할 결. .&lt;/a&gt;&lt;/span&gt;
-&lt;span id=&quot;newsflash_3&quot; onmouseout=&quot;view_newsflash_start()&quot; onmouseover=&quot;view_newsflash_pause()&quot; style=&quot;display:none&quot;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004539231&amp;amp;office_id=008&amp;amp;mode=LSS3D&amp;amp;type=0&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;section_id3=401&quot; title=&#39;&quot;글로벌 위험선호 연장&quot;…원/달러 환율 하락세&#39;&gt;&quot;글로벌 위험선호 연장&quot;…원/달러 환. .&lt;/a&gt;&lt;/span&gt;
-&lt;span id=&quot;newsflash_4&quot; onmouseout=&quot;view_newsflash_start()&quot; onmouseover=&quot;view_newsflash_pause()&quot; style=&quot;display:none&quot;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004579010&amp;amp;office_id=014&amp;amp;mode=LSS3D&amp;amp;type=0&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;section_id3=401&quot; title=&quot;[공시]애경산업, 지난해 영업익 224억..전년비 63.1%↓&quot;&gt;[공시]애경산업, 지난해 영업익 224. .&lt;/a&gt;&lt;/span&gt;
-&lt;span id=&quot;newsflash_5&quot; onmouseout=&quot;view_newsflash_start()&quot; onmouseover=&quot;view_newsflash_pause()&quot; style=&quot;display:none&quot;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004494898&amp;amp;office_id=015&amp;amp;mode=LSS3D&amp;amp;type=0&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;section_id3=401&quot; title=&quot;딸 가수 데뷔에 &#39;아빠찬스&#39; 런정페이 화웨이 창업자 결국 사과[강현우의 트렌딩 차이나]&quot;&gt;딸 가수 데뷔에 &#39;아빠찬스&#39; 런정페이. .&lt;/a&gt;&lt;/span&gt;
-&lt;span id=&quot;newsflash_6&quot; onmouseout=&quot;view_newsflash_start()&quot; onmouseover=&quot;view_newsflash_pause()&quot; style=&quot;display:none&quot;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0004842178&amp;amp;office_id=277&amp;amp;mode=LSS3D&amp;amp;type=0&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;section_id3=401&quot; title=&quot;현대중공업지주, 주식분할 결정...5000원→1000원&quot;&gt;현대중공업지주, 주식분할 결정...50. .&lt;/a&gt;&lt;/span&gt;
-&lt;span id=&quot;newsflash_7&quot; onmouseout=&quot;view_newsflash_start()&quot; onmouseover=&quot;view_newsflash_pause()&quot; style=&quot;display:none&quot;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0001789847&amp;amp;office_id=016&amp;amp;mode=LSS3D&amp;amp;type=0&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;section_id3=401&quot; title=&quot;스페코, 지난해 영업익 121억…전년비 82.2%↑&quot;&gt;스페코, 지난해 영업익 121억…전년. .&lt;/a&gt;&lt;/span&gt;
-&lt;span id=&quot;newsflash_8&quot; onmouseout=&quot;view_newsflash_start()&quot; onmouseover=&quot;view_newsflash_pause()&quot; style=&quot;display:none&quot;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0001789846&amp;amp;office_id=016&amp;amp;mode=LSS3D&amp;amp;type=0&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;section_id3=401&quot; title=&quot;한양디지텍, 지난해 영업익 69억…흑자전환&quot;&gt;한양디지텍, 지난해 영업익 69억…흑. .&lt;/a&gt;&lt;/span&gt;
-&lt;span id=&quot;newsflash_9&quot; onmouseout=&quot;view_newsflash_start()&quot; onmouseover=&quot;view_newsflash_pause()&quot; style=&quot;display:none&quot;&gt;&lt;a href=&quot;/news/news_read.nhn?article_id=0003867356&amp;amp;office_id=011&amp;amp;mode=LSS3D&amp;amp;type=0&amp;amp;section_id=101&amp;amp;section_id2=258&amp;amp;section_id3=401&quot; title=&quot;한국FPSB,“뉴노멀시대, 재무설계업 성장가능성 높아질 것”&quot;&gt;한국FPSB,“뉴노멀시대, 재무설계업 . .&lt;/a&gt;&lt;/span&gt;
-&lt;span class=&quot;btn&quot;&gt;
-&lt;a href=&quot;javascript:view_newsflash_move(&#39;prev&#39;);&quot;&gt;&lt;img alt=&quot;이전 뉴스보기&quot; height=&quot;17&quot; src=&quot;https://ssl.pstatic.net/static/nfinance/2015/news_ticker_arrow_prev.png&quot; width=&quot;17&quot;/&gt;&lt;/a&gt;
-&lt;a href=&quot;javascript:view_newsflash_move(&#39;next&#39;);&quot;&gt;&lt;img alt=&quot;다음 뉴스보기&quot; height=&quot;17&quot; src=&quot;https://ssl.pstatic.net/static/nfinance/2015/news_ticker_arrow_next.png&quot; width=&quot;17&quot;/&gt;&lt;/a&gt;
-&lt;/span&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;a href=&quot;/news/news_read.nhn?article_id=0000595743&amp;amp;office_id=469&amp;amp;mode=LSS2D&amp;amp;type=0§ion_id=101§ion_id2=258§ion_id3=&amp;amp;date=20210409&amp;amp;page=1&quot; title=&#39;국민연금 주식매도 멈춘다...  &quot;동학개미 압박에 국민노후 저당&quot; 논란&#39;&gt;국민연금 주식매도 멈춘다...  &quot;동학개미 압박에 국민노후 저당&quot; 논란&lt;/a&gt;
 </pre></div>
+</div>
+</div>
+</div>
+<p>먼저 <code class="docutils literal notranslate"><span class="pre">BeautifulSoup()</span></code> 함수를 통해 HTML 정보를 불러옵니다. 그 후 <code class="docutils literal notranslate"><span class="pre">select()</span></code> 함수를 통해 원하는 태그로 접근해 들어갑니다. 이 중 우리가 원하는 최종 내용은 title 속성에 위치하고 있으므로, 추가적으로 이를 추출합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html_select</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;국민연금 주식매도 멈춘다...\xa0 &quot;동학개미 압박에 국민노후 저당&quot; 논란&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수를 통해 손쉽게 속성에 해당하는 내용을 추출할 수 있습니다. <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> 구문으로 묶어 한번에 제목들을 추출하도록 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">html_select</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;dl &gt; dd.articleSubject &gt; a&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">html_select</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;국민연금 주식매도 멈춘다...\xa0 &quot;동학개미 압박에 국민노후 저당&quot; 논란&#39;,
+ &#39;[픽뉴스] 친환경 용기라더니, 무례한 터키대통령, 28년간 기른 손톱&#39;,
+ &#39;김주하 앵커가 전하는 4월 9일 종합뉴스 주요뉴스&#39;,
+ &#39;넥스턴 &quot;계열사 넥스아이디랩 주식 100억원에 취득&quot;&#39;,
+ &#39;넥스턴 &quot;계열사 넥스턴바이오 주식 100억원에 취득&quot;&#39;,
+ &#39;[표]아시아 주요 증시 동향(4월 9일)&#39;,
+ &#39;군인공제회, 에티오피아 6·25 참전용사에 기부금 전달&#39;,
+ &#39;[fn마켓워치]메테우스운용, 이천 복합물류센터 개발 추진&#39;,
+ &quot;국민연금, &#39;자동 매도&#39; 멈춘다…이제 코스피 매수할듯&quot;,
+ &#39;에르메스 첫 실적공개, 지난해 한국서 4200억 벌었다…영업익 1334억&#39;,
+ &#39;파미니티, 국회 표창장…&quot;韓·亞 교류 협력 공로 인정받아&quot;&#39;,
+ &#39;[일문일답] 국민연금 &quot;추가 매입·매도 중단 아냐…수익성 본다&quot;&#39;,
+ &#39;한진 1Q 영업익 133억, 전년比 47.6%↓…&quot;택배 분류인력 비용 등 발생&quot;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>4.2.3 기업공시채널에서 오늘의 공시 불러오기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>한국거래소 상장공시시스템(kind.krx.co.kr)에 접속한 후 [오늘의 공시 → 전체 → 더보기]를 선택해 전체 공시내용을 확인할 수 있습니다.</p>
+<div class="figure align-default" id="crawl-kind">
+<img alt="_images/crawl_kind.png" src="_images/crawl_kind.png" />
+<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">오늘의공시 확인하기</span><a class="headerlink" href="#crawl-kind" title="Permalink to this image">¶</a></p>
+</div>
+<p>해당 페이지에서 날짜를 변경한 후 [검색]을 누르면, 페이지의 내용은 해당일의 공시로 변경되지만 URL은 변경되지 않습니다. 이처럼 POST 방식은 요청하는 데이터에 대한 쿼리가 body의 형태를 통해 전송되므로, 개발자 도구 화면을 통해 해당 쿼리에 대한 내용을 확인해야 합니다.</p>
+<p>개발자 도구 화면을 연 상태에서 조회일자를 원하는 날짜로 선택, [검색]을 클릭한 후 [Network] 탭의 todaydisclosure.do 항목을 살펴보면 Form Data를 통해 서버에 데이터를 요청하는 내역을 확인할 수 있습니다. 여러 항목 중 selDate 부분이 우리가 선택한 일자로 설정되어 있습니다.</p>
+<div class="figure align-default" id="crawl-kind-post">
+<img alt="_images/crawl_kind_post.png" src="_images/crawl_kind_post.png" />
+<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">POST 방식의 데이터 요청</span><a class="headerlink" href="#crawl-kind-post" title="Permalink to this image">¶</a></p>
+</div>
+<p>POST 방식으로 쿼리를 요청하는 방법을 코드로 나타내면 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://kind.krx.co.kr/disclosure/todaydisclosure.do&#39;</span>
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="s1">&#39;searchTodayDisclosureSub&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;currentPageSize&#39;</span><span class="p">:</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pageIndex&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;orderMode&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;orderStat&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;forward&#39;</span><span class="p">:</span> <span class="s1">&#39;todaydisclosure_sub&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;chose&#39;</span><span class="p">:</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;todayFlag&#39;</span><span class="p">:</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;selDate&#39;</span><span class="p">:</span> <span class="s1">&#39;2021-04-09&#39;</span>
+<span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+<span class="n">data_bs</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">data_bs</span><span class="o">.</span><span class="n">prettify</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 1</th>
+      <th>Unnamed: 2</th>
+      <th>Unnamed: 3</th>
+      <th>Unnamed: 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>18:55</td>
+      <td>넥스턴</td>
+      <td>타법인주식및출자증권취득결정</td>
+      <td>넥스턴</td>
+      <td>공시차트  주가차트</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18:54</td>
+      <td>넥스턴</td>
+      <td>타법인주식및출자증권취득결정</td>
+      <td>넥스턴</td>
+      <td>공시차트  주가차트</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>18:40</td>
+      <td>좋은사람들</td>
+      <td>소송등의제기(신주발행유지가처분)</td>
+      <td>좋은사람들</td>
+      <td>공시차트  주가차트</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>18:28</td>
+      <td>씨씨에스</td>
+      <td>기준가산정 등에 관한 안내('20.06.26일자 공시사항 재안내)</td>
+      <td>코스닥시장본부</td>
+      <td>공시차트  주가차트</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18:27</td>
+      <td>지와이커머스</td>
+      <td>주권매매거래정지해제(상장폐지에 따른 정리매매 개시)</td>
+      <td>코스닥시장본부</td>
+      <td>공시차트  주가차트</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>먼저 url과 쿼리를 입력하며, 쿼리는 딕셔너리 형태로 입력해줍니다. url은 todaydisclosure.do 항목에서 General 부분의 Request URL에 해당하는 값을, 쿼리는 Form Data와 동일하게 입력해줍니다. 쿼리 중 marketType과 같이 값이 없는 항목은 입력하지 않아도 됩니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST()</span></code> 함수를 통해 해당 url에 원하는 쿼리를 요청합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BeautifulSoup()</span></code> 함수를 통해 해당 페이지의 HTML 내용을 읽어옵니다.</p></li>
+<li><p>테이블 형태를 읽어오기 위해 <code class="docutils literal notranslate"><span class="pre">prettify()</span></code> 함수를 이용해 BeautifulSoup 에서 파싱한 파서 트리를 유니코드 형태로 변형해줍니다. 그 후, <code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 통해 테이블을 데이터프레임 형태로 읽어옵니다.</p></li>
+</ol>
+<p>데이터를 확인하면 화면과 동일한 내용이 출력됩니다. POST 형식의 경우 쿼리 내용을 바꾸어 원하는 데이터를 받을 수 있습니다. 만일 다른 날짜의 공시를 확인하고자 한다면 위의 코드에서 selDate만 해당일로 변경해주면 됩니다.</p>
+</div>
+<div class="section" id="id6">
+<h3>4.2.4 네이버 금융에서 주식티커 크롤링<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>태그와 속성, 페이지 내비게이션 값을 결합해 국내 상장주식의 종목명 및 티커를 추출하는 방법을 알아보겠습니다. 네이버 금융에서 [국내증시 → 시가총액] 페이지에는 코스피와 코스닥의 시가총액별 정보가 나타나 있습니다.</p>
+<ul class="simple">
+<li><p>코스피: https://finance.naver.com/sise/sise_market_sum.nhn?sosok=0&amp;page=1</p></li>
+<li><p>코스닥: https://finance.naver.com/sise/sise_market_sum.nhn?sosok=1&amp;page=1</p></li>
+</ul>
+<p>또한 종목명을 클릭해 이동하는 페이지의 URL을 확인해보면, 끝 6자리가 각 종목의 거래소 티커임도 확인이 됩니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>삼성전자: https://finance.naver.com/item/main.nhn?code=005930
+</pre></div>
+</div>
+<p>티커 정리를 위해 HTML에서 확인해야 할 부분은 총 두 가지입니다. 먼저 하단의 페이지 내비게이션을 통해 코스피와 코스닥 시가총액에 해당하는 페이지가 각각 몇 번째 페이지까지 있는지 알아야 합니다. 아래와 같은 항목 중 [맨뒤]에 해당하는 페이지가 가장 마지막 페이지입니다.</p>
+<div class="figure align-default" id="crawl-page-navi">
+<img alt="_images/crawl_page_navi.png" src="_images/crawl_page_navi.png" />
+<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">페이지 내비게이션</span><a class="headerlink" href="#crawl-page-navi" title="Permalink to this image">¶</a></p>
+</div>
+<p>[맨뒤]에 마우스 커서를 올려두고 마우스 오른쪽 버튼을 클릭한 후 [검사]를 선택하면 개발자 도구 화면이 열립니다. 여기서 해당 글자가 HTML 내에서 어떤 부분에 위치하는지 확인할 수 있습니다. 해당 링크는 [td 태그 중 pgRR 클래스 → a 태그 중 href 속성]에 위치하며, page= 뒷부분의 숫자에 위치하는 페이지로 링크가 걸려 있습니다.</p>
+<div class="figure align-default" id="crawl-page-navi2">
+<img alt="_images/crawl_page_navi2.png" src="_images/crawl_page_navi2.png" />
+<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">HTML 내 페이지 내비게이션 부분</span><a class="headerlink" href="#crawl-page-navi2" title="Permalink to this image">¶</a></p>
+</div>
+<p>종목명 링크에 해당하는 주소 중 끝 6자리는 티커에 해당합니다. 따라서 각 링크들의 주소를 알아야 할 필요도 있습니다.</p>
+<div class="figure align-default" id="crawl-naver-corp">
+<img alt="_images/crawl_naver_corp.png" src="_images/crawl_naver_corp.png" />
+<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">종목 별 링크 주소 확인</span><a class="headerlink" href="#crawl-naver-corp" title="Permalink to this image">¶</a></p>
+</div>
+<p>삼성전자에 마우스 커서를 올려둔 후 마우스 오른쪽 버튼을 클릭하고 [검사]를 선택합니다. 개발자 도구 화면을 살펴보면 해당 링크가 [tbody → tr → td → a 태그의 href 속성]에 위치하고 있음을 알 수 있습니다.</p>
+<p>위 정보들을 이용해 데이터를 다운로드하겠습니다. 아래 코드에서 i = 0일 경우 코스피에 해당하는 URL이 생성되고, i = 1일 경우 코스닥에 해당하는 URL이 생성됩니다. 먼저 코스피에 해당하는 데이터를 다운로드하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ticker</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://finance.naver.com/sise/sise_market_sum.nhn?sosok=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&amp;page=1&#39;</span>
+<span class="n">down_table</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>빈 딕셔너리인 ticker 변수를 만들어줍니다.</p></li>
+<li><p>코스피 시가총액 페이지의 url을 만듭니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수를 통해 해당 페이지 내용을 받아 저장합니다.</p></li>
+</ol>
+<p>가장 먼저 해야 할 작업은 마지막 페이지가 몇 번째 페이지인지 찾아내는 작업입니다. 우리는 이미 개발자 도구 화면을 통해 해당 정보가 어디에 위치하고 있음을 알고 있습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">down_html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">down_table</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">navi_final</span> <span class="o">=</span> <span class="n">down_html</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;td.pgRR &gt; a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">navi_final</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/sise/sise_market_sum.nhn?sosok=0&amp;page=32
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BeautifulSoup()</span></code> 함수를 이용해 해당 페이지의 HTML 내용을 읽어옵니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">select_one()</span></code> 함수 내에 찾고자 하는 태그를 입력합니다. <code class="docutils literal notranslate"><span class="pre">select()</span></code> 함수와 다르게 <code class="docutils literal notranslate"><span class="pre">select_one()</span></code> 함수는 첫번째 결과만을 반환합니다. 그 후 <code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수를 통해 href 속성을 찾습니다.</p></li>
+</ol>
+<p>이를 통해 navi_final에는 해당 부분에 해당하는 내용이 저장됩니다. 이 중 우리가 알고 싶은 내용은 page= 뒤에 있는 숫자입니다. 해당 내용을 추출하는 코드는 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">navi_final_number</span> <span class="o">=</span> <span class="n">navi_final</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">navi_final_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">navi_final_number</span><span class="p">)</span>
+
+<span class="n">navi_final_number</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">split()</span></code> 함수를 통해 =를 기준으로 문장을 나눠줍니다. 그 후 뒤에서 첫 번째 데이터만 선택합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int()</span></code> 함수를 통해 숫자 형태로 바꾸어 줍니다.</p></li>
+</ol>
+<p>이를 통해 코스피 시가총액 페이지가 총 페이지까지 있는지 알 수 있으며, <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> 구문을 이용하면 1페이지부터 마지막 페이지까지 모든 내용을 읽어올 수 있습니다. 먼저 코스피의 첫 번째 페이지에서 우리가 원하는 데이터를 추출하는 방법을 살펴보겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 코스피</span>
+<span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># 첫번째 페이지</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://finance.naver.com/sise/sise_market_sum.nhn?sosok=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;&amp;page=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+
+<span class="n">read_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;EUC-KR&quot;</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>pandas 패키지의 <code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 이용하면 손쉽게 테이블 형태를 크롤링 할 수 있으며, 네이버의 경우 인코딩이 ‘EUC-KR’ 형태이므로 이를 설정해줍니다.</p></li>
+<li><p>table 변수에는 리스트 형태로 총 세 가지 테이블이 저장되어 있습니다. 첫 번째 리스트에는 거래량, 시가, 고가 등 적용 항목이 저장되어 있고 세 번째 리스트에는 페이지 내비게이션 테이블이 저장되어 있으므로, 우리에게 필요한 두 번째 리스트만을 table 변수에 저장합니다.</p></li>
+</ol>
+<p>저장된 테이블 내용을 확인하면 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>N</th>
+      <th>종목명</th>
+      <th>현재가</th>
+      <th>전일비</th>
+      <th>등락률</th>
+      <th>액면가</th>
+      <th>시가총액</th>
+      <th>상장주식수</th>
+      <th>외국인비율</th>
+      <th>거래량</th>
+      <th>PER</th>
+      <th>ROE</th>
+      <th>토론실</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>삼성전자</td>
+      <td>83600.0</td>
+      <td>1100.0</td>
+      <td>-1.30%</td>
+      <td>100.0</td>
+      <td>4990738.0</td>
+      <td>5969783.0</td>
+      <td>54.83</td>
+      <td>17791122.0</td>
+      <td>21.77</td>
+      <td>9.99</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.0</td>
+      <td>SK하이닉스</td>
+      <td>140000.0</td>
+      <td>4000.0</td>
+      <td>-2.78%</td>
+      <td>5000.0</td>
+      <td>1019203.0</td>
+      <td>728002.0</td>
+      <td>50.53</td>
+      <td>3247389.0</td>
+      <td>21.43</td>
+      <td>9.53</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+      <td>NAVER</td>
+      <td>383500.0</td>
+      <td>2000.0</td>
+      <td>+0.52%</td>
+      <td>100.0</td>
+      <td>629950.0</td>
+      <td>164263.0</td>
+      <td>57.07</td>
+      <td>463512.0</td>
+      <td>62.90</td>
+      <td>15.22</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.0</td>
+      <td>삼성전자우</td>
+      <td>75000.0</td>
+      <td>200.0</td>
+      <td>-0.27%</td>
+      <td>100.0</td>
+      <td>617165.0</td>
+      <td>822887.0</td>
+      <td>77.73</td>
+      <td>1586008.0</td>
+      <td>19.53</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이 중 마지막 열인 토론실은 필요 없는 열이며, 첫 번째 행과 같이 아무런 정보가 없는 행도 있습니다. 이를 다음과 같이 정리해줍니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;토론실&#39;</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">])</span>
+
+<span class="n">table</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>N</th>
+      <th>종목명</th>
+      <th>현재가</th>
+      <th>전일비</th>
+      <th>등락률</th>
+      <th>액면가</th>
+      <th>시가총액</th>
+      <th>상장주식수</th>
+      <th>외국인비율</th>
+      <th>거래량</th>
+      <th>PER</th>
+      <th>ROE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>삼성전자</td>
+      <td>83600.0</td>
+      <td>1100.0</td>
+      <td>-1.30%</td>
+      <td>100.0</td>
+      <td>4990738.0</td>
+      <td>5969783.0</td>
+      <td>54.83</td>
+      <td>17791122.0</td>
+      <td>21.77</td>
+      <td>9.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.0</td>
+      <td>SK하이닉스</td>
+      <td>140000.0</td>
+      <td>4000.0</td>
+      <td>-2.78%</td>
+      <td>5000.0</td>
+      <td>1019203.0</td>
+      <td>728002.0</td>
+      <td>50.53</td>
+      <td>3247389.0</td>
+      <td>21.43</td>
+      <td>9.53</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+      <td>NAVER</td>
+      <td>383500.0</td>
+      <td>2000.0</td>
+      <td>+0.52%</td>
+      <td>100.0</td>
+      <td>629950.0</td>
+      <td>164263.0</td>
+      <td>57.07</td>
+      <td>463512.0</td>
+      <td>62.90</td>
+      <td>15.22</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.0</td>
+      <td>삼성전자우</td>
+      <td>75000.0</td>
+      <td>200.0</td>
+      <td>-0.27%</td>
+      <td>100.0</td>
+      <td>617165.0</td>
+      <td>822887.0</td>
+      <td>77.73</td>
+      <td>1586008.0</td>
+      <td>19.53</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5.0</td>
+      <td>LG화학</td>
+      <td>812000.0</td>
+      <td>2000.0</td>
+      <td>+0.25%</td>
+      <td>5000.0</td>
+      <td>573210.0</td>
+      <td>70592.0</td>
+      <td>44.04</td>
+      <td>222739.0</td>
+      <td>123.99</td>
+      <td>2.93</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>토론실 열을 제거합니다.</p></li>
+<li><p>종목명이 NA인 행은 삭제합니다.</p></li>
+</ol>
+<p>이제 필요한 정보는 6자리 티커입니다. 티커 역시 개발자 도구 화면을 통해 어디에 위치하고 있음을 알고 있습니다. 티커를 추출하는 코드는 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">down_html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">down_table</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">down_link</span> <span class="o">=</span> <span class="n">down_html</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;tbody &gt; tr &gt; td &gt; a&#39;</span><span class="p">)</span>
+<span class="n">symbol</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">down_link</span><span class="p">]</span>
+
+<span class="n">symbol</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/item/main.nhn?code=005930&#39;,
+ &#39;/item/board.nhn?code=005930&#39;,
+ &#39;/item/main.nhn?code=000660&#39;,
+ &#39;/item/board.nhn?code=000660&#39;,
+ &#39;/item/main.nhn?code=035420&#39;,
+ &#39;/item/board.nhn?code=035420&#39;,
+ &#39;/item/main.nhn?code=005935&#39;,
+ &#39;/item/board.nhn?code=005935&#39;,
+ &#39;/item/main.nhn?code=051910&#39;,
+ &#39;/item/board.nhn?code=051910&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BeautifulSoup()</span></code> 함수를 통해 HTML 정보를 읽어옵니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">select()</span></code> 함수를 통해 찾고자 하는 태그를 입력합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> 구분 내 <code class="docutils literal notranslate"><span class="pre">get()</span></code> 함수를 통해 href 속성에 해당 하는 값들만 찾습니다.</p></li>
+</ol>
+<p>이를 통해 symbol에는 href 속성에 해당하는 링크 주소들이 저장됩니다. 이 중 마지막 6자리 글자만 추출하는 코드는 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">symbol_parse</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">]</span>
+
+<span class="n">symbol_parse</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;005930&#39;,
+ &#39;005930&#39;,
+ &#39;000660&#39;,
+ &#39;000660&#39;,
+ &#39;035420&#39;,
+ &#39;035420&#39;,
+ &#39;005935&#39;,
+ &#39;005935&#39;,
+ &#39;051910&#39;,
+ &#39;051910&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> 구문 내에서 <code class="docutils literal notranslate"><span class="pre">split()</span></code> 함수를 통해 문자를 나눠준 후, 마지막에 해당하는 부분만 선택합니다.</p>
+<p>결과를 살펴보면 티커에 해당하는 마지막 6글자만 추출되지만 동일한 내용이 두 번 연속해 추출됩니다. 이는 main.nhn?code=에 해당하는 부분은 종목명에 설정된 링크, board.nhn?code=에 해당하는 부분은 토론실에 설정된 링크이기 때문입니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">symbol_parse</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">symbol_parse</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">symbol_parse</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;005930&#39;,
+ &#39;000660&#39;,
+ &#39;035420&#39;,
+ &#39;005935&#39;,
+ &#39;051910&#39;,
+ &#39;207940&#39;,
+ &#39;035720&#39;,
+ &#39;005380&#39;,
+ &#39;006400&#39;,
+ &#39;068270&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">unique()</span></code> 함수를 이용해 중복되는 티커를 제거하면 우리가 원하는 티커 부분만 깔끔하게 정리됩니다. 해당 내용을 위에서 구한 테이블에 입력한 후 데이터를 다듬는 과정은 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbol_parse</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span><span class="s1">&#39;종목코드&#39;</span><span class="p">})</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">ticker</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>위에서 구한 티커를 ‘N’열에 입력합니다.</p></li>
+<li><p>해당 열 이름을 종목코드로 변경합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dropna()</span></code> 함수를 통해 특정 행을 삭제했으므로, 행 이름을 초기화해줍니다.</p></li>
+<li><p>ticker 딕셔너리에 정리된 데이터를 입력합니다.</p></li>
+</ol>
+<p>위의 코드에서 i와 j 값을 for loop 구문에 이용하면 코스피와 코스닥 전 종목의 티커가 정리된 테이블을 만들 수 있습니다. 이를 전체 코드로 나타내면 다음과 같으며, 무한 크롤링 방지를 위해 각 loop 사이에 0.5초의 타임슬립을 적용하였습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">mkt</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># 0 은 코스피, i = 1 은 코스닥 종목</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mkt</span><span class="p">:</span>
+    
+    <span class="n">ticker</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://finance.naver.com/sise/sise_market_sum.nhn?sosok=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&amp;page=1&#39;</span>
+    <span class="n">down_table</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    
+    <span class="c1"># 최종 페이지 번호 찾아주기</span>
+    <span class="n">down_html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">down_table</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+    <span class="n">navi_final</span> <span class="o">=</span> <span class="n">down_html</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;td.pgRR &gt; a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+    
+    <span class="n">navi_final_number</span> <span class="o">=</span> <span class="n">navi_final</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">navi_final_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">navi_final_number</span><span class="p">)</span>    
+    
+    <span class="c1"># 첫번째 부터 마지막 페이지까지 for loop를 이용하여 테이블 추출하기</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">navi_final_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="p">:</span>
+        
+        <span class="n">url_page</span> <span class="o">=</span> <span class="s1">&#39;https://finance.naver.com/sise/sise_market_sum.nhn?sosok=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;&amp;page=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+        <span class="n">read_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url_page</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;EUC-KR&quot;</span><span class="p">)</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;토론실&#39;</span><span class="p">)</span> <span class="c1"># 토론실 부분 삭제</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;종목명&#39;</span><span class="p">])</span> <span class="c1"># 빈 행 삭제</span>
+        
+        <span class="c1"># 6자리 티커만 추출</span>
+        <span class="n">down_page</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_page</span><span class="p">)</span>        
+        <span class="n">down_html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">down_page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        <span class="n">down_link</span> <span class="o">=</span> <span class="n">down_html</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;tbody &gt; tr &gt; td &gt; a&#39;</span><span class="p">)</span>
+        <span class="n">symbol</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">down_link</span><span class="p">]</span>
+        
+        <span class="n">symbol_parse</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">]</span>
+        <span class="n">symbol_parse</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">symbol_parse</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        
+        <span class="c1"># 테이블에 티커 넣어준 후, 테이블 정리</span>
+        <span class="n">table</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbol_parse</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span><span class="s1">&#39;종목코드&#39;</span><span class="p">})</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">ticker</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span>    
+        
+        <span class="c1"># 타임슬립 적용</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        
+    <span class="c1"># 딕셔너리를 데이터프레임으로 만들기</span>
+    <span class="n">tickers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tickers</span>
+
+<span class="c1"># 코스피와 코스닥 데이터 묶기        </span>
+<span class="n">data_final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>        
+<span class="n">data_final</span> <span class="o">=</span> <span class="n">data_final</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████| 32/32 [00:53&lt;00:00,  1.67s/it]
+100%|██████████████████████████████████████████████████████████████████████████████████| 30/30 [00:53&lt;00:00,  1.80s/it]
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -366,6 +1405,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="03_api.html" title="previous page">3. API를 이용한 데이터 수집</a>
+    <a class='right-next' id="next-link" href="05_crawl_practice.html" title="next page">5. 금융 데이터 수집하기 (기본)</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

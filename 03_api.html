@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -40,6 +40,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -78,6 +79,7 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -91,7 +93,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. 금융 데이터 수집하기 (기본)" href="05_crawl_practice.html" />
+    <link rel="next" title="4. 크롤링 이해하기" href="04_crawl.html" />
     <link rel="prev" title="2. 크롤링을 위한 기본 지식" href="02_information.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -144,13 +146,68 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="05_crawl_practice.html">
    5. 금융 데이터 수집하기 (기본)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="08_other_data.html">
-   8. DART 공시, 증권사 리포트 및 경제 데이터 수집하기
+  <a class="reference internal" href="06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16_backtest.html">
+   16. 백테스팅 시뮬레이션
   </a>
  </li>
 </ul>
@@ -246,8 +303,8 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#datareader-api">
-   3.2 DataReader() 함수를 이용한 API 다운로드
+  <a class="reference internal nav-link" href="#datareader">
+   3.2 DataReader() 함수를 데이터 다운로드
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -260,21 +317,9 @@ commentsRunWhenDOMLoaded(addUtterances);
      3.2.2 국내 종목 주가 다운로드
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fred">
-   3.3 FRED 데이터 다운로드
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#api-key">
-     3.3.1 API Key 발급받기
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     3.3.2 FRED 데이터 다운로드
+    <a class="reference internal nav-link" href="#fred">
+     3.2.3 FRED 데이터 다운로드
     </a>
    </li>
   </ul>
@@ -292,7 +337,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 
   <div class="section" id="api">
 <h1>3. API를 이용한 데이터 수집<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
-<p>이번 3장과 다음 4장에서는 본격적으로 데이터를 수집하는 방법을 배우겠습니다. 먼저 API를 이용해 데이터를 수집하는 방법을 살펴봅니다.</p>
+<p>이번 장에서 부터는 본격적으로 데이터를 수집하는 방법을 배우겠습니다. 먼저 API를 이용해 데이터를 수집하는 방법을 살펴봅니다.</p>
 <p>API 제공자는 본인이 가진 데이터베이스를 다른 누군가가 쉽게 사용할 수 있는 형태로 가지고 있으며, 해당 데이터베이스에 접근할 수 있는 열쇠인 API 주소를 가진 사람은 이를 언제든지 사용할 수 있습니다.</p>
 <div class="figure align-default" id="id1">
 <img alt="_images/03_api.png" src="_images/03_api.png" />
@@ -301,7 +346,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>API는 API 주소만 가지고 있다면 데이터를 언제, 어디서, 누구나 쉽게 이용할 수 있다는 장점이 있습니다. 또한 대부분의 경우 사용자가 필요한 데이터만을 가지고 있으므로 접속 속도가 빠르며, 데이터를 가공하는 번거로움도 줄어듭니다. 해외에는 금융 데이터를 API의 형태로 제공하는 업체가 많으므로, 이를 잘만 활용한다면 매우 손쉽게 퀀트 투자에 필요한 데이터를 수집할 수 있습니다.</p>
 <div class="section" id="api-quandl">
 <h2>3.1 API를 이용한 Quandl 데이터 다운로드<a class="headerlink" href="#api-quandl" title="Permalink to this headline">¶</a></h2>
-<p>데이터 제공업체 Quandl은 일부 데이터를 무료로 제공하며 API를 통해서 다운로드할 수 있습니다. 이 책에서는 예제로 애플(AAPL)의 주가를 다운로드해보겠습니다. csv 형식의 API 주소는 다음과 같습니다.</p>
+<p>데이터 제공업체 Quandl은 일부 데이터를 무료로 제공하며 API를 통해서 다운로드할 수 있습니다. 이 책에서는 예제로 애플(AAPL)의 주가를 다운로드 해보겠습니다. csv 형식의 API 주소는 다음과 같습니다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.quandl.com/api/v3/datasets/WIKI/AAPL/data.csv?api_key=xw3NU3xLUZ7vZgrz5QnG
 </pre></div>
 </div>
@@ -310,10 +355,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 <img alt="_images/03_apple_csv.png" src="_images/03_apple_csv.png" />
 <p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">API 주소를 이용한 데이터 다운로드</span><a class="headerlink" href="#apple-csv" title="Permalink to this image">¶</a></p>
 </div>
-<p>그러나 웹 브라우저에 해당 주소를 입력해 csv 파일을 다운로드하고 csv 파일을 다시 R에서 불러오는 작업은 무척이나 비효율적입니다. 파이썬에서 API 주소를 이용해 직접 데이터를 다운로드할 수 있습니다.</p>
+<p>그러나 웹 브라우저에 해당 주소를 입력해 csv 파일을 다운로드하고 csv 파일을 다시 파이썬에서 불러오는 작업은 무척이나 비효율적입니다. 파이썬에서 API 주소를 이용해 직접 데이터를 다운로드 하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
 <span class="n">url_aapl</span> <span class="o">=</span> <span class="s1">&#39;https://www.quandl.com/api/v3/datasets/WIKI/AAPL/data.csv?api_key=xw3NU3xLUZ7vZgrz5QnG&#39;</span>
 <span class="n">data_aapl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_aapl</span><span class="p">)</span>
 
@@ -442,16 +488,17 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <p>url에 해당 주소를 입력한 후 pandas의 <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> 함수를 이용해 간단하게 csv 파일을 불러올 수 있습니다.</p>
 </div>
-<div class="section" id="datareader-api">
-<h2>3.2 DataReader() 함수를 이용한 API 다운로드<a class="headerlink" href="#datareader-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="datareader">
+<h2>3.2 DataReader() 함수를 데이터 다운로드<a class="headerlink" href="#datareader" title="Permalink to this headline">¶</a></h2>
 <p>이전 예에서 API 주소를 이용하면 매우 간단하게 데이터를 수집할 수 있음을 살펴보았습니다. 그러나 이 방법에는 단점도 있습니다. 먼저 원하는 항목에 대한 API를 일일이 얻기가 힘듭니다. 또한 Quandl의 경우 무료로 얻을 수 있는 정보에 제한이 있으며, 다운로드 양에도 제한이 있습니다. 이 방법으로 한두 종목의 데이터를 수집할 수 있지만, 전 종목의 데이터를 구하기는 사실상 불가능합니다.</p>
 <p>다행히 야후 파이낸스 역시 주가 데이터를 무료로 제공하며, pandas_datareader 패키지의 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수는 해당 API에 접속해 데이터를 다운로드합니다.</p>
 <div class="section" id="id2">
 <h3>3.2.1 주가 다운로드<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수의 기본적인 사용법은 매우 간단합니다. 괄호 안에 다운로드하려는 종목의 티커와, 데이터 소스에 해당하는 ‘yahoo’를 입력합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수의 기본적인 사용법은 매우 간단합니다. 괄호 안에 다운로드하려는 종목의 티커와, 데이터 소스를 입력합니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">web</span>
+
 <span class="n">AAPL</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">)</span>
 <span class="n">AAPL</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -495,49 +542,49 @@ commentsRunWhenDOMLoaded(addUtterances);
   </thead>
   <tbody>
     <tr>
-      <th>2016-02-16</th>
-      <td>24.212500</td>
-      <td>23.652500</td>
-      <td>23.754999</td>
-      <td>24.160000</td>
-      <td>196231600.0</td>
-      <td>22.471428</td>
+      <th>2016-04-11</th>
+      <td>27.652500</td>
+      <td>27.207500</td>
+      <td>27.242500</td>
+      <td>27.254999</td>
+      <td>117630000.0</td>
+      <td>25.350115</td>
     </tr>
     <tr>
-      <th>2016-02-17</th>
-      <td>24.552500</td>
-      <td>24.037500</td>
-      <td>24.167500</td>
-      <td>24.530001</td>
-      <td>179452800.0</td>
-      <td>22.815565</td>
+      <th>2016-04-12</th>
+      <td>27.625000</td>
+      <td>27.165001</td>
+      <td>27.334999</td>
+      <td>27.610001</td>
+      <td>108929200.0</td>
+      <td>25.680305</td>
     </tr>
     <tr>
-      <th>2016-02-18</th>
-      <td>24.722500</td>
-      <td>24.022499</td>
-      <td>24.709999</td>
-      <td>24.065001</td>
-      <td>156084000.0</td>
-      <td>22.383070</td>
+      <th>2016-04-13</th>
+      <td>28.084999</td>
+      <td>27.700001</td>
+      <td>27.700001</td>
+      <td>28.010000</td>
+      <td>133029200.0</td>
+      <td>26.052345</td>
     </tr>
     <tr>
-      <th>2016-02-19</th>
-      <td>24.190001</td>
-      <td>23.950001</td>
-      <td>24.000000</td>
-      <td>24.010000</td>
-      <td>141496800.0</td>
-      <td>22.331917</td>
+      <th>2016-04-14</th>
+      <td>28.097500</td>
+      <td>27.832500</td>
+      <td>27.905001</td>
+      <td>28.025000</td>
+      <td>101895600.0</td>
+      <td>26.066298</td>
     </tr>
     <tr>
-      <th>2016-02-22</th>
-      <td>24.225000</td>
-      <td>23.980000</td>
-      <td>24.077499</td>
-      <td>24.219999</td>
-      <td>137123200.0</td>
-      <td>22.527231</td>
+      <th>2016-04-15</th>
+      <td>28.075001</td>
+      <td>27.432501</td>
+      <td>28.027500</td>
+      <td>27.462500</td>
+      <td>187756000.0</td>
+      <td>25.543112</td>
     </tr>
   </tbody>
 </table>
@@ -555,34 +602,27 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<p>먼저 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수 내에 애플의 티커인 AAPL를 입력합니다. 주가 데이터가 DataFrame 형태로 다운로드 됩니다.</p>
+<p>먼저 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수 내에 애플의 티커인 AAPL과 데이터 소스인 yahoo를 입력합니다. 주가 데이터가 DataFrame 형태로 다운로드 됩니다.</p>
 <p>다운로드 결과로 총 6개의 열이 생성됩니다. High는 고가, Low는 저가, Open은 시가, Close는 종가를 의미합니다. 또한 Volume은 거래량을 의미하며, Adjusted는 배당이 반영된 수정주가를 의미합니다. 이 중 가장 많이 사용되는 데이터는 Adjusted, 즉 배당이 반영된 수정주가입니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">AAPL</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">AAPL</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/03_api_17_1.png" src="_images/03_api_17_1.png" />
+<img alt="_images/03_api_13_0.png" src="_images/03_api_13_0.png" />
 </div>
 </div>
-<p>수정주가에 해당하는 Adj Close 열을 선택한 후 matplotlib 패키지를 이용해 시계열 그래프를 그릴 수도 있습니다. 시계열 기간을 입력하지 않으면 2016년부터 현재까지의 데이터가 다운로드되며, 입력 변수를 추가하여 원하는 기간의 데이터를 다운로드할 수도 있습니다.</p>
+<p>수정주가에 해당하는 Adj Close 열을 선택한 후 시계열 그래프를 그릴 수도 있습니다. 시계열 기간을 입력하지 않으면 2016년부터 현재까지의 데이터가 다운로드되며, 입력 변수를 추가하여 원하는 기간의 데이터를 다운로드할 수도 있습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AAPL_long</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;2000-01-01&#39;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;2010-12-31&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AAPL_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">AAPL_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -773,75 +813,70 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="n">all_data</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">ticker</span> <span class="ow">in</span> <span class="n">tickers</span><span class="p">:</span>
     <span class="n">all_data</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">all_data</span>
+    
+<span class="n">all_data</span>    
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;FB&#39;:                   High         Low        Open       Close    Volume  \
  Date                                                                   
- 2016-02-16  103.930000  100.239998  103.800003  101.610001  45687200   
- 2016-02-17  105.720001  100.400002  102.019997  105.199997  44073400   
- 2016-02-18  106.000000  103.029999  105.800003  103.470001  29593500   
- 2016-02-19  105.019997  102.059998  102.550003  104.570000  32404500   
- 2016-02-22  108.250000  105.339996  105.489998  107.160004  35709700   
+ 2016-04-11  110.910004  108.769997  110.699997  108.989998  39762300   
+ 2016-04-12  111.160004  108.989998  109.339996  110.610001  26248100   
+ 2016-04-13  112.650002  106.519997  112.230003  110.510002  88227400   
+ 2016-04-14  112.040001  110.260002  110.620003  110.839996  28473300   
+ 2016-04-15  110.970001  109.199997  110.790001  109.639999  20922800   
  ...                ...         ...         ...         ...       ...   
- 2021-02-08  269.859985  265.000000  268.750000  266.579987  13755200   
- 2021-02-09  273.390015  265.750000  266.440002  269.450012  14613400   
- 2021-02-10  273.799988  267.720001  272.450012  271.869995  14687200   
- 2021-02-11  273.579987  268.489990  271.890015  270.390015  12801300   
- 2021-02-12  271.179993  268.339996  270.519989  270.500000   9069100   
+ 2021-04-01  302.399994  296.600006  298.399994  298.660004  17590700   
+ 2021-04-05  310.769989  300.679993  300.890015  308.910004  28237000   
+ 2021-04-06  311.350006  305.250000  308.839996  306.260010  17335200   
+ 2021-04-07  314.250000  305.500000  306.339996  313.089996  22855200   
+ 2021-04-08  315.880005  310.049988  314.850006  313.019989  20860700   
  
               Adj Close  
  Date                    
- 2016-02-16  101.610001  
- 2016-02-17  105.199997  
- 2016-02-18  103.470001  
- 2016-02-19  104.570000  
- 2016-02-22  107.160004  
+ 2016-04-11  108.989998  
+ 2016-04-12  110.610001  
+ 2016-04-13  110.510002  
+ 2016-04-14  110.839996  
+ 2016-04-15  109.639999  
  ...                ...  
- 2021-02-08  266.579987  
- 2021-02-09  269.450012  
- 2021-02-10  271.869995  
- 2021-02-11  270.390015  
- 2021-02-12  270.500000  
+ 2021-04-01  298.660004  
+ 2021-04-05  308.910004  
+ 2021-04-06  306.260010  
+ 2021-04-07  313.089996  
+ 2021-04-08  313.019989  
  
- [1259 rows x 6 columns],
+ [1258 rows x 6 columns],
  &#39;NVDA&#39;:                   High         Low        Open       Close      Volume  \
  Date                                                                     
- 2016-02-16   27.030001   26.020000   26.100000   26.990000  12133800.0   
- 2016-02-17   27.920000   27.219999   27.330000   27.660000  19286700.0   
- 2016-02-18   30.980000   29.900000   29.930000   30.040001  26716500.0   
- 2016-02-19   30.709999   29.650000   29.879999   30.440001  13140700.0   
- 2016-02-22   31.870001   30.820000   30.879999   31.520000  11241700.0   
+ 2016-04-11   36.470001   35.759998   35.869999   35.880001   9688100.0   
+ 2016-04-12   36.049999   35.139999   36.000000   35.840000   7319100.0   
+ 2016-04-13   36.750000   36.000000   36.000000   36.740002   8767900.0   
+ 2016-04-14   37.000000   36.490002   36.639999   36.840000  10414100.0   
+ 2016-04-15   37.459999   36.709999   36.830002   37.130001  10924300.0   
  ...                ...         ...         ...         ...         ...   
- 2021-02-08  578.950012  549.090027  549.090027  577.549988  10865600.0   
- 2021-02-09  583.330017  568.900024  573.630005  570.530029   7189000.0   
- 2021-02-10  596.200012  573.659973  578.530029  590.570007  12133800.0   
- 2021-02-11  610.890015  597.000000  599.210022  610.030029  11245500.0   
- 2021-02-12  611.650024  591.000000  602.000000  598.450012   9356800.0   
+ 2021-04-01  554.799988  540.450012  542.890015  552.469971   7706900.0   
+ 2021-04-05  560.559998  549.320007  554.700012  559.500000   6391800.0   
+ 2021-04-06  562.169983  550.940002  559.989990  554.460022   4793600.0   
+ 2021-04-07  569.739990  548.460022  555.229980  565.739990   6282100.0   
+ 2021-04-08  578.859985  569.960022  570.109985  572.679993   6097900.0   
  
               Adj Close  
  Date                    
- 2016-02-16   26.408287  
- 2016-02-17   27.063847  
- 2016-02-18   29.392551  
- 2016-02-19   29.783928  
- 2016-02-22   30.840649  
+ 2016-04-11   35.234581  
+ 2016-04-12   35.195301  
+ 2016-04-13   36.079113  
+ 2016-04-14   36.177315  
+ 2016-04-15   36.462097  
  ...                ...  
- 2021-02-08  577.549988  
- 2021-02-09  570.530029  
- 2021-02-10  590.570007  
- 2021-02-11  610.030029  
- 2021-02-12  598.450012  
+ 2021-04-01  552.469971  
+ 2021-04-05  559.500000  
+ 2021-04-06  554.460022  
+ 2021-04-07  565.739990  
+ 2021-04-08  572.679993  
  
- [1259 rows x 6 columns]}
+ [1258 rows x 6 columns]}
 </pre></div>
 </div>
 </div>
@@ -849,28 +884,23 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="section" id="id3">
 <h3>3.2.2 국내 종목 주가 다운로드<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용하면 미국뿐 아니라 국내 종목의 주가도 다운로드할 수 있습니다. 국내 종목의 티커는 총 6자리로 구성되어 있으며, 해당 함수에 입력되는 티커는 코스피 상장 종목의 경우 티커.KS, 코스닥 상장 종목의 경우 티커.KQ의 형태로 입력해야 합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용하면 미국뿐 아니라 국내 종목의 주가도 다운로드할 수 있습니다. 국내 종목의 티커는 총 6자리로 구성되어 있으며, 해당 함수에 입력되는 티커는 <strong>코스피 상장 종목의 경우 티커.KS, 코스닥 상장 종목의 경우 티커.KQ</strong>의 형태로 입력해야 합니다.</p>
 <p>다음은 코스피 상장 종목인 삼성전자 데이터의 다운로드 예시입니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samsung</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;005930.KS&#39;</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samsung</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+
+<span class="n">samsung</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date
-2021-02-04    82500.0
-2021-02-05    83500.0
-2021-02-08    83000.0
-2021-02-09    82700.0
-2021-02-10    81600.0
+2021-04-05    85400.0
+2021-04-06    86000.0
+2021-04-07    85600.0
+2021-04-08    84700.0
+2021-04-09    83600.0
 Name: Adj Close, dtype: float64
 </pre></div>
 </div>
@@ -885,11 +915,11 @@ Name: Adj Close, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date
-2021-02-04    82500.0
-2021-02-05    83500.0
-2021-02-08    83000.0
-2021-02-09    82700.0
-2021-02-10    81600.0
+2021-04-05    85400.0
+2021-04-06    86000.0
+2021-04-07    85600.0
+2021-04-08    84700.0
+2021-04-09    83600.0
 Name: Close, dtype: float64
 </pre></div>
 </div>
@@ -899,13 +929,8 @@ Name: Close, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell_pharm</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;068760.KQ&#39;</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell_pharm</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+
+<span class="n">cell_pharm</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -915,124 +940,159 @@ Name: Close, dtype: float64
 2018-01-29     99900.0
 2018-01-30     99500.0
 2018-01-31     97500.0
-2021-02-10    172600.0
+2021-04-09    143700.0
 Name: Close, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="fred">
-<h2>3.3 FRED 데이터 다운로드<a class="headerlink" href="#fred" title="Permalink to this headline">¶</a></h2>
-<p>미국 연방준비은행에서 관리하는 Federal Reserve Economic Data(FRED)는 미국 및 각국의 중요 경제지표 데이터를 살펴볼 때 가장 많이 참조되는 곳 중 하나입니다. fredapi 패키지를 통해 FRED 데이터를 다운로드할 수 있습니다. 먼저 미 국채 10년물 금리를 다운로드하는 예제를 살펴보겠습니다.</p>
-<div class="section" id="api-key">
-<h3>3.3.1 API Key 발급받기<a class="headerlink" href="#api-key" title="Permalink to this headline">¶</a></h3>
-<p>먼저 FRED API에 접속하기 위한 Key를 발급받아야 합니다. 아래 사이트에 접속한 후, [Request or view your API keys] 부분을 선택하여 API Key를 발급받습니다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">fred</span><span class="o">.</span><span class="n">stlouisfed</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">api_key</span><span class="o">.</span><span class="n">html</span>
-</pre></div>
-</div>
-<div class="figure align-default" id="fred-key">
-<img alt="_images/03_fred_key.png" src="_images/03_fred_key.png" />
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">FRED API Key 신청</span><a class="headerlink" href="#fred-key" title="Permalink to this image">¶</a></p>
-</div>
+<h3>3.2.3 FRED 데이터 다운로드<a class="headerlink" href="#fred" title="Permalink to this headline">¶</a></h3>
+<p>미국 연방준비은행에서 관리하는 Federal Reserve Economic Data(FRED)는 미국 및 각국의 중요 경제지표 데이터를 살펴볼 때 가장 많이 참조되는 곳 중 하나이며, 역시나 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용해 FRED 데이터를 다운로드할 수 있습니다. 먼저 미 국채 10년물 금리를 다운로드하는 예제를 살펴보겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keyring</span>
-<span class="n">keyring</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s1">&#39;Henry&#39;</span><span class="p">,</span> <span class="s1">&#39;fred_api_key&#39;</span><span class="p">,</span> <span class="s1">&#39;Your API Key&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>API Key를 발급 받았다면, keyring 패키지를 통해 이를 저장합니다. Henry는 본인의 이름, fred_api_key는 저장할 변수명, Your API Key는 발급받은 API Key에 해당합니다.</p>
-<p>그 후 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">fredapi</span></code> 를 통해 fredapi 패키지를 설치해 주도록 합니다. 해당 패키지의 깃허브 저장소는 다음과 같습니다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mortada</span><span class="o">/</span><span class="n">fredapi</span>
-</pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keyring</span>
-<span class="kn">from</span> <span class="nn">fredapi</span> <span class="kn">import</span> <span class="n">Fred</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">web</span>
 
-<span class="n">fred_api_key</span> <span class="o">=</span> <span class="n">keyring</span><span class="o">.</span><span class="n">get_password</span><span class="p">(</span><span class="s1">&#39;Henry&#39;</span><span class="p">,</span> <span class="s1">&#39;fred_api_key&#39;</span><span class="p">)</span>
-<span class="n">fred</span> <span class="o">=</span> <span class="n">Fred</span><span class="p">(</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">fred_api_key</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keyring.get_password()</span></code> 함수를 통해 저장한 API Key를 불러옵니다.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Fred()</span></code> 내에 불러온 API Key를 입력한 후, fred 변수에 저장합니다.</p></li>
-</ol>
-</div>
-<div class="section" id="id4">
-<h3>3.3.2 FRED 데이터 다운로드<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">fred</span><span class="o">.</span><span class="n">get_series</span><span class="p">(</span><span class="s1">&#39;DGS10&#39;</span><span class="p">)</span>
-
-<span class="n">data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;DGS10&#39;</span><span class="p">,</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="s1">&#39;1960-01-01&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1962-01-02    4.06
-1962-01-03    4.03
-1962-01-04    3.99
-1962-01-05    4.02
-1962-01-08    4.03
-              ... 
-2021-02-05    1.19
-2021-02-08    1.19
-2021-02-09    1.18
-2021-02-10    1.15
-2021-02-11    1.16
-Length: 15423, dtype: float64
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DGS10</th>
+    </tr>
+    <tr>
+      <th>DATE</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1962-01-02</th>
+      <td>4.06</td>
+    </tr>
+    <tr>
+      <th>1962-01-03</th>
+      <td>4.03</td>
+    </tr>
+    <tr>
+      <th>1962-01-04</th>
+      <td>3.99</td>
+    </tr>
+    <tr>
+      <th>1962-01-05</th>
+      <td>4.02</td>
+    </tr>
+    <tr>
+      <th>1962-01-08</th>
+      <td>4.03</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
-</div>
-<img alt="_images/03_api_46_1.png" src="_images/03_api_46_1.png" />
+<img alt="_images/03_api_29_0.png" src="_images/03_api_29_0.png" />
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">get_series()</span></code> 함수 내에 미 국채 10년물 금리에 해당하는 티커인 DGS10을 입력해줍니다. FRED에서 제공하는 API를 이용해 데이터가 다운로드됩니다.</p>
-<p>각 항목별 티커를 찾는 방법은 매우 간단합니다. 먼저 FRED 웹사이트(https://fred.stlouisfed.org/) 에서 원하는 데이터를 검색합니다. 만일 원/달러 환율에 해당하는 티커를 찾고자 한다면 <a class="reference internal" href="#api-fred"><span class="std std-numref">Fig. 21</span></a>와 같이 이에 해당하는 South Korea / U.S. Foreign Exchange Rate를 검색해 원하는 페이지에 접속합니다. 이 중 페이지 주소에서 <strong>/series/ 다음에 위치하는 DEXKOUS</strong>가 해당 항목의 티커입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수 내에 미 국채 10년물 금리에 해당하는 티커인 DGS10을 입력하면, FRED에서 제공하는 API를 이용해 데이터가 다운로드됩니다.</p>
+<p>각 항목별 티커를 찾는 방법은 매우 간단합니다. 먼저 FRED 웹사이트(https://fred.stlouisfed.org/) 에서 원하는 데이터를 검색합니다. 만일 원/달러 환율에 해당하는 티커를 찾고자 한다면 <a class="reference internal" href="#api-fred"><span class="std std-numref">Fig. 20</span></a>와 같이 이에 해당하는 South Korea / U.S. Foreign Exchange Rate를 검색해 원하는 페이지에 접속합니다. 이 중 페이지 주소에서 <strong>/series/ 다음에 위치하는 DEXKOUS</strong>가 해당 항목의 티커입니다.</p>
 <div class="figure align-default" id="api-fred">
 <img alt="_images/03_api_fred.png" src="_images/03_api_fred.png" />
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">FRED 사이트 내 원/달러 환율의 티커 확인</span><a class="headerlink" href="#api-fred" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">FRED 사이트 내 원/달러 환율의 티커 확인</span><a class="headerlink" href="#api-fred" title="Permalink to this image">¶</a></p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fx</span> <span class="o">=</span> <span class="n">fred</span><span class="o">.</span><span class="n">get_series</span><span class="p">(</span><span class="s1">&#39;DEXKOUS&#39;</span><span class="p">)</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fx</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;DEXKOUS&#39;</span><span class="p">,</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="s1">&#39;1960-01-01&#39;</span><span class="p">)</span>
 <span class="n">fx</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-02-01    1116.48
-2021-02-02    1115.88
-2021-02-03    1114.47
-2021-02-04    1120.02
-2021-02-05    1123.70
-dtype: float64
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DEXKOUS</th>
+    </tr>
+    <tr>
+      <th>DATE</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-03-29</th>
+      <td>1133.57</td>
+    </tr>
+    <tr>
+      <th>2021-03-30</th>
+      <td>1133.44</td>
+    </tr>
+    <tr>
+      <th>2021-03-31</th>
+      <td>1126.72</td>
+    </tr>
+    <tr>
+      <th>2021-04-01</th>
+      <td>1131.63</td>
+    </tr>
+    <tr>
+      <th>2021-04-02</th>
+      <td>1127.30</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>해당 티커를 입력하면, FRED 웹사이트와 동일한 데이터가 다운로드됩니다. 이 외에도 509,000여 개의 방대한 FRED 데이터를 해당 함수를 통해 손쉽게 다운로드할 수 있습니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>이 외에도 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용할 경우 다양한 곳의 데이터를 손쉽게 수집할 수 있습니다. 자세한 내용은 아래 사이트를 참조하시기 바랍니다.</p>
+<p>https://pandas-datareader.readthedocs.io/en/latest/remote_data.html</p>
+</div>
 </div>
 </div>
 </div>
@@ -1066,7 +1126,7 @@ dtype: float64
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="02_information.html" title="previous page">2. 크롤링을 위한 기본 지식</a>
-    <a class='right-next' id="next-link" href="05_crawl_practice.html" title="next page">5. 금융 데이터 수집하기 (기본)</a>
+    <a class='right-next' id="next-link" href="04_crawl.html" title="next page">4. 크롤링 이해하기</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

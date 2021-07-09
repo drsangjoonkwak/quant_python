@@ -1,0 +1,1178 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>다음 뉴스</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_python");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_data_programming.html">
+   1. 퀀트 투자의 심장: 데이터와 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_information.html">
+   2. 크롤링을 위한 기본 지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_api.html">
+   3. API를 이용한 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_crawl.html">
+   4. 크롤링 이해하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_crawl_practice.html">
+   5. 금융 데이터 수집하기 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_crawl_actual.html">
+   6. 금융 데이터 수집하기 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_hts_api.html">
+   7. 증권사 API 연결 및 매매
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_us_data.html">
+   8. 미국 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_other_data.html">
+   9. 투자 참고용 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_bind_data.html">
+   10. 데이터 정리하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_data_analysis.html">
+   11. 데이터 분석 및 시각화하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_factor_basic.html">
+   12. 퀀트 전략을 이용한 종목선정 (기본)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_factor_advanced.html">
+   13. 퀀트 전략을 이용한 종목선정 (심화)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_portfolio.html">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15_trading.html">
+   15. 트레이딩 전략을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_backtest.html">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/sample/크롤링.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_python/master?urlpath=tree/sample/크롤링.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   다음 뉴스
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   기사 제목과 내용 한꺼번에
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># http://quotes.toscrape.com/</span>
+
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://quotes.toscrape.com/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n\t&lt;meta charset=&quot;UTF-8&quot;&gt;\n\t&lt;title&gt;Quotes to Scrape&lt;/title&gt;\n   &#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;/&gt;
+&lt;title&gt;Quotes to Scrape&lt;/title&gt;
+&lt;link href=&quot;/static/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;/&gt;
+&lt;link href=&quot;/static/main.css&quot; rel=&quot;stylesheet&quot;/&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;div class=&quot;row header-box&quot;&gt;
+&lt;div class=&quot;col-md-8&quot;&gt;
+&lt;h1&gt;
+&lt;a href=&quot;/&quot; style=&quot;text-decoration: none&quot;&gt;Quotes to Scrape&lt;/a&gt;
+&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-md-4&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;/login&quot;&gt;Login&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-md-8&quot;&gt;
+&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;
+&lt;a href=&quot;/author/Albert-Einstein&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;change,deep-thoughts,thinking,world&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/change/page/1/&quot;&gt;change&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/deep-thoughts/page/1/&quot;&gt;deep-thoughts&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/thinking/page/1/&quot;&gt;thinking&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/world/page/1/&quot;&gt;world&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“It is our choices, Harry, that show what we truly are, far more than our abilities.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;J.K. Rowling&lt;/small&gt;
+&lt;a href=&quot;/author/J-K-Rowling&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;abilities,choices&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/abilities/page/1/&quot;&gt;abilities&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/choices/page/1/&quot;&gt;choices&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;
+&lt;a href=&quot;/author/Albert-Einstein&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;inspirational,life,live,miracle,miracles&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/inspirational/page/1/&quot;&gt;inspirational&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/life/page/1/&quot;&gt;life&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/live/page/1/&quot;&gt;live&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/miracle/page/1/&quot;&gt;miracle&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/miracles/page/1/&quot;&gt;miracles&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Jane Austen&lt;/small&gt;
+&lt;a href=&quot;/author/Jane-Austen&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;aliteracy,books,classic,humor&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/aliteracy/page/1/&quot;&gt;aliteracy&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/books/page/1/&quot;&gt;books&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/classic/page/1/&quot;&gt;classic&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/humor/page/1/&quot;&gt;humor&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“Imperfection is beauty, madness is genius and it&#39;s better to be absolutely ridiculous than absolutely boring.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Marilyn Monroe&lt;/small&gt;
+&lt;a href=&quot;/author/Marilyn-Monroe&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;be-yourself,inspirational&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/be-yourself/page/1/&quot;&gt;be-yourself&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/inspirational/page/1/&quot;&gt;inspirational&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“Try not to become a man of success. Rather become a man of value.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;
+&lt;a href=&quot;/author/Albert-Einstein&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;adulthood,success,value&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/adulthood/page/1/&quot;&gt;adulthood&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/success/page/1/&quot;&gt;success&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/value/page/1/&quot;&gt;value&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“It is better to be hated for what you are than to be loved for what you are not.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;André Gide&lt;/small&gt;
+&lt;a href=&quot;/author/Andre-Gide&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;life,love&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/life/page/1/&quot;&gt;life&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/love/page/1/&quot;&gt;love&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“I have not failed. I&#39;ve just found 10,000 ways that won&#39;t work.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Thomas A. Edison&lt;/small&gt;
+&lt;a href=&quot;/author/Thomas-A-Edison&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;edison,failure,inspirational,paraphrased&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/edison/page/1/&quot;&gt;edison&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/failure/page/1/&quot;&gt;failure&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/inspirational/page/1/&quot;&gt;inspirational&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/paraphrased/page/1/&quot;&gt;paraphrased&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“A woman is like a tea bag; you never know how strong it is until it&#39;s in hot water.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Eleanor Roosevelt&lt;/small&gt;
+&lt;a href=&quot;/author/Eleanor-Roosevelt&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;misattributed-eleanor-roosevelt&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/misattributed-eleanor-roosevelt/page/1/&quot;&gt;misattributed-eleanor-roosevelt&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“A day without sunshine is like, you know, night.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Steve Martin&lt;/small&gt;
+&lt;a href=&quot;/author/Steve-Martin&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;humor,obvious,simile&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/humor/page/1/&quot;&gt;humor&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/obvious/page/1/&quot;&gt;obvious&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/simile/page/1/&quot;&gt;simile&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;nav&gt;
+&lt;ul class=&quot;pager&quot;&gt;
+&lt;li class=&quot;next&quot;&gt;
+&lt;a href=&quot;/page/2/&quot;&gt;Next &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-md-4 tags-box&quot;&gt;
+&lt;h2&gt;Top Ten tags&lt;/h2&gt;
+&lt;span class=&quot;tag-item&quot;&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/love/&quot; style=&quot;font-size: 28px&quot;&gt;love&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tag-item&quot;&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/inspirational/&quot; style=&quot;font-size: 26px&quot;&gt;inspirational&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tag-item&quot;&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/life/&quot; style=&quot;font-size: 26px&quot;&gt;life&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tag-item&quot;&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/humor/&quot; style=&quot;font-size: 24px&quot;&gt;humor&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tag-item&quot;&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/books/&quot; style=&quot;font-size: 22px&quot;&gt;books&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tag-item&quot;&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/reading/&quot; style=&quot;font-size: 14px&quot;&gt;reading&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tag-item&quot;&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/friendship/&quot; style=&quot;font-size: 10px&quot;&gt;friendship&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tag-item&quot;&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/friends/&quot; style=&quot;font-size: 8px&quot;&gt;friends&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tag-item&quot;&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/truth/&quot; style=&quot;font-size: 8px&quot;&gt;truth&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tag-item&quot;&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/simile/&quot; style=&quot;font-size: 6px&quot;&gt;simile&lt;/a&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;footer class=&quot;footer&quot;&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;p class=&quot;text-muted&quot;&gt;
+                Quotes by: &lt;a href=&quot;https://www.goodreads.com/quotes&quot;&gt;GoodReads.com&lt;/a&gt;
+&lt;/p&gt;
+&lt;p class=&quot;copyright&quot;&gt;
+                Made with &lt;span class=&quot;sh-red&quot;&gt;❤&lt;/span&gt; by &lt;a href=&quot;https://scrapinghub.com&quot;&gt;Scrapinghub&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">soup</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bs4.BeautifulSoup
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quote</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span>
+<span class="n">quote</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quote</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">quote</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”
+by Albert Einstein
+(about)
+
+“It is our choices, Harry, that show what we truly are, far more than our abilities.”
+by J.K. Rowling
+(about)
+
+“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”
+by Albert Einstein
+(about)
+
+“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”
+by Jane Austen
+(about)
+
+“Imperfection is beauty, madness is genius and it&#39;s better to be absolutely ridiculous than absolutely boring.”
+by Marilyn Monroe
+(about)
+
+“Try not to become a man of success. Rather become a man of value.”
+by Albert Einstein
+(about)
+
+“It is better to be hated for what you are than to be loved for what you are not.”
+by André Gide
+(about)
+
+“I have not failed. I&#39;ve just found 10,000 ways that won&#39;t work.”
+by Thomas A. Edison
+(about)
+
+“A woman is like a tea bag; you never know how strong it is until it&#39;s in hot water.”
+by Eleanor Roosevelt
+(about)
+
+“A day without sunshine is like, you know, night.”
+by Steve Martin
+(about)
+
+→
+
+love
+
+
+inspirational
+
+
+life
+
+
+humor
+
+
+books
+
+
+reading
+
+
+friendship
+
+
+friends
+
+
+truth
+
+
+simile
+
+❤
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;quote&#39;</span><span class="p">}</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;
+ &lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;
+ &lt;a href=&quot;/author/Albert-Einstein&quot;&gt;(about)&lt;/a&gt;
+ &lt;/span&gt;
+ &lt;div class=&quot;tags&quot;&gt;
+             Tags:
+             &lt;meta class=&quot;keywords&quot; content=&quot;change,deep-thoughts,thinking,world&quot; itemprop=&quot;keywords&quot;/&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/change/page/1/&quot;&gt;change&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/deep-thoughts/page/1/&quot;&gt;deep-thoughts&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/thinking/page/1/&quot;&gt;thinking&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/world/page/1/&quot;&gt;world&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;,
+ &lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“It is our choices, Harry, that show what we truly are, far more than our abilities.”&lt;/span&gt;
+ &lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;J.K. Rowling&lt;/small&gt;
+ &lt;a href=&quot;/author/J-K-Rowling&quot;&gt;(about)&lt;/a&gt;
+ &lt;/span&gt;
+ &lt;div class=&quot;tags&quot;&gt;
+             Tags:
+             &lt;meta class=&quot;keywords&quot; content=&quot;abilities,choices&quot; itemprop=&quot;keywords&quot;/&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/abilities/page/1/&quot;&gt;abilities&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/choices/page/1/&quot;&gt;choices&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;,
+ &lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”&lt;/span&gt;
+ &lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;
+ &lt;a href=&quot;/author/Albert-Einstein&quot;&gt;(about)&lt;/a&gt;
+ &lt;/span&gt;
+ &lt;div class=&quot;tags&quot;&gt;
+             Tags:
+             &lt;meta class=&quot;keywords&quot; content=&quot;inspirational,life,live,miracle,miracles&quot; itemprop=&quot;keywords&quot;/&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/inspirational/page/1/&quot;&gt;inspirational&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/life/page/1/&quot;&gt;life&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/live/page/1/&quot;&gt;live&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/miracle/page/1/&quot;&gt;miracle&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/miracles/page/1/&quot;&gt;miracles&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;,
+ &lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”&lt;/span&gt;
+ &lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Jane Austen&lt;/small&gt;
+ &lt;a href=&quot;/author/Jane-Austen&quot;&gt;(about)&lt;/a&gt;
+ &lt;/span&gt;
+ &lt;div class=&quot;tags&quot;&gt;
+             Tags:
+             &lt;meta class=&quot;keywords&quot; content=&quot;aliteracy,books,classic,humor&quot; itemprop=&quot;keywords&quot;/&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/aliteracy/page/1/&quot;&gt;aliteracy&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/books/page/1/&quot;&gt;books&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/classic/page/1/&quot;&gt;classic&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/humor/page/1/&quot;&gt;humor&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;,
+ &lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“Imperfection is beauty, madness is genius and it&#39;s better to be absolutely ridiculous than absolutely boring.”&lt;/span&gt;
+ &lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Marilyn Monroe&lt;/small&gt;
+ &lt;a href=&quot;/author/Marilyn-Monroe&quot;&gt;(about)&lt;/a&gt;
+ &lt;/span&gt;
+ &lt;div class=&quot;tags&quot;&gt;
+             Tags:
+             &lt;meta class=&quot;keywords&quot; content=&quot;be-yourself,inspirational&quot; itemprop=&quot;keywords&quot;/&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/be-yourself/page/1/&quot;&gt;be-yourself&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/inspirational/page/1/&quot;&gt;inspirational&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;,
+ &lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“Try not to become a man of success. Rather become a man of value.”&lt;/span&gt;
+ &lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;
+ &lt;a href=&quot;/author/Albert-Einstein&quot;&gt;(about)&lt;/a&gt;
+ &lt;/span&gt;
+ &lt;div class=&quot;tags&quot;&gt;
+             Tags:
+             &lt;meta class=&quot;keywords&quot; content=&quot;adulthood,success,value&quot; itemprop=&quot;keywords&quot;/&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/adulthood/page/1/&quot;&gt;adulthood&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/success/page/1/&quot;&gt;success&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/value/page/1/&quot;&gt;value&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;,
+ &lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“It is better to be hated for what you are than to be loved for what you are not.”&lt;/span&gt;
+ &lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;André Gide&lt;/small&gt;
+ &lt;a href=&quot;/author/Andre-Gide&quot;&gt;(about)&lt;/a&gt;
+ &lt;/span&gt;
+ &lt;div class=&quot;tags&quot;&gt;
+             Tags:
+             &lt;meta class=&quot;keywords&quot; content=&quot;life,love&quot; itemprop=&quot;keywords&quot;/&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/life/page/1/&quot;&gt;life&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/love/page/1/&quot;&gt;love&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;,
+ &lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“I have not failed. I&#39;ve just found 10,000 ways that won&#39;t work.”&lt;/span&gt;
+ &lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Thomas A. Edison&lt;/small&gt;
+ &lt;a href=&quot;/author/Thomas-A-Edison&quot;&gt;(about)&lt;/a&gt;
+ &lt;/span&gt;
+ &lt;div class=&quot;tags&quot;&gt;
+             Tags:
+             &lt;meta class=&quot;keywords&quot; content=&quot;edison,failure,inspirational,paraphrased&quot; itemprop=&quot;keywords&quot;/&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/edison/page/1/&quot;&gt;edison&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/failure/page/1/&quot;&gt;failure&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/inspirational/page/1/&quot;&gt;inspirational&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/paraphrased/page/1/&quot;&gt;paraphrased&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;,
+ &lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“A woman is like a tea bag; you never know how strong it is until it&#39;s in hot water.”&lt;/span&gt;
+ &lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Eleanor Roosevelt&lt;/small&gt;
+ &lt;a href=&quot;/author/Eleanor-Roosevelt&quot;&gt;(about)&lt;/a&gt;
+ &lt;/span&gt;
+ &lt;div class=&quot;tags&quot;&gt;
+             Tags:
+             &lt;meta class=&quot;keywords&quot; content=&quot;misattributed-eleanor-roosevelt&quot; itemprop=&quot;keywords&quot;/&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/misattributed-eleanor-roosevelt/page/1/&quot;&gt;misattributed-eleanor-roosevelt&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;,
+ &lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“A day without sunshine is like, you know, night.”&lt;/span&gt;
+ &lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Steve Martin&lt;/small&gt;
+ &lt;a href=&quot;/author/Steve-Martin&quot;&gt;(about)&lt;/a&gt;
+ &lt;/span&gt;
+ &lt;div class=&quot;tags&quot;&gt;
+             Tags:
+             &lt;meta class=&quot;keywords&quot; content=&quot;humor,obvious,simile&quot; itemprop=&quot;keywords&quot;/&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/humor/page/1/&quot;&gt;humor&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/obvious/page/1/&quot;&gt;obvious&lt;/a&gt;
+ &lt;a class=&quot;tag&quot; href=&quot;/tag/simile/page/1/&quot;&gt;simile&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.quote&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;div class=&quot;quote&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/CreativeWork&quot;&gt;
+&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;
+&lt;span&gt;by &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;
+&lt;a href=&quot;/author/Albert-Einstein&quot;&gt;(about)&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&quot;tags&quot;&gt;
+            Tags:
+            &lt;meta class=&quot;keywords&quot; content=&quot;change,deep-thoughts,thinking,world&quot; itemprop=&quot;keywords&quot;/&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/change/page/1/&quot;&gt;change&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/deep-thoughts/page/1/&quot;&gt;deep-thoughts&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/thinking/page/1/&quot;&gt;thinking&lt;/a&gt;
+&lt;a class=&quot;tag&quot; href=&quot;/tag/world/page/1/&quot;&gt;world&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.quote &gt; .text&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“It is our choices, Harry, that show what we truly are, far more than our abilities.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“Imperfection is beauty, madness is genius and it&#39;s better to be absolutely ridiculous than absolutely boring.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“Try not to become a man of success. Rather become a man of value.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“It is better to be hated for what you are than to be loved for what you are not.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“I have not failed. I&#39;ve just found 10,000 ways that won&#39;t work.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“A woman is like a tea bag; you never know how strong it is until it&#39;s in hot water.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“A day without sunshine is like, you know, night.”&lt;/span&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>다음 뉴스<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">news</span> <span class="o">=</span> <span class="s1">&#39;https://news.daum.net/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">news</span><span class="p">)</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;class&quot;</span> <span class="p">:</span> <span class="s2">&quot;item_issue&quot;</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;div class=&quot;item_issue&quot;&gt;
+&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228131656178&quot; data-tiara-id=&quot;20210228131656178&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228131656178&quot;&gt;
+&lt;img alt=&quot;北김정은 위인전서 &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fjoongang%2F20210228131659282vxxf.jpg&amp;amp;scode=media&quot; 자찬&quot;=&quot;&quot; 정상회담=&quot;&quot; 핵&quot;..文언급없이=&quot;&quot; 핵에는=&quot;&quot;/&gt;
+&lt;/a&gt;
+&lt;div class=&quot;cont_thumb&quot;&gt;
+&lt;strong class=&quot;tit_thumb&quot;&gt;
+&lt;a class=&quot;link_txt&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228131656178&quot; data-tiara-id=&quot;20210228131656178&quot; data-tiara-layer=&quot;article_main&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228131656178&quot;&gt;北김정은 위인전서 &quot;핵에는 핵&quot;..文언급없이 정상회담 자찬&lt;/a&gt;
+&lt;/strong&gt;
+&lt;span class=&quot;info_thumb&quot;&gt;중앙일보&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;, &lt;div class=&quot;item_issue&quot;&gt;
+&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228120102322&quot; data-tiara-id=&quot;20210228120102322&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228120102322&quot;&gt;
+&lt;img 22명=&quot;&quot; alt=&quot;바이든 행정부의 첫 군사행동은 시리아의 친이란 민병대 타격 &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fseoul%2F20210228120104268jfcb.jpg&amp;amp;scode=media&quot; 사망&quot;&quot;=&quot;&quot;/&gt;
+&lt;/a&gt;
+&lt;div class=&quot;cont_thumb&quot;&gt;
+&lt;strong class=&quot;tit_thumb&quot;&gt;
+&lt;a class=&quot;link_txt&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228120102322&quot; data-tiara-id=&quot;20210228120102322&quot; data-tiara-layer=&quot;article_main&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228120102322&quot;&gt;바이든 행정부의 첫 군사행동은 시리아의 친이란 민병대 타격 &quot;22명 사망&quot;&lt;/a&gt;
+&lt;/strong&gt;
+&lt;span class=&quot;info_thumb&quot;&gt;서울신문&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;, &lt;div class=&quot;item_issue&quot;&gt;
+&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228115602198&quot; data-tiara-id=&quot;20210228115602198&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228115602198&quot;&gt;
+&lt;img 3·1절=&quot;&quot; 9대=&quot;&quot; alt=&quot;법원 &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fhani%2F20210228115603781wjtc.jpg&amp;amp;scode=media&quot; 보수단체=&quot;&quot; 차량집회=&quot;&quot; 허용&quot;&quot;=&quot;&quot;/&gt;
+&lt;/a&gt;
+&lt;div class=&quot;cont_thumb&quot;&gt;
+&lt;strong class=&quot;tit_thumb&quot;&gt;
+&lt;a class=&quot;link_txt&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228115602198&quot; data-tiara-id=&quot;20210228115602198&quot; data-tiara-layer=&quot;article_main&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228115602198&quot;&gt;법원 &quot;보수단체 3·1절 9대 차량집회 허용&quot;&lt;/a&gt;
+&lt;/strong&gt;
+&lt;span class=&quot;info_thumb&quot;&gt;한겨레&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;, &lt;div class=&quot;item_issue&quot;&gt;
+&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228114752092&quot; data-tiara-id=&quot;20210228114752092&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228114752092&quot;&gt;
+&lt;img alt=&quot;은행 대출금리, 반년 새 0.6%p 상승.. &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fchosunbiz%2F20210228114753078xsnw.jpg&amp;amp;scode=media&quot; 부담=&quot;&quot; 영끌·빚투족=&quot;&quot; 커&quot;&quot;=&quot;&quot;/&gt;
+&lt;/a&gt;
+&lt;div class=&quot;cont_thumb&quot;&gt;
+&lt;strong class=&quot;tit_thumb&quot;&gt;
+&lt;a class=&quot;link_txt&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228114752092&quot; data-tiara-id=&quot;20210228114752092&quot; data-tiara-layer=&quot;article_main&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228114752092&quot;&gt;은행 대출금리, 반년 새 0.6%p 상승.. &quot;영끌·빚투족 부담 커&quot;&lt;/a&gt;
+&lt;/strong&gt;
+&lt;span class=&quot;info_thumb&quot;&gt;조선비즈&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;item_issue&#39;</span><span class="p">})</span> <span class="p">:</span>
+    <span class="n">i</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;item_issue&#39;</span><span class="p">})]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;\n\n\n\n\n\n北김정은 위인전서 &quot;핵에는 핵&quot;..文언급없이 정상회담 자찬\n\n중앙일보\n\n&#39;,
+ &#39;\n\n\n\n\n\n바이든 행정부의 첫 군사행동은 시리아의 친이란 민병대 타격 &quot;22명 사망&quot;\n\n서울신문\n\n&#39;,
+ &#39;\n\n\n\n\n\n법원 &quot;보수단체 3·1절 9대 차량집회 허용&quot;\n\n한겨레\n\n&#39;,
+ &#39;\n\n\n\n\n\n은행 대출금리, 반년 새 0.6%p 상승.. &quot;영끌·빚투족 부담 커&quot;\n\n조선비즈\n\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\n\n\n\n\n\n北김정은 위인전서 &quot;핵에는 핵&quot;..文언급없이 정상회담 자찬\n\n중앙일보\n\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;#kakaoBody&#39;,
+ &#39;#kakaoGnb&#39;,
+ &#39;https://news.daum.net/&#39;,
+ &#39;https://entertain.daum.net&#39;,
+ &#39;https://sports.daum.net&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;item_issue&#39;</span><span class="p">})</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228131656178&quot; data-tiara-id=&quot;20210228131656178&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228131656178&quot;&gt;
+&lt;img alt=&quot;北김정은 위인전서 &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fjoongang%2F20210228131659282vxxf.jpg&amp;amp;scode=media&quot; 자찬&quot;=&quot;&quot; 정상회담=&quot;&quot; 핵&quot;..文언급없이=&quot;&quot; 핵에는=&quot;&quot;/&gt;
+&lt;/a&gt;, &lt;a class=&quot;link_txt&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228131656178&quot; data-tiara-id=&quot;20210228131656178&quot; data-tiara-layer=&quot;article_main&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228131656178&quot;&gt;北김정은 위인전서 &quot;핵에는 핵&quot;..文언급없이 정상회담 자찬&lt;/a&gt;]
+[&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228120102322&quot; data-tiara-id=&quot;20210228120102322&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228120102322&quot;&gt;
+&lt;img 22명=&quot;&quot; alt=&quot;바이든 행정부의 첫 군사행동은 시리아의 친이란 민병대 타격 &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fseoul%2F20210228120104268jfcb.jpg&amp;amp;scode=media&quot; 사망&quot;&quot;=&quot;&quot;/&gt;
+&lt;/a&gt;, &lt;a class=&quot;link_txt&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228120102322&quot; data-tiara-id=&quot;20210228120102322&quot; data-tiara-layer=&quot;article_main&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228120102322&quot;&gt;바이든 행정부의 첫 군사행동은 시리아의 친이란 민병대 타격 &quot;22명 사망&quot;&lt;/a&gt;]
+[&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228115602198&quot; data-tiara-id=&quot;20210228115602198&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228115602198&quot;&gt;
+&lt;img 3·1절=&quot;&quot; 9대=&quot;&quot; alt=&quot;법원 &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fhani%2F20210228115603781wjtc.jpg&amp;amp;scode=media&quot; 보수단체=&quot;&quot; 차량집회=&quot;&quot; 허용&quot;&quot;=&quot;&quot;/&gt;
+&lt;/a&gt;, &lt;a class=&quot;link_txt&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228115602198&quot; data-tiara-id=&quot;20210228115602198&quot; data-tiara-layer=&quot;article_main&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228115602198&quot;&gt;법원 &quot;보수단체 3·1절 9대 차량집회 허용&quot;&lt;/a&gt;]
+[&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228114752092&quot; data-tiara-id=&quot;20210228114752092&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228114752092&quot;&gt;
+&lt;img alt=&quot;은행 대출금리, 반년 새 0.6%p 상승.. &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fchosunbiz%2F20210228114753078xsnw.jpg&amp;amp;scode=media&quot; 부담=&quot;&quot; 영끌·빚투족=&quot;&quot; 커&quot;&quot;=&quot;&quot;/&gt;
+&lt;/a&gt;, &lt;a class=&quot;link_txt&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228114752092&quot; data-tiara-id=&quot;20210228114752092&quot; data-tiara-layer=&quot;article_main&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228114752092&quot;&gt;은행 대출금리, 반년 새 0.6%p 상승.. &quot;영끌·빚투족 부담 커&quot;&lt;/a&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;item_issue&#39;</span><span class="p">})</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228131656178&quot; data-tiara-id=&quot;20210228131656178&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228131656178&quot;&gt;
+&lt;img alt=&quot;北김정은 위인전서 &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fjoongang%2F20210228131659282vxxf.jpg&amp;amp;scode=media&quot; 자찬&quot;=&quot;&quot; 정상회담=&quot;&quot; 핵&quot;..文언급없이=&quot;&quot; 핵에는=&quot;&quot;/&gt;
+&lt;/a&gt;
+&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228120102322&quot; data-tiara-id=&quot;20210228120102322&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228120102322&quot;&gt;
+&lt;img 22명=&quot;&quot; alt=&quot;바이든 행정부의 첫 군사행동은 시리아의 친이란 민병대 타격 &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fseoul%2F20210228120104268jfcb.jpg&amp;amp;scode=media&quot; 사망&quot;&quot;=&quot;&quot;/&gt;
+&lt;/a&gt;
+&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228115602198&quot; data-tiara-id=&quot;20210228115602198&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228115602198&quot;&gt;
+&lt;img 3·1절=&quot;&quot; 9대=&quot;&quot; alt=&quot;법원 &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fhani%2F20210228115603781wjtc.jpg&amp;amp;scode=media&quot; 보수단체=&quot;&quot; 차량집회=&quot;&quot; 허용&quot;&quot;=&quot;&quot;/&gt;
+&lt;/a&gt;
+&lt;a class=&quot;link_thumb&quot; data-tiara-custom=&quot;contentUniqueKey=hamny-20210228114752092&quot; data-tiara-id=&quot;20210228114752092&quot; data-tiara-layer=&quot;article_thumb&quot; data-tiara-ordnum=&quot;1&quot; data-tiara-type=&quot;harmony&quot; href=&quot;https://news.v.daum.net/v/20210228114752092&quot;&gt;
+&lt;img alt=&quot;은행 대출금리, 반년 새 0.6%p 상승.. &quot; class=&quot;thumb_g&quot; src=&quot;https://img1.daumcdn.net/thumb/S254x156ht.u/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fnews%2F202102%2F28%2Fchosunbiz%2F20210228114753078xsnw.jpg&amp;amp;scode=media&quot; 부담=&quot;&quot; 영끌·빚투족=&quot;&quot; 커&quot;&quot;=&quot;&quot;/&gt;
+&lt;/a&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;item_issue&#39;</span><span class="p">})</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://news.v.daum.net/v/20210228131656178
+https://news.v.daum.net/v/20210228120102322
+https://news.v.daum.net/v/20210228115602198
+https://news.v.daum.net/v/20210228114752092
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>기사 제목과 내용 한꺼번에<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://news.v.daum.net/v/20210228114752092&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Translated by kakao i
+소비자들이 체감하는 은행의 대출금리가 반년 만에 크게는 0.6%포인트(p)나 뛰었다. 인플레이션(물가상승) 기대 등으로 인해 전반적으로 시장 금리가 오르고 신용대출 규제를 위한 우대금리 축소까지 겹치면서다.이에 따라 ‘영끌(영혼까지 끌어모음)’, ‘빚투(대출로 투자)’ 등 투자를 위해 은행 빚을 졌거나 질 예정인 소비자들의 부담이 갈수록 커질 전망이다.
+
+28일 금융권에 따르면 KB국민·신한·하나·우리 4대 시중은행의 지난 25일 기준 신용대출 금리(1등급·1년)는 연 2.59∼3.65% 수준이다. 이는 ‘1%대’ 신용대출 금리가 등장했던 지난해 7월 말의 1.99∼3.51%와 비교해 하단이 0.6%p나 높아진 것이다. 당시 같은 해 3∼5월 한국은행이 코로나19 사태에 따른 경기 방어 차원에서 두 달 만에 기준금리를 0.75%p(1.25→0.50%)나 크게 낮춘 뒤, 은행 대출 금리에도 저금리 기조가 본격적으로 반영되던 때였다.신용대출 금리뿐 아니라 주택담보대출 금리도 반등하는 추세다. 4대 은행의 25일 기준 주택담보대출 금리(코픽스 연동)는 연 2.34∼3.95%다. 역시 작년 7월 말(2.25∼3.95%)보다 최저 금리가 0.09%p 올랐다.은행채 6개월·1년물 등 금융채 단기물 금리를 지표(기준)로 삼는 신용대출 금리가 6개월 사이 0.6%포인트나 뛴 데는 기본적으로 이들 금융채 금리 상승이 영향을 미친 것으로 분석된다.최근 국고채 10년물 등 장기 금리는 경기 개선이나 인플레이션 기대 등을 반영해 코로나19 이전 수준을 넘어설 만큼 꽤 올랐다. 단기물의 경우도 상승 폭이 장기물만큼은 아니지만, 오름세는 분명하다. 실제 신용대출 지표금리로 가장 많이 사용되는 은행채 1년물(AAA·무보증) 금리는 작년 7월 말 0.761%에서 지난 26일 기준 0.856%로 반년 만에 0.095%p 높아졌다.
+
+하지만 신용대출 지표금리의 0.1%p 상승만으로 0.6%p에 이르는 신용대출 금리 인상 폭을 모두 설명할 수 없다. 나머지 금리 상승분은 작년 10월 이후 금융당국이 본격적으로 ‘신용대출 조이기’에 나서면서 은행들이 우대금리 폭을 크게 깎은 데 따른 것이다.신용대출 금리는 기준(지표)금리에 거래실적 등을 반영한 우대금리를 빼고 정해진다. 지난해 말 은행들은 신용대출 규제의 수단으로서 앞다퉈 우대금리를 0.5%p 이상 줄였다.주택담보대출 변동금리의 경우 주로 코픽스(COFIX·자금조달비용지수)를 따른다. 코픽스는 쉽게 말해 국내 8개 은행이 대출에 쓰일 자금을 조달하는데 얼마나 많은 비용(금리)을 들였는지 나타내는 지표다. 은행이 실제 취급한 예·적금, 은행채 등 수신상품의 금리 변동이 반영된다.은행권이 2월에 적용한 코픽스(1월 기준)는 신규취급액 기준으로 0.86%로, 작년 7월의 0.81%보다 0.05%p 높은 수준이다. 코픽스에 반영되는 수신 금리 종류에는 은행채 등의 금리도 포함되는 만큼 역시 시장 금리 상승 추세와 무관하지 않다. 그러나 코픽스에 더 많은 영향을 미치는 것은 정기 예금 금리이고, 이 금리는 은행권의 자금 수급 환경과 경쟁 등에 크게 좌우된다는 게 업계 관계자들의 설명이다.은행연합회 관계자는 &quot;코픽스 금리 요소를 분해하면 70∼80%가 정기 예금 금리고, 정기 예금 금리는 은행 간 예금 유치 경쟁이 치열해지면 은행들이 정책적으로 금리를 높일 수밖에 없는 부분&quot;이라며 &quot;따라서 최근 인터넷전문은행과 전통 은행 간 경쟁 등도 주택담보대출 금리 상승에 영향을 미쳤다고 볼 수 있다&quot;고 말했다.
+
+업계 안팎에서는 이같은 대출 금리 오름세가 신규 차주(돈 빌리는 사람)뿐 아니라 이미 대출을 받은 기존 차주들에게도 부담 일수밖에 없다는 분석이 나온다.시중은행 관계자는 &quot;신용대출도 약정에 따라 3개월, 6개월 단위로 현시점의 기준금리를 적용받는 경우가 많다&quot;며 &quot;신용대출로 2억원을 빌렸는데 금리가 0.5%포인트 올랐다면, 연간으로는 100만원이나 이자가 늘어나는 셈&quot;이라고 말했다.최근 신용대출 증가 속도가 눈에 띄게 더뎌진 데는 증시 정체 등뿐 아니라 금리 상승도 적지 않게 영향을 미쳤다는 게 은행권의 분석이다. 25일 기준 KB국민·신한·하나·우리·NH농협 5대 시중은행의 신용대출 잔액은 135조1747억원으로, 지난달말(135조2390억원)보다 오히려 643억원 줄어든 상태다.
+- Copyrights ⓒ 조선비즈 &amp; Chosun.com, 무단 전재 및 재배포 금지 - 
+해당 언론사로 연결됩니다.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h3&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;tit_view&#39;</span><span class="p">})[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;은행 대출금리, 반년 새 0.6%p 상승.. &quot;영끌·빚투족 부담 커&quot;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./sample"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 이현열<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
