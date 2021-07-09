@@ -1,0 +1,1 @@
+python [01]down_ticker_sector.py

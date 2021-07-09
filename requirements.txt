@@ -1,3 +1,7 @@
-jupyter-book
 matplotlib
 numpy
+pandas
+pandas_datareader
+keyring
+requests
+progressbar
